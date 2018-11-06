@@ -14,7 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.tatab.login.service.LoginService;
 import com.bit.tatab.login.vo.LoginVO;
+import com.bit.tatab.main.service.MainService;
 import com.bit.tatab.main.vo.CommentVO;
+import com.bit.tatab.main.vo.MainBackgroundVO;
 import com.bit.tatab.main.vo.MyPageVO;
 
 @Controller
@@ -22,6 +24,9 @@ public class LoginController {
 
    @Inject
    LoginService loginService;
+   
+   @Inject
+   MainService mainService;
 
    // google login
 /*   
@@ -57,6 +62,7 @@ public class LoginController {
         HttpSession session = request.getSession();
         session.setAttribute("login_email", loginVO.getLoginEmail());
         session.setAttribute("login_name", loginVO.getLoginName());
+        String login_email = session.getAttribute("login_email").toString();
         System.out.println("login_email: " + session.getAttribute("login_email"));
 
         // 코멘트 관련 세션 활용하는 작업 (원석)
@@ -99,6 +105,11 @@ public class LoginController {
             session.setAttribute("myPageVO", myPageVO2);
             System.out.println("내 정보야 처음에 잘 삽입됐니? : " + myPageVO2);
             
+            // 배경이미지는 empty로 넘기기
+            MainBackgroundVO mainBackgroundVO = new MainBackgroundVO();
+            session.setAttribute("mainBackgroundVO", mainBackgroundVO);
+            System.out.println("배경 이미지 없을 때 vo값 : " + mainBackgroundVO);
+            
             System.out.println("db에 로그인 정보 등록 완료");
             
        } else {
@@ -116,6 +127,11 @@ public class LoginController {
           MyPageVO myPageVO3 = loginService.myPageInfoFind(loginVO);
           session.setAttribute("myPageVO", myPageVO3);
           System.out.println("내 정보야 올라갔니? : " + myPageVO3);
+          
+          // 배경이미지 가져오기
+          MainBackgroundVO mainBackgroundVO = mainService.findBackgroundImage(login_email);
+          session.setAttribute("mainBackgroundVO", mainBackgroundVO);
+          System.out.println("배경 이미지 있을 때 vo값 : " + mainBackgroundVO);
        } 
        
        // MyPage 관련 정보 
