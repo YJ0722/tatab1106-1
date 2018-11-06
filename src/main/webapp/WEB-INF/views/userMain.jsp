@@ -52,7 +52,7 @@
 			return false;
 		}
     	  
-        // 파일 정책위반 테스트 액션
+        // 파일 정책위반 테스트 액션.
         function fileCheck(){
             console.log('파일체크 시작!!');
             var fileNm = $('#file').val();
