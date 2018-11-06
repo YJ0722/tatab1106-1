@@ -90,11 +90,11 @@
         <!-- 배경이미지 -->
         <div class="background">
         	<c:choose>
-        		<c:when test="${empty backgroundImage.save_name}">
+        		<c:when test="${empty mainBackgroundVO.save_name}">
         			<img src="https://t1.daumcdn.net/cfile/tistory/195822124CECE3C32C">
         		</c:when>
         		<c:otherwise>
-        			<img src="${pageContext.request.contextPath}/img/${backgroundImage.save_name}">
+        			<img src="${pageContext.request.contextPath}/img/${mainBackgroundVO.save_name}">
         		</c:otherwise>
         	</c:choose>
         </div>
@@ -321,7 +321,7 @@
                           </fieldset>
                         <fieldset id="buttons">
                         	<c:choose>
-                        		<c:when test="${empty backgroundImage.save_name }">
+                        		<c:when test="${empty mainBackgroundVO.save_name }">
                             <input type="submit" class="btn btn-primary" value="수정">
                         		</c:when>
                         		<c:otherwise>

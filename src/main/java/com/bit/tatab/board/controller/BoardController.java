@@ -27,8 +27,9 @@ public class BoardController {
 		HttpSession session = request.getSession();
 		session.setAttribute("projectName", projectName);
 		session.setAttribute("project_no", project_no);
+		
+		// 배경이미지 가져오기(빈 값 포함)
 		MainBackgroundVO mainBackgroundVO = (MainBackgroundVO) session.getAttribute("mainBackgroundVO");
-		System.out.println("보드로 잘 가져왔니? : " + mainBackgroundVO.toString());
 
 		System.out.println("board 프로젝트 이름 : " + projectName + ", 프로젝트 고유번호 : " + project_no);
 
