@@ -137,7 +137,7 @@
 	                        <!-- 플젝 아이콘 끝 -->
 	                        <!-- 플젝명 -->
 	                        <div class="listName">
-	                            <a id="projectNames" onclick="goBoard('${projectName.project_name}', '${projectName.project_no} ')"><h3>${projectName.project_name}</h3></a>
+	                            <a id="projectNames" onclick="goBoard('${projectName.project_name}', '${projectName.project_no}')"><h3>${projectName.project_name}</h3></a>
 	                        </div>
 	                        <!-- 플잭명 끝  -->
 	                    </div>
