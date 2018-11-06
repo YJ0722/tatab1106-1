@@ -151,6 +151,7 @@ public class MainController {
 			mainBackgroundVO.setSave_name(save_name);
 			
 			// 코멘트 세션에 추가 - 필요 시 추가
+			session.setAttribute("mainBackgroundVO", mainBackgroundVO);
 			
 			// 배경이미지 내용 db에 추가
 			mainService.modifyBackgroundImage(mainBackgroundVO);

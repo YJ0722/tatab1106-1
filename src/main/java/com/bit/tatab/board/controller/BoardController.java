@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bit.tatab.main.vo.MainBackgroundVO;
+
 @Controller
 public class BoardController {
 
@@ -25,11 +27,14 @@ public class BoardController {
 		HttpSession session = request.getSession();
 		session.setAttribute("projectName", projectName);
 		session.setAttribute("project_no", project_no);
+		MainBackgroundVO mainBackgroundVO = (MainBackgroundVO) session.getAttribute("mainBackgroundVO");
+		System.out.println("보드로 잘 가져왔니? : " + mainBackgroundVO.toString());
 
 		System.out.println("board 프로젝트 이름 : " + projectName + ", 프로젝트 고유번호 : " + project_no);
 
 		mav.addObject("projectName", projectName);
-
+		mav.addObject("mainBackgroundVO", mainBackgroundVO);
+		
 		return mav;
 	}
 }

@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page session="false" %>
+<%-- <%@ page session="false" %> --%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -51,12 +51,24 @@
     
     <body>
     <!-- board-background start -->
-    <div class="board-background" style="width: 100%; background-size: 100% 100%;">
-       <!-- topMenu include start -->
-       <jsp:include page="/WEB-INF/views/topMenu.jsp"/>
-       <!-- topMenu include end -->    
-      
-   </div>          
-   <!-- board-background end -->
+    	<%-- <div>${pageContext.request.contextPath}/img/${sessionScope.mainBackgroundVO.save_name}</div> --%>
+     <c:choose>
+    	<c:when test="${empty sessionScope.mainBackgroundVO.save_name}">
+		    <div class="board-background" style="width: 100%; background-size: 100% 100%;">
+		       <!-- topMenu include start -->
+		       <jsp:include page="/WEB-INF/views/topMenu.jsp"/>
+		       <!-- topMenu include end -->    
+		   </div>          
+  		 <!-- board-background end -->
+    	</c:when>
+    	<c:otherwise>
+		    <div class="board-background" style="width: 100%; background-size: 100% 100%; background-image: url('${pageContext.request.contextPath}/img/${sessionScope.mainBackgroundVO.save_name}');">
+		       <!-- topMenu include start -->
+		       <jsp:include page="/WEB-INF/views/topMenu.jsp"/>
+		       <!-- topMenu include end -->    
+		   </div>          
+  		 <!-- board-background end -->
+    	</c:otherwise>
+    </c:choose> 
     </body>
 </html>
