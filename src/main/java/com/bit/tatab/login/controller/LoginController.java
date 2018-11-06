@@ -45,7 +45,7 @@ public class LoginController {
     @RequestMapping(value="/googleLogin.do", method=RequestMethod.POST)
     public ModelAndView gooleLogin(HttpServletRequest request, HttpServletResponse response) throws Exception {
       
-       System.out.println("구글 로그인 POST");
+       System.out.println("구글 로그인 POST!");
      
         String googleId = request.getParameter("googleId");
         String name = request.getParameter("name");
