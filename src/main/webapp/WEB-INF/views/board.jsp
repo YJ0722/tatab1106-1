@@ -7,7 +7,7 @@
     <title>tatab</title>
     
     <!-- script 참조 -->
-    <script src="resources/js/jquery-3.3.1.min.js?ver=2"></script>
+    <script src="resources/js/jquery-3.3.1.min.js"></script>
     <script src="resources/js/jquery-ui.js?ver=2"></script>
     <script src="resources/js/jquery-ui.min.js?ver=2"></script>
     

@@ -47,7 +47,7 @@ public class LoginController {
       
         LoginVO loginVO = new LoginVO(googleId, name);
         
-        System.out.println("리퀘스트로 받은 로그인 vo : " + loginVO.toString());
+        //System.out.println("리퀘스트로 받은 로그인 vo : " + loginVO.toString());
         
        
         //////
@@ -63,11 +63,11 @@ public class LoginController {
         CommentVO commentVO = loginService.mainCommentFind(loginVO);
         MyPageVO myPageVO = loginService.myPageInfoFind(loginVO);
         
-        System.out.println("수정된 commentVO : " + commentVO);
-        System.out.println("수정된 myPageVO : " + myPageVO);
+        //System.out.println("수정된 commentVO : " + commentVO);
+        //System.out.println("수정된 myPageVO : " + myPageVO);
         
        if(checkLoginVOList.size() == 0) {
-          System.out.println("로그인vo 객체 db에 없음!");
+          //System.out.println("로그인vo 객체 db에 없음!");
             // 로그인 정보 db에 추가
             loginService.memberInfoInsert(loginVO);
             // 코멘트 관련 기본 내용 삽입
@@ -97,12 +97,12 @@ public class LoginController {
             // 마이페이지 관련 정보 db에 추가
             loginService.myPageInfoInsert(myPageVO2);
             session.setAttribute("myPageVO", myPageVO2);
-            System.out.println("내 정보야 처음에 잘 삽입됐니? : " + myPageVO2);
+            //System.out.println("내 정보야 처음에 잘 삽입됐니? : " + myPageVO2);
             
-            System.out.println("db에 로그인 정보 등록 완료");
+            //System.out.println("db에 로그인 정보 등록 완료");
             
        } else {
-          System.out.println("vo 객체 db에 있음!");
+          //System.out.println("vo 객체 db에 있음!");
 
           // 코멘트 관련 세션 활용하는 작업 (원석) - 정보 있을 때!
           CommentVO commentVO2 = loginService.mainCommentFind(loginVO);
@@ -110,7 +110,7 @@ public class LoginController {
           session.setAttribute("main_title", commentVO2.getMain_title());
           session.setAttribute("sub_title", commentVO2.getSub_title());
           session.setAttribute("sub_comment", commentVO2.getSub_comment());
-          System.out.println("코멘트야 올라갔니? : " + commentVO2.toString());
+          //System.out.println("코멘트야 올라갔니? : " + commentVO2.toString());
           
           // 마이페이지 관련 세션 활용하는 작업 (원석) - 정보 있을 떄!
           MyPageVO myPageVO3 = loginService.myPageInfoFind(loginVO);
@@ -135,7 +135,7 @@ public class LoginController {
        session.invalidate();
        
        ModelAndView mav = new ModelAndView("redirect:/");
-       System.out.println("viewName 확인: " + mav.getViewName());
+       //System.out.println("viewName 확인: " + mav.getViewName());
        
        System.out.println("구글 로그아웃 성공");
        return mav;

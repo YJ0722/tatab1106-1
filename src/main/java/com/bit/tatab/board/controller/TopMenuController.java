@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.tatab.board.service.BoardService;
+import com.bit.tatab.board.vo.MemberVO;
 import com.bit.tatab.main.service.MainService;
 import com.bit.tatab.main.vo.ProjectVO;
 
@@ -37,7 +38,7 @@ public class TopMenuController {
         String login_email = session.getAttribute("login_email").toString();
 		
         List<ProjectVO> projectList = mainService.selectAllProject(login_email);
-		System.out.println("ajax : "  + projectList);
+//		System.out.println("ajax : "  + projectList);
 		return  projectList;
 		
 	}
@@ -73,6 +74,34 @@ public class TopMenuController {
 		ModelAndView mav = new ModelAndView("board");
 		
 		return mav;
+	}
+	
+	@RequestMapping(value="memberList.do", method = RequestMethod.POST)
+	public List<MemberVO> memberList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		HttpSession session = request.getSession();
+		String project_no = session.getAttribute("project_no").toString();
+		System.out.println("불러올 프로젝트 고유번호 : " + project_no);
+		
+		List<MemberVO> memberList = boardService.selectMemberList(project_no);
+		
+//		System.out.println("memberList : " + memberList);
+		return memberList;
+	}
+	
+	@RequestMapping(value="addUser.do", method = RequestMethod.POST) 
+	public String addUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		HttpSession session = request.getSession();
+		String project_no = session.getAttribute("project_no").toString();
+		
+		String user = request.getParameter("user");
+		System.out.println("추가할 user : " + user);
+		
+		boardService.addUser(project_no, user); 
+		
+		return "board";
+				
 	}
 
 }

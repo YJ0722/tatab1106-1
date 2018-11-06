@@ -43,7 +43,7 @@ public class MainController {
 	@RequestMapping(value="/userMain.do", method=RequestMethod.GET)
 	public ModelAndView userMain(HttpServletRequest request, HttpServletResponse response) throws Exception {		
 		
-		System.out.println("!!!!!");
+		//System.out.println("!!!!!");
 		
 		// 세션객체 얻어오기 - 이메일
         HttpSession session = request.getSession();
@@ -76,7 +76,7 @@ public class MainController {
 	@RequestMapping(value="/userMain.do", method=RequestMethod.POST)
 	public ModelAndView userMain(HttpServletRequest request, HttpServletResponse response, @RequestBody LoginVO loginvo) throws Exception{
 	
-		System.out.println("@@@@@");
+		//System.out.println("@@@@@");
 		ModelAndView mav = new ModelAndView("userMain");
 		return mav;
 		
@@ -98,7 +98,7 @@ public class MainController {
 	@RequestMapping(value="/modifyComment.do", method=RequestMethod.POST)
 	public ModelAndView modifyComment(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		System.out.println("메인 코멘트 POST로 넘기기 - controller 시작");
+		//System.out.println("메인 코멘트 POST로 넘기기 - controller 시작");
 		
 		// 세션객체 얻어오기
         HttpSession session = request.getSession();
@@ -119,7 +119,7 @@ public class MainController {
 		// 코멘트 기입 내용 db에 추가
 		mainService.modifyComment(commentVO);
 		
-		System.out.println("db 등록 완료!");
+		//System.out.println("db 등록 완료!");
 		
 		ModelAndView mav = new ModelAndView("redirect:/userMain.do");
 		mav.addObject("commentVO", commentVO); // mav 형식으로 공유영역에 올리는 방법!
@@ -132,7 +132,7 @@ public class MainController {
 		@RequestMapping(value="/modifyBackgroundImage.do", method=RequestMethod.POST)
 		public ModelAndView modifyBackgroundImage(MultipartFile file, HttpSession session) throws Exception {
 			
-			System.out.println("배경이미지 POST로 넘기기 - controller 시작");
+			//System.out.println("배경이미지 POST로 넘기기 - controller 시작");
 			
 			MainBackgroundVO mainBackgroundVO = new MainBackgroundVO();
 			

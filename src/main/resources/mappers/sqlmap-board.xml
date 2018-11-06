@@ -24,4 +24,20 @@
  		where project_name = #{projectName}
  	</update>
  	
- </mapper>
+ 	<!-- MemberList 조회  -->
+ 	<select id="selectMemberList" parameterType="int" resultType="MemberVO">
+ 		select *
+		from member_t
+		where login_email in ( 
+		    select member_id
+		    from prj_member_t
+		    where project_no = #{input} 
+		)
+ 	</select>
+ 	
+ 	<!-- addUser insert -->
+ 	<select id="addUser" parameterType="String">
+ 		insert into prj_member_t values(#{project_no}, #{user})
+ 	</select>
+ 	
+ </mapper>  

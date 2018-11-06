@@ -1,5 +1,8 @@
 package com.bit.tatab.board.dao;
 
+import java.util.List;
+
+import com.bit.tatab.board.vo.MemberVO;
 import com.bit.tatab.main.vo.ProjectVO;
 
 public interface BoardDAO {
@@ -9,4 +12,10 @@ public interface BoardDAO {
 	
 	// projectManage data update
 	public void updateProjectVO(ProjectVO projectVO, String projectName);
+	
+	// projectManage memberList 조회
+	public List<MemberVO> selectMemberList(String project_no);
+
+	// projectManage addUser
+	public void addUser(String project_no, String user);
 }
