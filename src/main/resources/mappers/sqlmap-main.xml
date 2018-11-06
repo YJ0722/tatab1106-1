@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bit.tatab.main.dao.MainDAO">
+
+	<!-- prj_t에 insert (register) -->
+	<insert parameterType="ProjectVO" id="insert" useGeneratedKeys="true"> insert into
+		PRJ_T(project_no, project_name, project_comment)
+		values(seq_prj_t_p_no.nextval, #{project_name}, #{project_comment})
+		<selectKey order="AFTER" keyProperty="project_no" resultType="Integer">select seq_prj_t_p_no.currval from dual</selectKey>
+	</insert>
+
+	<!-- prj_memeber_t에 insert -->
+	<insert parameterType="ProjectVO" id="insert_prj_member_t"> insert into
+		PRJ_MEMBER_T(project_no, member_id) values(#{project.project_no},
+		#{login_email}) </insert>
+
+	<!-- 프로젝트 List 조회 -->
+	<select id="selectAllProject" parameterType="String" resultType="ProjectVO"> 
+		select prj_t.project_no, prj_t.project_name
+		from prj_member_t, prj_t
+		where prj_t.project_no = prj_member_t.project_no and prj_member_t.member_id = #{login_email}
+		order by project_name
+	</select>
+
+	<!-- 코멘트 관련 내용 db에 modify -->
+	<update id="modifyComment" parameterType="CommentVO">
+		update MAIN_COMMENT_T
+		set main_title = #{main_title},
+		sub_title = #{sub_title},
+		sub_comment = #{sub_comment}
+		where login_email = #{login_email}
+	</update>
+	
+	<!-- 배경 이미지 업로드 insert -->
+	<insert id="modifyBackgroundImage" parameterType="MainBackgroundVO">
+		insert into
+		USER_BG_CUSTOM_T(login_email, ori_name, save_name)
+		values(#{login_email}, #{ori_name}, #{save_name})
+	</insert>
+
+	<!-- 배경 이미지 불러오기 -->
+	<select id="findBackgroundImage" parameterType="String" resultType="MainBackgroundVO">
+		select * from user_bg_custom_t
+		where login_email = #{login_email}
+	</select>
+	
+	<!-- 배경 이미지 삭제 -->
+	<delete id="deleteBackroundImage" parameterType="String">
+		delete USER_BG_CUSTOM_T where login_email = #{login_email}
+	</delete>
+	
+</mapper>
