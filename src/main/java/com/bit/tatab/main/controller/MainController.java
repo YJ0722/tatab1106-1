@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bit.tatab.board.service.BoardService;
 import com.bit.tatab.login.service.LoginService;
 import com.bit.tatab.login.vo.LoginVO;
 import com.bit.tatab.main.service.MainService;
@@ -35,6 +36,9 @@ public class MainController {
 	
 	@Inject
 	LoginService loginService;
+	
+	@Inject
+	BoardService boardService;
 	
 	@Resource(name = "uploadPath")
 	   String uploadPath;
@@ -87,10 +91,17 @@ public class MainController {
 	@RequestMapping(value = "/register.do", method = RequestMethod.POST)
 	public String register(HttpServletRequest request, HttpServletResponse resopnse, @Valid ProjectVO projectVO) {
 
+		System.out.println("새 프로젝트 db에 추가------");
 		HttpSession session = request.getSession();
 		String login_email = session.getAttribute("login_email").toString();
 
 		mainService.insert(projectVO, login_email);
+		
+		System.out.println("컨트롤러에서 project_no 확인 : " + String.valueOf(projectVO.getProject_no()));
+
+		// 프로젝트 생성 시 자동으로 생성되는 컬럼 1개 생성
+		//boardService.makeFirstCol(projectVO.getProject_no());
+		
 		return "redirect:/userMain.do";
 	}
 

@@ -3,8 +3,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
+<!--     <script src="resources/js/jquery-3.3.1.min.js"></script> -->
+    <script src="resources/js/jquery-3.3.1.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	
+	
+     <link rel="stylesheet" type="text/css" href="resources/css/board/boardcss.css">
     <!-- topMenu.css -->
     <link rel="stylesheet" type="text/css" href="resources/css/topMenu/topMenu.css?ver=1">
+    
+    
     
     <!-- topMenu.js -->
     <script src="resources/js/topMenu/topMenu.js?ver=1"></script>
@@ -106,4 +114,11 @@
         <!-- projectManage Modal -->
 
     </body>
+    
+    <!-- script 참조 -->
+    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js'></script>
+    <script src="resources/js/jquery-ui.js"></script>
+    <script src="resources/js/jquery-ui.min.js"></script>
+    <script src="resources/js/board/boardjs.js"></script>
+    
 </html>

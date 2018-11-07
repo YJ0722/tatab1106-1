@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.bit.tatab.board.dao.BoardDAO;
 import com.bit.tatab.main.dao.MainDAO;
 import com.bit.tatab.main.vo.CommentVO;
 import com.bit.tatab.main.vo.MainBackgroundVO;
@@ -19,12 +20,17 @@ public class MainServiceImpl implements MainService{
 	@Inject
 	private MainDAO mainDao;
 
+	@Inject
+	private BoardDAO boardDao;
+	
 	// 프로젝트 생성
 	@Override
 	public void insert(ProjectVO project, String login_email) {
 		mainDao.insert(project);
 		mainDao.insertMember(project, login_email);
-		
+		System.out.println("before col:"+project.getProject_no());
+		mainDao.makeFirstCol1(project);
+		System.out.println("after col:"+project.getProject_no());
 	}
 
 	// 해당 id가 속한 프로젝트 리스트 불러오기

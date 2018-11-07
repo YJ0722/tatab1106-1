@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.bit.tatab.board.vo.BoardColVO;
 import com.bit.tatab.board.vo.MemberVO;
 import com.bit.tatab.main.vo.ProjectVO;
 
@@ -73,5 +74,27 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 	
 	
+	// 프로젝트 생성 시 자동으로 생성되는 컬럼 1개 생성
+	@Override
+	public void makeFirstCol(ProjectVO project) {
+		
+		System.out.println("makeFirstCol : 컬럼 생성할 프로젝트 번호 확인 : " + String.valueOf(project));
+		
+		sqlSession.insert("makeFirstCol", project);
+		
+	}
 	
+
+	// 프로젝트 해당하는 컬럼 정보 조회
+	@Override
+	public List<BoardColVO> selectAllProjectCol(int project_no) {
+
+		System.out.println("selectAllProjectCol : 컬럼 조회할 프로젝트 번호 확인 : " + String.valueOf(project_no));
+		
+		List<BoardColVO> boardColList = sqlSession.selectList("selectAllProjectCol", project_no);
+		
+		System.out.println("----------- check-------------------");
+		System.out.println("size: " + String.valueOf(boardColList.size()));
+		return boardColList;
+	}
 }

@@ -6,7 +6,8 @@
     <head>
     <title>tatab</title>
     
-    <!-- script 참조 -->
+    
+        <!-- script 참조 -->
     <script src="resources/js/jquery-3.3.1.min.js"></script>
     <script src="resources/js/jquery-ui.js?ver=2"></script>
     <script src="resources/js/jquery-ui.min.js?ver=2"></script>
@@ -30,6 +31,7 @@
     
     <!-- font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    
     
     <style>
    .board-background {

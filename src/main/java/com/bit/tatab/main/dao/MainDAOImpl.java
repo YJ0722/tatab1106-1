@@ -35,6 +35,12 @@ public class MainDAOImpl implements MainDAO {
 		sqlSession.insert("insert_prj_member_t", param);
 	}
 
+	// 프로젝트 생성 (PRJ 첫번째 컬럼 자동 생성)
+	@Override
+	public void makeFirstCol1(ProjectVO project) {
+		sqlSession.insert("makeFirstCol1", project);
+	}
+	
 	@Override
 	public List<ProjectVO> selectAllProject(String login_email) {
 		
