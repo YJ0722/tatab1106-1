@@ -18,7 +18,7 @@ public interface BoardService {
 	public List<MemberVO> selectMemberList(String project_no);
 	
 	// projectManage adduser
-	public void addUser(String project_no, String user);
+	public boolean addUser(String project_no, String user);
 	// 프로젝트 생성 시 자동으로 생성되는 컬럼 1개 생성
 	public void makeFirstCol(ProjectVO project);
 	
