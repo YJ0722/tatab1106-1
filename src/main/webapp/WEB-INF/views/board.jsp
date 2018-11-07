@@ -6,30 +6,37 @@
     <head>
     <title>tatab</title>
     
+    
     <!-- script 참조 -->
-    <script src="resources/js/jquery-3.3.1.min.js?ver=2"></script>
-    <script src="resources/js/jquery-ui.js?ver=2"></script>
-    <script src="resources/js/jquery-ui.min.js?ver=2"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="resources/js/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     
     <!-- css 참조 -->
     <link rel="stylesheet" type="text/css" href="resources/css/board/boardcss.css">
     <link rel="stylesheet" type="text/css" href="resources/css/jquery-ui.min.css">
     
     <!-- Bootstrap -->
-    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <!-- 합쳐지고 최소화된 최신 CSS --> 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <!-- 부가적인 테마 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     
-    <script src="resources/js/board/boardjs.js"></script>
-    
-    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    
-    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
     
     <!-- font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!-- 
+    <script src="resources/js/jquery-ui.js"></script>
+    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
+     -->
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="resources/js/jquery-ui.js"></script>
+    <script src="resources/js/jquery-ui.min.js"></script>
+    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
+    합쳐지고 최소화된 최신 자바스크립트
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+     -->
+    
     
     <style>
    .board-background {

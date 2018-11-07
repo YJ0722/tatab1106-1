@@ -5,12 +5,6 @@
     <head>
         <title>kanban-col</title>
     </head>
-    <!-- css 참조 -->
-    <!-- <link rel="stylesheet" type="text/css" href="resources/css/board//kanban_col_css.css"> -->
-<!-- script 참조 -->
-    <script src="resources/js/jquery-3.3.1.min.js"></script>
-    <script src="resources/js/jquery-ui.js"></script>
-    
 				
 <body>
         <!-- kanban-col section start -->

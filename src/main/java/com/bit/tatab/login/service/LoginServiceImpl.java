@@ -19,6 +19,7 @@ public class LoginServiceImpl implements LoginService {
 	// 로그인 info db에 존재하는지 확인(검색)
 	@Override
 	public List<LoginVO> memberInfoFind(LoginVO loginVO) {
+		System.out.println("memberInfoFind 성공");
 		return loginDAO.memberInfoFind(loginVO);
 	}
 	

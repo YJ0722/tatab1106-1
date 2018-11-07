@@ -16,6 +16,12 @@
 		PRJ_MEMBER_T(project_no, member_id) values(#{project.project_no},
 		#{login_email}) </insert>
 
+ 	<!-- 프로젝트 생성 시 컬럼 1개 자동 생성 -->
+ 	<insert id="makeFirstCol1" parameterType="ProjectVO">
+ 		insert into PROJECT_COL_T(project_no, col_no, col_index, col_name)
+ 		values(#{project.project_no}, seq_prj_col_t_no.nextVal, 0, 'Title')
+ 	</insert>
+ 	
 	<!-- 프로젝트 List 조회 -->
 	<select id="selectAllProject" parameterType="String" resultType="ProjectVO"> 
 		select prj_t.project_no, prj_t.project_name

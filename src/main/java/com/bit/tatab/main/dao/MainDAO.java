@@ -17,6 +17,9 @@ public interface MainDAO {
 	// 프로젝트 생성 (PRJ_MEMBER_T)
 	public void insertMember(ProjectVO project, String login_email);
 
+	// 프로젝트 생성 (PRJ 첫번째 컬럼 자동 생성)
+	public void makeFirstCol1(ProjectVO project);
+	
 	// 해당 id가 속한 프로젝트 리스트 불러오기
 	public List<ProjectVO> selectAllProject(String login_email);
 	

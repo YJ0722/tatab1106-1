@@ -3,10 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
-    <script src="resources/js/jquery-3.3.1.min.js"></script>
-    <script src="resources/js/jquery-ui.js"></script>
-    <link rel="stylesheet" type="text/css" href="resources/css/jquery-ui.min.css">
+    
     <!-- font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">   
    
@@ -14,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="resources/css/topMenu/topMenu_projects.css?ver=1">
 
 	<!-- topMenu_projects.js -->
-	<script src="resources/js/top<!-- topMenu_projects.css -->Menu/topMenu_projects.js?ver=1"></script>
+	<script src="resources/js/topMenu/topMenu_projects.js?ver=1"></script>
     <head>
     	<script>
 		$(document).ready(function() {
