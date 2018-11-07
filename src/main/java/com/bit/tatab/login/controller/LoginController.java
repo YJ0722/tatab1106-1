@@ -73,7 +73,7 @@ public class LoginController {
         //System.out.println("수정된 myPageVO : " + myPageVO);
         
        if(checkLoginVOList.size() == 0) {
-          //System.out.println("로그인vo 객체 db에 없음!");
+          System.out.println("로그인vo 객체 db에 없음!");
             // 로그인 정보 db에 추가
             loginService.memberInfoInsert(loginVO);
             // 코멘트 관련 기본 내용 삽입
