@@ -185,7 +185,6 @@ public class MainController {
 	    	// 세션객체 얻어오기
 	       String login_email = session.getAttribute("login_email").toString();
 	       MainBackgroundVO mainBackgroundVO = mainService.findBackgroundImage(login_email);
-	       System.out.println("파일 save_name : " + mainBackgroundVO.getSave_name());
 	       
 	       String path = "";
 	       String profile = "/" + mainBackgroundVO.getSave_name();
@@ -197,7 +196,10 @@ public class MainController {
 	          }
 	          
 	       // 배경이미지 삭제
-	       mainService.deleteBackroundImage(login_email);
+	       mainService.deleteBackgroundImage(login_email);
+	       mainBackgroundVO = mainService.findBackgroundImage(login_email);
+	       session.setAttribute("mainBackgroundVO", mainBackgroundVO);
+	       System.out.println("배경이미지 삭제 확인 : " + mainBackgroundVO);
 
 	       return "backgroundDelete";
 

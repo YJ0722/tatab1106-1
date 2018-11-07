@@ -53,8 +53,8 @@ public class MainServiceImpl implements MainService{
 	}
 
 	@Override
-	public void deleteBackroundImage(String login_email) {
-		mainDao.deleteBackroundImage(login_email);
+	public void deleteBackgroundImage(String login_email) {
+		mainDao.deleteBackgroundImage(login_email);
 	}
 	
 	
