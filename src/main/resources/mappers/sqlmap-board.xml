@@ -33,8 +33,25 @@
  	<!-- 프로젝트 해당하는 컬럼 정보 조회 -->
  	<select id="selectAllProjectCol" parameterType="int" resultType="BoardColVO">
 		select *
-		from project_col_t, prj_t
+		from prj_col_t
 		where project_no = #{project_no}
 		order by col_index
  	</select>
- </mapper>
+ 	
+ 	<!-- MemberList 조회  -->
+ 	<select id="selectMemberList" parameterType="int" resultType="MemberVO">
+ 		select *
+		from member_t
+		where login_email in ( 
+		    select member_id
+		    from prj_member_t
+		    where project_no = #{input} 
+		)
+ 	</select>
+ 	
+ 	<!-- addUser insert -->
+ 	<select id="addUser" parameterType="String">
+ 		insert into prj_member_t values(#{project_no}, #{user})
+ 	</select>
+ 	
+ </mapper>  

@@ -24,4 +24,34 @@
  		where project_name = #{projectName}
  	</update>
  	
- </mapper>
+ 	<!-- 프로젝트 생성 시 컬럼 1개 자동 생성 -->
+ 	<insert id="makeFirstCol" parameterType="ProjectVO">
+ 		insert into PROJECT_COL_T(project_no, col_no, col_index, col_name)
+ 		values(#{project.project_no}, seq_prj_col_t_no.nextVal, 0, 'Title')
+ 	</insert>
+ 	
+ 	<!-- 프로젝트 해당하는 컬럼 정보 조회 -->
+ 	<select id="selectAllProjectCol" parameterType="int" resultType="BoardColVO">
+		select *
+		from prj_col_t
+		where project_no = #{project_no}
+		order by col_index
+ 	</select>
+ 	
+ 	<!-- MemberList 조회  -->
+ 	<select id="selectMemberList" parameterType="int" resultType="MemberVO">
+ 		select *
+		from member_t
+		where login_email in ( 
+		    select member_id
+		    from prj_member_t
+		    where project_no = #{input} 
+		)
+ 	</select>
+ 	
+ 	<!-- addUser insert -->
+ 	<select id="addUser" parameterType="String">
+ 		insert into prj_member_t values(#{project_no}, #{user})
+ 	</select>
+ 	
+ </mapper>  

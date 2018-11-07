@@ -2,6 +2,7 @@ package com.bit.tatab.board.service;
 
 import java.util.List;
 
+import com.bit.tatab.board.vo.MemberVO;
 import com.bit.tatab.board.vo.BoardColVO;
 import com.bit.tatab.main.vo.ProjectVO;
 
@@ -12,7 +13,12 @@ public interface BoardService {
 	
 	// projectManage data update
 	public void updateProjectVO(ProjectVO projectVO, String projectName);
-		
+	
+	// projectManage memberlist 조회
+	public List<MemberVO> selectMemberList(String project_no);
+	
+	// projectManage adduser
+	public void addUser(String project_no, String user);
 	// 프로젝트 생성 시 자동으로 생성되는 컬럼 1개 생성
 	public void makeFirstCol(ProjectVO project);
 	

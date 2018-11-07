@@ -47,7 +47,7 @@ public class MainController {
 	@RequestMapping(value="/userMain.do", method=RequestMethod.GET)
 	public ModelAndView userMain(HttpServletRequest request, HttpServletResponse response) throws Exception {		
 		
-		System.out.println("!!!!!");
+		//System.out.println("!!!!!");
 		
 		// 세션객체 얻어오기 - 이메일
         HttpSession session = request.getSession();
@@ -64,12 +64,13 @@ public class MainController {
 		// project list 불러오기
 		List<ProjectVO> projectList = mainService.selectAllProject(login_email);
 	
-		// 파일 업로드
-		MainBackgroundVO backgroundImage = mainService.findBackgroundImage(login_email);
+		// 세션객체 얻어오기 - 파일
+		MainBackgroundVO mainBackgroundVO = (MainBackgroundVO) session.getAttribute("mainBackgroundVO");
+		System.out.println("세션에서 가져온 배경이미지 : " + mainBackgroundVO);
 		
 		mav.addObject("projectList", projectList);
 		mav.addObject("commentVO", commentVO);
-		mav.addObject("backgroundImage", backgroundImage);
+		mav.addObject("mainBackgroundVO", mainBackgroundVO);
 		
 		return mav;
 		
@@ -80,7 +81,7 @@ public class MainController {
 	@RequestMapping(value="/userMain.do", method=RequestMethod.POST)
 	public ModelAndView userMain(HttpServletRequest request, HttpServletResponse response, @RequestBody LoginVO loginvo) throws Exception{
 	
-		System.out.println("@@@@@");
+		//System.out.println("@@@@@");
 		ModelAndView mav = new ModelAndView("userMain");
 		return mav;
 		
@@ -109,7 +110,7 @@ public class MainController {
 	@RequestMapping(value="/modifyComment.do", method=RequestMethod.POST)
 	public ModelAndView modifyComment(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		System.out.println("메인 코멘트 POST로 넘기기 - controller 시작");
+		//System.out.println("메인 코멘트 POST로 넘기기 - controller 시작");
 		
 		// 세션객체 얻어오기
         HttpSession session = request.getSession();
@@ -130,7 +131,7 @@ public class MainController {
 		// 코멘트 기입 내용 db에 추가
 		mainService.modifyComment(commentVO);
 		
-		System.out.println("db 등록 완료!");
+		//System.out.println("db 등록 완료!");
 		
 		ModelAndView mav = new ModelAndView("redirect:/userMain.do");
 		mav.addObject("commentVO", commentVO); // mav 형식으로 공유영역에 올리는 방법!
@@ -143,7 +144,7 @@ public class MainController {
 		@RequestMapping(value="/modifyBackgroundImage.do", method=RequestMethod.POST)
 		public ModelAndView modifyBackgroundImage(MultipartFile file, HttpSession session) throws Exception {
 			
-			System.out.println("배경이미지 POST로 넘기기 - controller 시작");
+			//System.out.println("배경이미지 POST로 넘기기 - controller 시작");
 			
 			MainBackgroundVO mainBackgroundVO = new MainBackgroundVO();
 			
@@ -162,6 +163,8 @@ public class MainController {
 			mainBackgroundVO.setSave_name(save_name);
 			
 			// 코멘트 세션에 추가 - 필요 시 추가
+			session.setAttribute("mainBackgroundVO", mainBackgroundVO);
+			System.out.println("세션에 올린 배경이미지 : " + mainBackgroundVO);
 			
 			// 배경이미지 내용 db에 추가
 			mainService.modifyBackgroundImage(mainBackgroundVO);
@@ -192,11 +195,11 @@ public class MainController {
 	       
 	    	// 세션객체 얻어오기
 	       String login_email = session.getAttribute("login_email").toString();
-	       MainBackgroundVO backgroundImage = mainService.findBackgroundImage(login_email);
-	       System.out.println("파일 save_name : " + backgroundImage.getSave_name());
+	       MainBackgroundVO mainBackgroundVO = mainService.findBackgroundImage(login_email);
+	       System.out.println("파일 save_name : " + mainBackgroundVO.getSave_name());
 	       
 	       String path = "";
-	       String profile = "/" + backgroundImage.getSave_name();
+	       String profile = "/" + mainBackgroundVO.getSave_name();
 	       path = uploadPath + profile;
 	       System.out.println("삭제할 파일 경로 : " + path);
 	       File file = new File(path);

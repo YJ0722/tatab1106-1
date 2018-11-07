@@ -3,6 +3,7 @@ package com.bit.tatab.board.dao;
 import java.util.List;
 
 import com.bit.tatab.board.vo.BoardColVO;
+import com.bit.tatab.board.vo.MemberVO;
 import com.bit.tatab.main.vo.ProjectVO;
 
 public interface BoardDAO {
@@ -18,4 +19,10 @@ public interface BoardDAO {
 	
 	// 프로젝트 해당하는 컬럼 정보 조회 
 	public List<BoardColVO> selectAllProjectCol(int project_no);
+	
+	// projectManage memberList 조회
+	public List<MemberVO> selectMemberList(String project_no);
+
+	// projectManage addUser
+	public void addUser(String project_no, String user);
 }

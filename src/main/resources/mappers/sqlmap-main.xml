@@ -18,8 +18,8 @@
 
  	<!-- 프로젝트 생성 시 컬럼 1개 자동 생성 -->
  	<insert id="makeFirstCol1" parameterType="ProjectVO">
- 		insert into PROJECT_COL_T(project_no, col_no, col_index, col_name)
- 		values(#{project.project_no}, seq_prj_col_t_no.nextVal, 0, 'Title')
+ 		insert into PRJ_COL_T(project_no, col_no, col_index, col_name)
+ 		values(#{project_no}, seq_prj_col_t_no.nextVal, 0, 'Notice')
  	</insert>
  	
 	<!-- 프로젝트 List 조회 -->

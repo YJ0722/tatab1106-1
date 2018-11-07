@@ -7,15 +7,12 @@
     
     <!-- web font -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    
-    <!-- jQuery -->
-    <script src="resources/js/jquery-3.3.1.min.js"></script>
 
     <!-- topMenu_projectMenu.js -->    
     <script src="resources/js/topMenu/topMenu_projectManage.js?var=2"></script>
     <script>
     	$(document).ready(function() {
-    		// projectManage 데이터 호출
+    		// projectManage overview 데이터 호출 
     		$('#infoBtn').click(function() {
     			$.ajax({
         			url : "boardProjectManage.do",
@@ -31,6 +28,18 @@
     			})
     		});
     		
+    		// members 호출
+    		$('.membersBtn').click(function() {
+    			$.ajax({
+    				url : "memberList.do",
+    				type : "post",
+    				
+    				success : function(data) {
+    					console.log(data);
+    					
+    				}
+    			})
+    		})
     		
     	});
     	// done 버튼 클릭시 projectVO update
@@ -38,6 +47,10 @@
 			$('.updateProjectVO').submit();
 			
 		}
+    	
+    	function addUser() {
+			$('.addUser').submit();
+    	}
     </script>
        
     <body>
@@ -117,18 +130,20 @@
 					   			<div class="memberName">
 					   				moon
 					   			</div>
-					   			<div class="memberId">
+					   			<div class="memberId">             
 					   				sss!@navd ,com
 					   			</div>
 					   		</div>
 			 	   		</div>
-			 		   
-			 		    <div class="addUser">
-				   			<input type="text" class="addMemberInput">
-						    <div class="addUserBtn">
-								Invite
+			 		   	
+			 		   	<form class="addUser" action="addUser.do" method="post">
+				 		    <div class="addUser">
+					   			<input type="text" class="addMemberInput" name ="user">
+							    <div class="addUserBtn" onclick="addUser()">
+									Invite
+							    </div>
 						    </div>
-					    </div>
+				    	</form> 
                    </div>
 				   <!-- Members 메뉴 -->
 
@@ -149,4 +164,6 @@
                        </div>
                    </div>
     </body>
+    
+    
 </html>

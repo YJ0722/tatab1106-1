@@ -52,7 +52,7 @@
 			return false;
 		}
     	  
-        // 파일 정책위반 테스트 액션
+        // 파일 정책위반 테스트 액션.
         function fileCheck(){
             console.log('파일체크 시작!!');
             var fileNm = $('#file').val();
@@ -90,11 +90,11 @@
         <!-- 배경이미지 -->
         <div class="background">
         	<c:choose>
-        		<c:when test="${empty backgroundImage.save_name}">
+        		<c:when test="${empty mainBackgroundVO.save_name}">
         			<img src="https://t1.daumcdn.net/cfile/tistory/195822124CECE3C32C">
         		</c:when>
         		<c:otherwise>
-        			<img src="${pageContext.request.contextPath}/img/${backgroundImage.save_name}">
+        			<img src="${pageContext.request.contextPath}/img/${mainBackgroundVO.save_name}">
         		</c:otherwise>
         	</c:choose>
         </div>
@@ -137,7 +137,7 @@
 	                        <!-- 플젝 아이콘 끝 -->
 	                        <!-- 플젝명 -->
 	                        <div class="listName">
-	                            <a id="projectNames" onclick="goBoard('${projectName.project_name}', '${projectName.project_no} ')"><h3>${projectName.project_name}</h3></a>
+	                            <a id="projectNames" onclick="goBoard('${projectName.project_name}', '${projectName.project_no}')"><h3>${projectName.project_name}</h3></a>
 	                        </div>
 	                        <!-- 플잭명 끝  -->
 	                    </div>
@@ -321,7 +321,7 @@
                           </fieldset>
                         <fieldset id="buttons">
                         	<c:choose>
-                        		<c:when test="${empty backgroundImage.save_name }">
+                        		<c:when test="${empty mainBackgroundVO.save_name }">
                             <input type="submit" class="btn btn-primary" value="수정">
                         		</c:when>
                         		<c:otherwise>

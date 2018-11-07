@@ -28,7 +28,9 @@ public class MainServiceImpl implements MainService{
 	public void insert(ProjectVO project, String login_email) {
 		mainDao.insert(project);
 		mainDao.insertMember(project, login_email);
+		System.out.println("before col:"+project.getProject_no());
 		mainDao.makeFirstCol1(project);
+		System.out.println("after col:"+project.getProject_no());
 	}
 
 	// 해당 id가 속한 프로젝트 리스트 불러오기

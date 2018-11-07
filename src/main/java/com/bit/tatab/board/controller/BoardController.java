@@ -16,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.bit.tatab.board.service.BoardService;
 import com.bit.tatab.board.vo.BoardColVO;
 
+import com.bit.tatab.main.vo.MainBackgroundVO;
+
 @Controller
 public class BoardController {
 	
@@ -34,21 +36,25 @@ public class BoardController {
 		HttpSession session = request.getSession();
 		session.setAttribute("projectName", projectName);
 		session.setAttribute("project_no", project_no);
+		
+		// 배경이미지 가져오기(빈 값 포함)
+		MainBackgroundVO mainBackgroundVO = (MainBackgroundVO) session.getAttribute("mainBackgroundVO");
 
 		System.out.println("board 프로젝트 이름 : " + projectName + ", 프로젝트 고유번호 : " + project_no);
 
 		//////////////////////// 해당 프로젝트의 컬럼 불러오기 /////////////////////////
-//		int prj_no = Integer.parseInt(project_no);
-//		List<BoardColVO> boardColList = boardService.selectAllProjectCol(prj_no);
-//		
-//		for(int i=0; i<boardColList.size(); i++) {
-//			System.out.println("[" + i + "] : " + boardColList.get(i));
-//		}
+		int prj_no = Integer.parseInt(project_no);
+		List<BoardColVO> boardColList = boardService.selectAllProjectCol(prj_no);
+		
+		for(int i=0; i<boardColList.size(); i++) {
+			System.out.println("[" + i + "] : " + boardColList.get(i).toString());
+		}
 		///////////////////////////////////////////////////////////////////////
 		
 		mav.addObject("projectName", projectName);
-//		mav.addObject("colData", boardColList);
-
+		mav.addObject("colData", boardColList);
+		mav.addObject("mainBackgroundVO", mainBackgroundVO);
+		
 		return mav;
 	}
 }
