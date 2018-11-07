@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <!-- topMenu_projectManage.css-->
@@ -12,44 +13,88 @@
     <script src="resources/js/topMenu/topMenu_projectManage.js?var=2"></script>
     <script>
     	$(document).ready(function() {
-    		// projectManage overview 데이터 호출 
-    		$('#infoBtn').click(function() {
-    			$.ajax({
-        			url : "boardProjectManage.do",
-        			type : "post",
-        			 
-        			success : function(data) {
-        				// console.log(data);
-        				
-        				$('.projectTitle').html(data.project_name);
-        				$('.projectNames').attr("value", data.project_name);
-        				$('.projectDescription').attr("value", data.project_comment);
-        			}
-    			})
-    		});
-    		
-    		// members 호출
-    		$('.membersBtn').click(function() {
-    			$.ajax({
-    				url : "memberList.do",
-    				type : "post",
-    				
-    				success : function(data) {
-    					console.log(data);
-    					
-    				}
-    			})
-    		})
-    		
-    	});
-    	// done 버튼 클릭시 projectVO update
-		function update() {
-			$('.updateProjectVO').submit();
+    		// projectManage overview 데이터 호출
+    		$('#infoBtn').click(getProjectInfo);
+    		$('.overviewBtn').click(getProjectInfo);
 			
+    		// memberList 조회
+    		$('.membersBtn').click(getMemberList);
+    	});
+    	
+    	function getProjectInfo() {
+    		$.ajax({
+    			url : "boardProjectManage.do",
+    			type : "post",
+    			 
+    			success : function(data) {
+    				// console.log(data);
+    				
+    				$('.projectTitle').html(data.project_name);
+    				$('.projectNames').attr("value", data.project_name);
+    				$('.projectDescription').attr("value", data.project_comment);
+    			}
+			})
+    	}
+    	
+    	function getMemberList() {
+			$.ajax({
+				url : "memberList.do",
+				type : "post",
+				
+				success : function(data) {
+					$('.memberDiv').empty();
+					for(i=0; i<data.length; i++) {
+	    				var tag1 = '<div class="memberList"><div class="memberName">';
+	    				var tag2 = '</div><div class="memberId">';
+	    				var tag3 = '</div></div>'  
+	    					
+	    				var tag = tag1 + data[i].login_name + tag2 + data[i].login_email + tag3;
+	    				
+	    				$(tag).hide().appendTo('.memberDiv').show();
+					}
+				}
+			})
+			return false;
 		}
     	
+    	// done 버튼 클릭시 projectVO update
+		function update() {
+// 			$('.updateProjectVO').submit();
+			$.ajax({
+				url:'updateProjectVO.do',
+				type:'post',
+				data:{'projectDescription':$('#projectDescription').val(),'projectName':$('#projectName').val()},
+				success:function(result){
+	        				
+	        				$('.projectTitle').html(result.project_name);
+	        				$('.projectNames').attr("value", result.project_name);
+	        				$('.projectDescription').attr("value", result.project_comment);
+				}
+			})
+			alert('수정완료');
+		}
+    	
+    	// 유저 초대하기
     	function addUser() {
-			$('.addUser').submit();
+    		if($('.addMemberInput').val().length == 0) {
+				alert('아이디를 입력해주세요');
+    			false;
+    		} else {
+			//	$('.addUser').submit();
+    			$.ajax({
+    				url:'addUser.do',
+    				type:'post',
+    				data:{'user':$('#addMemberInput').val()},
+    				success:function(result){
+    					if(result == 'true'){
+    						alert('member 추가완료');
+    						getMemberList();
+    					}else {
+    						alert('없는 아이디');
+    					}
+    				}
+    			})
+    		}
     	}
     </script>
        
@@ -81,7 +126,7 @@
 	                               Project name
 	                           </div>
 	                           <div class="pjInput">
-	                                   <input class="projectNames" name="projectName" type="text" style="width:300px; height:50px;" placeholder="">
+	                                   <input class="projectNames" id="projectName" name="projectName" type="text" style="width:300px; height:50px;" placeholder="">
 	                           </div>
 	                       </div>
 	                       <div class="dpt">
@@ -89,7 +134,7 @@
 	                               Project Discription
 	                           </div>
 	                           <div class="dptdpt">
-	                              <input class="projectDescription" name="projectDescription" type="text" style="width:300px; height:200px;" placeholder="">
+	                              <input class="projectDescription" id="projectDescription" name="projectDescription" type="text" style="width:300px; height:200px;" placeholder="">
 	                       </div>
 	               		</form>	        
                     </div>
@@ -126,19 +171,12 @@
                         </div>
 					   
 					    <div class="memberDiv">
-					   		<div class="memberList">
-					   			<div class="memberName">
-					   				moon
-					   			</div>
-					   			<div class="memberId">             
-					   				sss!@navd ,com
-					   			</div>
-					   		</div>
+					   		<!-- memberList add -->
 			 	   		</div>
 			 		   	
 			 		   	<form class="addUser" action="addUser.do" method="post">
 				 		    <div class="addUser">
-					   			<input type="text" class="addMemberInput" name ="user">
+					   			<input type="text" id="addMemberInput" class="addMemberInput" name ="user" placeholder="추가할 아이디를 입력해주세요">
 							    <div class="addUserBtn" onclick="addUser()">
 									Invite
 							    </div>

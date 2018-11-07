@@ -17,14 +17,14 @@ public class BoardServiceImpl implements BoardService{
 	private BoardDAO boardDao;
 
 	@Override
-	public ProjectVO selectAllProjectManage(String projectName) {
-		ProjectVO projectManage = boardDao.selectAllProjectManage(projectName);
+	public ProjectVO selectAllProjectManage(String project_no) {
+		ProjectVO projectManage = boardDao.selectAllProjectManage(project_no);
 		return projectManage;
 	}
 
 	@Override
-	public void updateProjectVO(ProjectVO projectVO, String projectName) {
-		boardDao.updateProjectVO(projectVO, projectName);
+	public void updateProjectVO(ProjectVO projectVO, String project_no, String projectName) {
+		boardDao.updateProjectVO(projectVO, project_no, projectName);
 	}
 
 	@Override
@@ -34,8 +34,8 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public void addUser(String project_no, String user) {
-		boardDao.addUser(project_no, user);
+	public boolean addUser(String project_no, String user) {
+		return boardDao.addUser(project_no, user);
 	}
 	
 	

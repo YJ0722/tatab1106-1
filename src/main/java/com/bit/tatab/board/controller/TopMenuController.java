@@ -48,35 +48,40 @@ public class TopMenuController {
 	public ProjectVO projectManage(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		HttpSession session = request.getSession();
-		String projectName = session.getAttribute("projectName").toString();
+//		String projectName = session.getAttribute("projectName").toString();
+		String project_no = session.getAttribute("project_no").toString();
 		
-		ProjectVO projectVO = boardService.selectAllProjectManage(projectName); 
+		
+		ProjectVO projectVO = boardService.selectAllProjectManage(project_no); 
 		
 		return projectVO;
 		
 	}
 	
 	@RequestMapping(value="updateProjectVO.do", method = RequestMethod.POST)
-	public ModelAndView updateProjectVO(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	@ResponseBody
+	public ProjectVO updateProjectVO(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		HttpSession session = request.getSession();
 		String projectName = session.getAttribute("projectName").toString();
+		String project_no = session.getAttribute("project_no").toString();
 		
 		String updateName = request.getParameter("projectName");
 		String projectDescription = request.getParameter("projectDescription");
 		
 		ProjectVO projectVO = new ProjectVO(updateName, projectDescription);
 		
-		boardService.updateProjectVO(projectVO, projectName);
+		boardService.updateProjectVO(projectVO, project_no, projectName);
 		
 		session.setAttribute("projectName", updateName);
 		
-		ModelAndView mav = new ModelAndView("board");
+//		ModelAndView mav = new ModelAndView("board");
 		
-		return mav;
+		return projectManage(request, response);
 	}
 	
 	@RequestMapping(value="memberList.do", method = RequestMethod.POST)
+	@ResponseBody
 	public List<MemberVO> memberList(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		HttpSession session = request.getSession();
@@ -85,22 +90,29 @@ public class TopMenuController {
 		
 		List<MemberVO> memberList = boardService.selectMemberList(project_no);
 		
-//		System.out.println("memberList : " + memberList);
+		System.out.println("memberList : " + memberList);
 		return memberList;
 	}
 	
 	@RequestMapping(value="addUser.do", method = RequestMethod.POST) 
+	@ResponseBody
 	public String addUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		HttpSession session = request.getSession();
 		String project_no = session.getAttribute("project_no").toString();
 		
 		String user = request.getParameter("user");
-		System.out.println("추가할 user : " + user);
+//		System.out.println("추가할 user : " + user);
 		
-		boardService.addUser(project_no, user); 
+		boolean bool = boardService.addUser(project_no, user); 
 		
-		return "board";
+		if(bool == true ) {
+			System.out.println("사용자 추가 완료");
+		} else {
+			System.out.println("없는 사용자입니다");
+		}
+		
+		return bool+"";
 				
 	}
 

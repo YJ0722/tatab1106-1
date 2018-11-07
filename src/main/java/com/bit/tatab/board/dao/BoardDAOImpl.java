@@ -20,24 +20,25 @@ public class BoardDAOImpl implements BoardDAO{
 	private SqlSession sqlSession;
 
 	@Override
-	public ProjectVO selectAllProjectManage(String projectName) {
+	public ProjectVO selectAllProjectManage(String project_no) {
 		
-		ProjectVO projectVO = sqlSession.selectOne("selectAllProjectManage", projectName);
+		ProjectVO projectVO = sqlSession.selectOne("selectAllProjectManage", project_no);
 		System.out.println(projectVO);
 		
 		return projectVO;
 	}
 
 	@Override
-	public void updateProjectVO(ProjectVO projectVO, String projectName) {
+	public void updateProjectVO(ProjectVO projectVO, String project_no, String projectName) {
 		
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("updateName", projectVO.getProject_name());
 		param.put("updateDescription",projectVO.getProject_comment());
 		param.put("projectName", projectName);
+		param.put("project_no", Integer.parseInt(project_no));
 		
 		sqlSession.update("updatePRJ_T", param);
-		sqlSession.update("updateProject_List", param);
+//		sqlSession.update("updateProject_List", param);
 	}
 
 	@Override
@@ -55,13 +56,20 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 
 	@Override
-	public void addUser(String project_no, String user) {
+	public boolean addUser(String project_no, String user) {
 		
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("project_no", project_no);
 		param.put("user", user);
 		
-		sqlSession.insert("addUser", param);
+		String checkUser = sqlSession.selectOne("checkUser", user);
+
+		if (checkUser != null) {
+			sqlSession.insert("addUser", param);
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	
