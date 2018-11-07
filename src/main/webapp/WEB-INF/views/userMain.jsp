@@ -314,22 +314,29 @@
                 <div class="container">
                     <form id="contact" action="modifyBackgroundImage.do" method="post"
                         enctype="multipart/form-data" onsubmit = "return fileCheck()">
-                        <fieldset class="form-group">
-                            <h3>배경이미지 변환</h3>
-                            <input type="file" class="form-control-file" id="file" name="file"
-                            accept="image/gif, image/jpeg, image/png"> <!-- accept : 이미지파일만 할 수 있도록! -->
-                          </fieldset>
-                        <fieldset id="buttons">
-                        	<c:choose>
-                        		<c:when test="${empty mainBackgroundVO.save_name }">
-                            <input type="submit" class="btn btn-primary" value="수정">
-                        		</c:when>
-                        		<c:otherwise>
-                        	<input type="button" id="deleteBackgroundImage" class="btn btn-primary" value="삭제">	
-                        		</c:otherwise>
-                        	</c:choose>
-                            <a class="btn btn-light" href="<c:url value="/userMain.do" />" role="button">취소</a>
-                        </fieldset>
+	                     <c:choose>
+	                        <c:when test="${empty mainBackgroundVO.save_name }">
+		                        <fieldset class="form-group">
+		                            <h3>배경이미지 변환</h3>
+		                            <input type="file" class="form-control-file" id="file" name="file"
+		                            accept="image/gif, image/jpeg, image/png"> <!-- accept : 이미지파일만 할 수 있도록! -->
+		                        </fieldset>
+		                        <fieldset id="buttons">
+		                            <input type="submit" class="btn btn-primary" value="등록">
+		                            <a class="btn btn-light" href="<c:url value="/userMain.do" />" role="button">취소</a>
+			                    </fieldset>
+                       		</c:when>
+                       		<c:otherwise>
+		                        <fieldset class="form-group">
+		                            <h3>배경이미지 삭제</h3>
+		                            <p>삭제하시겠습니까?</p>
+		                        </fieldset>
+		                        <fieldset id="buttons">
+		                        	<input type="button" id="deleteBackgroundImage" class="btn btn-primary" value="삭제">	
+		                            <a class="btn btn-light" href="<c:url value="/userMain.do" />" role="button">취소</a>
+		                        </fieldset>
+                       		</c:otherwise>
+                      	</c:choose>
                     </form>
                 </div>
             </div>
