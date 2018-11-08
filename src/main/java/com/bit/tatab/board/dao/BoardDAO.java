@@ -3,6 +3,7 @@ package com.bit.tatab.board.dao;
 import java.util.List;
 
 import com.bit.tatab.board.vo.BoardColVO;
+import com.bit.tatab.board.vo.BoardTaskVO;
 import com.bit.tatab.board.vo.MemberVO;
 import com.bit.tatab.main.vo.ProjectVO;
 
@@ -25,4 +26,10 @@ public interface BoardDAO {
 
 	// projectManage addUser
 	public boolean addUser(String project_no, String user);
+
+	// 작업 추가 전 인덱스 확인
+	public int checkTaskIndex(BoardTaskVO boardTaskVO);
+	
+	// 작업 추가
+	public void insertBoardTask(BoardTaskVO boardTaskVO);
 }

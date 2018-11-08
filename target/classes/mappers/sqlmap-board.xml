@@ -61,4 +61,14 @@
  		insert into prj_member_t values(#{project_no}, #{user})
  	</select>
  	
+ 	<!-- board 작업 추가 전 task_index 확인 -->
+ 	<select id="checkTaskIndex" parameterType="BoardTaskVO" resultType="String">
+		select count(task_index) from prj_task_t where project_no = #{project_no} and col_index = #{col_index}
+ 	</select>
+ 	
+ 	<!-- board 에 작업 추가 -->
+ 	<select id="insertBoardTask" parameterType="BoardTaskVO">
+ 		insert into prj_task_t values(#{project_no}, #{col_index}, seq_prj_task_t_no.nextVal, #{task_index}, #{task_name}, #{task_content}, #{status}, #{d_day}, #{reg_date})
+ 	</select>
+ 	
  </mapper>  

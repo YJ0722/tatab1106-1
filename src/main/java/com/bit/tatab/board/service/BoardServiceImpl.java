@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.bit.tatab.board.dao.BoardDAO;
 import com.bit.tatab.board.vo.BoardColVO;
+import com.bit.tatab.board.vo.BoardTaskVO;
 import com.bit.tatab.board.vo.MemberVO;
 import com.bit.tatab.main.vo.ProjectVO;
 
@@ -49,5 +50,17 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public List<BoardColVO> selectAllProjectCol(int project_no) {
 		return boardDao.selectAllProjectCol(project_no);
+	}
+	
+	// 작업 추가 전 인덱스 확인
+	@Override
+	public int checkTaskIndex(BoardTaskVO boardTaskVO) {
+		return boardDao.checkTaskIndex(boardTaskVO);
+	}
+	
+	// 작업 추가
+	@Override
+	public void insertBoardTask(BoardTaskVO boardTaskVO) {
+		boardDao.insertBoardTask(boardTaskVO);
 	}
 }

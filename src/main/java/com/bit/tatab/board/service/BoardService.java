@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.bit.tatab.board.vo.MemberVO;
 import com.bit.tatab.board.vo.BoardColVO;
+import com.bit.tatab.board.vo.BoardTaskVO;
 import com.bit.tatab.main.vo.ProjectVO;
 
 public interface BoardService {
@@ -24,4 +25,10 @@ public interface BoardService {
 	
 	// 프로젝트 해당하는 컬럼 정보 조회 
 	public List<BoardColVO> selectAllProjectCol(int project_no);
+
+	// 작업 추가 전 인덱스 확인
+	public int checkTaskIndex(BoardTaskVO boardTaskVO);
+	
+	// 작업 추가
+	public void insertBoardTask(BoardTaskVO boardTaskVO);
 }

@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.bit.tatab.board.vo.BoardColVO;
+import com.bit.tatab.board.vo.BoardTaskVO;
 import com.bit.tatab.board.vo.MemberVO;
 import com.bit.tatab.main.vo.ProjectVO;
 
@@ -96,5 +97,37 @@ public class BoardDAOImpl implements BoardDAO{
 		System.out.println("----------- check-------------------");
 		System.out.println("size: " + String.valueOf(boardColList.size()));
 		return boardColList;
+	}
+
+	// 작업 추가 전 인덱스 확인
+	@Override
+	public int checkTaskIndex(BoardTaskVO boardTaskVO) {
+		
+		String index;
+		int indexNum = 0;
+		
+		try {
+				index = sqlSession.selectOne("checkTaskIndex", boardTaskVO);
+				if(index == null) {
+				} else {
+					indexNum = Integer.parseInt(index);
+				}
+		} catch(NullPointerException e) {
+
+			indexNum = 0;
+		}
+
+		return indexNum;
+		
+	}
+	
+	// 작업 추가
+	@Override
+	public void insertBoardTask(BoardTaskVO boardTaskVO) {
+		System.out.println("작업 추가!");
+		
+		System.out.println("boardTaskVO 정보 : " + boardTaskVO.toString());
+		
+		sqlSession.insert("insertBoardTask", boardTaskVO);
 	}
 }

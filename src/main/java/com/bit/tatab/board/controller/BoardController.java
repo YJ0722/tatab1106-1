@@ -10,12 +10,13 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.tatab.board.service.BoardService;
 import com.bit.tatab.board.vo.BoardColVO;
-
+import com.bit.tatab.board.vo.BoardTaskVO;
 import com.bit.tatab.main.vo.MainBackgroundVO;
 
 @Controller
@@ -56,5 +57,35 @@ public class BoardController {
 		mav.addObject("mainBackgroundVO", mainBackgroundVO);
 		
 		return mav;
+	}
+	
+	
+	// Board 에 작업 추가
+	@ResponseBody
+	@RequestMapping(value = "/insertBoardTask.do", method = RequestMethod.POST)
+	public void insertBoardTask(HttpServletRequest request, String task_name, @RequestParam("col_no")int no) throws Exception {
+
+		HttpSession session = request.getSession();
+		int project_no = Integer.parseInt((String) session.getAttribute("project_no"));
+		
+		System.out.println("파라미터 확인  \n" + "col_index : " + no + "\ntask_name : " + String.valueOf(task_name));
+
+		BoardTaskVO boardTaskVO = new BoardTaskVO(project_no, no, task_name, "", "O", "-", "-");
+		System.out.println("^^^" + boardTaskVO.toString());
+		
+		int index = boardService.checkTaskIndex(boardTaskVO);
+		System.out.println("------------------" + String.valueOf(index));
+		
+		if(index == 0) {
+			boardTaskVO.setTask_index(0);
+			System.out.println("insert 전 index 확인 : " + String.valueOf(boardTaskVO.getTask_index()));
+			boardService.insertBoardTask(boardTaskVO);
+		} else {
+			boardTaskVO.setTask_index(index);
+			System.out.println("insert 전 index 확인 : " + String.valueOf(boardTaskVO.getTask_index()));
+			boardService.insertBoardTask(boardTaskVO);
+		}
+		
+		
 	}
 }

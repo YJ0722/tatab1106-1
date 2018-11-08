@@ -102,6 +102,8 @@ $(document).ready(function () {
                 console.log('추가된 작업 외부영역 클릭(작업 추가 완료)');
 
                 var taskTitle = getTaskTitle.val();
+                var task_col_index = tagIndex;              
+                
 
                 // input 태그에 입력된 값이 없다면
                 if(taskTitle == "") {
@@ -111,11 +113,17 @@ $(document).ready(function () {
                     setTaskTitle.text(taskTitle);
                     getTaskTitle.hide();
                     setTaskTitle.show();
+                    
+                    console.log('작업 제목 : ' + taskTitle);
+                    console.log('해당 컬럼 인덱스 : ' + task_col_index);
+                    
+                    // db에 태스크 추가 ajax 실행
+                    insertBoardTask(task_col_index, taskTitle);
+                    
                 }
 
                 taskMouseAction = true;
 
-                console.log('!!!!!!! 인덱스 확인 : ' + tagIndex);
                 // 작업 추가 버튼 보여주기
                 $('.task-add-btn').eq(tagIndex).show();
 
@@ -195,17 +203,13 @@ $(document).ready(function () {
                     setTitle.text(title);
                     getTitle.hide();
                     setTitle.show();
-                    //getTitle.remove();
+                    
                 }
                 mouseAction = true;
                 
                 // 컬럼 추가 버튼 보여주기
                 $('.col-add-btn').show();
                 
-                
-//                location.hash = '#'
-//                var coladdbtnposition = $('.col-add-btn').offset().left + 50;
-//                $('.board-background').animate({scrollLeft: $('.col-add-btn').offset().left}, 300);
                 $('.board-background').animate({scrollLeft: $('#endline').offset().left}, 300);
         
             }
@@ -226,3 +230,36 @@ $(document).ready(function () {
 
     return;
 });
+
+////////// todo
+function insertBoardTask(colno, t_name) {
+	
+	console.log('------------------');
+	console.log('colno : ' + colno);
+	console.log('t_name : ' + t_name);
+	console.log('------------------');
+	
+//	var data = {
+//		'col_no' : colno,
+//		'task_name' : t_name
+//	};
+	
+	$.ajax({
+		url : "insertBoardTask.do",
+		type : "post",
+//		dataType: "json",
+		data : {
+			'task_name' : t_name,
+			'col_no' : colno
+		},
+//		contentType : "application/json; charset=utf-8"
+		success:function(){
+			alert("ok");
+		},
+		error:function(){
+			alert("error");
+		}
+	});
+	
+	return false;
+}
