@@ -34,7 +34,7 @@
     
     <style>
 	.card.hovercard .cardheader {
-		    background-image: url('resources/img/main/background2.jpeg') no-repeat;
+		    background-image: url('resources/img/main/tatab.png') no-repeat;
 		    background-size: cover;
 		    height: 135px;
 		}
@@ -209,12 +209,19 @@
                         <div class="col-lg-3 col-sm-6">
                             <div class="card hovercard">
                                 <div class="cardheader">
-                                	<img src="<c:url value="/resources/img/main/background2.jpeg" />"
+                                	<img src="<c:url value="/resources/img/main/tatab.png" />"
  											style="background-size: cover; height: 135px; 
   											background-repeat: no-repeat;"/>
                                 </div>
                                 <div class="avatar">
-                                    <img src="<c:url value="/resources/img/main/profile.jpeg" />"/>
+                                	<c:choose>
+                                    	<c:when test="${empty profileImgVO.save_name }">
+		                                    <img src="https://i.stack.imgur.com/34AD2.jpg">
+                                    	</c:when>
+                                    	<c:otherwise>
+                                    		<img src="${pageContext.request.contextPath}/img/${profileImgVO.save_name}">
+                                    	</c:otherwise>
+                                    </c:choose>
                                 </div>
                                 <div class="info">
                                     <div class="title">

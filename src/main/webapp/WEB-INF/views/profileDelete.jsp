@@ -2,6 +2,6 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <script>
-	alert('수정되었습니다.');
-	location.href="${pageContext.request.contextPath}/userMain.do";
+	alert('프로필이미지가 삭제되었습니다.');
+	location.href="${pageContext.request.contextPath}/myPage.do";
 </script>

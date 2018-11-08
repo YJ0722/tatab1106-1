@@ -25,6 +25,7 @@ import com.bit.tatab.main.service.MainService;
 import com.bit.tatab.main.vo.CommentVO;
 import com.bit.tatab.main.vo.MainBackgroundVO;
 import com.bit.tatab.main.vo.ProjectVO;
+import com.bit.tatab.myPage.vo.ProfileImgVO;
 
 
 @Controller
@@ -64,9 +65,14 @@ public class MainController {
 		MainBackgroundVO mainBackgroundVO = (MainBackgroundVO) session.getAttribute("mainBackgroundVO");
 		System.out.println("세션에서 가져온 배경이미지 : " + mainBackgroundVO);
 		
+		// 세션객체 얻어오기 - 이미지
+		ProfileImgVO profileImgVO = (ProfileImgVO) session.getAttribute("profileImgVO");
+		System.out.println("세션에서 가져온 프로필이미지 : " + profileImgVO);
+		
 		mav.addObject("projectList", projectList);
 		mav.addObject("commentVO", commentVO);
 		mav.addObject("mainBackgroundVO", mainBackgroundVO);
+		mav.addObject("profileImgVO", profileImgVO);
 		
 		return mav;
 		

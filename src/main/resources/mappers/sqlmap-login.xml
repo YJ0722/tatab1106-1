@@ -52,7 +52,18 @@
     values (#{login_email}, #{login_name}, #{nickname}, #{dob}, #{motto}, #{department}, #{gender}, #{address}, #{phone_number})
     </insert>
     
+    <!-- 마이페이지 사진 정보 db 탐색 : VO버전 -->
+    <select id="profileImgFindVO" parameterType="LoginVO" resultType="ProfileImgVO">
+    	select *
+    	from USER_IMG_CUSTOM_T
+    	where login_email = #{login_email}
+    </select>
     
-    
+    <!-- 마이페이지 사진 정보 db 탐색 : String버전 -->
+    <select id="profileImgFindString" parameterType="String" resultType="ProfileImgVO">
+    	select *
+    	from USER_IMG_CUSTOM_T
+    	where login_email = #{login_email}
+    </select>
     
  </mapper>

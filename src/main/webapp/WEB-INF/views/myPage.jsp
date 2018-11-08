@@ -17,6 +17,13 @@
 		    border-radius: 50%;
 		    background-repeat: no-repeat;
 		}
+		#deleteProfilePic {
+			position: absolute;
+			top: 100px;
+			left: 100px;
+			width: 45px;
+			height: 30px;
+		}
 		</style>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
@@ -38,6 +45,7 @@
 	               return true;
 	               }
 	         }
+		    
         </script>
         <script type="text/javascript">
         $(function(){
@@ -65,7 +73,15 @@
                     <form id="myPageList" action="modifyMyPage.do" method="post" enctype="multipart/form-data" onsubmit = "return fileCheck()" commandName="MyPageVO">
 	                    <div class="col-md-3 col-lg-3 " align="center">
 	                        <div id="profile">
-	                            <img id="profile-img" src="<c:url value="/resources/img/myPage/profile.jpeg" />"/>
+	                        	<c:choose> 
+	                        		<c:when test="${empty profileImgVO || empty profileImgVO.save_name }">
+	                            		<img id="profile-img" src="https://i.stack.imgur.com/34AD2.jpg">
+	                            	</c:when>
+	                            	<c:otherwise>
+	                            		<img src="${pageContext.request.contextPath}/img/${profileImgVO.save_name}">
+	                            		<input type="button" id="deleteProfilePic" value="삭제" data-original-title="Remove this user" data-toggle="tooltip" class="btn btn-sm btn-danger">
+	                            	</c:otherwise>
+	                            </c:choose>
 	                        </div>
 	                        <!-- ------------------------------------------------------------------------------------------------------------------------ -->
 	                        <div id="setProfile">
@@ -141,4 +157,14 @@
           </div>
         </div>
     </body>
+    <script type="text/javascript">
+	 	// 프로필사진 삭제
+	    $(document).ready(function(){
+	    	$('#deleteProfilePic').click(function(){
+	    		if(confirm('삭제하시겠습니까?')){
+	    			location.href="${pageContext.request.contextPath}/profileImgDelete.do";
+	    		}
+	    	});
+	    });
+    </script>
 </html>
