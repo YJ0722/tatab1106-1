@@ -28,8 +28,8 @@ a:hover
 }
 
 .background img {
-    width: 1918px;
-    height: 958px;
+    width: 99vmax;
+    height: 98vmin;
 }
 
 .subWrapper {
@@ -37,29 +37,29 @@ a:hover
 }
 
 .sidebar {
-    width: 270px;
+    width: 20vmax;
     float: left;
-    height: 950px;
+    height: 100vmin;
 }
 
 .sideBack {
-    width: 270px;
+    width: 20vmax;
     float: left;
-    height: 969px;
+    height: 100vmin;
     background-color: aqua;
     opacity: 0.5;
     filter: blur(5px); 
 }
 
 .sideContent {
-    width: 270px;
+    width: 20vmax;
     float: left;
-    height: 950px;
+    height: 100vmin;
     position: absolute;
 }
 
 .logoAndPhrase {
-    height: 85px;
+    height: 12vmin;
     padding: 5px;
     margin: 5px;
 }
@@ -71,7 +71,7 @@ a:hover
 }
 
 .titlePhrase {
-    padding: 15px;
+    padding: 5px;
     font-size: 25px;
     font-family: 'Cedarville Cursive', cursive;
 }
@@ -83,19 +83,19 @@ a:hover
 }
 
 .list {
-    padding: 20px;
+    padding: 10px;
     margin: 10px;
 }
 
 .oneProject {
-    margin: 15px;
+    margin: 10px;
     float: left;
     font-size: 23px;
 }
 
 .listName {
     padding: 5px;
-    margin: 10px;
+    margin: 15px;
     font-family: 'Gothic A1', sans-serif;
     font-size: 18px;
 }
@@ -110,9 +110,9 @@ a:hover
 .main {
     margin: 10px;
     position: absolute;
-    left: 270px;
-    width: 1580px;
-    height: 900px;
+    left: 20vmax;
+    width: 78vmax;    /* 여기 나중에 가로 삐져나오면 수정!! */
+    height: 96vmin;
     float: right;
     z-index: 1;
 }
@@ -129,20 +129,20 @@ a:hover
 
 .commentBack {
     position: absolute;
-    bottom:10px;
-    width:100%;
-    left:-10px;
+    bottom:3vmin;
+    width:76vmax;
+    left:1vmax;
     height: 250px;
-    background-color: azure;
-    opacity: 0.3;
+    background-color: black;
+    opacity: 0.4;
     filter: blur(5px); 
 }
 
 .commentBelow {
     position: absolute;
-    bottom:50px;
-    left: 120px;
-    width:86%;
+    bottom: 10vmin;
+    left: 3vmax;
+    width: 60vmax;
     font-family: 'Gothic A1', sans-serif;
     text-shadow: -1px 0 #F2F1F6, 0 1px #F2F1F6, 1px 0 #F2F1F6, 0 -1px #F2F1F6;
 }
@@ -157,32 +157,27 @@ a:hover
 
 .commentBelow p {
     font-size: 15px;
-    text-shadow: none;
     font-weight: bold;
 }
 
 .commentAdjust {
     position: absolute;
-    bottom:40px;
-    left: 850px;
-    width:14%;
+    bottom:9vmin;
+    left: 58vmax;
     font-size: 30px;
 }
 
 .BackgroundImage {
-    position: absolute;
-    bottom:40px;
-    left: 900px;
-    width:14%;
+   position: absolute;
+    bottom:7vmin;
+    left: 73vmax;
     font-size: 30px;
 }
 
 .emptyFooter {
-    
     position: absolute;
-    bottom: -50px;
-    width: 100%;
-    height: 50px;
+    bottom: 0vmin;
+    left: 49vmax;
 }
 
 /* MyPageModal - background */
