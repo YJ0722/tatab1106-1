@@ -238,7 +238,7 @@ function insertCol() {
 	$.ajax({
 		url:'insertCol.do',
 		type:'post',
-		data:{'ColName':$('#colName').val()},
+		data:{'ColName' : $('#colName').val()},
 		success:function(){
 		}
 	})

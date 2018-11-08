@@ -110,7 +110,7 @@ public class BoardDAOImpl implements BoardDAO{
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("project_no", project_no);
 		param.put("index", String.valueOf(index));
-		param.put("colName", colName);
+		param.put("colName", colName); 
 		
 		sqlSession.insert("insertCol", param);
 	}
