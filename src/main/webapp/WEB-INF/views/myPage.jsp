@@ -7,11 +7,49 @@
         <meta charset="UTF-8">
         <title><c:out value="${ myPageVO.login_name }" />님의 페이지</title>
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/myPage/MyPage.css" />">
+		<!-- 프로필 사진 관련 -->
+		<style type="text/css">
+		#profile img {
+		    background-size: cover; 
+		    height: 120px; 
+		    width: 120px; 
+		    border-radius: 50%;
+		    background-repeat: no-repeat;
+		}
+		</style>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
         <script>
-        	
+		     // 파일 정책위반 테스트 액션.
+		        function fileCheck(){
+		            console.log('파일체크 시작!!');
+		            var fileNm = $('#file').val();
+		            console.log(fileNm);
+		
+		               if (fileNm != "") {
+		                      
+		                  var ext = fileNm.slice(fileNm.lastIndexOf(".") + 1).toLowerCase();
+		                      
+		                  if (!(ext == "gif" || ext == "jpg" || ext == "png")) {
+		                      alert("이미지파일 (.jpg, .png, .gif ) 만 업로드 가능합니다.");
+		                      return false;
+		                  }
+		               return true;
+		               }
+		         }
+        </script>
+        <script type="text/javascript">
+        $(function(){
+        	$('#profile-img').click(function(){
+        		$('#profile-file').trigger('click');
+        	})
+        })
+       
+        var profileFile = function(event){
+                            		var profileImg = document.getElementById('profile-img');
+                            		profileImg.src = URL.createObjectURL(event.target.files[0]);
+                            	};
         </script>
     </head>
     <body>
@@ -26,10 +64,17 @@
                   <div class="row">
                     <div class="col-md-3 col-lg-3 " align="center">
                         <div id="profile">
-                            <img src="<c:url value="/resources/img/myPage/profile.jpeg" />" 
- 											style="background-size: cover; height: 120px; width: 120px; border-radius: 50%;
-  											background-repeat: no-repeat;"/>
-                        </div>    
+                            <img id="profile-img" src="<c:url value="/resources/img/myPage/profile.jpeg" />"/>
+                        </div>
+                        <!-- ------------------------------------------------------------------------------------------------------------------------ -->
+                        <div id="setProfile">
+                        	<form action="modifyProfileImage" method="post" enctype="multipart/form-data" onsubmit = "return fileCheck()">
+                            	<input type="file" style="display:none" class="form-control-file" id="profile-file" name="file" accept="image/gif, image/jpeg, image/png" onchange="profileFile(event)">
+                            	
+                            	<img src="<c:url value="/resources/img/main/kakaotalk.png" />"/>
+                            </form>
+                        </div>
+                        <!-- ------------------------------------------------------------------------------------------------------------------------ -->
                     </div>
                     <form id="myPageList" action="modifyMyPage.do" method="post" commandName="MyPageVO">
                     <div class=" col-md-9 col-lg-9 "> 

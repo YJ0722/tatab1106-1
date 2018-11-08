@@ -226,9 +226,7 @@
                                     <h4><c:out value="${ myPageVO.motto }" /></h4>
                                 </div>
                                 <div class="bottom">
-                                    <a>
-                                        <a href="<c:url value="/myPage.do" />"><img src="<c:url value="/resources/img/main/kakaotalk.png" />"/></a>
-                                    </a>
+                                    <a href="<c:url value="/myPage.do" />"><img src="<c:url value="/resources/img/main/kakaotalk.png" />"/></a>                                    
                                 </div>
                             </div>
                         </div>

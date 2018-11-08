@@ -39,3 +39,26 @@
     background-color:cornsilk;
     
 }
+
+/* #profile img { */
+/*     background-size: cover;  */
+/*     height: 120px;  */
+/*     width: 120px;  */
+/*     border-radius: 50%; */
+/*     background-repeat: no-repeat; */
+/* } */
+
+#setProfile {
+    height: 120px; 
+    width: 120px;
+    padding: 10px;
+}
+
+#file {
+	background-image: '../../img/myPage/profile.jpeg';
+	background-size: cover; 
+    height: 120px; 
+    width: 120px; 
+    border-radius: 50%;
+    background-repeat: no-repeat;
+} 
