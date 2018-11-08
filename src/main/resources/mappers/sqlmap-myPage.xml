@@ -15,5 +15,17 @@
 		phone_number = #{phone_number}
 		where login_email = #{login_email}
 	</update>
+	
+	<!-- 프로필 이미지 업로드 insert -->
+	<insert id="modifyProfileImg" parameterType="profileImgVO">
+		insert into
+		USER_IMG_CUSTOM_T(login_email, ori_name, save_name)
+		values(#{login_email}, #{ori_name}, #{save_name})
+	</insert>
+	
+	<!-- 프로필 이미지 삭제 -->
+	<delete id="deleteProfileImg" parameterType="String">
+		delete USER_IMG_CUSTOM_T where login_email = #{login_email}
+	</delete>
 
 </mapper>

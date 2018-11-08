@@ -74,8 +74,8 @@ public class MainDAOImpl implements MainDAO {
 	}
 
 	@Override
-	public void deleteBackroundImage(String login_email) {
-		sqlSession.delete("deleteBackroundImage", login_email);
+	public void deleteBackgroundImage(String login_email) {
+		sqlSession.delete("deleteBackgroundImage", login_email);
 	}
 	
 	

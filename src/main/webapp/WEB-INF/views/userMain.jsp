@@ -34,7 +34,7 @@
     
     <style>
 	.card.hovercard .cardheader {
-		    background-image: url('resources/img/main/background2.jpeg') no-repeat;
+		    background-image: url('resources/img/main/tatab.png') no-repeat;
 		    background-size: cover;
 		    height: 135px;
 		}
@@ -209,12 +209,19 @@
                         <div class="col-lg-3 col-sm-6">
                             <div class="card hovercard">
                                 <div class="cardheader">
-                                	<img src="<c:url value="/resources/img/main/background2.jpeg" />"
+                                	<img src="<c:url value="/resources/img/main/tatab.png" />"
  											style="background-size: cover; height: 135px; 
   											background-repeat: no-repeat;"/>
                                 </div>
                                 <div class="avatar">
-                                    <img src="<c:url value="/resources/img/main/profile.jpeg" />"/>
+                                	<c:choose>
+                                    	<c:when test="${empty profileImgVO.save_name }">
+		                                    <img src="https://i.stack.imgur.com/34AD2.jpg">
+                                    	</c:when>
+                                    	<c:otherwise>
+                                    		<img src="${pageContext.request.contextPath}/img/${profileImgVO.save_name}">
+                                    	</c:otherwise>
+                                    </c:choose>
                                 </div>
                                 <div class="info">
                                     <div class="title">
@@ -226,9 +233,7 @@
                                     <h4><c:out value="${ myPageVO.motto }" /></h4>
                                 </div>
                                 <div class="bottom">
-                                    <a>
-                                        <a href="<c:url value="/myPage.do" />"><img src="<c:url value="/resources/img/main/kakaotalk.png" />"/></a>
-                                    </a>
+                                    <a href="<c:url value="/myPage.do" />"><img src="<c:url value="/resources/img/main/kakaotalk.png" />"/></a>                                    
                                 </div>
                             </div>
                         </div>
@@ -314,22 +319,29 @@
                 <div class="container">
                     <form id="contact" action="modifyBackgroundImage.do" method="post"
                         enctype="multipart/form-data" onsubmit = "return fileCheck()">
-                        <fieldset class="form-group">
-                            <h3>배경이미지 변환</h3>
-                            <input type="file" class="form-control-file" id="file" name="file"
-                            accept="image/gif, image/jpeg, image/png"> <!-- accept : 이미지파일만 할 수 있도록! -->
-                          </fieldset>
-                        <fieldset id="buttons">
-                        	<c:choose>
-                        		<c:when test="${empty mainBackgroundVO.save_name }">
-                            <input type="submit" class="btn btn-primary" value="수정">
-                        		</c:when>
-                        		<c:otherwise>
-                        	<input type="button" id="deleteBackgroundImage" class="btn btn-primary" value="삭제">	
-                        		</c:otherwise>
-                        	</c:choose>
-                            <a class="btn btn-light" href="<c:url value="/userMain.do" />" role="button">취소</a>
-                        </fieldset>
+	                     <c:choose>
+	                        <c:when test="${empty mainBackgroundVO.save_name }">
+		                        <fieldset class="form-group">
+		                            <h3>배경이미지 변환</h3>
+		                            <input type="file" class="form-control-file" id="file" name="file"
+		                            accept="image/gif, image/jpeg, image/png"> <!-- accept : 이미지파일만 할 수 있도록! -->
+		                        </fieldset>
+		                        <fieldset id="buttons">
+		                            <input type="submit" class="btn btn-primary" value="등록">
+		                            <a class="btn btn-light" href="<c:url value="/userMain.do" />" role="button">취소</a>
+			                    </fieldset>
+                       		</c:when>
+                       		<c:otherwise>
+		                        <fieldset class="form-group">
+		                            <h3>배경이미지 삭제</h3>
+		                            <p>삭제하시겠습니까?</p>
+		                        </fieldset>
+		                        <fieldset id="buttons">
+		                        	<input type="button" id="deleteBackgroundImage" class="btn btn-primary" value="삭제">	
+		                            <a class="btn btn-light" href="<c:url value="/userMain.do" />" role="button">취소</a>
+		                        </fieldset>
+                       		</c:otherwise>
+                      	</c:choose>
                     </form>
                 </div>
             </div>

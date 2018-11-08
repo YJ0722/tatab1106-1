@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.bit.tatab.login.vo.LoginVO;
 import com.bit.tatab.main.vo.CommentVO;
 import com.bit.tatab.main.vo.MyPageVO;
+import com.bit.tatab.myPage.vo.ProfileImgVO;
 
 @Repository
 public class LoginDAOImpl implements LoginDAO {
@@ -57,6 +58,19 @@ public class LoginDAOImpl implements LoginDAO {
 	@Override
 	public void myPageInfoInsert(MyPageVO myPageVO) {
 		sqlSession.insert("myPageInfoInsert", myPageVO);
+	}
+
+	// 마이페이지 사진 info db에 존재하는지 확인(검색)
+	@Override
+	public ProfileImgVO profileImgFind(LoginVO loginVO) {
+		ProfileImgVO profileImgVO = sqlSession.selectOne("profileImgFindVO", loginVO);
+		return profileImgVO;
+	}
+
+	@Override
+	public ProfileImgVO profileImgFind(String login_email) {
+		ProfileImgVO profileImgVO = sqlSession.selectOne("profileImgFindString", login_email);
+		return profileImgVO;
 	}
 	
 	

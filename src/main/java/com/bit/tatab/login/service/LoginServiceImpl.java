@@ -9,6 +9,7 @@ import com.bit.tatab.login.dao.LoginDAO;
 import com.bit.tatab.login.vo.LoginVO;
 import com.bit.tatab.main.vo.CommentVO;
 import com.bit.tatab.main.vo.MyPageVO;
+import com.bit.tatab.myPage.vo.ProfileImgVO;
 
 @Service
 public class LoginServiceImpl implements LoginService {
@@ -53,6 +54,19 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public void myPageInfoInsert(MyPageVO myPageVO) {
 		loginDAO.myPageInfoInsert(myPageVO);
+	}
+
+	// 마이페이지 사진 info db에 존재하는지 확인(검색)
+	@Override
+	public ProfileImgVO profileImgFind(LoginVO loginVO) {
+		ProfileImgVO profileImgVO = loginDAO.profileImgFind(loginVO);
+		return profileImgVO;
+	}
+
+	@Override
+	public ProfileImgVO profileImgFind(String login_email) {
+		ProfileImgVO profileImgVO = loginDAO.profileImgFind(login_email);
+		return profileImgVO;
 	}
 	
 	
