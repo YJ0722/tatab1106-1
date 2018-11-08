@@ -5,7 +5,7 @@
 <html>
 <head>
     <title>Project? You better TATAB.</title>
-    <link rel="shortcut icon" href="/resources/img/main/favicon.ico" >
+    <link rel="shortcut icon" href="/resources/img/main/favicon.ico"  >
     <link href="<c:url value="/resources/css/main/UserMain.css?var=1" />" rel="stylesheet">
     <!-- MyPage 관련 -->	
     <link href="<c:url value="/resources/css/main/MyPageModal.css" />" rel="stylesheet">
