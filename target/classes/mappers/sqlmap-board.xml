@@ -71,4 +71,15 @@
  		insert into prj_task_t values(#{project_no}, #{col_index}, seq_prj_task_t_no.nextVal, #{task_index}, #{task_name}, #{task_content}, #{status}, #{d_day}, #{reg_date})
  	</select>
  	
+ 	<!-- col index 조회 -->
+ 	<select id="selectColIndex" parameterType="String" resultType="Integer">
+ 		select MAX(col_index) from prj_col_t where project_no = #{project_no}
+ 	</select>
+ 	
+ 	
+ 	<!-- board에 col insert -->
+ 	<insert id="insertCol" parameterType="String">
+ 		insert into prj_col_t values(#{project_no}, SEQ_PRJ_COL_T_no.nextval, #{index}, #{colName})
+ 	</insert>
+ 	
  </mapper>  

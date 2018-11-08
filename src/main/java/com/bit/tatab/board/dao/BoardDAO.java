@@ -32,4 +32,7 @@ public interface BoardDAO {
 	
 	// 작업 추가
 	public void insertBoardTask(BoardTaskVO boardTaskVO);
+	
+	// board에 col insert
+	public void insertCol(String project_no, String colName);
 }

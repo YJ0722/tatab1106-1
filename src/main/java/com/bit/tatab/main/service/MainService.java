@@ -24,6 +24,6 @@ public interface MainService {
 	public MainBackgroundVO findBackgroundImage(String login_email);
 
 	// 배경 이미지 삭제
-	public void deleteBackroundImage(String login_email);
+	public void deleteBackgroundImage(String login_email);
 	
 }

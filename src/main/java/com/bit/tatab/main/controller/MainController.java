@@ -26,6 +26,7 @@ import com.bit.tatab.main.service.MainService;
 import com.bit.tatab.main.vo.CommentVO;
 import com.bit.tatab.main.vo.MainBackgroundVO;
 import com.bit.tatab.main.vo.ProjectVO;
+import com.bit.tatab.myPage.vo.ProfileImgVO;
 
 
 @Controller
@@ -68,9 +69,14 @@ public class MainController {
 		MainBackgroundVO mainBackgroundVO = (MainBackgroundVO) session.getAttribute("mainBackgroundVO");
 		System.out.println("세션에서 가져온 배경이미지 : " + mainBackgroundVO);
 		
+		// 세션객체 얻어오기 - 이미지
+		ProfileImgVO profileImgVO = (ProfileImgVO) session.getAttribute("profileImgVO");
+		System.out.println("세션에서 가져온 프로필이미지 : " + profileImgVO);
+		
 		mav.addObject("projectList", projectList);
 		mav.addObject("commentVO", commentVO);
 		mav.addObject("mainBackgroundVO", mainBackgroundVO);
+		mav.addObject("profileImgVO", profileImgVO);
 		
 		return mav;
 		
@@ -196,7 +202,6 @@ public class MainController {
 	    	// 세션객체 얻어오기
 	       String login_email = session.getAttribute("login_email").toString();
 	       MainBackgroundVO mainBackgroundVO = mainService.findBackgroundImage(login_email);
-	       System.out.println("파일 save_name : " + mainBackgroundVO.getSave_name());
 	       
 	       String path = "";
 	       String profile = "/" + mainBackgroundVO.getSave_name();
@@ -208,7 +213,10 @@ public class MainController {
 	          }
 	          
 	       // 배경이미지 삭제
-	       mainService.deleteBackroundImage(login_email);
+	       mainService.deleteBackgroundImage(login_email);
+	       mainBackgroundVO = mainService.findBackgroundImage(login_email);
+	       session.setAttribute("mainBackgroundVO", mainBackgroundVO);
+	       System.out.println("배경이미지 삭제 확인 : " + mainBackgroundVO);
 
 	       return "backgroundDelete";
 

@@ -39,7 +39,10 @@
             </c:forEach>
     	</c:otherwise>
     </c:choose>
-
+	
+	<form style="width:0px; float:left;" id="insertCol" action="insertCol.do" method="post">
+		<input id="colName" type="hidden" name="ColName">
+	</form>	
 </body>
     <!-- script 참조 -->
     <!-- <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js'></script> -->

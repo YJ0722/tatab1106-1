@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <!-- topMenu_projectManage.css-->
-    <link rel="stylesheet" type="text/css" href="resources/css/topMenu/topMenu_projectManage.css?ver=3">
+    <link rel="stylesheet" type="text/css" href="resources/css/topMenu/topMenu_projectManage.css?ver=4">
     
     <!-- web font -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -31,7 +31,7 @@
     				
     				$('.projectTitle').html(data.project_name);
     				$('.projectNames').attr("value", data.project_name);
-    				$('.projectDescription').attr("value", data.project_comment);
+    				$('.projectDescription').val(data.project_comment);
     			}
 			})
     	}
@@ -68,7 +68,7 @@
 	        				
 	        				$('.projectTitle').html(result.project_name);
 	        				$('.projectNames').attr("value", result.project_name);
-	        				$('.projectDescription').attr("value", result.project_comment);
+	        				$('.projectDescription').val(result.project_comment);
 				}
 			})
 			alert('수정완료');
@@ -126,15 +126,16 @@
 	                               Project name
 	                           </div>
 	                           <div class="pjInput">
-	                                   <input class="projectNames" id="projectName" name="projectName" type="text" style="width:300px; height:50px;" placeholder="">
+                                   <input class="projectNames" id="projectName" name="projectName" type="text" style="width:300px; height:50px;" placeholder="">
 	                           </div>
 	                       </div>
 	                       <div class="dpt">
 	                           <div class="dptName">
-	                               Project Discription
+	                               Project Description
 	                           </div>
 	                           <div class="dptdpt">
-	                              <input class="projectDescription" id="projectDescription" name="projectDescription" type="text" style="width:300px; height:200px;" placeholder="">
+	                              <textarea class="projectDescription" id="projectDescription" name="projectDescription" type="text" style="width:300px; height:200px; resize:none;" placeholder="">
+								  </textarea>
 	                       </div>
 	               		</form>	        
                     </div>
@@ -185,14 +186,7 @@
                    </div>
 				   <!-- Members 메뉴 -->
 
-                   <div class="photo">
-                       <div class="image">
-                           <i class="far fa-grimace"></i>
-                       </div>
-                       <div class="record">
-                           abcdefghijklmnopqrstuvwxyz
-                       </div>
-                   </div>
+                 
 
                    <div class="footer">
                        <div>

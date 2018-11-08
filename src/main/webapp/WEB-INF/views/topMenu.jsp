@@ -10,7 +10,7 @@
 	
      <link rel="stylesheet" type="text/css" href="resources/css/board/boardcss.css">
     <!-- topMenu.css -->
-    <link rel="stylesheet" type="text/css" href="resources/css/topMenu/topMenu.css?ver=1">
+    <link rel="stylesheet" type="text/css" href="resources/css/topMenu/topMenu.css?ver=2">
     
     
     
@@ -115,5 +115,11 @@
 
     </body>
     
+
+    <!-- script 참조 -->
+    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js'></script>
+    <script src="resources/js/jquery-ui.js"></script>
+    <script src="resources/js/jquery-ui.min.js"></script>
+    <script src="resources/js/board/boardjs.js?ver=1"></script>
     
 </html>

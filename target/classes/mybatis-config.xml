@@ -14,5 +14,6 @@
       <typeAlias type="com.bit.tatab.board.vo.BoardColVO" alias="BoardColVO" />
       <typeAlias type="com.bit.tatab.board.vo.MemberVO" alias="MemberVO"/>
       <typeAlias type="com.bit.tatab.board.vo.BoardTaskVO" alias="BoardTaskVO"/>
+      <typeAlias type="com.bit.tatab.myPage.vo.ProfileImgVO" alias="ProfileImgVO"/>
    </typeAliases>
 </configuration>

@@ -204,6 +204,13 @@ $(document).ready(function () {
                     getTitle.hide();
                     setTitle.show();
                     
+                    
+                    ////// soo 컬럼추가 //////
+                    console.log("추가될 col 이름 : " + title);
+                    $('#colName').val(title);
+//                    $('#insertCol').click(insertCol);
+                    insertCol();
+                    ////// soo 컬럼추가 //////	
                 }
                 mouseAction = true;
                 
@@ -230,6 +237,17 @@ $(document).ready(function () {
 
     return;
 });
+
+function insertCol() {
+	$.ajax({
+		url:'insertCol.do',
+		type:'post',
+		data:{'ColName' : $('#colName').val()},
+		success:function(){
+		}
+	})
+
+}
 
 ////////// todo
 function insertBoardTask(colno, t_name) {

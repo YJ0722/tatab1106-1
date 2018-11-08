@@ -63,4 +63,10 @@ public class BoardServiceImpl implements BoardService{
 	public void insertBoardTask(BoardTaskVO boardTaskVO) {
 		boardDao.insertBoardTask(boardTaskVO);
 	}
+	
+	// baord에 col insert
+	@Override
+	public void insertCol(String project_no, String colName) {
+		boardDao.insertCol(project_no, colName);
+	}
 }

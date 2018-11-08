@@ -35,6 +35,12 @@ public class BoardController {
 		String project_no = request.getParameter("project_no");
 
 		HttpSession session = request.getSession();
+		
+		if (project_no==null) {
+			String no = session.getAttribute("project_no").toString();
+			project_no = no;
+		}
+		
 		session.setAttribute("projectName", projectName);
 		session.setAttribute("project_no", project_no);
 		
@@ -87,5 +93,21 @@ public class BoardController {
 		}
 		
 		
+	}
+	
+	@RequestMapping(value="insertCol.do", method=RequestMethod.POST)
+	public String insertCol(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		ModelAndView mav = new ModelAndView("board");
+		
+		HttpSession session = request.getSession();
+		String project_no = session.getAttribute("project_no").toString();
+		String colName = request.getParameter("ColName");
+		
+		System.out.println("추가될 프로젝트 번호 : " + project_no + " 추가될 컬럼 이름 : " + colName); 
+		
+		boardService.insertCol(project_no, colName);
+		 
+		return "redirect:/board.do";
 	}
 }
