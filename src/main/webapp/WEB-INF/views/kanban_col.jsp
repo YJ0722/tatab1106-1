@@ -39,6 +39,9 @@
             </c:forEach>
     	</c:otherwise>
     </c:choose> 
-
+	
+	<form style="width:0px; float:left;" id="insertCol" action="insertCol.do" method="post">
+		<input id="colName" type="hidden" name="ColName">
+	</form>	
 </body>
 </html>

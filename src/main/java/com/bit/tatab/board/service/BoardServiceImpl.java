@@ -50,4 +50,10 @@ public class BoardServiceImpl implements BoardService{
 	public List<BoardColVO> selectAllProjectCol(int project_no) {
 		return boardDao.selectAllProjectCol(project_no);
 	}
+	
+	// baord에 col insert
+	@Override
+	public void insertCol(String project_no, String colName) {
+		boardDao.insertCol(project_no, colName);
+	}
 }

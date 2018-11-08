@@ -61,4 +61,15 @@
  		insert into prj_member_t values(#{project_no}, #{user})
  	</select>
  	
+ 	<!-- col index 조회 -->
+ 	<select id="selectColIndex" parameterType="String" resultType="Integer">
+ 		select MAX(col_index) from prj_col_t where project_no = #{project_no}
+ 	</select>
+ 	
+ 	
+ 	<!-- board에 col insert -->
+ 	<insert id="insertCol" parameterType="String">
+ 		insert into prj_col_t values(#{project_no}, SEQ_PRJ_COL_T_no.nextval, #{index}, #{colName})
+ 	</insert>
+ 	
  </mapper>  

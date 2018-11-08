@@ -97,4 +97,21 @@ public class BoardDAOImpl implements BoardDAO{
 		System.out.println("size: " + String.valueOf(boardColList.size()));
 		return boardColList;
 	}
+	
+	// board에 col insert
+	@Override
+	public void insertCol(String project_no, String colName) {
+		
+		int index = sqlSession.selectOne("selectColIndex", project_no);
+		System.out.println("마지막 col index : " + index);
+		
+		index += 1;
+		
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("project_no", project_no);
+		param.put("index", String.valueOf(index));
+		param.put("colName", colName);
+		
+		sqlSession.insert("insertCol", param);
+	}
 }

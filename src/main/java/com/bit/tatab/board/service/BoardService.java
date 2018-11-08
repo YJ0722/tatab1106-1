@@ -24,4 +24,7 @@ public interface BoardService {
 	
 	// 프로젝트 해당하는 컬럼 정보 조회 
 	public List<BoardColVO> selectAllProjectCol(int project_no);
+	
+	// board에 컬럼 추가
+	public void insertCol(String project_no, String colName);
 }

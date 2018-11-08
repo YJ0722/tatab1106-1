@@ -25,4 +25,7 @@ public interface BoardDAO {
 
 	// projectManage addUser
 	public boolean addUser(String project_no, String user);
+	
+	// board에 col insert
+	public void insertCol(String project_no, String colName);
 }
