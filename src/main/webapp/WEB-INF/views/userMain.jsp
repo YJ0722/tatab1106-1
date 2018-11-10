@@ -6,32 +6,24 @@
 <head>
     <title>Project? You better TATAB.</title>
     <link rel="shortcut icon" href="/resources/img/main/favicon.ico"  >
-    <link href="<c:url value="/resources/css/main/UserMain.css?var=1" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/main/UserMain.css?ver=1" />" rel="stylesheet">
     <!-- MyPage 관련 -->	
     <link href="<c:url value="/resources/css/main/MyPageModal.css" />" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- MyPage 관련 끝 -->
     <!-- StickyNote 관련 -->
-    <link href="<c:url value="/resources/css/main/StickyNoteModal.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/main/StickyNoteModal.css?ver=2" />" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Gloria+Hallelujah' rel='stylesheet' type='text/css'>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
-    <script src="<c:url value="/resources/js/main/StickyNote.js" />"></script>
-    <!-- StickyNote 관련 끝 -->
     <!-- Registration 관련 -->
-    <link href="<c:url value="/resources/css/main/RegistrationModal.css" />" rel="stylesheet">
-    <!-- Registration 관련 끝 -->
+    <link href="<c:url value="/resources/css/main/RegistrationModal.css?ver=1" />" rel="stylesheet">
     <!-- MainComment 관련 -->
-    <link href="<c:url value="/resources/css/main/MainCommentModal.css" />" rel="stylesheet">
-    <!-- MainComment 관련 끝 -->
+    <link href="<c:url value="/resources/css/main/MainCommentModal.css?ver=1" />" rel="stylesheet">
     <!-- BackgroundImage 관련 -->
-    <link href="<c:url value="/resources/css/main/BackgroundImageModal.css?var=7" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/main/BackgroundImageModal.css?var=1" />" rel="stylesheet">
     <!-- BackgroundImage 관련 끝 -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive|Gothic+A1" rel="stylesheet">
-    <script src="<c:url value="/resources/js/main/UserMain.js?var=2" />"></script>
-    
     <style>
 	.card.hovercard .cardheader {
 		    background-image: url('resources/img/main/tatab.png') no-repeat;
@@ -39,6 +31,16 @@
 		    height: 135px;
 		}
     </style>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script src="<c:url value="/resources/js/main/StickyNote.js" />"></script>
+    <!-- StickyNote 관련 끝 -->
+    <!-- Registration 관련 끝 -->
+    <!-- MainComment 관련 끝 -->
+    <script src="<c:url value="/resources/js/main/UserMain.js?var=2" />"></script>
+    
     
     <script>
 	    function goBoard(a,b) {
@@ -86,7 +88,7 @@
 </head>
 <body>
     <!-- 제일 상위 등급 div -->
-    <div id="mainWrapper">
+    <div name="mainWrapper" id="mainWrapper">
         <!-- 배경이미지 -->
         <div class="background">
         	<c:choose>
@@ -125,6 +127,7 @@
                             <h4>&nbsp;&nbsp;프로젝트 목록</h4>
                         </div>
                         <!-- 플젝 표시 끝 -->
+                        <hr> <!-- 수평선 -->
                     </div>
                     <!-- 로고 & 제목 끝 -->
                     <!-- 플젝 리스트 -->
