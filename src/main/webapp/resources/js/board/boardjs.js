@@ -29,10 +29,35 @@ $(document).ready(function () {
         toggleIndex = 0;
     });
     
-    
     $(".colsortable").sortable({
         connectWith: ".colsortable",
-        items: ".kanban-col-box:not(.col-add-box)"
+        items: ".kanban-col-box:not(.col-add-box)",
+        update: function(event, ui) {
+            
+            var order = $(this).sortable('toArray');
+            
+            console.log('*****\n' + order + '\n*****');
+            
+            // 인덱스 값을 저장할 배열
+
+            var colIndexArr = new Array();
+            
+            for(var i=0; i<order.length; i++) {
+                colIndexArr[i] = order[i];
+            }
+
+            	console.log('colIndexArr : ' + colIndexArr + "\n" );
+            	
+            	$.ajax({
+            		url : "updateBoardCol.do",
+            		type : "post",
+            		traditional : true,
+            		data : {
+            			'colIndexArr' : colIndexArr
+            		}
+            	});
+            }
+
     });
     $(".tasksortable").sortable({
         connectWith: ".tasksortable"
@@ -249,33 +274,14 @@ function insertCol() {
 
 }
 
-////////// todo
 function insertBoardTask(colno, t_name) {
-	
-	console.log('------------------');
-	console.log('colno : ' + colno);
-	console.log('t_name : ' + t_name);
-	console.log('------------------');
-	
-//	var data = {
-//		'col_no' : colno,
-//		'task_name' : t_name
-//	};
 	
 	$.ajax({
 		url : "insertBoardTask.do",
 		type : "post",
-//		dataType: "json",
 		data : {
 			'task_name' : t_name,
 			'col_no' : colno
-		},
-//		contentType : "application/json; charset=utf-8"
-		success:function(){
-			alert("ok");
-		},
-		error:function(){
-			alert("error");
 		}
 	});
 	

@@ -33,6 +33,12 @@ public interface BoardDAO {
 	// 작업 추가
 	public void insertBoardTask(BoardTaskVO boardTaskVO);
 	
+	// 해당 프로젝트의 작업 조회
+	public List<BoardTaskVO> selectBoardTaskAll(int project_no);
+	
 	// board에 col insert
 	public void insertCol(String project_no, String colName);
+
+	// board에 컬럼 index 수정
+	public void colIndexUpdate(List<BoardColVO> colUpdateList);
 }

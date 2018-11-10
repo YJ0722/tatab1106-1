@@ -130,6 +130,14 @@ public class BoardDAOImpl implements BoardDAO{
 		
 		sqlSession.insert("insertBoardTask", boardTaskVO);
 	}
+
+	// 해당 프로젝트의 작업 조회
+	@Override
+	public List<BoardTaskVO> selectBoardTaskAll(int project_no) {
+		System.out.println("전체 작업 조회");
+		
+		return sqlSession.selectList("selectBoardTaskAll", project_no);
+	}
 	
 	// board에 col insert
 	@Override
@@ -146,5 +154,16 @@ public class BoardDAOImpl implements BoardDAO{
 		param.put("colName", colName); 
 		
 		sqlSession.insert("insertCol", param);
+	}
+	
+
+	// board에 컬럼 index 수정
+	public void colIndexUpdate(List<BoardColVO> colUpdateList) {
+		
+		System.out.println("colIndexUpdate dao 시작");
+		
+		for(int i=0; i<colUpdateList.size(); i++) {
+			sqlSession.update("colIndexUpdate", colUpdateList.get(i));
+		}
 	}
 }

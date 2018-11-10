@@ -1,5 +1,6 @@
 package com.bit.tatab.board.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -49,17 +50,24 @@ public class BoardController {
 
 		System.out.println("board 프로젝트 이름 : " + projectName + ", 프로젝트 고유번호 : " + project_no);
 
-		//////////////////////// 해당 프로젝트의 컬럼 불러오기 /////////////////////////
+		// 해당 프로젝트의 컬럼 불러오기
 		int prj_no = Integer.parseInt(project_no);
 		List<BoardColVO> boardColList = boardService.selectAllProjectCol(prj_no);
 		
 		for(int i=0; i<boardColList.size(); i++) {
 			System.out.println("[" + i + "] : " + boardColList.get(i).toString());
 		}
-		///////////////////////////////////////////////////////////////////////
+		
+		// 해당 프로젝트의 작업 불러오기 
+		List<BoardTaskVO> boardTaskList = boardService.selectBoardTaskAll(prj_no);
+
+		for(int i=0; i<boardTaskList.size(); i++) {
+			System.out.println("[" + i + "] : " + boardTaskList.get(i).toString());
+		}
 		
 		mav.addObject("projectName", projectName);
 		mav.addObject("colData", boardColList);
+		mav.addObject("taskData", boardTaskList);
 		mav.addObject("mainBackgroundVO", mainBackgroundVO);
 		
 		return mav;
@@ -94,7 +102,7 @@ public class BoardController {
 		
 		
 	}
-	
+
 	@RequestMapping(value="insertCol.do", method=RequestMethod.POST)
 	public String insertCol(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
@@ -110,4 +118,28 @@ public class BoardController {
 		 
 		return "redirect:/board.do";
 	}
+
+	// board 컬럼 순서 변경 업데이트
+	@ResponseBody
+	@RequestMapping(value="updateBoardCol.do", method=RequestMethod.POST)
+	public void updateBoardCol(HttpServletRequest request,
+			@RequestParam("colIndexArr")ArrayList<String> colNoArr) throws Exception {
+		
+		System.out.println("updateBoardCol.do 시작!!!!!");
+
+		HttpSession session = request.getSession();
+		int project_no = Integer.parseInt((String) session.getAttribute("project_no"));
+		
+		// todo : 컬럼 인덱스 업데이트
+		List<BoardColVO> colUpdateList = new ArrayList();
+		for(int index=0; index<colNoArr.size(); index++) {
+			BoardColVO boardColVO = new BoardColVO(project_no, Integer.parseInt(colNoArr.get(index)), index);		
+			colUpdateList.add(boardColVO);
+		}
+
+		boardService.colIndexUpdate(colUpdateList);
+	}
+	
+	// board 작업 순서 변경 업데이트
+	
 }
