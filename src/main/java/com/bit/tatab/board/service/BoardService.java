@@ -36,8 +36,11 @@ public interface BoardService {
 	public List<BoardTaskVO> selectBoardTaskAll(int project_no);
 	
 	// board에 컬럼 추가
-	public void insertCol(String project_no, String colName);
+	public int insertCol(String project_no, String colName);
 	
 	// board에 컬럼 index 수정
 	public void colIndexUpdate(List<BoardColVO> colUpdateList);
+	
+	// board에 작업 index 수정
+	public void taskIndexUpdate(List<BoardTaskVO> taskUpdaeteList);
 }

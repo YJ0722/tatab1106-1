@@ -141,7 +141,7 @@ public class BoardDAOImpl implements BoardDAO{
 	
 	// board에 col insert
 	@Override
-	public void insertCol(String project_no, String colName) {
+	public int insertCol(String project_no, String colName) {
 		
 		int index = sqlSession.selectOne("selectColIndex", project_no);
 		System.out.println("마지막 col index : " + index);
@@ -154,6 +154,9 @@ public class BoardDAOImpl implements BoardDAO{
 		param.put("colName", colName); 
 		
 		sqlSession.insert("insertCol", param);
+		int colNo = sqlSession.selectOne("getInsertColIndex");
+		
+		return colNo;
 	}
 	
 
@@ -164,6 +167,17 @@ public class BoardDAOImpl implements BoardDAO{
 		
 		for(int i=0; i<colUpdateList.size(); i++) {
 			sqlSession.update("colIndexUpdate", colUpdateList.get(i));
+		}
+	}
+	
+
+	// board에 작업 index 수정
+	public void taskIndexUpdate(List<BoardTaskVO> taskUpdateList) {
+
+		System.out.println("taskIndexUpdate dao 시작");
+		
+		for(int i=0; i<taskUpdateList.size(); i++) {
+			sqlSession.update("taskIndexUpdate", taskUpdateList.get(i));
 		}
 	}
 }

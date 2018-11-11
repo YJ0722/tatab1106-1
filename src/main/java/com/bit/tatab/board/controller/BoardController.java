@@ -82,7 +82,7 @@ public class BoardController {
 		HttpSession session = request.getSession();
 		int project_no = Integer.parseInt((String) session.getAttribute("project_no"));
 		
-		System.out.println("파라미터 확인  \n" + "col_index : " + no + "\ntask_name : " + String.valueOf(task_name));
+		System.out.println("파라미터 확인  \n" + "col_no : " + no + "\ntask_name : " + String.valueOf(task_name));
 
 		BoardTaskVO boardTaskVO = new BoardTaskVO(project_no, no, task_name, "", "O", "-", "-");
 		System.out.println("^^^" + boardTaskVO.toString());
@@ -104,7 +104,7 @@ public class BoardController {
 	}
 
 	@RequestMapping(value="insertCol.do", method=RequestMethod.POST)
-	public String insertCol(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public int insertCol(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		ModelAndView mav = new ModelAndView("board");
 		
@@ -114,9 +114,10 @@ public class BoardController {
 		
 		System.out.println("추가될 프로젝트 번호 : " + project_no + " 추가될 컬럼 이름 : " + colName); 
 		
-		boardService.insertCol(project_no, colName);
+		int colNo = boardService.insertCol(project_no, colName);
 		 
-		return "redirect:/board.do";
+		return colNo;
+//		return "redirect:/board.do";
 	}
 
 	// board 컬럼 순서 변경 업데이트
@@ -129,8 +130,7 @@ public class BoardController {
 
 		HttpSession session = request.getSession();
 		int project_no = Integer.parseInt((String) session.getAttribute("project_no"));
-		
-		// todo : 컬럼 인덱스 업데이트
+
 		List<BoardColVO> colUpdateList = new ArrayList();
 		for(int index=0; index<colNoArr.size(); index++) {
 			BoardColVO boardColVO = new BoardColVO(project_no, Integer.parseInt(colNoArr.get(index)), index);		
@@ -141,5 +141,32 @@ public class BoardController {
 	}
 	
 	// board 작업 순서 변경 업데이트
+	@ResponseBody
+	@RequestMapping(value="updateBoardTask.do", method=RequestMethod.GET)
+	public void updateBoardTask(HttpServletRequest request, int colIndex,
+			@RequestParam("taskNoArr")ArrayList<String> taskNoArr) throws Exception {
+
+		System.out.println("updateBoardTask.do 시작!!!!!");
+
+		HttpSession session = request.getSession();
+		int project_no = Integer.parseInt((String) session.getAttribute("project_no"));
+
+		List<BoardTaskVO> taskUpdateList = new ArrayList();
+		if(taskNoArr != null) {
+			System.out.println("null 아님...");
+			// todo : 작업 인덱스 업데이트
+			for(int index=0; index<taskNoArr.size(); index++) {
+				BoardTaskVO boardTaskVO = new BoardTaskVO(project_no, colIndex, 
+						Integer.parseInt(taskNoArr.get(index)), index);		
+				System.out.println(taskNoArr.get(index).toString());
+				taskUpdateList.add(boardTaskVO);
+			}
+			
+		} else {
+			System.out.println("null 이야....");
+		}
+
+		boardService.taskIndexUpdate(taskUpdateList);
+	}
 	
 }

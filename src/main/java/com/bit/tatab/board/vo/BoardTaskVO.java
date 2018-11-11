@@ -3,7 +3,7 @@ package com.bit.tatab.board.vo;
 public class BoardTaskVO {
 
 	private int project_no;
-	private int col_index;
+	private int col_no;
 	private int task_no;
 	private int task_index;
 	private String task_name;
@@ -16,11 +16,20 @@ public class BoardTaskVO {
 		super();
 	}
 	
-	public BoardTaskVO(int project_no, int col_index, String task_name, String task_content, String status,
+	public BoardTaskVO(int project_no, int col_no, int task_no, int task_index) {
+
+		super();
+		this.project_no = project_no;
+		this.col_no = col_no;
+		this.task_no = task_no;
+		this.task_index = task_index;
+	}
+	
+	public BoardTaskVO(int project_no, int col_no, String task_name, String task_content, String status,
 			String d_day, String reg_date) {
 		super();
 		this.project_no = project_no;
-		this.col_index = col_index;
+		this.col_no = col_no;
 		this.task_name = task_name;
 		this.task_content = task_content;
 		this.status = status;
@@ -32,7 +41,7 @@ public class BoardTaskVO {
 			String d_day, String reg_date) {
 		super();
 		this.project_no = project_no;
-		this.col_index = col_index;
+		this.col_no = col_no;
 		this.task_no = task_no;
 		this.task_index = task_index;
 		this.task_name = task_name;
@@ -50,12 +59,12 @@ public class BoardTaskVO {
 		this.project_no = project_no;
 	}
 
-	public int getCol_index() {
-		return col_index;
+	public int getCol_no() {
+		return col_no;
 	}
 
-	public void setCol_index(int col_index) {
-		this.col_index = col_index;
+	public void setCol_no(int col_no) {
+		this.col_no = col_no;
 	}
 
 	public int getTask_no() {
@@ -116,9 +125,9 @@ public class BoardTaskVO {
 
 	@Override
 	public String toString() {
-		return "BoardTaskVO [project_no=" + project_no + ", col_index=" + col_index + ", task_no=" + task_no
-				+ ", task_index=" + task_index + ", task_name=" + task_name + ", task_content=" + task_content
-				+ ", status=" + status + ", d_day=" + d_day + ", reg_date=" + reg_date + "]";
+		return "BoardTaskVO [project_no=" + project_no + ", col_no=" + col_no + ", task_no=" + task_no + ", task_index="
+				+ task_index + ", task_name=" + task_name + ", task_content=" + task_content + ", status=" + status
+				+ ", d_day=" + d_day + ", reg_date=" + reg_date + "]";
 	}
 
 	

@@ -63,17 +63,17 @@
  	
  	<!-- board 작업 추가 전 task_index 확인 -->
  	<select id="checkTaskIndex" parameterType="BoardTaskVO" resultType="String">
-		select count(task_index) from prj_task_t where project_no = #{project_no} and col_index = #{col_index}
+		select count(task_index) from prj_task_t where project_no = #{project_no} and col_no = #{col_no}
  	</select>
  	
  	<!-- board 에 작업 추가 -->
  	<select id="insertBoardTask" parameterType="BoardTaskVO">
- 		insert into prj_task_t values(#{project_no}, #{col_index}, seq_prj_task_t_no.nextVal, #{task_index}, #{task_name}, #{task_content}, #{status}, #{d_day}, #{reg_date})
+ 		insert into prj_task_t values(#{project_no}, #{col_no}, seq_prj_task_t_no.nextVal, #{task_index}, #{task_name}, #{task_content}, #{status}, #{d_day}, #{reg_date})
  	</select>
  	
  	<!-- board 작업 조회 -->
  	<select id="selectBoardTaskAll" parameterType="int" resultType="BoardTaskVO">
- 		select * from prj_task_t where project_no = #{project_no}
+ 		select * from prj_task_t where project_no = #{project_no} order by col_no, task_index
  	</select>
  	
  	<!-- col index 조회 -->
@@ -84,7 +84,12 @@
  	<!-- board에 col insert -->
  	<insert id="insertCol" parameterType="String">
  		insert into prj_col_t values(#{project_no}, SEQ_PRJ_COL_T_no.nextval, #{index}, #{colName})
+ 		<selectKey order="AFTER" keyProperty="col_no" resultType="Integer">select seq_prj_col_t_no.currval from dual</selectKey>
  	</insert>
+ 	
+ 	<select id="getInsertColIndex" parameterType="int">
+ 		select col_no from prj_col_t where col_no = #{ col_no }
+ 	</select>
  	
  	<!-- board에 col index update -->
  	<update id="colIndexUpdate" parameterType="BoardColVO">
@@ -92,5 +97,13 @@
 		set col_index = #{col_index}
 		where project_no = #{project_no} and col_no = #{col_no}
 	</update>
+ 	
+ 	<!-- board에 task index update -->
+ 	<update id="taskIndexUpdate" parameterType="BoardTaskVO">
+		update prj_task_t
+		set task_index = #{task_index}, col_no = #{col_no} 
+		where project_no = #{project_no} and task_no = #{ task_no }
+ 	</update>
+ 	
  	
  </mapper>  

@@ -46,21 +46,46 @@ $(document).ready(function () {
                 colIndexArr[i] = order[i];
             }
 
-            	console.log('colIndexArr : ' + colIndexArr + "\n" );
-            	
-            	$.ajax({
-            		url : "updateBoardCol.do",
-            		type : "post",
-            		traditional : true,
-            		data : {
-            			'colIndexArr' : colIndexArr
-            		}
-            	});
-            }
+        	console.log('colIndexArr : ' + colIndexArr + "\n" );
+        	
+        	$.ajax({
+        		url : "updateBoardCol.do",
+        		type : "post",
+        		traditional : true,
+        		data : {
+        			'colIndexArr' : colIndexArr
+        		}
+        	});
+        }
 
     });
     $(".tasksortable").sortable({
-        connectWith: ".tasksortable"
+        connectWith: ".tasksortable",
+        items: ".task:not(.add-task-box)",
+        update: function(event, ui) {
+            var taskOrder = $(this).sortable('toArray');
+            
+            var taskNoArr = new Array();
+
+            var colno = $(this).parents(".kanban-col-box").attr("id");
+            console.log('id:::::' + colno);
+            
+            for(var i=0; i<taskOrder.length; i++) {
+            	taskNoArr[i] = taskOrder[i];
+            }
+            
+            console.log(taskNoArr);
+            
+        	$.ajax({
+        		url : "updateBoardTask.do",
+        		type : "get",
+        		traditional : true,
+        		data : {
+        			'colIndex' : colno, 
+        			'taskNoArr' : taskNoArr
+        		}
+        	});
+        }
     });
     $('.add-task-box').disableSelection();
     $('.col-add-box').disableSelection();
@@ -72,7 +97,11 @@ $(document).ready(function () {
         e.preventDefault();
 //        console.log('task 추가 작업 수행');
         tagIndex = $('.add-task-box .add').index(this);
-//        console.log('클릭한 버튼 index : ' + tagIndex);  
+      console.log('클릭한 버튼 index : ' + tagIndex);  
+        
+        task_col_no = $('.kanban-col-box').eq(tagIndex).attr("id");
+        
+        console.log('$$$$$$$$$$$$$$$' + task_col_no);
         
         var addTaskTag = '<div class="task round-border ui-state-default">' +
                          '<div class="task-inner">' +
@@ -113,6 +142,7 @@ $(document).ready(function () {
         })
         
         var lastTag = $('.kanban-col').eq(this).find('.task:last');
+        
         var getTaskTitle;
         var setTaskTitle;
         // 외부 영역 클릭 시 입력 내용 고정
@@ -127,7 +157,8 @@ $(document).ready(function () {
                 console.log('추가된 작업 외부영역 클릭(작업 추가 완료)');
 
                 var taskTitle = getTaskTitle.val();
-                var task_col_index = tagIndex;              
+             
+                              
                 
 
                 // input 태그에 입력된 값이 없다면
@@ -140,10 +171,10 @@ $(document).ready(function () {
                     setTaskTitle.show();
                     
                     console.log('작업 제목 : ' + taskTitle);
-                    console.log('해당 컬럼 인덱스 : ' + task_col_index);
+                    console.log('해당 컬럼 인덱스 : ' + task_col_no);
                     
                     // db에 태스크 추가 ajax 실행
-                    insertBoardTask(task_col_index, taskTitle);
+                    insertBoardTask(task_col_no, taskTitle);
                     
                 }
 
@@ -170,7 +201,7 @@ $(document).ready(function () {
         
         console.log('col 추가 작업 수행');
         
-        var addColTag = '<div class="kanban-col-box" id="kanban-col-box">' +
+        var addColTag = '<div class="kanban-col-box">' +
         '<div class="kanban-col add-col round-border">' +
         '<div class="kanban-head">' +
         '<input type="text" class="col-title-input" autofocus style="display:block">' +
@@ -233,8 +264,8 @@ $(document).ready(function () {
                     ////// soo 컬럼추가 //////
                     console.log("추가될 col 이름 : " + title);
                     $('#colName').val(title);
-//                    $('#insertCol').click(insertCol);
-                    insertCol();
+
+                    insertCol($('.kanban-col-box:last'));
                     ////// soo 컬럼추가 //////	
                 }
                 mouseAction = true;
@@ -263,25 +294,29 @@ $(document).ready(function () {
     return;
 });
 
-function insertCol() {
+function insertCol(lastColBox) {
 	$.ajax({
 		url:'insertCol.do',
 		type:'post',
 		data:{'ColName' : $('#colName').val()},
-		success:function(){
+		success:function(id){
+			
+			// TODO : id 값 받아서 생성한 col에 id 입력
+			alert('id:' + id);
+			lastColBox.attr("id", id);
 		}
 	})
 
 }
 
-function insertBoardTask(colno, t_name) {
+function insertBoardTask(task_col_no, t_name) {
 	
 	$.ajax({
 		url : "insertBoardTask.do",
 		type : "post",
 		data : {
 			'task_name' : t_name,
-			'col_no' : colno
+			'col_no' : task_col_no
 		}
 	});
 	

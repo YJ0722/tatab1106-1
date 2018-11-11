@@ -70,15 +70,21 @@ public class BoardServiceImpl implements BoardService{
 		return boardDao.selectBoardTaskAll(project_no);
 	}
 	
-	// baord에 col insert
+	// board에 col insert
 	@Override
-	public void insertCol(String project_no, String colName) {
-		boardDao.insertCol(project_no, colName);
+	public int insertCol(String project_no, String colName) {
+		return boardDao.insertCol(project_no, colName);
 	}
 	
 	// board에 컬럼 index 수정
 	@Override
 	public void colIndexUpdate(List<BoardColVO> colUpdateList) {
 		boardDao.colIndexUpdate(colUpdateList);
+	}
+
+	// board에 작업 index 수정
+	@Override
+	public void taskIndexUpdate(List<BoardTaskVO> taskUpdaeteList) {
+		boardDao.taskIndexUpdate(taskUpdaeteList);
 	}
 }

@@ -12,7 +12,7 @@
     	</c:when>
     	<c:otherwise>
     		<c:forEach items="${colData}" var="colList">
-    		<c:set var="colindex" value="${ colList.col_index }" />
+    		<c:set var="colno" value="${ colList.col_no }" />
 	        <!-- kanban-col section start -->
 	                <div class="kanban-col-box" id="${ colList.col_no }">
 	                    <div class="kanban-col round-border">
@@ -34,14 +34,13 @@
 	                            
 	                            <c:choose>
 							    	<c:when test="${empty taskData}">
-							    	<script>alert('null');</script>
 							    	</c:when>
 							    	<c:otherwise>
 							    		<c:forEach items="${taskData}" var="taskList">
 		                            		<c:choose>
-								    			<c:when test="${ taskList.col_index eq colindex }">
+								    			<c:when test="${ taskList.col_no eq colno }">
 											        <!-- task start -->
-											        <div class="task round-border ui-state-default">
+											        <div class="task round-border ui-state-default" id="${ taskList.task_no }">
 											            <div class="task-inner">
 											                <!-- task name start -->
 											                <div class="task-label">
