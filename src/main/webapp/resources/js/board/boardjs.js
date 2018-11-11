@@ -102,6 +102,7 @@ $(document).ready(function () {
     
     
     //////////////////////////////////////////////
+    var updateColTitleMouseAction = false;
     var index;
     $(document).on("click", '.col-title-show-1', function(e) {
 
@@ -111,6 +112,26 @@ $(document).ready(function () {
         // col 제목의 input 태그 보여주기
         $(this).prev().show();
         
+        var inputTag = $(this).prev();
+        
+        // mouseover, mouseout 설정
+        inputTag.off().on({
+            'mouseover' : function(e) {
+            	updateColTitleMouseAction = true;
+                console.log("last in");
+                return false;
+            },
+            'mouseout' : function(e) {
+            	updateColTitleMouseAction = false;
+                console.log("last out");
+                return false;
+            },
+            function(updateColTitleMouseAction) {
+            	if(updateColTitleMouseAction == false) {
+            		
+            	}
+            }
+        });
         
     });
     //////////////////////////////////////////////
