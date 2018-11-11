@@ -1,5 +1,10 @@
 $(document).ready(function () {
     
+	// task 클릭 이벤트
+	$(documet).on("click", '.task', function(e) {
+		alert('123');
+	});
+	
     // 토글 실행
     var state = 0;
     $(document).on("click", '.toggle', function (e) {
@@ -105,10 +110,16 @@ $(document).ready(function () {
     $('.col-add-box').disableSelection();
     
     
-    //////////////////////////////////////////////
+    // 제목 변경할 col의 mouseover, mouseout 설정(mouseover: true, mouseout: false)
     var updateColTitleMouseAction = true;
+    // 
     var index;
-    $(document).on("click", '.col-title-show-1', function(e) {
+    // hide 설정했던 input 태그
+    var inputTag;
+    // update 전 col의 기존 제목
+    var originalName;
+    // col의 제목 클릭 이벤트(col 제목 업데이트 이벤트)
+    $(document).off().on("click", '.col-title-show-1', function(e) {
 
     	// col 제목의 p 태그 숨기기
         $(this).hide();
@@ -116,15 +127,22 @@ $(document).ready(function () {
         // col 제목의 input 태그 보여주기
         $(this).prev().show();
         
-        var inputTag = $(this).prev();
+        // col의 기존 이름 일시 저장
+        originalName = $(this).text();
+        
+        // $(this) : p태그 
+        // prev() : 이전 요소
+        inputTag = $(this).prev();
         
         // mouseover, mouseout 설정
         inputTag.off().on({
+        	// input 태그의 over
             'mouseover' : function(e) {
             	updateColTitleMouseAction = true;
                 console.log("last in");
                 return false;
             },
+        	// input 태그의 out
             'mouseout' : function(e) {
             	updateColTitleMouseAction = false;
                 console.log("last out");
@@ -134,14 +152,41 @@ $(document).ready(function () {
 
         // 외부 영역 클릭 시 입력 내용 고정
         $(document).on("click", this, function(e) {
+        	
+        	// 클릭이벤트 + input 태그 out 된 경우에만 실행
         	if(updateColTitleMouseAction == false) {
-        		alert('!');
+        		
+        		console.log(inputTag.val());
+        		
+        		// 변경한 col 제목 저장
+        		var updateTitle = inputTag.val();
+
+        		// input 태그 숨기기
+        		inputTag.hide();
+        		// p 태그 설정 : input 태그의 다음 요소
+        		var p = inputTag.next();
+        		
+        		// 입력된 제목이 없으면 원래 이름으로 다시 돌려놓기
+        		if(updateTitle == "") {
+            		p.text(originalName);
+        		}
+        		// 새로 입력된 제목 있으면 p 태그에 다시 업데이트하여 보여주기
+        		else{
+            		p.text(updateTitle);
+        		}
+        		// p 태그 보여주기
+        		p.show();
+    			        		
+        		// col mouse 액션 over로 다시 설정 --> 외부 요소 클릭 이벤트 재실행 방지
+            	updateColTitleMouseAction = true;
+        		
+        		var colId = p.parents('.kanban-col-box').attr('id');
+        		console.log('%%%%%' + colId);
+        		
+        		
         	}
         });
     });
-    //////////////////////////////////////////////
-    
-    
     
     
     // 작업 추가 
