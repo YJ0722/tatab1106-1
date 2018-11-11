@@ -110,4 +110,11 @@ public class BoardController {
 		 
 		return "redirect:/board.do";
 	}
+	
+	@RequestMapping(value="task.do", method=RequestMethod.GET)
+	public ModelAndView task(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		ModelAndView mav = new ModelAndView("task");
+		return mav;
+	}
 }

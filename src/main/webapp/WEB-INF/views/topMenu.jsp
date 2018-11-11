@@ -120,6 +120,6 @@
     <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js'></script>
     <script src="resources/js/jquery-ui.js"></script>
     <script src="resources/js/jquery-ui.min.js"></script>
-    <script src="resources/js/board/boardjs.js?ver=1"></script>
+    <script src="resources/js/board/boardjs.js?ver=3"></script>
     
 </html>
