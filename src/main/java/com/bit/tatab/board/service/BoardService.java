@@ -43,4 +43,7 @@ public interface BoardService {
 	
 	// board에 작업 index 수정
 	public void taskIndexUpdate(List<BoardTaskVO> taskUpdaeteList);
+	
+	// 컬럼 이름 변경
+	public void updateColName(String colId, String updateTitle);
 }

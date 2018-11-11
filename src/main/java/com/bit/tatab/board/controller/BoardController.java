@@ -178,4 +178,20 @@ public class BoardController {
 		boardService.taskIndexUpdate(taskUpdateList);
 	}
 	
+	// 컬럼 이름 변경
+	@RequestMapping(value="updateColName.do", method=RequestMethod.POST)
+	public void updateColName(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		String colId = request.getParameter("colId");
+		String updateTitle = request.getParameter("updateTitle");
+//		System.out.println("colId : " + colId + " updateTitle : " + updateTitle);
+		
+		boardService.updateColName(colId, updateTitle);
+	}
 }
+
+
+
+
+
+

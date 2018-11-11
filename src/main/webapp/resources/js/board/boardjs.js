@@ -1,7 +1,7 @@
 $(document).ready(function () {
     
    // task 클릭 이벤트
-   $(documet).on("click", '.task', function(e) {
+   $(document).on("click", '.task', function(e) {
       alert('123');
    });
    
@@ -183,6 +183,7 @@ $(document).ready(function () {
               var colId = p.parents('.kanban-col-box').attr('id');
               console.log('%%%%%' + colId);
               
+              updateColName(colId, updateTitle);
               
            }
         });
@@ -448,3 +449,16 @@ function insertBoardTask(taskColBox, task_col_no, t_name) {
    
    return false;
 }
+
+//컬럼 이름 변경
+function updateColName(colId, updateTitle) {
+	$.ajax({
+		url : "updateColName.do",
+		type : "post",
+		data : {
+			'colId' : colId,
+			'updateTitle' : updateTitle
+		}
+	});
+}
+   
