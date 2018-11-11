@@ -29,6 +29,10 @@ $(document).ready(function () {
         toggleIndex = 0;
     });
     
+    // 컬럼 정렬 drag and drop
+    // connectWith : 해당 클래스 내의 요소들을 정렬 아이템으로 지정
+    // items : 지정한 요소들만 sortable 시킨다
+    // update : 정렬 중 순서 변경 시 실행
     $(".colsortable").sortable({
         connectWith: ".colsortable",
         items: ".kanban-col-box:not(.col-add-box)",
@@ -38,8 +42,7 @@ $(document).ready(function () {
             
             console.log('*****\n' + order + '\n*****');
             
-            // 인덱스 값을 저장할 배열
-
+            // col_no 값을 저장할 배열
             var colIndexArr = new Array();
             
             for(var i=0; i<order.length; i++) {
@@ -48,6 +51,7 @@ $(document).ready(function () {
 
         	console.log('colIndexArr : ' + colIndexArr + "\n" );
         	
+        	// 배열은 'traditinal : true' 로 지정해야 파라미터로 전송 가능
         	$.ajax({
         		url : "updateBoardCol.do",
         		type : "post",
@@ -59,14 +63,19 @@ $(document).ready(function () {
         }
 
     });
+    
+
+    // 작업 정렬 drag and drop
     $(".tasksortable").sortable({
         connectWith: ".tasksortable",
         items: ".task:not(.add-task-box)",
         update: function(event, ui) {
             var taskOrder = $(this).sortable('toArray');
-            
+
+            // task_no 값을 저장할 배열
             var taskNoArr = new Array();
 
+            // 해당 작업의 col_no 값 
             var colno = $(this).parents(".kanban-col-box").attr("id");
             console.log('id:::::' + colno);
             
@@ -87,21 +96,41 @@ $(document).ready(function () {
         	});
         }
     });
+    
     $('.add-task-box').disableSelection();
     $('.col-add-box').disableSelection();
+    
+    
+    //////////////////////////////////////////////
+    var index;
+    $(document).on("click", '.col-title-show-1', function(e) {
+
+    	// col 제목의 p 태그 숨기기
+        $(this).hide();
+        
+        // col 제목의 input 태그 보여주기
+        $(this).prev().show();
+        
+        
+    });
+    //////////////////////////////////////////////
+    
+    
+    
     
     // 작업 추가 
     var tagIndex;
     var taskMouseAction = true;
     $(document).on("click", '.task-add-btn', function(e) {
         e.preventDefault();
-//        console.log('task 추가 작업 수행');
+
+        // 해당 작업의 col_index 가져오기
         tagIndex = $('.add-task-box .add').index(this);
-      console.log('클릭한 버튼 index : ' + tagIndex);  
+        console.log('클릭한 버튼 index : ' + tagIndex);  
         
+        // 해당 작업의 col_id 가져오기
         task_col_no = $('.kanban-col-box').eq(tagIndex).attr("id");
         
-        console.log('$$$$$$$$$$$$$$$' + task_col_no);
         
         var addTaskTag = '<div class="task round-border ui-state-default">' +
                          '<div class="task-inner">' +
@@ -116,18 +145,20 @@ $(document).ready(function () {
                          '</div>' +
                          '</div>';
         
-        // task 입력창 추가
+        // task 요소 추가
         var addTask = $(addTaskTag).hide()
                             .appendTo($('.kanban-body').eq(tagIndex))
 //                        .insertBefore($('.add-task-box').eq(tagIndex))
                             .show("fade", 300);
                 
+        // task 추가 후 작업 추가 버튼으로 화면 자동 이동
         $('.kanban-body').animate({scrollTop: $('.task-add-btn').offset().top}, 500);
         
         
         // 작업 추가 버튼 숨기기
         $('.task-add-btn').eq(tagIndex).hide();
                     
+        // 추가한 작업에서 mouseover
         $('.kanban-col:eq('+tagIndex+') .task:last').off().on({
             'mouseover' : function(e) {
                 taskMouseAction = true;
@@ -157,10 +188,7 @@ $(document).ready(function () {
                 console.log('추가된 작업 외부영역 클릭(작업 추가 완료)');
 
                 var taskTitle = getTaskTitle.val();
-             
-                              
                 
-
                 // input 태그에 입력된 값이 없다면
                 if(taskTitle == "") {
                     // 태그 삭제
@@ -294,16 +322,16 @@ $(document).ready(function () {
     return;
 });
 
+// 컬럼 추가 ajax 실행
 function insertCol(lastColBox) {
 	$.ajax({
 		url:'insertCol.do',
 		type:'post',
 		data:{'ColName' : $('#colName').val()},
-		success:function(id){
+		success:function(colNoId){
 			
-			// TODO : id 값 받아서 생성한 col에 id 입력
-			alert('id:' + id);
-			lastColBox.attr("id", id);
+			// id 값 받아서 생성한 col에 id 입력
+			lastColBox.attr("id", colNoId);
 		}
 	})
 

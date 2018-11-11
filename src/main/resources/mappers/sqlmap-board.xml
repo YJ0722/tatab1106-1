@@ -77,17 +77,17 @@
  	</select>
  	
  	<!-- col index 조회 -->
- 	<select id="selectColIndex" parameterType="String" resultType="Integer">
+ 	<select id="selectColIndex" parameterType="int" resultType="Integer">
  		select MAX(col_index) from prj_col_t where project_no = #{project_no}
  	</select>
 
  	<!-- board에 col insert -->
- 	<insert id="insertCol" parameterType="String">
- 		insert into prj_col_t values(#{project_no}, SEQ_PRJ_COL_T_no.nextval, #{index}, #{colName})
- 		<selectKey order="AFTER" keyProperty="col_no" resultType="Integer">select seq_prj_col_t_no.currval from dual</selectKey>
+ 	<insert id="insertCol" parameterType="BoardColVO" useGeneratedKeys="true">
+ 		insert into prj_col_t values(#{project_no}, SEQ_PRJ_COL_T_no.nextval, #{col_index}, #{col_name})
+ 		<selectKey order="AFTER" keyProperty="col_no" resultType="int">select seq_prj_col_t_no.currval from dual</selectKey>
  	</insert>
  	
- 	<select id="getInsertColIndex" parameterType="int">
+ 	<select id="getInsertColNo" parameterType="Integer" resultType="int">
  		select col_no from prj_col_t where col_no = #{ col_no }
  	</select>
  	

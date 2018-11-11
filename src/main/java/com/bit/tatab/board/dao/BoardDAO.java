@@ -37,7 +37,7 @@ public interface BoardDAO {
 	public List<BoardTaskVO> selectBoardTaskAll(int project_no);
 	
 	// board에 col insert
-	public int insertCol(String project_no, String colName);
+	public int insertCol(BoardColVO boardColVO);
 
 	// board에 컬럼 index 수정
 	public void colIndexUpdate(List<BoardColVO> colUpdateList);

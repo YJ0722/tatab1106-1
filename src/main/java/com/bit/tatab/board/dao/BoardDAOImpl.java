@@ -141,24 +141,24 @@ public class BoardDAOImpl implements BoardDAO{
 	
 	// board에 col insert
 	@Override
-	public int insertCol(String project_no, String colName) {
+	public int insertCol(BoardColVO boardColVO) {
 		
-		int index = sqlSession.selectOne("selectColIndex", project_no);
+		int index = sqlSession.selectOne("selectColIndex", boardColVO.getProject_no());
 		System.out.println("마지막 col index : " + index);
 		
 		index += 1;
 		
-		Map<String, Object> param = new HashMap<String, Object>();
-		param.put("project_no", project_no);
-		param.put("index", String.valueOf(index));
-		param.put("colName", colName); 
+		boardColVO.setCol_index(index);
 		
-		sqlSession.insert("insertCol", param);
-		int colNo = sqlSession.selectOne("getInsertColIndex");
+		System.out.println("### string : " + boardColVO.toString());
 		
+		sqlSession.insert("insertCol", boardColVO);
+		
+		int colNo = boardColVO.getCol_no(); 
+				
+		System.out.println("colNo : " + String.valueOf(colNo));
 		return colNo;
 	}
-	
 
 	// board에 컬럼 index 수정
 	public void colIndexUpdate(List<BoardColVO> colUpdateList) {

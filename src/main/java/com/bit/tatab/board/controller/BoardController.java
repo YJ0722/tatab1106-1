@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.management.StringValueExp;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -104,7 +105,8 @@ public class BoardController {
 	}
 
 	@RequestMapping(value="insertCol.do", method=RequestMethod.POST)
-	public int insertCol(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	@ResponseBody
+	public String insertCol(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		ModelAndView mav = new ModelAndView("board");
 		
@@ -114,9 +116,14 @@ public class BoardController {
 		
 		System.out.println("추가될 프로젝트 번호 : " + project_no + " 추가될 컬럼 이름 : " + colName); 
 		
-		int colNo = boardService.insertCol(project_no, colName);
+		BoardColVO boardColVO = new BoardColVO(Integer.parseInt(project_no), colName);
+		System.out.println("boardColVO : " + boardColVO.toString());
+		
+		int colNo = boardService.insertCol(boardColVO);
+		String colNoId = String.valueOf(colNo);
+		System.out.println("colNo 체크 : " + colNoId);
 		 
-		return colNo;
+		return colNoId;
 //		return "redirect:/board.do";
 	}
 

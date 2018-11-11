@@ -72,8 +72,9 @@ public class BoardServiceImpl implements BoardService{
 	
 	// board에 col insert
 	@Override
-	public int insertCol(String project_no, String colName) {
-		return boardDao.insertCol(project_no, colName);
+	public int insertCol(BoardColVO boardColVO) {
+		
+		return boardDao.insertCol(boardColVO);
 	}
 	
 	// board에 컬럼 index 수정

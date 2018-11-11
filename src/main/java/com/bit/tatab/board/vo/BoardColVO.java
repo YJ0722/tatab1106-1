@@ -10,7 +10,12 @@ public class BoardColVO {
 	public BoardColVO() {
 		super();
 	}
-	
+	public BoardColVO(int project_no, String col_name) {
+		super();
+		this.project_no = project_no;
+		this.col_name = col_name;
+		
+	}
 	public BoardColVO(int project_no, int col_no, int col_index) {
 		super();
 		this.project_no = project_no;
