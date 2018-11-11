@@ -1,7 +1,7 @@
 $(document).ready(function () {
     
 	// task 클릭 이벤트
-	$(documet).on("click", '.task', function(e) {
+	$(document).on("click", '.task', function(e) {
 		alert('123');
 	});
 	
