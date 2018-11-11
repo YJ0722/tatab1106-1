@@ -78,7 +78,7 @@ public class BoardController {
 	// Board 에 작업 추가
 	@ResponseBody
 	@RequestMapping(value = "/insertBoardTask.do", method = RequestMethod.POST)
-	public void insertBoardTask(HttpServletRequest request, String task_name, @RequestParam("col_no")int no) throws Exception {
+	public String insertBoardTask(HttpServletRequest request, String task_name, @RequestParam("col_no")int no) throws Exception {
 
 		HttpSession session = request.getSession();
 		int project_no = Integer.parseInt((String) session.getAttribute("project_no"));
@@ -101,7 +101,9 @@ public class BoardController {
 			boardService.insertBoardTask(boardTaskVO);
 		}
 		
-		
+		String taskNoId = String.valueOf(boardTaskVO.getTask_no());
+		System.out.println("1274y178523768 : " + taskNoId);
+		return taskNoId;
 	}
 
 	@RequestMapping(value="insertCol.do", method=RequestMethod.POST)

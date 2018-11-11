@@ -1,5 +1,10 @@
 $(document).ready(function () {
     
+   // task 클릭 이벤트
+   $(documet).on("click", '.task', function(e) {
+      alert('123');
+   });
+   
     // 토글 실행
     var state = 0;
     $(document).on("click", '.toggle', function (e) {
@@ -49,17 +54,17 @@ $(document).ready(function () {
                 colIndexArr[i] = order[i];
             }
 
-        	console.log('colIndexArr : ' + colIndexArr + "\n" );
-        	
-        	// 배열은 'traditinal : true' 로 지정해야 파라미터로 전송 가능
-        	$.ajax({
-        		url : "updateBoardCol.do",
-        		type : "post",
-        		traditional : true,
-        		data : {
-        			'colIndexArr' : colIndexArr
-        		}
-        	});
+           console.log('colIndexArr : ' + colIndexArr + "\n" );
+           
+           // 배열은 'traditinal : true' 로 지정해야 파라미터로 전송 가능
+           $.ajax({
+              url : "updateBoardCol.do",
+              type : "post",
+              traditional : true,
+              data : {
+                 'colIndexArr' : colIndexArr
+              }
+           });
         }
 
     });
@@ -80,20 +85,24 @@ $(document).ready(function () {
             console.log('id:::::' + colno);
             
             for(var i=0; i<taskOrder.length; i++) {
-            	taskNoArr[i] = taskOrder[i];
+               taskNoArr[i] = taskOrder[i];
             }
             
             console.log(taskNoArr);
             
-        	$.ajax({
-        		url : "updateBoardTask.do",
-        		type : "get",
-        		traditional : true,
-        		data : {
-        			'colIndex' : colno, 
-        			'taskNoArr' : taskNoArr
-        		}
-        	});
+            // 업데이트 된 후 작업 인덱스 인덱스 배열에 작업이 하나도 존재 하지 않을 경우만 ajax 실행
+            if(taskNoArr.length != 0) {
+
+               $.ajax({
+                  url : "updateBoardTask.do",
+                  type : "get",
+                  traditional : true,
+                  data : {
+                     'colIndex' : colno, 
+                     'taskNoArr' : taskNoArr
+                  }
+               });
+            }
         }
     });
     
@@ -101,7 +110,6 @@ $(document).ready(function () {
     $('.col-add-box').disableSelection();
     
     
-	//////////////////////////////////////////////
     // 제목 변경할 col의 mouseover, mouseout 설정(mouseover: true, mouseout: false)
     var updateColTitleMouseAction = true;
     // 
@@ -112,7 +120,7 @@ $(document).ready(function () {
     var originalName;
     // col의 제목 클릭 이벤트(col 제목 업데이트 이벤트)
     $(document).off().on("click", '.col-title-show-1', function(e) {
-    	
+
        // col 제목의 p 태그 숨기기
         $(this).hide();
         
@@ -168,20 +176,17 @@ $(document).ready(function () {
               }
               // p 태그 보여주기
               p.show();
-
+                           
               // col mouse 액션 over로 다시 설정 --> 외부 요소 클릭 이벤트 재실행 방지
+               updateColTitleMouseAction = true;
+              
               var colId = p.parents('.kanban-col-box').attr('id');
               console.log('%%%%%' + colId);
-
-              // 컬럼이 ajax update //////////////////////////
               
-              updateColTitleMouseAction = true;
+              
            }
         });
     });
-    //////////////////////////////////////////////
-    
-    
     
     
     // 작업 추가 
@@ -238,6 +243,7 @@ $(document).ready(function () {
             }
         })
         
+        // 해당 컬럼의 가장 마지막 작업(동적 생성하여 생긴 task)
         var lastTag = $('.kanban-col').eq(this).find('.task:last');
         
         var getTaskTitle;
@@ -245,11 +251,17 @@ $(document).ready(function () {
         // 외부 영역 클릭 시 입력 내용 고정
         $(document).on("click", lastTag, function(e) {
             var selectTask = $('.kanban-col').eq(tagIndex).find('.task:last');
+            
+            // 동적 생성한  작업의 input 태그
             getTaskTitle = selectTask.find('.task-title-input').last();
+            // 동적 생성한  작업의 p 태그
             setTaskTitle = selectTask.find('.task-title-show').last();            
             
+            
+            // TODO : 왜 자동 포커스 안되는지 모름... 나중에 수정
             $('.task-title-input:last').focus();
-
+            
+            // 클릭한 공간이 mouseout 상태인 경우 실행
             if(taskMouseAction == false) {
                 console.log('추가된 작업 외부영역 클릭(작업 추가 완료)');
 
@@ -260,18 +272,22 @@ $(document).ready(function () {
                     // 태그 삭제
                     $('.kanban-col').eq(tagIndex).find('.task:last').remove();
                 } else {
+                   // p 태그에 input 태그에 입력했던 제목 setting
                     setTaskTitle.text(taskTitle);
+                    // input 태그 숨기기
                     getTaskTitle.hide();
+                    // p 태그 보이기
                     setTaskTitle.show();
                     
                     console.log('작업 제목 : ' + taskTitle);
                     console.log('해당 컬럼 인덱스 : ' + task_col_no);
                     
                     // db에 태스크 추가 ajax 실행
-                    insertBoardTask(task_col_no, taskTitle);
+                    insertBoardTask($('.kanban-col').eq(tagIndex).find('.task:last'), task_col_no, taskTitle);
                     
                 }
 
+                // 작업 insert 후 마우스 다시 mouseover 상태로 변경
                 taskMouseAction = true;
 
                 // 작업 추가 버튼 보여주기
@@ -335,14 +351,19 @@ $(document).ready(function () {
             }
         });
         
+        // 컬럼 insert 관련 클릭 이벤트 시작
         $(document).on("click", lastCol, function(e) {
             
+           // 동적 생성한 컬럼 input 태그
             var getTitle = $('.col-title-input:last');
+           // 동적 생성한 컬럼 p 태그
             var setTitle = $('.col-title-show:last');
             
+            // 생성한 col의 외부영역 클릭했을 경우
             if(mouseAction == false) {
                 console.log('추가된 작업 외부영역 클릭(컬럼 추가 완료)');
                 
+                // input 태그의 입력값 받아서 변수에 저장
                 var title = getTitle.val();
                 
                 // input 태그에 입력된 값이 없다면
@@ -350,8 +371,11 @@ $(document).ready(function () {
                     // 태그 삭제
                     $('.kanban-col-box:last').remove();
                 } else {
+                   // input 태그의 입력값 p 태그에 입력
                     setTitle.text(title);
+                    // input 태그 숨기기
                     getTitle.hide();
+                    // p 태그 보이기
                     setTitle.show();
                     
                     
@@ -360,13 +384,16 @@ $(document).ready(function () {
                     $('#colName').val(title);
 
                     insertCol($('.kanban-col-box:last'));
-                    ////// soo 컬럼추가 //////	
+                    ////// soo 컬럼추가 //////   
                 }
+                
+                // 작업 추가 후 mouseover 상태로 다시 변경
                 mouseAction = true;
                 
                 // 컬럼 추가 버튼 보여주기
                 $('.col-add-btn').show();
                 
+                // 컬럼 생성 후 컬럼 생성 버튼으로 화면 자동 이동(추가한 컬럼 위치로!)
                 $('.board-background').animate({scrollLeft: $('#endline').offset().left}, 300);
         
             }
@@ -390,29 +417,34 @@ $(document).ready(function () {
 
 // 컬럼 추가 ajax 실행
 function insertCol(lastColBox) {
-	$.ajax({
-		url:'insertCol.do',
-		type:'post',
-		data:{'ColName' : $('#colName').val()},
-		success:function(colNoId){
-			
-			// id 값 받아서 생성한 col에 id 입력
-			lastColBox.attr("id", colNoId);
-		}
-	})
+   $.ajax({
+      url:'insertCol.do',
+      type:'post',
+      data:{'ColName' : $('#colName').val()},
+      success:function(colNoId){
+         
+         // id 값 받아서 생성한 col에 id 입력
+         lastColBox.attr("id", colNoId);
+      }
+   })
 
 }
 
-function insertBoardTask(task_col_no, t_name) {
-	
-	$.ajax({
-		url : "insertBoardTask.do",
-		type : "post",
-		data : {
-			'task_name' : t_name,
-			'col_no' : task_col_no
-		}
-	});
-	
-	return false;
+// 작업 추가 ajax 실행
+function insertBoardTask(taskColBox, task_col_no, t_name) {
+   
+   $.ajax({
+      url : "insertBoardTask.do",
+      type : "post",
+      data : {
+         'task_name' : t_name,
+         'col_no' : task_col_no
+      },
+      success:function(taskNoId){
+         // id 값 받아서 생성한 col에 id 입력
+         taskColBox.attr("id", taskNoId);
+      }
+   });
+   
+   return false;
 }
