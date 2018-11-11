@@ -85,15 +85,19 @@ $(document).ready(function () {
             
             console.log(taskNoArr);
             
-        	$.ajax({
-        		url : "updateBoardTask.do",
-        		type : "get",
-        		traditional : true,
-        		data : {
-        			'colIndex' : colno, 
-        			'taskNoArr' : taskNoArr
-        		}
-        	});
+            // 업데이트 된 후 작업 인덱스 인덱스 배열에 작업이 하나도 존재 하지 않을 경우만 ajax 실행
+            if(taskNoArr.length != 0) {
+
+            	$.ajax({
+            		url : "updateBoardTask.do",
+            		type : "get",
+            		traditional : true,
+            		data : {
+            			'colIndex' : colno, 
+            			'taskNoArr' : taskNoArr
+            		}
+            	});
+            }
         }
     });
     
@@ -102,7 +106,7 @@ $(document).ready(function () {
     
     
     //////////////////////////////////////////////
-    var updateColTitleMouseAction = false;
+    var updateColTitleMouseAction = true;
     var index;
     $(document).on("click", '.col-title-show-1', function(e) {
 
@@ -126,13 +130,14 @@ $(document).ready(function () {
                 console.log("last out");
                 return false;
             },
-            function(updateColTitleMouseAction) {
-            	if(updateColTitleMouseAction == false) {
-            		
-            	}
-            }
         });
-        
+
+        // 외부 영역 클릭 시 입력 내용 고정
+        $(document).on("click", this, function(e) {
+        	if(updateColTitleMouseAction == false) {
+        		alert('!');
+        	}
+        });
     });
     //////////////////////////////////////////////
     
@@ -223,7 +228,7 @@ $(document).ready(function () {
                     console.log('해당 컬럼 인덱스 : ' + task_col_no);
                     
                     // db에 태스크 추가 ajax 실행
-                    insertBoardTask(task_col_no, taskTitle);
+                    insertBoardTask($('.kanban-col').eq(tagIndex).find('.task:last'), task_col_no, taskTitle);
                     
                 }
 
@@ -358,7 +363,8 @@ function insertCol(lastColBox) {
 
 }
 
-function insertBoardTask(task_col_no, t_name) {
+// 작업 추가 ajax 실행
+function insertBoardTask(taskColBox, task_col_no, t_name) {
 	
 	$.ajax({
 		url : "insertBoardTask.do",
@@ -366,6 +372,11 @@ function insertBoardTask(task_col_no, t_name) {
 		data : {
 			'task_name' : t_name,
 			'col_no' : task_col_no
+		},
+		success:function(taskNoId){
+			alert('taskNoId : ' + taskNoId);
+			// id 값 받아서 생성한 col에 id 입력
+			taskColBox.attr("id", taskNoId);
 		}
 	});
 	

@@ -67,9 +67,10 @@
  	</select>
  	
  	<!-- board 에 작업 추가 -->
- 	<select id="insertBoardTask" parameterType="BoardTaskVO">
+ 	<insert id="insertBoardTask" parameterType="BoardTaskVO">
  		insert into prj_task_t values(#{project_no}, #{col_no}, seq_prj_task_t_no.nextVal, #{task_index}, #{task_name}, #{task_content}, #{status}, #{d_day}, #{reg_date})
- 	</select>
+ 		<selectKey order="AFTER" keyProperty="task_no" resultType="int">select seq_prj_task_t_no.currval from dual</selectKey>
+ 	</insert>
  	
  	<!-- board 작업 조회 -->
  	<select id="selectBoardTaskAll" parameterType="int" resultType="BoardTaskVO">
