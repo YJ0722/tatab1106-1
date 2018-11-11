@@ -198,6 +198,7 @@ $(document).ready(function () {
             }
         })
         
+        // 해당 컬럼의 가장 마지막 작업(동적 생성하여 생긴 task)
         var lastTag = $('.kanban-col').eq(this).find('.task:last');
         
         var getTaskTitle;
@@ -205,11 +206,17 @@ $(document).ready(function () {
         // 외부 영역 클릭 시 입력 내용 고정
         $(document).on("click", lastTag, function(e) {
             var selectTask = $('.kanban-col').eq(tagIndex).find('.task:last');
+            
+            // 동적 생성한  작업의 input 태그
             getTaskTitle = selectTask.find('.task-title-input').last();
+            // 동적 생성한  작업의 p 태그
             setTaskTitle = selectTask.find('.task-title-show').last();            
             
+            
+            // TODO : 왜 자동 포커스 안되는지 모름... 나중에 수정
             $('.task-title-input:last').focus();
-
+            
+            // 클릭한 공간이 mouseout 상태인 경우 실행
             if(taskMouseAction == false) {
                 console.log('추가된 작업 외부영역 클릭(작업 추가 완료)');
 
@@ -220,8 +227,11 @@ $(document).ready(function () {
                     // 태그 삭제
                     $('.kanban-col').eq(tagIndex).find('.task:last').remove();
                 } else {
+                	// p 태그에 input 태그에 입력했던 제목 setting
                     setTaskTitle.text(taskTitle);
+                    // input 태그 숨기기
                     getTaskTitle.hide();
+                    // p 태그 보이기
                     setTaskTitle.show();
                     
                     console.log('작업 제목 : ' + taskTitle);
@@ -232,6 +242,7 @@ $(document).ready(function () {
                     
                 }
 
+                // 작업 insert 후 마우스 다시 mouseover 상태로 변경
                 taskMouseAction = true;
 
                 // 작업 추가 버튼 보여주기
@@ -295,14 +306,19 @@ $(document).ready(function () {
             }
         });
         
+        // 컬럼 insert 관련 클릭 이벤트 시작
         $(document).on("click", lastCol, function(e) {
             
+        	// 동적 생성한 컬럼 input 태그
             var getTitle = $('.col-title-input:last');
+        	// 동적 생성한 컬럼 p 태그
             var setTitle = $('.col-title-show:last');
             
+            // 생성한 col의 외부영역 클릭했을 경우
             if(mouseAction == false) {
                 console.log('추가된 작업 외부영역 클릭(컬럼 추가 완료)');
                 
+                // input 태그의 입력값 받아서 변수에 저장
                 var title = getTitle.val();
                 
                 // input 태그에 입력된 값이 없다면
@@ -310,8 +326,11 @@ $(document).ready(function () {
                     // 태그 삭제
                     $('.kanban-col-box:last').remove();
                 } else {
+                	// input 태그의 입력값 p 태그에 입력
                     setTitle.text(title);
+                    // input 태그 숨기기
                     getTitle.hide();
+                    // p 태그 보이기
                     setTitle.show();
                     
                     
@@ -322,11 +341,14 @@ $(document).ready(function () {
                     insertCol($('.kanban-col-box:last'));
                     ////// soo 컬럼추가 //////	
                 }
+                
+                // 작업 추가 후 mouseover 상태로 다시 변경
                 mouseAction = true;
                 
                 // 컬럼 추가 버튼 보여주기
                 $('.col-add-btn').show();
                 
+                // 컬럼 생성 후 컬럼 생성 버튼으로 화면 자동 이동(추가한 컬럼 위치로!)
                 $('.board-background').animate({scrollLeft: $('#endline').offset().left}, 300);
         
             }
@@ -374,7 +396,6 @@ function insertBoardTask(taskColBox, task_col_no, t_name) {
 			'col_no' : task_col_no
 		},
 		success:function(taskNoId){
-			alert('taskNoId : ' + taskNoId);
 			// id 값 받아서 생성한 col에 id 입력
 			taskColBox.attr("id", taskNoId);
 		}
