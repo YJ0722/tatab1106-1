@@ -1,6 +1,10 @@
+body {
+	font-size:15px;
+}
+
 .manageWrapper {
     width: 450px;
-    height: 500px;
+    /* height: 500px; */
 }
 
 .title {
@@ -38,7 +42,7 @@
     float: left;
 }
 
-.close, .trash {
+.close1, .trash {
     float: right;
 }
 
@@ -189,3 +193,7 @@
 	float: left;
 }
 
+#projectTitle { 
+    color: black;
+    /* font-weight: bold; */
+}
