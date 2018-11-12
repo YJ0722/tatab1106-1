@@ -436,7 +436,7 @@ function insertCol(lastColBox) {
 
 // 작업 추가 ajax 실행
 function insertBoardTask(taskColBox, task_col_no, t_name) {
-	
+	alert(t_name);
 	$.ajax({
 		url : "insertBoardTask.do",
 		type : "post",

@@ -34,6 +34,7 @@
     				$('.projectDescription').val(data.project_comment);
     			}
 			})
+			return false;
     	}
     	
     	function getMemberList() {
@@ -72,6 +73,7 @@
 				}
 			})
 			alert('수정완료');
+			return false;
 		}
     	
     	// 유저 초대하기
@@ -95,6 +97,7 @@
     				}
     			})
     		}
+    		return false;
     	}
     </script>
        
@@ -118,7 +121,7 @@
                        <div class="membersBtn"><a class="manage-a">Members</a></div>
                    </div>
                     
-                   <!-- Overview 메뉴-->
+                   Overview 메뉴
                    <div class="content overview">
 						<form method="post" class="updateProjectVO" action="updateProjectVO.do">
 	                       <div class="pj">
@@ -126,7 +129,7 @@
 	                               Project name
 	                           </div>
 	                           <div class="pjInput">
-                                   <input class="projectNames" id="projectName" name="projectName" type="text" style="width:300px; height:50px;" placeholder="">
+                                   <input class="projectNames" id="projectName" name="projectName" type="text" style="width:300px; height:50px;" >
 	                           </div>
 	                       </div>
 	                       <div class="dpt">
@@ -134,14 +137,15 @@
 	                               Project Description
 	                           </div>
 	                           <div class="dptdpt">
-	                              <textarea class="projectDescription" id="projectDescription" name="projectDescription" type="text" style="width:300px; height:200px; resize:none;" placeholder="">
+	                              <textarea class="projectDescription" id="projectDescription" name="projectDescription" style="width:300px; height:200px; resize:none;">
 								  </textarea>
+								</div>
 	                       </div>
 	               		</form>	        
                     </div>
           </div>
                    
-                   <!-- Checklist 메뉴 -->
+<!--                    Checklist 메뉴 -->
                    <div class="content checklist">
                        <div class="pj"> 
                            <div class="pjName">
@@ -163,16 +167,16 @@
                            </div>
                        </div>
                    </div>
-                   <!-- Checklist 메뉴 -->
+<!--                    Checklist 메뉴 -->
                    
-                   <!-- Members 메뉴 -->
+<!--                    Members 메뉴 -->
                    <div class="content members">
                         <div class="pjName">
 	                       Members
                         </div>
 					   
 					    <div class="memberDiv">
-					   		<!-- memberList add -->
+					   		memberList add
 			 	   		</div>
 			 		   	
 			 		   	<form class="addUser" action="addUser.do" method="post">
@@ -184,7 +188,7 @@
 						    </div>
 				    	</form> 
                    </div>
-				   <!-- Members 메뉴 -->
+<!-- 				   Members 메뉴 -->
 
                  
 

@@ -50,9 +50,9 @@
 html, button, input, select, textarea {
   color: #000;
 }
-body {
+body {  /* body 대체 */
   font-size: 1em;
-  line-height: 1;
+  /* line-height: 1; */
   background-color: rgba(255, 255, 255, 1);
   background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(235, 235, 235, 1) 47%, rgba(222, 222, 222, 1) 100%);
 }
