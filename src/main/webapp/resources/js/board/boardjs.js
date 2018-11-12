@@ -3,7 +3,7 @@ $(document).ready(function () {
 	
    // task 클릭 이벤트
    $(document).on("click", '.task', function(e) {
-      alert('123');
+      
    });
    
 // 토글 실행
@@ -111,6 +111,7 @@ $(document).ready(function () {
     $('.add-task-box').disableSelection();
     $('.col-add-box').disableSelection();
 
+    ////////////////////////////////////////////////////////////////////////////////////
     /*
     // 제목 변경할 col의 mouseover, mouseout 설정(mouseover: true, mouseout: false)
     var updateColTitleMouseAction = true;
@@ -190,8 +191,8 @@ $(document).ready(function () {
         	}
         });
     });
-    
     */
+    ////////////////////////////////////////////////////////////////////////
     
     // 작업 추가 
     var tagIndex;
