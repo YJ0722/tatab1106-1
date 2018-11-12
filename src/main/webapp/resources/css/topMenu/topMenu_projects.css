@@ -34,3 +34,11 @@ p {
     vertical-align: middle;
 }
 
+#projectsModal {
+    background-color: #fefefe;
+    padding: 10px;
+    border: 1px solid #888;
+    width: 300px;
+    opacity: 0.9;
+    height: 423px; 
+}

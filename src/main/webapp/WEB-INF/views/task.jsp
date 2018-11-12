@@ -36,91 +36,85 @@
 </head>
 <body>
 
-	<div class="projects-modal-content">
-		<div id="container">			
-			<div id="boxs">
-				<span>D-?</span> <img src="resources/img/board/bookmarkButton.png"
-					width="30" height="30" /> <img
-					src="resources/img/board/mButton.jpg" width="30" height="30" /> <img
-					src="resources/img/board/closeButton.png" width="30" height="30"
-					class="right" />
-			</div>
-
-			<div id="box1">
-				<div class="form-group shadow-textarea">
-					<label for="exampleFormControlTextarea6"></label>
-					<textarea class="form-control z-depth-1"
-						id="exampleFormControlTextarea6" rows="3" placeholder="업무명..."></textarea>
+	<div class="modal fade" id="exampleModalLong" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalLongTitle"
+		aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
 				</div>
-			</div>
-
-			<div id="boxs">
-				<div class="form-group shadow-textarea2">
-					<label for="exampleFormControlTextarea6"></label>
-					<textarea class="form-control z-depth-1"
-						id="exampleFormControlTextarea6" rows="3" placeholder="업무 내용..."></textarea>
-				</div>
-			</div>
-
-			<div id="boxs">
-				<div>
-					<div class="form-group">
-						<label>Upload Image</label>
-						<div class="input-group">
-							<span class="input-group-btn"> <span
-								class="btn btn-default btn-file"> Browse… <input
-									type="file" id="imgInp">
-							</span>
-							</span> <input type="text" class="form-control" readonly>
+				<div class="modal-body">
+					<div id="container">
+						<div id="boxs">
+							<span>D-?</span> <img
+								src="resources/img/board/bookmarkButton.png" width="30"
+								height="30" /> <img src="resources/img/board/mButton.jpg"
+								width="30" height="30" />
 						</div>
-						<img id='img-upload' />
+
+						<div id="box1">
+							<div class="form-group shadow-textarea">
+								<label for="exampleFormControlTextarea6"></label>
+								<textarea class="form-control z-depth-1"
+									id="exampleFormControlTextarea6" rows="3" placeholder="업무명..."></textarea>
+							</div>
+						</div>
+
+						<div id="boxs">
+							<div class="form-group shadow-textarea2">
+								<label for="exampleFormControlTextarea6"></label>
+								<textarea class="form-control z-depth-1"
+									id="exampleFormControlTextarea6" rows="3"
+									placeholder="업무 내용..."></textarea>
+							</div>
+						</div>
+
+						<div id="boxs">
+							<div>
+								<div class="form-group">
+									<label>Upload Image</label>
+									<div class="input-group">
+										<span class="input-group-btn"> <span
+											class="btn btn-default btn-file"> Browse… <input
+												type="file" id="imgInp">
+										</span>
+										</span> <input type="text" class="form-control" readonly>
+									</div>
+									<img id='img-upload' />
+								</div>
+
+							</div>
+						</div>
+
+						<div id="boxs">
+							<div id="myDIV" class="header">
+								<span> <input type="text" id="myInput"
+									placeholder="Comment..."> <span onclick="newElement()"
+									class="addBtn">Add</span>
+								</span>
+							</div>
+							<div>
+								<ul id="myUL">
+									<li>Created by</li>
+								</ul>
+							</div>
+						</div>
 					</div>
-
 				</div>
-			</div>
-
-			<div id="boxs">
-				<div id="myDIV" class="header">
-					<span> <input type="text" id="myInput"
-						placeholder="Comment..."> <span onclick="newElement()"
-						class="addBtn">Add</span>
-					</span>
-				</div>
-				<div>
-					<ul id="myUL">
-						<!-- <li>Created by</li> -->
-					</ul>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
 				</div>
 			</div>
 		</div>
-		<div class="modal-contents2">
-			<!-- 할당 멤버 start-->
-			<div class="task-assigned-member-box">
-				<div class="task-assigned-member">
-					<img res="resources/img/board/bookmarkButton.png" class="task-assigned-member-img" />
-					<p>name</p>
-				</div>
-			</div>
-			<!-- 할당 멤버 end -->
-			<!-- d-day start-->
-			<div class="task-dday-box">
-				<p>2018.11.12</p>
-			</div>
-			<!-- d-day end-->
-			<!-- startday start-->
-			<div class="start-day-box">
-				<p>2018.11.12</p>
-			</div>
-			<!-- startday end-->
-			<!-- updateday start-->
-			<div class="update-day-box">
-				<p>2018.11.12</p>
-			</div>
-			<!-- updateday start-->
-			
-		</div>
-		
-		
-		<script src="resources/js/board/taskScript.js"></script>
+	</div>
+
+	<script src="resources/js/board/taskScript.js"></script>
 </body>
 </html>

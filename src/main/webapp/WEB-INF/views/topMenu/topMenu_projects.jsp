@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">   
    
     <!-- topMenu_projects.css -->
-    <link rel="stylesheet" type="text/css" href="resources/css/topMenu/topMenu_projects.css?ver=2">
+    <link rel="stylesheet" type="text/css" href="resources/css/topMenu/topMenu_projects.css?ver=3">
 	
 	<!-- topMenu_projects.js -->
 	<script src="resources/js/topMenu/topMenu_projects.js?ver=1"></script>
