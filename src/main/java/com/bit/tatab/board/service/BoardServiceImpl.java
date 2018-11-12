@@ -88,4 +88,11 @@ public class BoardServiceImpl implements BoardService{
 	public void taskIndexUpdate(List<BoardTaskVO> taskUpdaeteList) {
 		boardDao.taskIndexUpdate(taskUpdaeteList);
 	}
+
+	// 컬럼 이름 변경
+	@Override
+	public void updateColName(String colId, String updateTitle) {
+		boardDao.updateColName(colId, updateTitle);
+	}
+	
 }

@@ -106,5 +106,11 @@
 		where project_no = #{project_no} and task_no = #{ task_no }
  	</update>
  	
+ 	<!-- board colName update -->
+ 	<update id="updateColName" parameterType="String">
+ 		update prj_col_t
+		set col_name = #{updateTitle}
+		where col_no = #{colId}
+ 	</update>
  	
  </mapper>  

@@ -44,4 +44,7 @@ public interface BoardDAO {
 
 	// board에 작업 index 수정
 	public void taskIndexUpdate(List<BoardTaskVO> taskUpdateList);
+	
+	// 컬럼 이름 변경
+	public void updateColName(String colId, String updateTitle);
 }

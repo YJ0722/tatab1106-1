@@ -1,10 +1,11 @@
 $(document).ready(function () {
     
-	// task 클릭 이벤트
-	$(document).on("click", '.task', function(e) {
-		alert('123');
-	});
 	
+   // task 클릭 이벤트
+   $(document).on("click", '.task', function(e) {
+      alert('123');
+   });
+   
     // 토글 실행
     var state = 0;
     $(document).on("click", '.toggle', function (e) {
@@ -184,6 +185,7 @@ $(document).ready(function () {
         		console.log('%%%%%' + colId);
         		
         		
+              updateColName(colId, updateTitle);
         	}
         });
     });
@@ -447,4 +449,16 @@ function insertBoardTask(taskColBox, task_col_no, t_name) {
 	});
 	
 	return false;
+}
+
+//컬럼 이름 변경
+function updateColName(colId, updateTitle) {
+	$.ajax({
+		url : "updateColName.do",
+		type : "post",
+		data : {
+			'colId' : colId,
+			'updateTitle' : updateTitle
+		}
+	});
 }

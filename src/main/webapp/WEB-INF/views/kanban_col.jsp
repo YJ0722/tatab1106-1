@@ -18,7 +18,7 @@
 	                    <div class="kanban-col round-border">
 	                        <!-- 이름 start -->
 	                        <div class="kanban-head">
-	                            <input type="text" class="col-title-input" style="display:none;"autofocus>
+	                            <input type="text" class="col-title-input" style="display:none;" autofocus="">
 	                            <p class="col-title-show-1" >${ colList.col_name }</p>
 	                            <img class="toggle body-up-img" src="resources/img/board/sort-up.png">
 	                            <img class="toggle body-down-img" src="resources/img/board/sort-down.png">

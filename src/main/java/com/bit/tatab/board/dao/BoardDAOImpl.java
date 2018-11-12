@@ -180,4 +180,18 @@ public class BoardDAOImpl implements BoardDAO{
 			sqlSession.update("taskIndexUpdate", taskUpdateList.get(i));
 		}
 	}
+
+	// 컬럼 이름 변경
+	@Override
+	public void updateColName(String colId, String updateTitle) {
+		
+		Map<String, Object> param = new HashMap<String, Object>();
+		
+		param.put("colId", colId);
+		param.put("updateTitle", updateTitle);
+		
+		sqlSession.update("updateColName", param);
+	}
+	
+	
 }
