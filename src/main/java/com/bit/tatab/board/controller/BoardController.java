@@ -195,6 +195,8 @@ public class BoardController {
 		
 		boardService.updateColName(colId, updateTitle);
 	}
+	
+	
 }
 
 

@@ -4,6 +4,11 @@ $(document).ready(function () {
    // task 클릭 이벤트
    $(document).on("click", '.task', function(e) {
       
+      var task_no = $(this).attr("id");
+      console.log('i : ' + task_no);
+      $('#exampleModalLong').modal();
+      
+      selectAllTask(task_no);
    });
    
    // 토글 실행
@@ -465,4 +470,17 @@ function updateColName(colId, updateTitle) {
 			'updateTitle' : updateTitle
 		}
 	});
+}
+
+function selectAllTask(task_no) {
+	$.ajax({
+		url : "selectAllTask.do",
+		type : "post",
+		data : {
+			'task_no' : task_no
+		},
+		success : function(data) {
+			console.log("data : " + data); 		
+		}
+	})
 }
