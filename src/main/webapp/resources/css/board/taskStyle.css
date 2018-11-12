@@ -4,6 +4,11 @@ body {
   min-width: 250px;
 }
 
+#exampleFormControlTextarea6 {
+	font-size:15px;
+	color : black;
+}
+
 /* Include the padding and border in an element's total width and height */
 * {
   box-sizing: border-box;
@@ -15,11 +20,15 @@ ul {
   padding: 0;
 }
 
+li {
+	width : 95%;
+}
+
 /* Style the list items */
 ul li {
   cursor: pointer;
   position: relative;
-  padding: 12px 8px 12px 40px;
+  padding: 12px 8px 12px 10px;
   list-style-type: none;
   background: #eee;
   font-size: 18px;
@@ -60,7 +69,7 @@ ul li:hover {
   background-color: grey;
   color: white;
   text-align: center;
-  width: 490px;
+  width: 95%;
 }
 
 /* Clear floats after the header */
@@ -75,7 +84,7 @@ input {
   margin: 0;
   border: none;
   border-radius: 0;
-  width: 75%;
+  width: 70%;
   padding: 10px;
   float: left;
   font-size: 16px;
@@ -84,7 +93,7 @@ input {
 /* Style the "Add" button */
 .addBtn {
   padding: 10px;
-  width: 25%;
+  width: 30%;
   background: #d9d9d9;
   color: #555;
   float: left;

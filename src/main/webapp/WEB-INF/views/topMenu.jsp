@@ -22,7 +22,7 @@
     <!-- topMenu.css -->
     <link rel="stylesheet" type="text/css" href="resources/css/topMenu/topMenu.css?ver=3">
     <!-- taskStyle.css -->
-    <link rel="stylesheet" type="text/css" href="resources/css/board/taskStyle.css?ver=1">
+    <link rel="stylesheet" type="text/css" href="resources/css/board/taskStyle.css?ver=2">
     
     
     <!-- topMenu.js -->
