@@ -236,7 +236,13 @@
                                     <h4><c:out value="${ myPageVO.motto }" /></h4>
                                 </div>
                                 <div class="bottom">
-                                    <a href="<c:url value="/myPage.do" />"><img src="<c:url value="/resources/img/main/kakaotalk.png" />"/></a>                                    
+                                    <a href="<c:url value="/myPage.do" />"><img src="<c:url value="/resources/img/main/kakaotalk.png" />"/></a>                              
+                                </div>
+                                <div class="logout">
+                                	<a href="googleLogout.do" onClick="signOut();">
+                                    	LOGOUT 
+                                    	<i class="fas fa-sign-out-alt"></i>
+                                    </a>      
                                 </div>
                             </div>
                         </div>
@@ -354,4 +360,16 @@
     </div>
     <!-- 제일 상위 등급 div 끝 -->
 </body>
+
+
+<script>
+	// 구글 로그아웃
+	function signOut() {
+		alert('!!!');
+	    var auth2 = gapi.auth2.getAuthInstance();
+	    auth2.signOut().then(function () {
+	    });
+	  };
+</script>
+
 </html>
