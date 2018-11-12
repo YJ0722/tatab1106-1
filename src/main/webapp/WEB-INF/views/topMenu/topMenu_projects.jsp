@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> -->
 <html>
     
     <!-- font awesome -->
@@ -36,6 +36,7 @@
 						}
 					}
 				});
+				return false;
 			});
 			
 			// 프로젝트 검색
@@ -43,6 +44,7 @@
 				var input = $(this).val();
 				$('#wrapper > div').hide();
 				$(".projectName:contains('"+ input +"')").parent().show();
+				return false;
 			})
 			
 			// 동적으로 처리할때 document.on (이벤트, 선택자, 함수(무명함수))

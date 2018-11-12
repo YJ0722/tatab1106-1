@@ -1,9 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> -->
 <html>
     <head>
-<!--     <script src="resources/js/jquery-3.3.1.min.js"></script> -->
+	<!--     <script src="resources/js/jquery-3.3.1.min.js"></script> -->
+	
+	
+	<!-- 부트스트랩 기본 css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <!-- Ignite UI Required Combined CSS Files -->
+    <link href="http://cdn-na.infragistics.com/igniteui/2018.1/latest/css/themes/infragistics/infragistics.theme.css" rel="stylesheet" />
+    <link href="http://cdn-na.infragistics.com/igniteui/2018.1/latest/css/structure/infragistics.css" rel="stylesheet" />
+    
+    
     <script src="resources/js/jquery-3.3.1.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	
@@ -11,11 +21,12 @@
      <link rel="stylesheet" type="text/css" href="resources/css/board/boardcss.css">
     <!-- topMenu.css -->
     <link rel="stylesheet" type="text/css" href="resources/css/topMenu/topMenu.css?ver=2">
-    
-    
+    <!-- taskStyle.css -->
+    <link rel="stylesheet" type="text/css" href="resources/css/board/taskStyle.css?ver=1">
     
     <!-- topMenu.js -->
     <script src="resources/js/topMenu/topMenu.js?ver=1"></script>
+
     
     </head>
     
@@ -38,6 +49,10 @@
                    <i class="fas fa-info"></i> 
                 </td>
                 <td style=width:50%>
+                	<!-- 테스크 모달 창 테스트 버튼 -->
+                	<button id="btnShowTaskModal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+			          	Task 테스트 버튼
+			        </button>
                 </td>
                 <td style=width:5% >
                     <table class="activeBtn">
@@ -112,13 +127,89 @@
             </div>
         </div>
         <!-- projectManage Modal -->
+		
+		<!-- 모달 화면 -->
+<!-- 		<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true"> -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                    <div id="container">
+                        <div id="boxs">
+                            <span>D-?</span>
+                            <img src="resources/img/board/bookmarkButton.png" width="30" height="30"/>
+                            <img src="resources/img/board/mButton.jpg" width="30" height="30"/>
+                        </div>
 
+                        <div id="box1">
+                        <div class="form-group shadow-textarea">
+                            <label for="exampleFormControlTextarea6"></label>
+                            <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="업무명..."></textarea>
+                        </div>
+                    </div>
+
+                        <div id="boxs">
+                        <div class="form-group shadow-textarea2">
+                            <label for="exampleFormControlTextarea6"></label>
+                            <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="3" placeholder="업무 내용..."></textarea>
+                        </div></div>
+
+                        <div id="boxs">
+                        <div>
+                                <div class="form-group">
+                                    <label>Upload Image</label>
+                                    <div class="input-group">
+                                        <span class="input-group-btn">
+                                            <span class="btn btn-default btn-file">
+                                                Browse… <input type="file" id="imgInp">
+                                            </span>
+                                        </span>
+                                        <input type="text" class="form-control" readonly>
+                                    </div>
+                                    <img id='img-upload'/>
+                                </div>
+
+                        </div></div>
+
+                        <div id="boxs">
+                        <div id="myDIV" class="header">
+                            <span>
+                          <input type="text" id="myInput" placeholder="Comment...">
+                          <span onclick="newElement()" class="addBtn">Add</span>
+                            </span>
+                        </div>
+                        <div>
+                            <ul id="myUL">
+                              <li>Created by</li>
+                            </ul>
+                        </div>
+                                </div>
+                            </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
     </body>
+    
+    <!-- task 관련 스크립트  - 부트스트랩 -->
+		    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
     
     <!-- script 참조 -->
     <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js'></script>
     <script src="resources/js/jquery-ui.js"></script>
     <script src="resources/js/jquery-ui.min.js"></script>
     <script src="resources/js/board/boardjs.js?ver=1"></script>
-    
+    <script src="resources/js/board/taskScript.js?ver=1"></script>
 </html>
