@@ -6,9 +6,9 @@
 <head>
     <title>Project? You better TATAB.</title>
     <link rel="shortcut icon" href="/resources/img/main/favicon.ico"  >
-    <link href="<c:url value="/resources/css/main/UserMain.css?ver=1" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/main/UserMain.css?ver=4" />" rel="stylesheet">
     <!-- MyPage 관련 -->	
-    <link href="<c:url value="/resources/css/main/MyPageModal.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/main/MyPageModal.css?ver=2" />" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- MyPage 관련 끝 -->
     <!-- StickyNote 관련 -->
@@ -24,21 +24,18 @@
     <!-- BackgroundImage 관련 끝 -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive|Gothic+A1" rel="stylesheet">
-    <style>
+    <!-- <style>
 	.card.hovercard .cardheader {
 		    background-image: url('resources/img/main/tatab.png') no-repeat;
 		    background-size: cover;
 		    height: 135px;
 		}
-    </style>
+    </style> -->
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
     <script src="<c:url value="/resources/js/main/StickyNote.js" />"></script>
-    <!-- StickyNote 관련 끝 -->
-    <!-- Registration 관련 끝 -->
-    <!-- MainComment 관련 끝 -->
     <script src="<c:url value="/resources/js/main/UserMain.js?var=2" />"></script>
     
     
@@ -131,20 +128,17 @@
                     </div>
                     <!-- 로고 & 제목 끝 -->
                     <!-- 플젝 리스트 -->
+                    <div class="listWrapper">
                		<c:forEach items="${projectList}" var="projectName" varStatus="status">
-	                    <div class="list"> <!-- 여긴 나중에 forEach로! -->
-	                        <!-- 플젝 아이콘 -->
-	                        	<div class="oneProject"> 
-	                        		<a href="UserMain.html"><i class="fab fa-product-hunt"></i></a><br> <!-- 임의의 아이콘 => 나중에 사용자 설정 try -->
-	                        	</div>
-	                        <!-- 플젝 아이콘 끝 -->
+	                    <div class="list"> 
 	                        <!-- 플젝명 -->
 	                        <div class="listName">
-	                            <a id="projectNames" onclick="goBoard('${projectName.project_name}', '${projectName.project_no}')"><h3>${projectName.project_name}</h3></a>
+	                            <a id="projectNames" onclick="goBoard('${projectName.project_name}', '${projectName.project_no}')"><i class="fab fa-product-hunt"></i>&nbsp;${projectName.project_name}</a>
 	                        </div>
 	                        <!-- 플잭명 끝  -->
 	                    </div>
                		</c:forEach>
+               		</div>
                		<!-- 플젝 리스트 끝-->
                		
                		<!-- 프로젝트 list submit -->
@@ -169,7 +163,16 @@
                     <ul>
                         <a><li id="StickyNoteModalBtn"><i class="fas fa-sticky-note"></i></li></a>
                         <a><li><i class="fas fa-exclamation-circle"></i></li></a>
-                        <a><li id="MyPageModalBtn"><i class="fas fa-user-circle"></i></li></a>
+                        <a><li id="MyPageModalBtn">
+                        	<c:choose>
+                                    	<c:when test="${empty profileImgVO.save_name }">
+		                                    <img src="https://i.stack.imgur.com/34AD2.jpg">
+                                    	</c:when>
+                                    	<c:otherwise>
+                                    		<img src="${pageContext.request.contextPath}/img/${profileImgVO.save_name}">
+                                    	</c:otherwise>
+                                    </c:choose>
+                        </li></a>
                     </ul>
                 </div>
                
@@ -212,9 +215,9 @@
                         <div class="col-lg-3 col-sm-6">
                             <div class="card hovercard">
                                 <div class="cardheader">
-                                	<img src="<c:url value="/resources/img/main/tatab.png" />"
+                                	<%-- <img src="<c:url value="/resources/img/main/tatab.png" />"
  											style="background-size: cover; height: 135px; 
-  											background-repeat: no-repeat;"/>
+  											background-repeat: no-repeat;"/> --%>
                                 </div>
                                 <div class="avatar">
                                 	<c:choose>
