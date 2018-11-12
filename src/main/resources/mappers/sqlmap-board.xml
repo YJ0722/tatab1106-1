@@ -61,15 +61,56 @@
  		insert into prj_member_t values(#{project_no}, #{user})
  	</select>
  	
- 	<!-- col index 조회 -->
- 	<select id="selectColIndex" parameterType="String" resultType="Integer">
- 		select MAX(col_index) from prj_col_t where project_no = #{project_no}
+ 	<!-- board 작업 추가 전 task_index 확인 -->
+ 	<select id="checkTaskIndex" parameterType="BoardTaskVO" resultType="String">
+		select count(task_index) from prj_task_t where project_no = #{project_no} and col_no = #{col_no}
  	</select>
  	
- 	
- 	<!-- board에 col insert -->
- 	<insert id="insertCol" parameterType="String">
- 		insert into prj_col_t values(#{project_no}, SEQ_PRJ_COL_T_no.nextval, #{index}, #{colName})
+ 	<!-- board 에 작업 추가 -->
+ 	<insert id="insertBoardTask" parameterType="BoardTaskVO">
+ 		insert into prj_task_t values(#{project_no}, #{col_no}, seq_prj_task_t_no.nextVal, #{task_index}, #{task_name}, #{task_content}, #{status}, #{d_day}, #{reg_date})
+ 		<selectKey order="AFTER" keyProperty="task_no" resultType="int">select seq_prj_task_t_no.currval from dual</selectKey>
  	</insert>
+ 	
+ 	<!-- board 작업 조회 -->
+ 	<select id="selectBoardTaskAll" parameterType="int" resultType="BoardTaskVO">
+ 		select * from prj_task_t where project_no = #{project_no} order by col_no, task_index
+ 	</select>
+ 	
+ 	<!-- col index 조회 -->
+ 	<select id="selectColIndex" parameterType="int" resultType="Integer">
+ 		select MAX(col_index) from prj_col_t where project_no = #{project_no}
+ 	</select>
+
+ 	<!-- board에 col insert -->
+ 	<insert id="insertCol" parameterType="BoardColVO" useGeneratedKeys="true">
+ 		insert into prj_col_t values(#{project_no}, SEQ_PRJ_COL_T_no.nextval, #{col_index}, #{col_name})
+ 		<selectKey order="AFTER" keyProperty="col_no" resultType="int">select seq_prj_col_t_no.currval from dual</selectKey>
+ 	</insert>
+ 	
+ 	<select id="getInsertColNo" parameterType="Integer" resultType="int">
+ 		select col_no from prj_col_t where col_no = #{ col_no }
+ 	</select>
+ 	
+ 	<!-- board에 col index update -->
+ 	<update id="colIndexUpdate" parameterType="BoardColVO">
+		update prj_col_t
+		set col_index = #{col_index}
+		where project_no = #{project_no} and col_no = #{col_no}
+	</update>
+ 	
+ 	<!-- board에 task index update -->
+ 	<update id="taskIndexUpdate" parameterType="BoardTaskVO">
+		update prj_task_t
+		set task_index = #{task_index}, col_no = #{col_no} 
+		where project_no = #{project_no} and task_no = #{ task_no }
+ 	</update>
+ 	
+ 	<!-- board colName update -->
+ 	<update id="updateColName" parameterType="String">
+ 		update prj_col_t
+		set col_name = #{updateTitle}
+		where col_no = #{colId}
+ 	</update>
  	
  </mapper>  

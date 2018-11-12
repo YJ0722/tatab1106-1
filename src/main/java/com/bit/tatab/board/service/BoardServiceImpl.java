@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.bit.tatab.board.dao.BoardDAO;
 import com.bit.tatab.board.vo.BoardColVO;
+import com.bit.tatab.board.vo.BoardTaskVO;
 import com.bit.tatab.board.vo.MemberVO;
 import com.bit.tatab.main.vo.ProjectVO;
 
@@ -51,9 +52,47 @@ public class BoardServiceImpl implements BoardService{
 		return boardDao.selectAllProjectCol(project_no);
 	}
 	
-	// baord에 col insert
+	// 작업 추가 전 인덱스 확인
 	@Override
-	public void insertCol(String project_no, String colName) {
-		boardDao.insertCol(project_no, colName);
+	public int checkTaskIndex(BoardTaskVO boardTaskVO) {
+		return boardDao.checkTaskIndex(boardTaskVO);
 	}
+	
+	// 작업 추가
+	@Override
+	public void insertBoardTask(BoardTaskVO boardTaskVO) {
+		boardDao.insertBoardTask(boardTaskVO);
+	}
+
+	// 해당 프로젝트의 작업 조회
+	@Override
+	public List<BoardTaskVO> selectBoardTaskAll(int project_no) {
+		return boardDao.selectBoardTaskAll(project_no);
+	}
+	
+	// board에 col insert
+	@Override
+	public int insertCol(BoardColVO boardColVO) {
+		
+		return boardDao.insertCol(boardColVO);
+	}
+	
+	// board에 컬럼 index 수정
+	@Override
+	public void colIndexUpdate(List<BoardColVO> colUpdateList) {
+		boardDao.colIndexUpdate(colUpdateList);
+	}
+
+	// board에 작업 index 수정
+	@Override
+	public void taskIndexUpdate(List<BoardTaskVO> taskUpdaeteList) {
+		boardDao.taskIndexUpdate(taskUpdaeteList);
+	}
+
+	// 컬럼 이름 변경
+	@Override
+	public void updateColName(String colId, String updateTitle) {
+		boardDao.updateColName(colId, updateTitle);
+	}
+	
 }

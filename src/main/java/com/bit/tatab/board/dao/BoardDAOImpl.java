@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.bit.tatab.board.vo.BoardColVO;
+import com.bit.tatab.board.vo.BoardTaskVO;
 import com.bit.tatab.board.vo.MemberVO;
 import com.bit.tatab.main.vo.ProjectVO;
 
@@ -97,21 +98,100 @@ public class BoardDAOImpl implements BoardDAO{
 		System.out.println("size: " + String.valueOf(boardColList.size()));
 		return boardColList;
 	}
+
+	// 작업 추가 전 인덱스 확인
+	@Override
+	public int checkTaskIndex(BoardTaskVO boardTaskVO) {
+		
+		String index;
+		int indexNum = 0;
+		
+		try {
+				index = sqlSession.selectOne("checkTaskIndex", boardTaskVO);
+				if(index == null) {
+				} else {
+					indexNum = Integer.parseInt(index);
+				}
+		} catch(NullPointerException e) {
+
+			indexNum = 0;
+		}
+
+		return indexNum;
+		
+	}
+	
+	// 작업 추가
+	@Override
+	public void insertBoardTask(BoardTaskVO boardTaskVO) {
+		System.out.println("작업 추가!");
+		
+		System.out.println("boardTaskVO 정보 : " + boardTaskVO.toString());
+		
+		sqlSession.insert("insertBoardTask", boardTaskVO);
+	}
+
+	// 해당 프로젝트의 작업 조회
+	@Override
+	public List<BoardTaskVO> selectBoardTaskAll(int project_no) {
+		System.out.println("전체 작업 조회");
+		
+		return sqlSession.selectList("selectBoardTaskAll", project_no);
+	}
 	
 	// board에 col insert
 	@Override
-	public void insertCol(String project_no, String colName) {
+	public int insertCol(BoardColVO boardColVO) {
 		
-		int index = sqlSession.selectOne("selectColIndex", project_no);
+		int index = sqlSession.selectOne("selectColIndex", boardColVO.getProject_no());
 		System.out.println("마지막 col index : " + index);
 		
 		index += 1;
 		
-		Map<String, Object> param = new HashMap<String, Object>();
-		param.put("project_no", project_no);
-		param.put("index", String.valueOf(index));
-		param.put("colName", colName); 
+		boardColVO.setCol_index(index);
 		
-		sqlSession.insert("insertCol", param);
+		System.out.println("### string : " + boardColVO.toString());
+		
+		sqlSession.insert("insertCol", boardColVO);
+		
+		int colNo = boardColVO.getCol_no(); 
+				
+		System.out.println("colNo : " + String.valueOf(colNo));
+		return colNo;
 	}
+
+	// board에 컬럼 index 수정
+	public void colIndexUpdate(List<BoardColVO> colUpdateList) {
+		
+		System.out.println("colIndexUpdate dao 시작");
+		
+		for(int i=0; i<colUpdateList.size(); i++) {
+			sqlSession.update("colIndexUpdate", colUpdateList.get(i));
+		}
+	}
+	
+
+	// board에 작업 index 수정
+	public void taskIndexUpdate(List<BoardTaskVO> taskUpdateList) {
+
+		System.out.println("taskIndexUpdate dao 시작");
+		
+		for(int i=0; i<taskUpdateList.size(); i++) {
+			sqlSession.update("taskIndexUpdate", taskUpdateList.get(i));
+		}
+	}
+
+	// 컬럼 이름 변경
+	@Override
+	public void updateColName(String colId, String updateTitle) {
+		
+		Map<String, Object> param = new HashMap<String, Object>();
+		
+		param.put("colId", colId);
+		param.put("updateTitle", updateTitle);
+		
+		sqlSession.update("updateColName", param);
+	}
+	
+	
 }

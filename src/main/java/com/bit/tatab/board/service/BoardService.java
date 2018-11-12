@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.bit.tatab.board.vo.MemberVO;
 import com.bit.tatab.board.vo.BoardColVO;
+import com.bit.tatab.board.vo.BoardTaskVO;
 import com.bit.tatab.main.vo.ProjectVO;
 
 public interface BoardService {
@@ -24,7 +25,25 @@ public interface BoardService {
 	
 	// 프로젝트 해당하는 컬럼 정보 조회 
 	public List<BoardColVO> selectAllProjectCol(int project_no);
+
+	// 작업 추가 전 인덱스 확인
+	public int checkTaskIndex(BoardTaskVO boardTaskVO);
+	
+	// 작업 추가
+	public void insertBoardTask(BoardTaskVO boardTaskVO);
+
+	// 해당 프로젝트의 작업 조회
+	public List<BoardTaskVO> selectBoardTaskAll(int project_no);
 	
 	// board에 컬럼 추가
-	public void insertCol(String project_no, String colName);
+	public int insertCol(BoardColVO boardColVO);
+	
+	// board에 컬럼 index 수정
+	public void colIndexUpdate(List<BoardColVO> colUpdateList);
+	
+	// board에 작업 index 수정
+	public void taskIndexUpdate(List<BoardTaskVO> taskUpdaeteList);
+	
+	// 컬럼 이름 변경
+	public void updateColName(String colId, String updateTitle);
 }

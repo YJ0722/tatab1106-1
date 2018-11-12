@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,22 +8,36 @@
 </head>
     
 <body>
-
-        <!-- task start -->
-        <div class="task round-border ui-state-default">
-            <div class="task-inner">
-                <!-- task name start -->
-                <div class="task-label">
-                    <p>20180920 Prototype</p>
-                </div>
-                <!-- task name end -->
-                <!-- task content start -->
-                <div class="task-content">
-                    <p>구현할 기능 전체 정리<br>** 메인<br>* 배경(커스터마이징 가능), 로고, 프로젝트 관리 목록(고정 메뉴), 마이펭이지 버튼, 알림 버튼(임박 프로젝트, 메시지), 사용자 설정 문구...</p>
-                </div>
-                <!-- task content end -->
-            </div>
-        </div>
-        <!-- task end -->
+     
+	                            <c:choose>
+							    	<c:when test="${empty taskData}">
+							    	<script>alert('null');</script>
+							    	</c:when>
+							    	<c:otherwise>
+							    		<c:forEach items="${taskData}" var="taskList">
+		                            		<c:choose>
+								    			<c:when test="${ taskList.col_index eq colindex }">
+											        <!-- task start -->
+											        <div class="task round-border ui-state-default">
+											            <div class="task-inner">
+											                <!-- task name start -->
+											                <div class="task-label">
+											                    <p>${ taskList.task_name }</p>
+											                </div>
+											                <!-- task name end -->
+											                <!-- task content start -->
+											                <div class="task-content">
+											                    <p>${ taskList.task_content }</p>
+											                </div>
+											                <!-- task content end -->
+											            </div>
+											        </div>
+											        <!-- task end -->
+										        </c:when>
+										        </c:choose>
+							            </c:forEach>
+							    	</c:otherwise>
+							    </c:choose>
+	                            
 </body>
 </html>
