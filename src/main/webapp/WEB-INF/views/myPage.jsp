@@ -7,7 +7,7 @@
         <meta charset="UTF-8">
         <title><c:out value="${ myPageVO.login_name }" />님의 페이지</title>
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/myPage/MyPage.css" />">
+        <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/myPage/MyPage.css?ver=2" />">
 		<!-- 프로필 사진 관련 -->
 		<style type="text/css">
 		#profile img {
