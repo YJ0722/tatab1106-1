@@ -110,9 +110,7 @@ $(document).ready(function () {
     
     $('.add-task-box').disableSelection();
     $('.col-add-box').disableSelection();
-
-    ////////////////////////////////////////////////////////////////////////////////////
-    /*
+    
     // 제목 변경할 col의 mouseover, mouseout 설정(mouseover: true, mouseout: false)
     var updateColTitleMouseAction = true;
     // 
@@ -121,8 +119,10 @@ $(document).ready(function () {
     var inputTag;
     // update 전 col의 기존 제목
     var originalName;
+    
+    
     // col의 제목 클릭 이벤트(col 제목 업데이트 이벤트)
-    $(document).off().on("click", '.col-title-show-1', function(e) {
+    $(document).on("click", '.col-title-show-1', function(e) {
 
     	// col 제목의 p 태그 숨기기
         $(this).hide();
@@ -136,7 +136,7 @@ $(document).ready(function () {
         // $(this) : p태그 
         // prev() : 이전 요소
         inputTag = $(this).prev();
-        
+
         // mouseover, mouseout 설정
         inputTag.off().on({
         	// input 태그의 over
@@ -153,7 +153,6 @@ $(document).ready(function () {
             },
         });
 
-        
         // 외부 영역 클릭 시 입력 내용 고정
         $(document).on("click", this, function(e) {
         	
@@ -191,10 +190,9 @@ $(document).ready(function () {
               updateColName(colId, updateTitle);
         	}
         });
+        
     });
-    */
-    
-    ////////////////////////////////////////////////////////////////////////
+        
     
     // 작업 추가 
     var tagIndex;
