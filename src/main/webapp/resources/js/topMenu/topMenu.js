@@ -10,7 +10,7 @@ $(document).ready(function() {
 	var manageBtn = document.getElementById('infoBtn');
 
 	// Get the <span> element that closes the modal
-	var manageSpan = document.getElementsByClassName("close")[0];
+	var manageSpan = document.getElementsByClassName("close1")[0];
 
 	// project modal 토글 // ajax
 	projectsBtn.onclick = function(e) {

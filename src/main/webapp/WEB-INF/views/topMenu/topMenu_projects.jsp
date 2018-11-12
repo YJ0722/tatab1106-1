@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">   
    
     <!-- topMenu_projects.css -->
-    <link rel="stylesheet" type="text/css" href="resources/css/topMenu/topMenu_projects.css?ver=1">
+    <link rel="stylesheet" type="text/css" href="resources/css/topMenu/topMenu_projects.css?ver=2">
 	
 	<!-- topMenu_projects.js -->
 	<script src="resources/js/topMenu/topMenu_projects.js?ver=1"></script>
@@ -65,7 +65,7 @@
      
     <body>
         <div>
-            <h2>Projects</h2>
+            <h2 id="projectsTitle">Projects</h2>
             
             <form>
                 <input id="searchProject" type="text" placeholder="Search Project">

@@ -20,12 +20,13 @@
 	
      <link rel="stylesheet" type="text/css" href="resources/css/board/boardcss.css">
     <!-- topMenu.css -->
-    <link rel="stylesheet" type="text/css" href="resources/css/topMenu/topMenu.css?ver=2">
+    <link rel="stylesheet" type="text/css" href="resources/css/topMenu/topMenu.css?ver=3">
     <!-- taskStyle.css -->
-    <link rel="stylesheet" type="text/css" href="resources/css/board/taskStyle.css?ver=1">
+    <link rel="stylesheet" type="text/css" href="resources/css/board/taskStyle.css?ver=2">
+    
     
     <!-- topMenu.js -->
-    <script src="resources/js/topMenu/topMenu.js?ver=1"></script>
+    <script src="resources/js/topMenu/topMenu.js?ver=2"></script>
 
     
     </head>
