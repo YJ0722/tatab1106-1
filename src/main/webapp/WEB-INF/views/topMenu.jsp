@@ -200,25 +200,17 @@
           </div>
         </div>
     </body>
-    
-<<<<<<< HEAD
+
     <!-- task 관련 스크립트  - 부트스트랩 -->
 		    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 		    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     
-    
-=======
-
->>>>>>> branch 'master' of https://github.com/soo0244/tatab1106.git
     <!-- script 참조 -->
     <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js'></script>
     <script src="resources/js/jquery-ui.js"></script>
     <script src="resources/js/jquery-ui.min.js"></script>
-<<<<<<< HEAD
-    <script src="resources/js/board/boardjs.js?ver=1"></script>
-    <script src="resources/js/board/taskScript.js?ver=1"></script>
-=======
+
     <script src="resources/js/board/boardjs.js?ver=3"></script>
-    
->>>>>>> branch 'master' of https://github.com/soo0244/tatab1106.git
+    <script src="resources/js/board/taskScript.js?ver=1"></script>
+
 </html>
