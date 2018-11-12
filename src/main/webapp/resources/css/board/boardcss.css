@@ -10,7 +10,7 @@ body {
 }
 
 .board-background {
-    height: 100vh;
+    height: -webkit-fill-available;
     padding: 10px;
     overflow-y: hidden;
 }
@@ -29,12 +29,11 @@ body {
     height: 100vh;
 }
 */
-.kanban-container {
-    white-space: nowrap;
-    overflow-x: auto;
+.kanban-container2 {
+    width: 100%;
+    height: -webkit-fill-available;
+    overflow-x: scroll;
     overflow-y: hidden;
-    height: 100%;
-/*    추후 여백 조절*/  
 }
 .kanban-board {
 	padding: 20px 0;
@@ -119,7 +118,7 @@ body {
 }
 .kanban-body {
     width: 280px;
-    min-height: 50px;
+    min-height: 1.5px;
     max-height: 85vh;
     overflow-x: hidden;
     overflow-y: auto;

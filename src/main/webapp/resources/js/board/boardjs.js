@@ -6,12 +6,12 @@ $(document).ready(function () {
       
    });
    
-// 토글 실행
+   // 토글 실행
    var state = 0;
    $(document).on("click", '.toggle', function (e) {
 	   console.log('dfdfdfdf');
        var toggleIndex = parseInt($('.toggle').index(this)/2);
-//       console.log('토글 인덱스 : ' + toggleIndex + "\n상태 인덱스 : " + state);
+       // console.log('토글 인덱스 : ' + toggleIndex + "\n상태 인덱스 : " + state);
        
        if($('.body-up-img').eq(toggleIndex).css('display') == 'none') {
            state = 1;
@@ -119,15 +119,16 @@ $(document).ready(function () {
     var inputTag;
     // update 전 col의 기존 제목
     var originalName;
-    
-    
     // col의 제목 클릭 이벤트(col 제목 업데이트 이벤트)
     $(document).on("click", '.col-title-show-1', function(e) {
-
+    	
     	// col 제목의 p 태그 숨기기
+    	$('.col-title-show-1').show();
         $(this).hide();
         
         // col 제목의 input 태그 보여주기
+        $('.col-title-input').hide();
+        console.log('show!');
         $(this).prev().show();
         
         // col의 기존 이름 일시 저장
@@ -150,11 +151,11 @@ $(document).ready(function () {
             	updateColTitleMouseAction = false;
                 console.log("last out");
                 return false;
-            },
+            }
         });
 
         // 외부 영역 클릭 시 입력 내용 고정
-        $(document).on("click", this, function(e) {
+        $(document).on("click", function(e) {
         	
         	// 클릭이벤트 + input 태그 out 된 경우에만 실행
         	if(updateColTitleMouseAction == false) {
@@ -176,6 +177,11 @@ $(document).ready(function () {
         		// 새로 입력된 제목 있으면 p 태그에 다시 업데이트하여 보여주기
         		else{
             		p.text(updateTitle);
+            		var colId = p.parents('.kanban-col-box').attr('id');
+            		console.log('%%%%%' + colId);
+            		
+            		
+            		updateColName(colId, updateTitle);
         		}
         		// p 태그 보여주기
         		p.show();
@@ -183,11 +189,6 @@ $(document).ready(function () {
         		// col mouse 액션 over로 다시 설정 --> 외부 요소 클릭 이벤트 재실행 방지
             	updateColTitleMouseAction = true;
         		
-        		var colId = p.parents('.kanban-col-box').attr('id');
-        		console.log('%%%%%' + colId);
-        		
-        		
-              updateColName(colId, updateTitle);
         	}
         });
         

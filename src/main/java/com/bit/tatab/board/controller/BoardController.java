@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.bit.tatab.board.service.BoardService;
 import com.bit.tatab.board.vo.BoardColVO;
 import com.bit.tatab.board.vo.BoardTaskVO;
+import com.bit.tatab.board.vo.DateVO;
 import com.bit.tatab.main.vo.MainBackgroundVO;
 
 @Controller
@@ -90,6 +91,12 @@ public class BoardController {
 		
 		int index = boardService.checkTaskIndex(boardTaskVO);
 		System.out.println("------------------" + String.valueOf(index));
+		
+		DateVO date = new DateVO();
+		String nowDate = date.nowDate();
+		System.out.println("현재 날짜 : " + nowDate);
+		
+		boardTaskVO.setReg_date(nowDate);
 		
 		if(index == 0) {
 			boardTaskVO.setTask_index(0);

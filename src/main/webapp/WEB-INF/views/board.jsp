@@ -13,7 +13,7 @@
     <script src="resources/js/jquery-ui.min.js?ver=2"></script>
     
     <!-- css 참조 -->
-    <link rel="stylesheet" type="text/css" href="resources/css/board/boardcss.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/board/boardcss.css?ver=1">
     <link rel="stylesheet" type="text/css" href="resources/css/jquery-ui.min.css">
     
     <!-- Bootstrap -->
@@ -50,7 +50,7 @@
     
     </head>
     
-    <body>
+    <body style="overflow-y: hidden;">
     <!-- board-background start -->
     	<%-- <div>${pageContext.request.contextPath}/img/${sessionScope.mainBackgroundVO.save_name}</div> --%>
      <c:choose>
