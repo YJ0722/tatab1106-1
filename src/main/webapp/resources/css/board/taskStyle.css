@@ -1,6 +1,50 @@
+.modal-header {
+	height : 50px;
+}
+.center-line {
+    width: 1px;
+    height: 91%;
+    margin-top: 15px;
+    margin-left: 3%;
+    margin-right: 3%;
+    float: left;
+	background-color: gray;
+}
+.modal-dialog {
+	max-width: 65%;
+}
+.modal-content {
+	display : inline;
+}
+/* 오른쪽 부분 css start */
+.left-box {
+	width: 65%;
+	float: left;
+	
+}
+.right-box {
+    width: 28%;
+	float: left;
+    padding: 10px;
+}
+.task-assigned-member-box-name {
+	margin-top: 30px;
+}
+.task-assigned-member {
+	width : 33%;
+}
+.right-box-item {
+	margin : 15px 0;
+}
+.right-box-item-title {
+	text-weight: bold;
+}
+/* 오른쪽 부분 css end */
+
 .modal-content {
 	height : 800px;
 	top : 50px;
+	float : left;
 }
 
 .modal-body {
@@ -126,14 +170,14 @@ input {
     padding-left: 0.8rem;
     resize: none;
     border-width: 2px;
-    width: 460px;
+    width: 90%;
     border-color: dimgrey;
 }
 .shadow-textarea2 textarea.form-control {
     padding-left: 0.8rem;
     resize: none;
     border-width: 2px;
-    width: 460px;
+    width: 90%;
     height: 200px;
     border-color: dimgrey;
 }

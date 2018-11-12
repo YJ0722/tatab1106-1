@@ -3,13 +3,15 @@ $(document).ready(function () {
 	
    // task 클릭 이벤트
    $(document).on("click", '.task', function(e) {
-      
+	   
+      var i = $(this).attr("id");
+      alert('i : ' + i);
    });
    
    // 토글 실행
    var state = 0;
    $(document).on("click", '.toggle', function (e) {
-	   console.log('dfdfdfdf');
+	   
        var toggleIndex = parseInt($('.toggle').index(this)/2);
        // console.log('토글 인덱스 : ' + toggleIndex + "\n상태 인덱스 : " + state);
        
