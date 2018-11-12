@@ -71,7 +71,7 @@
 </div>
 <div>
     <ul id="myUL">
-      <li>Created by</li>
+      <!-- <li>Created by</li> -->
     </ul>
 </div></div>
     
