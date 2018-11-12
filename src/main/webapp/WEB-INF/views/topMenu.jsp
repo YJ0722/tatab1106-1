@@ -131,13 +131,14 @@
 				<!--  -->
 				<div class="left-box">
 					<div class="modal-body">
-						<div id="container">
+						<div id="container"> 
 							<div id="boxs">
 								<span>D-?</span> <img
 									src="resources/img/board/bookmarkButton.png" width="30"
 									height="30" /> <img src="resources/img/board/mButton.jpg"
 									width="30" height="30" />
 							</div>
+							
 
 							<div id="box1">
 								<div class="form-group shadow-textarea">
