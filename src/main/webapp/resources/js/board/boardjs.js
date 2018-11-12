@@ -6,34 +6,35 @@ $(document).ready(function () {
       alert('123');
    });
    
-    // 토글 실행
-    var state = 0;
-    $(document).on("click", '.toggle', function (e) {
-        var toggleIndex = parseInt($('.toggle').index(this)/2);
-//        console.log('토글 인덱스 : ' + toggleIndex + "\n상태 인덱스 : " + state);
-        
-        if($('.body-up-img').eq(toggleIndex).css('display') == 'none') {
-            state = 1;
-        } else {
-            state = 0;
-        }
-        // 토글down img 보이기
-        if (state == 0) {
-            $('.body-up-img').eq(toggleIndex).css('display', 'none');
-            $('.body-down-img').eq(toggleIndex).css('display', 'block');
-            state = 1;
-        }
-        // 토글up img 보이기
-        else {
-            $('.body-up-img').eq(toggleIndex).css('display', 'block');
-            $('.body-down-img').eq(toggleIndex).css('display', 'none');
-            state = 0;
-        }
-        var $panelBody = $('.kanban-head').parent().children('.kanban-body').eq(toggleIndex);
-        $panelBody.slideToggle();
+// 토글 실행
+   var state = 0;
+   $(document).on("click", '.toggle', function (e) {
+	   console.log('dfdfdfdf');
+       var toggleIndex = parseInt($('.toggle').index(this)/2);
+//       console.log('토글 인덱스 : ' + toggleIndex + "\n상태 인덱스 : " + state);
+       
+       if($('.body-up-img').eq(toggleIndex).css('display') == 'none') {
+           state = 1;
+       } else {
+           state = 0;
+       }
+       // 토글down img 보이기
+       if (state == 0) {
+           $('.body-up-img').eq(toggleIndex).css('display', 'none');
+           $('.body-down-img').eq(toggleIndex).css('display', 'block');
+           state = 1;
+       }
+       // 토글up img 보이기
+       else {
+           $('.body-up-img').eq(toggleIndex).css('display', 'block');
+           $('.body-down-img').eq(toggleIndex).css('display', 'none');
+           state = 0;
+       }
+       var $panelBody = $('.kanban-head').parent().children('.kanban-body').eq(toggleIndex);
+       $panelBody.slideToggle();
 
-        toggleIndex = 0;
-    });
+       toggleIndex = 0;
+   });
     
     // 컬럼 정렬 drag and drop
     // connectWith : 해당 클래스 내의 요소들을 정렬 아이템으로 지정
@@ -109,8 +110,8 @@ $(document).ready(function () {
     
     $('.add-task-box').disableSelection();
     $('.col-add-box').disableSelection();
-    
-    
+
+    /*
     // 제목 변경할 col의 mouseover, mouseout 설정(mouseover: true, mouseout: false)
     var updateColTitleMouseAction = true;
     // 
@@ -190,6 +191,7 @@ $(document).ready(function () {
         });
     });
     
+    */
     
     // 작업 추가 
     var tagIndex;
