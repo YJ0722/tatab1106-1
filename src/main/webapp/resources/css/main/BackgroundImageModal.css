@@ -17,8 +17,6 @@ body {
   font-family: "Roboto", Helvetica, Arial, sans-serif;
   font-weight: 100;
   font-size: 12px;
-  line-height: 30px;
-  color: #777;
 }
 
 .container {
@@ -26,6 +24,8 @@ body {
   width: 100%;
   margin: 0 auto;
   position: relative;
+  line-height: 30px;  /* line-height, color는 원래 body에 있었음 - 중복 방지 */
+  color: #777;
 }
 
 #contact input[type="text"],

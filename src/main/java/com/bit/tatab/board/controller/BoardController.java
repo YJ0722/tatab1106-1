@@ -78,7 +78,7 @@ public class BoardController {
 	// Board 에 작업 추가
 	@ResponseBody
 	@RequestMapping(value = "/insertBoardTask.do", method = RequestMethod.POST)
-	public String insertBoardTask(HttpServletRequest request, String task_name, @RequestParam("col_no")int no) throws Exception {
+	public String insertBoardTask(HttpServletRequest request, @RequestParam("task_name")String task_name, @RequestParam("col_no")int no) throws Exception {
 
 		HttpSession session = request.getSession();
 		int project_no = Integer.parseInt((String) session.getAttribute("project_no"));
