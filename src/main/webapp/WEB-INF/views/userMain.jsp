@@ -90,12 +90,24 @@
         <div class="background">
         	<c:choose>
         		<c:when test="${empty mainBackgroundVO.save_name}">
-        			<img src="https://t1.daumcdn.net/cfile/tistory/195822124CECE3C32C">
+        			<img src="http://cfile226.uf.daum.net/image/226ED33553157E4F2F828A">
         		</c:when>
         		<c:otherwise>
         			<img src="${pageContext.request.contextPath}/img/${mainBackgroundVO.save_name}">
         		</c:otherwise>
         	</c:choose>
+        </div>
+        <div class="mask">
+        	<div class="bluredBackground">
+        		<c:choose>
+        		<c:when test="${empty mainBackgroundVO.save_name}">
+        			<img src="http://cfile226.uf.daum.net/image/226ED33553157E4F2F828A">
+        		</c:when>
+        		<c:otherwise>
+        			<img src="${pageContext.request.contextPath}/img/${mainBackgroundVO.save_name}">
+        		</c:otherwise>
+        	</c:choose>
+        	</div>
         </div>
         <!-- 배경이미지 끝 -->
         <!-- 배경이미지 제외 맨 위 div -->
@@ -109,14 +121,9 @@
                 <div class="sideContent">
                     <!-- 로고 & 제목 -->
                     <div class="logoAndPhrase">
-                        <!-- 로고 -->
-                        <div class="titleLogo">
-                            <a href="<c:url value="/userMain.do" />"><i class="fas fa-check-double"></i></a>
-                        </div>
-                        <!-- 로고 끝 -->
                         <!-- 제목 -->
                         <div class="titlePhrase">
-                            <a href="<c:url value="/userMain.do" />"><h2>&nbsp;TATAB&nbsp;!</h2></a>
+                            <a href="<c:url value="/userMain.do" />"><h2><i class="fas fa-check-double"></i>&nbsp;TATAB&nbsp;!</h2></a>
                         </div>
                         <!-- 제목 끝 -->
                         <!-- 플젝 표시 -->

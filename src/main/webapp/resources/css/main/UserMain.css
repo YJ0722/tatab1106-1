@@ -1,6 +1,6 @@
 * {
     padding: 0px;
-    margin: 0px;
+    margin: 0px; 
 }
 
 .mainWrapper {
@@ -23,13 +23,32 @@ a:hover
    
 }
 
-.background {
-    position: absolute;
+.background img {
+    background-size: 100% 100%;
+    width: 100vmax;
+    height: 100vmin;    /*최대화된 수치 */
+    z-index: -10;
+    position: fixed;
+    
 }
 
-.background img {
+.bluredBackground img {
+    background-size: 100% 100%;
     width: 100vmax;
-    height: 99.5vmin;   /* 최대화된 수치 */
+    height: 99.5vmin;
+    filter: blur(50px);
+    display: block;
+    z-index: -20;
+    position: absolute;
+    -webkit-filter: blur(50px);
+}
+
+.mask {
+    width: 300px;
+    height: 100vmin;
+    position: fixed;
+    z-index:-1;
+    overflow:hidden;
 }
 
 .subWrapper {
@@ -37,43 +56,48 @@ a:hover
 }
 
 .sidebar {
-    width: 20vmax;
+    width: 300px;
     float: left;
     height: 100vmin;
 }
 
-.sideBack {
-    width: 20vmax;
-    float: left;
-    height: 100vmin;
-    background-color: aqua;
-    opacity: 0.5;
-    filter: blur(5px); 
+/*
+.sideContent:before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: inherit; 
+    z-index:-1;
+    filter: blur(6px); 
+    -webkit-filter: blur(6px); 
+    -moz-filter: blur(6px);
+    -o-filter: blur(6px);
 }
+*/
+
 
 .sideContent {
-    width: 20vmax;
+    width: 300px;
     float: left;
     height: 100vmin;
     position: absolute;
 }
 
 .logoAndPhrase {
-    height: 12vmin;
+    height: 90px;
     padding: 5px;
     margin: 5px;
 }
 
 .titleLogo {
     padding: 5px;
-    margin-left: 2vmin;
+    margin-left: 10px;
     float: left;
-    font-size: 6vmin;
+    font-size: 35px;
 }
 
 .titlePhrase {
-    padding: 5px;
-    font-size: 3.4vmin;
+    font-size: 25px;
     font-family: 'Cedarville Cursive', cursive;
 }
 
@@ -196,7 +220,7 @@ a:hover
 }
 
 /* MyPageModal - background */
-.MyPageModal {
+.MyPageModal { 
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
