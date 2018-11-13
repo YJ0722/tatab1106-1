@@ -28,12 +28,12 @@
 
 <link rel="stylesheet" type="text/css"
 	href="resources/css/board/boardcss.css">
-<!-- topMenu.css -->
+topMenu.css
 <link rel="stylesheet" type="text/css"
 	href="resources/css/topMenu/topMenu.css?ver=3">
 <!-- taskStyle.css -->
 <link rel="stylesheet" type="text/css"
-	href="resources/css/board/taskStyle.css?ver=2">
+	href="resources/css/board/taskStyle.css?ver=3">
 
 
 <!-- topMenu.js -->
@@ -132,14 +132,6 @@
 				<div class="left-box">
 					<div class="modal-body">
 						<div id="container"> 
-							<div id="boxs">
-								<span>D-?</span> <img
-									src="resources/img/board/bookmarkButton.png" width="30"
-									height="30" /> <img src="resources/img/board/mButton.jpg"
-									width="30" height="30" />
-							</div>
-							
-
 							<div id="box1">
 								<div class="form-group shadow-textarea">
 									<label for="exampleFormControlTextarea6"></label>
