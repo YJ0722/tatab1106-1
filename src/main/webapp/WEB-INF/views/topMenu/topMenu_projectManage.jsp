@@ -53,6 +53,7 @@
 	    				
 	    				$(tag).hide().appendTo('.memberDiv').show();
 					}
+					
 				}
 			})
 			return false;

@@ -23,7 +23,10 @@
     <link href="<c:url value="/resources/css/main/MainCommentModal.css?ver=1" />" rel="stylesheet">
     <!-- BackgroundImage 관련 -->
     <link href="<c:url value="/resources/css/main/BackgroundImageModal.css?var=1" />" rel="stylesheet">
-    <!-- BackgroundImage 관련 끝 -->
+    <!-- topMenu 관련 -->
+    <link rel="stylesheet" href="<c:url value="/resources/css/topMenu/topMenu.css?ver=2" />">
+    <link rel="stylesheet" href="<c:url value="/resources/css/topMenu/topMenu_activity.css?ver=1" />">
+    <!-- 관련  끝 -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive|Gothic+A1" rel="stylesheet">
 
@@ -162,9 +165,9 @@
                 <!-- 위쪽 아이콘들 -->
                 <div id="topMenu">
                     <ul>
-                        <a><li id="StickyNoteModalBtn"><i class="fas fa-sticky-note"></i></li></a>
-                        <a><li><i class="fas fa-exclamation-circle"></i></li></a>
-                        <a><li id="MyPageModalBtn">
+                        <li id="StickyNoteModalBtn"><a><i class="fas fa-sticky-note"></i></a></li>
+                        <li id="activityBtn"><a><i class="fas fa-exclamation-circle"></i></a></li>
+                        <li id="MyPageModalBtn"><a>
                         	<c:choose>
                                     	<c:when test="${empty profileImgVO.save_name }">
 		                                    <img src="https://i.stack.imgur.com/34AD2.jpg">
@@ -173,9 +176,15 @@
                                     		<img src="${pageContext.request.contextPath}/img/${profileImgVO.save_name}">
                                     	</c:otherwise>
                                     </c:choose>
-                        </li></a>
+                        </a></li>
                     </ul>
                 </div>
+                		<div onclick="history.back();" class="page_cover"></div>
+						<div id="menu">
+							<div onclick="history.back();" class="activityClose"></div>
+							<!-- activity.jsp-->
+							<jsp:include page="/WEB-INF/views/topMenu/topMenu_activity.jsp" />
+						</div>
                
                 <!-- 위쪽 아이콘들 끝 -->
                 <!-- 아래 코멘트 배경 -->
@@ -365,7 +374,49 @@
     <!-- 제일 상위 등급 div 끝 -->
 </body>
 
-
+<script>
+	// activity
+	$(document).ready(function() {
+		$("#activityBtn").click(function() {
+			// 내용 ajax
+			
+			
+			// 그 후 실행
+			$("#menu, .page_cover, html").addClass("open");
+			window.location.hash = "#open";
+		});
+		
+		window.onhashchange = function() {
+			if (location.hash != "#open") {
+				$("#menu, .page_cover, html").removeClass("open");
+			}
+		};
+	});
+</script>
+<script>
+	/* function getMemberList() {
+			$.ajax({
+				url : "memberList.do",
+				type : "post",
+				
+				success : function(data) {
+					$('.memberDiv').empty();
+					for(i=0; i<data.length; i++) {
+	    				var tag1 = '<div class="memberList"><div class="memberName">';
+	    				var tag2 = '</div><div class="memberId">';
+	    				var tag3 = '</div></div>'  
+	    					
+	    				var tag = tag1 + data[i].login_name + tag2 + data[i].login_email + tag3;
+	    				
+	    				$(tag).hide().appendTo('.memberDiv').show();
+					}
+					// 여기에 "그 후 실행" 코드들이 들어가야 한다!	
+				}
+				
+			})
+			return false;
+		} */
+</script>
 <script>
 	// 구글 로그아웃
 	function signOut() {
