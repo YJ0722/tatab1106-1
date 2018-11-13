@@ -5,12 +5,10 @@
 <html>
 <head>
     <title>Project? You better TATAB.</title>
+    <link rel="icon" type="image/x-icon" href="<c:url value='/resources/img/main/favicon.ico' />"/>
     <meta name="msapplication-TileColor" content="#da532c">
-    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
-<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
 	<meta name="theme-color" content="#ffffff">
     <link href="<c:url value="/resources/css/main/UserMain.css?ver=5" />" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="<c:url value='/resources/img/main/favicon.ico' />"/>
     <!-- MyPage 관련 -->	
     <link href="<c:url value="/resources/css/main/MyPageModal.css?ver=2" />" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">

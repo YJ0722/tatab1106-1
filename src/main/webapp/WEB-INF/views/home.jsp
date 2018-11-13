@@ -5,6 +5,10 @@
 <html>
     <head>
         <title>index</title>
+        <!-- favicon 삽입 -->
+	    <link rel="icon" type="image/x-icon" href="<c:url value='/resources/img/main/favicon.ico' />"/>
+	    <meta name="msapplication-TileColor" content="#da532c">
+		<meta name="theme-color" content="#ffffff">
     </head>	
     <!-- import font style -->
     <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">

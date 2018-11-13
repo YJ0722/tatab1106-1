@@ -5,7 +5,10 @@
 <html>
     <head>
     <title>tatab</title>
-    
+    <!-- favicon 삽입 -->
+    <link rel="icon" type="image/x-icon" href="<c:url value='/resources/img/main/favicon.ico' />"/>
+    <meta name="msapplication-TileColor" content="#da532c">
+	<meta name="theme-color" content="#ffffff">
     
         <!-- script 참조 -->
     <script src="resources/js/jquery-3.3.1.min.js"></script>
