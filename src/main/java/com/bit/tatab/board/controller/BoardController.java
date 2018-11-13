@@ -86,7 +86,7 @@ public class BoardController {
 		
 		System.out.println("파라미터 확인  \n" + "col_no : " + no + "\ntask_name : " + String.valueOf(task_name));
 
-		BoardTaskVO boardTaskVO = new BoardTaskVO(project_no, no, task_name, "", "O", "-", "-");
+		BoardTaskVO boardTaskVO = new BoardTaskVO(project_no, no, task_name, "", "O", "-", "-", "-");
 		System.out.println("^^^" + boardTaskVO.toString());
 		
 		int index = boardService.checkTaskIndex(boardTaskVO);

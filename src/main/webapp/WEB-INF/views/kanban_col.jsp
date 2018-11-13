@@ -49,7 +49,7 @@
 											                <!-- task name end -->
 											                <!-- task content start -->
 											                <div class="task-content">
-											                    <p>${ taskList.task_content }</p>
+											                    <p class='task-content-p'>${ taskList.task_content }</p>
 											                </div>
 											                <!-- task content end -->
 											            </div>

@@ -123,6 +123,17 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
 }
+.task-content-p {
+	display: -webkit-box;
+    margin-top: 1px;
+    max-height: 200px;
+    overflow: hidden;
+    vertical-align: top;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+}
 /* ***** 필요한가?? ***** */
 .grab {
     cursor: -moz-grab;

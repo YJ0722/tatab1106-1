@@ -11,6 +11,7 @@ public class BoardTaskVO {
 	private String status;
 	private String d_day;
 	private String reg_date;
+	private String update_date;
 	
 	public BoardTaskVO() {
 		super();
@@ -24,9 +25,9 @@ public class BoardTaskVO {
 		this.task_no = task_no;
 		this.task_index = task_index;
 	}
-	
+
 	public BoardTaskVO(int project_no, int col_no, String task_name, String task_content, String status,
-			String d_day, String reg_date) {
+			String d_day, String reg_date, String update_date) {
 		super();
 		this.project_no = project_no;
 		this.col_no = col_no;
@@ -35,10 +36,11 @@ public class BoardTaskVO {
 		this.status = status;
 		this.d_day = d_day;
 		this.reg_date = reg_date;
+		this.update_date = update_date;
 	}
 	
 	public BoardTaskVO(int project_no, int col_index, int col_no, int task_no, int task_index, String task_name, String task_content, String status,
-			String d_day, String reg_date) {
+			String d_day, String reg_date, String update_date) {
 		super();
 		this.project_no = project_no;
 		this.col_no = col_no;
@@ -49,6 +51,7 @@ public class BoardTaskVO {
 		this.status = status;
 		this.d_day = d_day;
 		this.reg_date = reg_date;
+		this.update_date = update_date;
 	}
 
 	public int getProject_no() {
@@ -122,12 +125,21 @@ public class BoardTaskVO {
 	public void setReg_date(String reg_date) {
 		this.reg_date = reg_date;
 	}
+	
+
+	public String getUpdate_date() {
+		return update_date;
+	}
+
+	public void setUpdate_date(String update_date) {
+		this.update_date = update_date;
+	}
 
 	@Override
 	public String toString() {
 		return "BoardTaskVO [project_no=" + project_no + ", col_no=" + col_no + ", task_no=" + task_no + ", task_index="
 				+ task_index + ", task_name=" + task_name + ", task_content=" + task_content + ", status=" + status
-				+ ", d_day=" + d_day + ", reg_date=" + reg_date + "]";
+				+ ", d_day=" + d_day + ", reg_date=" + reg_date + ", update_date=" + update_date + "]";
 	}
 
 	
