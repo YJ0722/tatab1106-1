@@ -5,8 +5,12 @@
 <html>
 <head>
     <title>Project? You better TATAB.</title>
-    <link rel="shortcut icon" href="/resources/img/main/favicon.ico"  >
-    <link href="<c:url value="/resources/css/main/UserMain.css?ver=4" />" rel="stylesheet">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+	<meta name="theme-color" content="#ffffff">
+    <link href="<c:url value="/resources/css/main/UserMain.css?ver=5" />" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="<c:url value='/resources/img/main/favicon.ico' />"/>
     <!-- MyPage 관련 -->	
     <link href="<c:url value="/resources/css/main/MyPageModal.css?ver=2" />" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -24,14 +28,6 @@
     <!-- BackgroundImage 관련 끝 -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive|Gothic+A1" rel="stylesheet">
-    <!-- <style>
-	.card.hovercard .cardheader {
-		    background-image: url('resources/img/main/tatab.png') no-repeat;
-		    background-size: cover;
-		    height: 135px;
-		}
-    </style> -->
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
@@ -123,7 +119,7 @@
                     <div class="logoAndPhrase">
                         <!-- 제목 -->
                         <div class="titlePhrase">
-                            <a href="<c:url value="/userMain.do" />"><h2><i class="fas fa-check-double"></i>&nbsp;TATAB&nbsp;!</h2></a>
+                            <a href="<c:url value="/userMain.do" />"><img src="<c:url value="/resources/img/main/logo1.png" />"></a>
                         </div>
                         <!-- 제목 끝 -->
                         <!-- 플젝 표시 -->

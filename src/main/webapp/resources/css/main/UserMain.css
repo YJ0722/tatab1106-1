@@ -96,9 +96,10 @@ a:hover
     font-size: 35px;
 }
 
-.titlePhrase {
-    font-size: 25px;
-    font-family: 'Cedarville Cursive', cursive;
+.titlePhrase img {
+	width: 250px;
+	height: 80px;
+    margin-left: 15px;
 }
 
 .projectSign {
