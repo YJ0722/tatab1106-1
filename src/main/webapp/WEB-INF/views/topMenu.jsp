@@ -28,33 +28,32 @@
 
 <link rel="stylesheet" type="text/css"
 	href="resources/css/board/boardcss.css">
-<!-- topMenu.css -->
+topMenu.css
 <link rel="stylesheet" type="text/css"
 	href="resources/css/topMenu/topMenu.css?ver=3">
 <!-- taskStyle.css -->
 <link rel="stylesheet" type="text/css"
-	href="resources/css/board/taskStyle.css?ver=2">
-
+	href="resources/css/board/taskStyle.css?ver=3">
+<!-- <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet"> -->
 
 <!-- topMenu.js -->
 <script src="resources/js/topMenu/topMenu.js?ver=2"></script>
 
-
 </head>
 
 <body>
+<div class="table-box">
 	<table border="1px" style="width: 100%; height: 50px;">
 		<tr>
-			<td style="width: 13%"><i class="far fa-calendar-alt"></i> tatab
+			<td style="width: 10%">
+				<img class="board-logo" src="resources/img/index/tatab-logo1.png" />
 			</td>
-			<td style="width: 7%" id="projectsBtn"><i class="fas fa-bolt"></i>
-				&nbsp; ${projectName } &nbsp; <i class="fas fa-angle-down"></i></td>
 			<td style="width: 5%" id="infoBtn"><i class="fas fa-info"></i></td>
-			<td style="width: 50%">
-				<!-- 테스크 모달 창 테스트 버튼 -->
-				<button id="btnShowTaskModal" type="button" class="btn btn-primary"
-					data-toggle="modal" data-target="#exampleModalLong">Task
-					테스트 버튼</button>
+			
+			<td style="width: 25%" id="projectsBtn" style="font-size: 2rem;">
+				<i class="fas fa-bolt"></i>
+				&nbsp; ${projectName } &nbsp; 
+				<i class="fas fa-angle-down"></i>
 			</td>
 			<td style="width: 5%">
 				<table class="activeBtn">
@@ -79,7 +78,7 @@
 			<td style="width: 5%"><i class="fas fa-user-circle"></i></td>
 		</tr>
 	</table>
-
+</div>
 	<!-- kanban board -->
 	<div class="kanban-container2">
 
@@ -132,14 +131,6 @@
 				<div class="left-box">
 					<div class="modal-body">
 						<div id="container"> 
-							<div id="boxs">
-								<span>D-?</span> <img
-									src="resources/img/board/bookmarkButton.png" width="30"
-									height="30" /> <img src="resources/img/board/mButton.jpg"
-									width="30" height="30" />
-							</div>
-							
-
 							<div id="box1">
 								<div class="form-group shadow-textarea">
 									<label for="exampleFormControlTextarea6"></label>
