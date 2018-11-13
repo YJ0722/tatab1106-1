@@ -30,7 +30,7 @@
     				// console.log(data);
     				
     				$('.projectTitle').html(data.project_name);
-    				$('.projectNames').attr("value", data.project_name);
+    				$('.projectNames').val(data.project_name);
     				$('.projectDescription').val(data.project_comment);
     			}
 			})
