@@ -1,15 +1,5 @@
 $(document).ready(function () {
-    
-	
-   // task 클릭 이벤트
-   $(document).on("click", '.task', function(e) {
-      
-      var task_no = $(this).attr("id");
-      console.log('i : ' + task_no);
-      $('#exampleModalLong').modal();
-      
-      selectAllTask(task_no);
-   });
+
    
    // 토글 실행
    var state = 0;
