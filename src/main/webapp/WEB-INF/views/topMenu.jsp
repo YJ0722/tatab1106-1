@@ -142,16 +142,16 @@
 							<div id="box1">
 								<div class="form-group shadow-textarea">
 									<label for="exampleFormControlTextarea6"></label>
-									<textarea class="form-control z-depth-1"
-										id="exampleFormControlTextarea6" rows="3" placeholder="업무명..."></textarea>
+									<textarea class="form-control z-depth-1 task_name"
+										id="exampleFormControlTextarea6 task_name" rows="3" placeholder="업무명..."></textarea>
 								</div>
 							</div>
 
 							<div id="boxs">
 								<div class="form-group shadow-textarea2">
 									<label for="exampleFormControlTextarea6"></label>
-									<textarea class="form-control z-depth-1"
-										id="exampleFormControlTextarea6" rows="3"
+									<textarea class="form-control z-depth-1 task_content"
+										id="exampleFormControlTextarea6 task_content" rows="3"
 										placeholder="업무 내용..."></textarea>
 								</div>
 							</div>
@@ -211,13 +211,14 @@
 						<div class="right-box-item task-dday-box">
 							<div class="right-box-item-title task-dday-name">D-day
 								<p>2018.11.12</p>
+								<input type="text" id="datepicker1">
 							</div>
 						</div>
 						<!-- d-day end-->
 						<!-- startday start-->
 						<div class="right-box-item task-start-day-box">
 							<div class="right-box-item-title task-start-day-name">시작일</div>
-							<p>2018.11.12</p>
+							<p id="startDate"></p>
 						</div>
 						<!-- startday end-->
 						<!-- updateday start-->
@@ -238,6 +239,13 @@
 	</div>
 </body>
 
+<script>
+	$(function() {
+	  $( "#datepicker1" ).datepicker({
+	  });
+	});
+</script>
+
 <!-- task 관련 스크립트  - 부트스트랩 -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
@@ -253,6 +261,7 @@
 	src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js'></script>
 <script src="resources/js/jquery-ui.js"></script>
 <script src="resources/js/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
 <script src="resources/js/board/boardjs.js?ver=4"></script>
 <script src="resources/js/board/taskScript.js?ver=1"></script>

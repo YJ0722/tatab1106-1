@@ -4,6 +4,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+	    <!-- favicon 삽입 -->
+	    <link rel="icon" type="image/x-icon" href="<c:url value='/resources/img/main/favicon.ico' />"/>
+	    <meta name="msapplication-TileColor" content="#da532c">
+		<meta name="theme-color" content="#ffffff">
+    
         <meta charset="UTF-8">
         <title><c:out value="${ myPageVO.login_name }" />님의 페이지</title>
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
