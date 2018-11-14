@@ -222,7 +222,7 @@
 						<div class="right-box-item task-dday-box">
 							<div>
 								<div class="right-box-item-title task-dday-name">D-day</div>
-								<input type="text" id="datepicker1" placeholder="2018-11-13">
+								<input type="text" id="datepicker1" placeholder="-">
 							</div>
 						</div>
 						<!-- d-day end-->
@@ -235,7 +235,7 @@
 						<!-- updateday start-->
 						<div class="right-box-item task-update-day-box">
 							<div class="right-box-item-title task-update-day-name">수정일</div>
-							<p>2018.11.12</p>
+							<p id="updateDate"></p>
 						</div>
 						<!-- updateday start-->
 

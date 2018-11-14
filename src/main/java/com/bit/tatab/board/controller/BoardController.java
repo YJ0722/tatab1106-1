@@ -31,7 +31,6 @@ public class BoardController {
 	@ResponseBody
 	@RequestMapping(value = "/board.do")
 	public ModelAndView board(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
 		ModelAndView mav = new ModelAndView("board");
 
 		String projectName = request.getParameter("projectName");
@@ -39,9 +38,11 @@ public class BoardController {
 
 		HttpSession session = request.getSession();
 		
-		if (project_no==null) {
+		if (project_no==null && projectName == null) {
 			String no = session.getAttribute("project_no").toString();
 			project_no = no;
+			String name = session.getAttribute("projectName").toString();
+			projectName = name;
 		}
 		
 		session.setAttribute("projectName", projectName);

@@ -484,6 +484,11 @@ function selectAllTask(task_no) {
 			$('.task_content').val(data.task_content);
 			$('#startDate').text(data.reg_date);
 			$('.task_no').val(task_no);
+			$('#updateDate').text(data.update_date);
+			
+			if(data.d_day != '-') {
+				$('#datepicker1').val(data.d_day);
+			} 
 		}
 	})
 }

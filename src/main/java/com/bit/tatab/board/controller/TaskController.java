@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.tatab.board.service.TaskService;
 import com.bit.tatab.board.vo.BoardTaskVO;
+import com.bit.tatab.board.vo.DateVO;
 
 @Controller
 public class TaskController {
@@ -35,12 +36,20 @@ public class TaskController {
 	@RequestMapping(value="updateTask.do", method=RequestMethod.POST)
 	public String updateTask(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		ModelAndView mav = new ModelAndView("/board.do");
+		
 		String task_name= request.getParameter("task_name");
-		String task_contnet = request.getParameter("task_content");
+		String task_content = request.getParameter("task_content");
 		String dday = request.getParameter("dday");
 		String task_no = request.getParameter("task_no");
-		BoardTaskVO taskVO = new BoardTaskVO(Integer.parseInt(task_no), task_name, task_contnet, dday);
-		taskService.updateTask(taskVO);
+		  
+		DateVO date = new DateVO();
+		String updateDate = date.nowDate();
+		System.out.println("현재 날짜 : " + updateDate);
+		
+		BoardTaskVO taskVO = new BoardTaskVO(Integer.parseInt(task_no), task_name, task_content, dday, updateDate);
+		System.out.println("업데이트할 taskVO : " + taskVO);
+		taskService.updateTask(taskVO); 
 		
 		return "redirect:board.do";
 	}
