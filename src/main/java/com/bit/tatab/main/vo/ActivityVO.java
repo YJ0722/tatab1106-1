@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class ActivityVO {
 	
+	// 여기서 save_name은 프로필 사진 파일의 save_name이다!
 	private String login_email;
 	private String login_name;
 	private String save_name;

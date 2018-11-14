@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.bit.tatab.board.dao.BoardDAO;
 import com.bit.tatab.main.dao.MainDAO;
+import com.bit.tatab.main.vo.ActivityVO;
 import com.bit.tatab.main.vo.CommentVO;
 import com.bit.tatab.main.vo.MainBackgroundVO;
 import com.bit.tatab.main.vo.ProjectVO;
@@ -61,6 +62,13 @@ public class MainServiceImpl implements MainService{
 	@Override
 	public void deleteBackgroundImage(String login_email) {
 		mainDao.deleteBackgroundImage(login_email);
+	}
+
+	// 액티비티 리스트 불러오기(유저메인)
+	@Override
+	public List<ActivityVO> selectActivityList(String login_email) {
+		List<ActivityVO> activityList = mainDao.selectActivityList(login_email);
+		return activityList;
 	}
 	
 	

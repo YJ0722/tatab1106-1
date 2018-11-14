@@ -57,4 +57,10 @@
 		delete USER_BG_CUSTOM_T where login_email = #{login_email}
 	</delete>
 	
+	<!-- 액티비티 리스트 조회(유저메인) -->
+	<select id="selectActivityList" parameterType="String" resultType="ActivityVO">
+		select * from user_activity_t
+		where login_email = #{login_email}
+	</select>
+	
 </mapper>

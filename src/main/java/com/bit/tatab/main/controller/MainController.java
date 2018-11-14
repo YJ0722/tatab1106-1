@@ -16,13 +16,16 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.tatab.board.service.BoardService;
+import com.bit.tatab.board.vo.MemberVO;
 import com.bit.tatab.login.service.LoginService;
 import com.bit.tatab.login.vo.LoginVO;
 import com.bit.tatab.main.service.MainService;
+import com.bit.tatab.main.vo.ActivityVO;
 import com.bit.tatab.main.vo.CommentVO;
 import com.bit.tatab.main.vo.MainBackgroundVO;
 import com.bit.tatab.main.vo.ProjectVO;
@@ -222,9 +225,19 @@ public class MainController {
 
 	      }
 	    
-	// 액티비티 내용 가져오기
-	    
-	    
-		
+	// 액티비티 내용 가져오기(유저 메인)
+	    @RequestMapping(value="userMainActivity.do", method = RequestMethod.POST)
+		@ResponseBody
+		public List<ActivityVO> activityList(HttpServletRequest request, HttpServletResponse response) throws Exception {
+			
+			HttpSession session = request.getSession();
+			String login_email = session.getAttribute("login_email").toString();
+			System.out.println("불러올 액티비티 사용자 이메일 : " + login_email);
+			
+			List<ActivityVO> activityList = mainService.selectActivityList(login_email);
+			
+			System.out.println("activityList : " + activityList);
+			return activityList;
+		}
 		
 }
