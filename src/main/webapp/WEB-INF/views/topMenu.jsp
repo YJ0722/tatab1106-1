@@ -24,13 +24,12 @@
 <script src="resources/js/jquery-3.3.1.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-
+ 
 <link rel="stylesheet" type="text/css"
 	href="resources/css/board/boardcss.css">
-topMenu.css
+<!-- topMenu.css -->
 <link rel="stylesheet" type="text/css"
-	href="resources/css/topMenu/topMenu.css?ver=3">
+	href="resources/css/topMenu/topMenu.css?ver=4">
 <!-- taskStyle.css -->
 <link rel="stylesheet" type="text/css"
 	href="resources/css/board/taskStyle.css?ver=3">
@@ -195,15 +194,15 @@ topMenu.css
 							<div class="task-assigned-member">
 								<img res="resources/img/board/sort-up.png"
 									class="task-assigned-member-img" />
-								<p>name</p>
+								<p><i class="fas fa-plus-circle"></i></p>
 							</div>
 						</div>
 						<!-- 할당 멤버 end -->
 						<!-- d-day start-->
 						<div class="right-box-item task-dday-box">
-							<div class="right-box-item-title task-dday-name">D-day
-								<p>2018.11.12</p>
-								<input type="text" id="datepicker1">
+							<div>
+								<div class="right-box-item-title task-dday-name">D-day</div>
+								<input type="text" id="datepicker1" placeholder="2018-11-13">
 							</div>
 						</div>
 						<!-- d-day end-->
@@ -257,5 +256,6 @@ topMenu.css
 
 <script src="resources/js/board/boardjs.js?ver=4"></script>
 <script src="resources/js/board/taskScript.js?ver=1"></script>
+
 
 </html>
