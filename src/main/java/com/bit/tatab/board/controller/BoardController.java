@@ -39,7 +39,7 @@ public class BoardController {
 		HttpSession session = request.getSession();
 		
 		if (project_no==null && projectName == null) {
-			String no = session.getAttribute("project_no").toString();
+				String no = session.getAttribute("project_no").toString();
 			project_no = no;
 			String name = session.getAttribute("projectName").toString();
 			projectName = name;
