@@ -9,6 +9,21 @@
 		select * from prj_task_t where task_no = #{task_no}
  	</select>
  	
+ 	<!-- 댓글 추가 -->
+ 	<insert id="insertComment" parameterType="TaskCommentVO">
+		insert into
+		TASK_COMMENT_T(comment_no, task_no, login_email, nickname, task_comment, reg_date)
+		values(seq_task_comment_no.nextVal, #{task_no}, #{login_email}, #{nickname}, #{task_comment}, #{reg_date})
+		<selectKey order="AFTER" keyProperty="comment_no" resultType="int">select seq_task_comment_no.currval from dual</selectKey>
+ 	</insert>
  	
- 	
+ 	<!-- 댓글 조회 -->
+ 	<select id="selectAllComment" parameterType="String" resultType="TaskCommentVO">
+ 		select * from task_comment_t where task_no = #{ task_no } order by comment_no desc
+ 	</select>
+ 	 
+ 	 <!-- 댓글 삭제 -->
+ 	 <delete id="deleteTaskComment" parameterType="String">
+ 	 	delete from task_comment_t where comment_no = #{ comment_no }
+ 	 </delete>
  </mapper>  

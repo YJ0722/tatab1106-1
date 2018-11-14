@@ -185,7 +185,18 @@ input {
 #myUL {
     width: 490px;
 }
-    
+#myUL li div {
+	float: left;
+	font-size: 1.3rem;
+}
+.nicknamebox {
+	width : 30%;
+	display : inline;
+}
+.contentbox {
+	width : 70%;
+	display : inline;
+}
 .right{
     float: right;
 }

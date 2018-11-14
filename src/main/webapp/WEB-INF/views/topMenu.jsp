@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!-- <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> -->
@@ -33,7 +34,7 @@
 	href="resources/css/topMenu/topMenu.css?ver=3">
 <!-- taskStyle.css -->
 <link rel="stylesheet" type="text/css"
-	href="resources/css/board/taskStyle.css?ver=2">
+	href="resources/css/board/taskStyle.css?ver=3">
 <!-- <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet"> -->
 
 <!-- topMenu.js -->
@@ -175,6 +176,7 @@
 
 							<div id="boxs">
 								<div id="myDIV" class="header">
+									<div id="nicknameText" style="display:none;"></div>
 									<span> <input type="text" id="myInput"
 										placeholder="Comment..."> <span onclick="newElement()"
 										class="addBtn">Add</span>
@@ -182,7 +184,6 @@
 								</div>
 								<div>
 									<ul id="myUL">
-										<li>Created by</li>
 									</ul>
 								</div>
 							</div>
@@ -263,7 +264,7 @@
 <script src="resources/js/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
-<script src="resources/js/board/boardjs.js?ver=4"></script>
-<script src="resources/js/board/taskScript.js?ver=1"></script>
+<script src="resources/js/board/boardjs.js?ver=5"></script>
+<script src="resources/js/board/taskScript.js?ver=4"></script>
 
 </html>
