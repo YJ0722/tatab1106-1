@@ -210,6 +210,10 @@ input {
     height: 200px;
     border-color: dimgrey;
 }
+
+#imgName {
+	width: 500px;
+}
     
 #myUL {
     width: 490px;
@@ -254,5 +258,16 @@ input {
 }
 
 #img-upload{
-    width: 45%;
+    width: 25%;
+}
+
+#myForm {
+	background-color : white;
+	width: 200px;
+	height: 45px;
+	display : none;
+	position: fixed;
+	bottom : -230px;
+	right: 230px;
+	border : 2px solid black;
 }

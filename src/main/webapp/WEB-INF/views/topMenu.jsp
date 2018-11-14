@@ -39,6 +39,7 @@
 <script src="resources/js/topMenu/topMenu.js?ver=2"></script>
 
 <script>
+	// update task
 	function submit() {
 		var task_name = $('.task_name').val();
 		var task_content = $('.task_content').val();
@@ -55,6 +56,12 @@
 		$('.dday1').val(dday);
 		
 		$('#updateTask').submit();
+	}
+	
+	// 멤버 할당
+	function assignMember() {
+		console.log('멤버할당');
+		document.getElementById("myForm").style.display = "block";
 	}
 </script>
 
@@ -168,23 +175,6 @@
 							</div>
 
 							<div id="boxs">
-								<div>
-									<div class="form-group">
-										<label>Upload Image</label>
-										<div class="input-group">
-											<span class="input-group-btn"> <span
-												class="btn btn-default btn-file"> Browse… <input
-													type="file" id="imgInp">
-											</span>
-											</span> <input type="text" class="form-control" readonly>
-										</div>
-										<img id='img-upload' />
-									</div>
-
-								</div>
-							</div>
-
-							<div id="boxs">
 								<div id="myDIV" class="header">
 									<span> <input type="text" id="myInput"
 										placeholder="Comment..."> <span onclick="newElement()"
@@ -214,10 +204,18 @@
 							<div class="task-assigned-member">
 								<img res="resources/img/board/sort-up.png"
 									class="task-assigned-member-img" />
-								<p><i class="fas fa-plus-circle"></i></p>
+								<p><i class="fas fa-plus-circle" onclick="assignMember()"></i></p>
 							</div>
 						</div>
 						<!-- 할당 멤버 end -->
+						
+						<!-- 멤버리스트 보여주기-->
+						<div>
+							성수 연주 원석
+							<div id="myForm"></div>
+						</div>
+						<!-- 멤버리스트 보여주기-->
+						
 						<!-- d-day start-->
 						<div class="right-box-item task-dday-box">
 							<div>
@@ -240,6 +238,23 @@
 						<!-- updateday start-->
 
 					</div>
+					
+					<div id="boxs">
+								<div>
+									<div class="form-group">
+										<label>Upload Image</label>
+										<div class="input-group">
+											<span class="input-group-btn"> <span
+												class="btn btn-default btn-file"> Browse… <input
+													type="file" id="imgInp">
+											</span>
+											</span> <input type="text" class="form-control" id="imgName" readonly>
+										</div>
+										<img id='img-upload' />
+									</div>
+
+								</div>
+							</div>
 
 				</div>
 				<!-- #$##### -->
