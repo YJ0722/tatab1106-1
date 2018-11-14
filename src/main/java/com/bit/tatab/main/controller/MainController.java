@@ -221,6 +221,10 @@ public class MainController {
 	       return "backgroundDelete";
 
 	      }
+	    
+	// 액티비티 내용 가져오기
+	    
+	    
 		
 		
 }

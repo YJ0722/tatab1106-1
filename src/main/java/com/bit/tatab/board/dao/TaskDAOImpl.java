@@ -16,6 +16,7 @@ public class TaskDAOImpl implements TaskDAO {
 	@Inject
 	private SqlSession sqlSession;
 	
+	// task data 가져오기
 	@Override
 	public BoardTaskVO selectAllTask(String task_no) {
 		BoardTaskVO taskVO = sqlSession.selectOne("selectAllTask", task_no);
@@ -40,4 +41,11 @@ public class TaskDAOImpl implements TaskDAO {
 	public void deleteTaskComment(String commentNo) {
 		sqlSession.delete("deleteTaskComment", commentNo);
 	}
+	// task data update
+	@Override
+	public void updateTask(BoardTaskVO taskVO) {
+		sqlSession.update("updateTask", taskVO);
+	}
+
+	
 }

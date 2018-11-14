@@ -40,6 +40,33 @@
 <!-- topMenu.js -->
 <script src="resources/js/topMenu/topMenu.js?ver=2"></script>
 
+<script>
+	// update task
+	function submit() {
+		var task_name = $('.task_name').val();
+		var task_content = $('.task_content').val();
+		var dday = $('#datepicker1').val();
+		var task_no = $('.task_no').val();
+		
+		console.log(task_name);
+		console.log(task_content);
+		console.log(dday);
+		console.log(task_no);
+		
+		$('.task_name1').val(task_name);
+		$('.task_content1').val(task_content);
+		$('.dday1').val(dday);
+		
+		$('#updateTask').submit();
+	}
+	
+	// 멤버 할당
+	function assignMember() {
+		console.log('멤버할당');
+		document.getElementById("myForm").style.display = "block";
+	}
+</script>
+
 </head>
 
 <body>
@@ -132,14 +159,6 @@
 				<div class="left-box">
 					<div class="modal-body">
 						<div id="container"> 
-							<div id="boxs">
-								<span>D-?</span> <img
-									src="resources/img/board/bookmarkButton.png" width="30"
-									height="30" /> <img src="resources/img/board/mButton.jpg"
-									width="30" height="30" />
-							</div>
-							
-
 							<div id="box1">
 								<div class="form-group shadow-textarea">
 									<label for="exampleFormControlTextarea6"></label>
@@ -154,23 +173,6 @@
 									<textarea class="form-control z-depth-1 task_content"
 										id="exampleFormControlTextarea6 task_content" rows="3"
 										placeholder="업무 내용..."></textarea>
-								</div>
-							</div>
-
-							<div id="boxs">
-								<div>
-									<div class="form-group">
-										<label>Upload Image</label>
-										<div class="input-group">
-											<span class="input-group-btn"> <span
-												class="btn btn-default btn-file"> Browse… <input
-													type="file" id="imgInp">
-											</span>
-											</span> <input type="text" class="form-control" readonly>
-										</div>
-										<img id='img-upload' />
-									</div>
-
 								</div>
 							</div>
 
@@ -192,7 +194,7 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save
+						<button type="button" class="btn btn-primary" onclick="submit()">Save
 							changes</button>
 					</div>
 				</div>
@@ -204,15 +206,23 @@
 							<div class="task-assigned-member">
 								<img res="resources/img/board/sort-up.png"
 									class="task-assigned-member-img" />
-								<p>name</p>
+								<p><i class="fas fa-plus-circle" onclick="assignMember()"></i></p>
 							</div>
 						</div>
 						<!-- 할당 멤버 end -->
+						
+						<!-- 멤버리스트 보여주기-->
+						<div>
+							성수 연주 원석
+							<div id="myForm"></div>
+						</div>
+						<!-- 멤버리스트 보여주기-->
+						
 						<!-- d-day start-->
 						<div class="right-box-item task-dday-box">
-							<div class="right-box-item-title task-dday-name">D-day
-								<p>2018.11.12</p>
-								<input type="text" id="datepicker1">
+							<div>
+								<div class="right-box-item-title task-dday-name">D-day</div>
+								<input type="text" id="datepicker1" placeholder="-">
 							</div>
 						</div>
 						<!-- d-day end-->
@@ -225,11 +235,28 @@
 						<!-- updateday start-->
 						<div class="right-box-item task-update-day-box">
 							<div class="right-box-item-title task-update-day-name">수정일</div>
-							<p>2018.11.12</p>
+							<p id="updateDate"></p>
 						</div>
 						<!-- updateday start-->
 
 					</div>
+					
+					<div id="boxs">
+								<div>
+									<div class="form-group">
+										<label>Upload Image</label>
+										<div class="input-group">
+											<span class="input-group-btn"> <span
+												class="btn btn-default btn-file"> Browse… <input
+													type="file" id="imgInp">
+											</span>
+											</span> <input type="text" class="form-control" id="imgName" readonly>
+										</div>
+										<img id='img-upload' />
+									</div>
+
+								</div>
+							</div>
 
 				</div>
 				<!-- #$##### -->
@@ -237,12 +264,20 @@
 
 			<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 		</div>
-	</div>
+		
+		<form id="updateTask" action="updateTask.do" method="post">
+			<input type="hidden" class="task_name1" name="task_name">
+			<input type="hidden" class="task_content1" name="task_content">
+			<input type="hidden" class="dday1" name="dday">
+			<input type="hidden" class="task_no" name="task_no">
+		</form>
+	
 </body>
 
 <script>
 	$(function() {
 	  $( "#datepicker1" ).datepicker({
+		  dateFormat: 'yy.mm.dd'
 	  });
 	});
 </script>

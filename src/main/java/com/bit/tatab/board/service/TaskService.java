@@ -18,4 +18,7 @@ public interface TaskService {
 
 	// 댓글 삭제
 	public void deleteTaskComment(String commentNo);
+	
+	// task data update
+	public void updateTask(BoardTaskVO taskVO);
 }

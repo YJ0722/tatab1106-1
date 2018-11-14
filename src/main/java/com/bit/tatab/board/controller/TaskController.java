@@ -11,17 +11,17 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.tatab.board.service.TaskService;
 import com.bit.tatab.board.vo.BoardTaskVO;
 import com.bit.tatab.board.vo.TaskCommentVO;
 import com.bit.tatab.board.vo.DateVO;
-import com.bit.tatab.board.vo.MemberVO;
-import com.bit.tatab.main.vo.MyPageVO;
 import com.bit.tatab.myPage.service.MyPageService;
 
 @Controller
@@ -116,4 +116,25 @@ public class TaskController {
 		
 	}
 	
+	
+	@RequestMapping(value="updateTask.do", method=RequestMethod.POST)
+	public String updateTask(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		ModelAndView mav = new ModelAndView("/board.do");
+		
+		String task_name= request.getParameter("task_name");
+		String task_content = request.getParameter("task_content");
+		String dday = request.getParameter("dday");
+		String task_no = request.getParameter("task_no");
+		  
+		DateVO date = new DateVO();
+		String updateDate = date.nowDate();
+		System.out.println("현재 날짜 : " + updateDate);
+		
+		BoardTaskVO taskVO = new BoardTaskVO(Integer.parseInt(task_no), task_name, task_content, dday, updateDate);
+		System.out.println("업데이트할 taskVO : " + taskVO);
+		taskService.updateTask(taskVO); 
+		
+		return "redirect:board.do";
+	}
 }

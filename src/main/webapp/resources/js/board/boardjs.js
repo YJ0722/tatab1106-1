@@ -556,6 +556,12 @@ function selectAllTask(task_no) {
 			}
 			//////////////////////
 			
+			$('.task_no').val(task_no);
+			$('#updateDate').text(data.update_date);
+			
+			if(data.d_day != '-') {
+				$('#datepicker1').val(data.d_day);
+			} 
 		}
 	})
 }
