@@ -25,6 +25,15 @@ public class BoardTaskVO {
 		this.task_no = task_no;
 		this.task_index = task_index;
 	}
+	
+
+	public BoardTaskVO(int task_no, String task_name, String task_content, String d_day) {
+		super();
+		this.task_no = task_no;
+		this.task_name = task_name;
+		this.task_content = task_content;
+		this.d_day = d_day;
+	}
 
 	public BoardTaskVO(int project_no, int col_no, String task_name, String task_content, String status,
 			String d_day, String reg_date, String update_date) {

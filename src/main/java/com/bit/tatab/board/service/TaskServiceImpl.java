@@ -19,6 +19,12 @@ public class TaskServiceImpl implements TaskService{
 		BoardTaskVO taskVO = taskDao.selectAllTask(task_no); 
 		return taskVO;
 	}
+
+	// task data update
+	@Override
+	public void updateTask(BoardTaskVO taskVO) {
+		taskDao.updateTask(taskVO);
+	}
 	
 	
 }

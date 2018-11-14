@@ -470,7 +470,7 @@ function updateColName(colId, updateTitle) {
 	});
 }
 
-// 컬럼 데이터 가져오기
+// task 데이터 가져오기
 function selectAllTask(task_no) {
 	$.ajax({
 		url : "selectAllTask.do",
@@ -483,6 +483,7 @@ function selectAllTask(task_no) {
 			$('.task_name').val(data.task_name);
 			$('.task_content').val(data.task_content);
 			$('#startDate').text(data.reg_date);
+			$('.task_no').val(task_no);
 		}
 	})
 }

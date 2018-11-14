@@ -38,6 +38,26 @@
 <!-- topMenu.js -->
 <script src="resources/js/topMenu/topMenu.js?ver=2"></script>
 
+<script>
+	function submit() {
+		var task_name = $('.task_name').val();
+		var task_content = $('.task_content').val();
+		var dday = $('#datepicker1').val();
+		var task_no = $('.task_no').val();
+		
+		console.log(task_name);
+		console.log(task_content);
+		console.log(dday);
+		console.log(task_no);
+		
+		$('.task_name1').val(task_name);
+		$('.task_content1').val(task_content);
+		$('.dday1').val(dday);
+		
+		$('#updateTask').submit();
+	}
+</script>
+
 </head>
 
 <body>
@@ -182,7 +202,7 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save
+						<button type="button" class="btn btn-primary" onclick="submit()">Save
 							changes</button>
 					</div>
 				</div>
@@ -227,12 +247,20 @@
 
 			<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 		</div>
+		
+		<form id="updateTask" action="updateTask.do" method="post">
+			<input type="hidden" class="task_name1" name="task_name">
+			<input type="hidden" class="task_content1" name="task_content">
+			<input type="hidden" class="dday1" name="dday">
+			<input type="hidden" class="task_no" name="task_no">
+		</form>
 	
 </body>
 
 <script>
 	$(function() {
 	  $( "#datepicker1" ).datepicker({
+		  dateFormat: 'yy.mm.dd'
 	  });
 	});
 </script>
@@ -254,7 +282,7 @@
 <script src="resources/js/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
-<script src="resources/js/board/boardjs.js?ver=4"></script>
+<script src="resources/js/board/boardjs.js?ver=5"></script>
 <script src="resources/js/board/taskScript.js?ver=1"></script>
 
 
