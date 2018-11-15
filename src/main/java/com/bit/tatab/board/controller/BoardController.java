@@ -70,14 +70,13 @@ public class BoardController {
 			for(int i=0; i<boardTaskList.size(); i++) {
 				System.out.println("[" + i + "] : " + boardTaskList.get(i).toString());
 			}
-			
-			mav.addObject("projectName", projectName);
-			mav.addObject("colData", boardColList);
-			mav.addObject("taskData", boardTaskList);
-			mav.addObject("mainBackgroundVO", mainBackgroundVO);
-			
-			
+						
 		}
+		
+		mav.addObject("projectName", projectName);
+		mav.addObject("colData", boardColList);
+		mav.addObject("taskData", boardTaskList);
+		mav.addObject("mainBackgroundVO", mainBackgroundVO);
 		
 		return mav;
 	}
