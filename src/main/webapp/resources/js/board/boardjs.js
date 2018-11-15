@@ -520,14 +520,18 @@ function selectAllTask(task_no) {
 					console.log("comments 확인 : " + comments[i]);
 					
 					var nname = comments[i].login_name;
-					console.log('namename : ' + nname);
+					var date = comments[i].reg_date;
+					console.log('namename : ' + nname + "\ndate : " + date);
 					
 					var li = document.createElement("li");
-					var nicknamebox = document.createElement("p");
-					var contentbox = document.createElement("p");
+					var nicknamebox = document.createElement("div");
+					var contentbox = document.createElement("div");
+					var datebox = document.createElement("div");
+					
 					var commentValue = comments[i].task_comment;
 					var inputCommentVal = document.createTextNode(commentValue);
 					var nicknameVal = document.createTextNode(nname);
+					var dateVal = document.createTextNode(date);
 					/////--------------------------------------------------------------------------
 					var login_email = comments[i].login_email;
 					var my_email = data.myEmail;
@@ -538,23 +542,27 @@ function selectAllTask(task_no) {
 					contentbox.appendChild(inputCommentVal);
 					// 닉네임 nicknamebox에 추가
 					nicknamebox.appendChild(nicknameVal);
+					// 작성 날짜 datebox에 추가
+					datebox.appendChild(dateVal);
 				  
-					// li에 닉네임, 댓글 추가
+					// li에 닉네임, 댓글, 작성 날짜 추가
 					li.appendChild(nicknamebox);
 					li.appendChild(contentbox);
-	
-	
+					li.appendChild(datebox);					  
+					  
 	  		      	document.getElementById("myUL").appendChild(li);
 	  		      	$('li').eq(i).attr('id', comments[i].comment_no);
 	  		      	
 	  		      	// 닉네임box에  로그인 id 설정
 	  		      	$('li').eq(i).children().eq(0).attr('id', login_email);
-	
+	  		      	$('li').eq(i).children().eq(0).attr('class', 'nicknamebox');
+	  		      	$('li').eq(i).children().eq(1).attr('class', 'contentbox');
+	  		        $('li').eq(i).children().eq(2).attr('class', 'datebox');
 	  		      	
 	  		      	// 로그인 id 와 동일한 id 정보를 가지는 댓글만 x 표시
 	  		      	if(my_email == login_email) {
 	  		      		
-		  		      	var span = document.createElement("SPAN");
+		  		      	var span = document.createElement("p");
 		  		      	var txt = document.createTextNode("\u00D7");
 		  		      	span.className = "commentDelete";
 		  		      	span.appendChild(txt);

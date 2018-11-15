@@ -103,13 +103,15 @@ ul {
 
 li {
 	width : 100%;
+	cursor: auto;
+	
 }
 
 /* Style the list items */
 ul li {
   cursor: pointer;
   position: relative;
-  padding: 12px 8px 12px 10px;
+  padding: 5px 10px 5px 10px;
   list-style-type: none;
   background: #eee;
   font-size: 18px;
@@ -140,7 +142,18 @@ ul li:hover {
   padding: 10px 16px 12px 16px;
   font-size: 25px;
 }
-
+.commentDelete {
+    margin-left: 5px;
+	float: right;
+	right: 5px;
+	cursor: pointer;
+	font-size : 2rem;
+	vertical-align: center;
+}
+.commentDelete:hover {
+	/* background-color: red; */
+	color: red;
+}
 .close:hover {
   background-color: #f44336;
   color: white;
@@ -218,17 +231,22 @@ input {
 #myUL {
     width: 490px;
 }
-#myUL li div {
+#myUL li {
 	float: left;
-	font-size: 1.3rem;
+	font-size: 1.2rem;
 }
-.nicknamebox {
-	width : 30%;
-	display : inline;
+.nicknamebox {    
+	width: 10%;
+    height: 100%;
+    float: left;
+    margin-right: 10px;
 }
 .contentbox {
-	width : 70%;
-	display : inline;
+    width: 65%;
+    float: left;
+}
+.datebox {
+    float: left;
 }
 .right{
     float: right;
