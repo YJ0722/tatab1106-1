@@ -496,9 +496,17 @@ function selectAllTask(task_no) {
 				$('.task_name').val(data.taskVO.task_name);
 				$('.task_content').val(data.taskVO.task_content);
 				$('#startDate').text(data.taskVO.reg_date);
+<<<<<<< HEAD
 				$('#nicknameText').text(data.loginName);
 
+=======
+				$('#nicknameText').text(data.nickname);
+
+				$('.task_no').val(task_no);
+				$('#updateDate').text(data.update_date);
+>>>>>>> branch 'master' of https://github.com/soo0244/tatab1106.git
 				
+<<<<<<< HEAD
 				// form 타입의 input data 설정
 				$('.task_no').val(task_no);
 				$('#updateDate').text(data.update_date);
@@ -506,6 +514,12 @@ function selectAllTask(task_no) {
 				if(data.d_day != '-') {
 					$('#datepicker1').val(data.d_day);
 				} 
+=======
+				if(data.d_day != '-') {
+					$('#datepicker1').val(data.d_day);
+				} 	
+				//////////////////////
+>>>>>>> branch 'master' of https://github.com/soo0244/tatab1106.git
 	
 				$('#myUL').empty();
 
