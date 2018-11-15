@@ -496,7 +496,13 @@ function selectAllTask(task_no) {
 				$('.task_content').val(data.taskVO.task_content);
 				$('#startDate').text(data.taskVO.reg_date);
 				$('#nicknameText').text(data.nickname);
+
+				$('.task_no').val(task_no);
+				$('#updateDate').text(data.update_date);
 				
+				if(data.d_day != '-') {
+					$('#datepicker1').val(data.d_day);
+				} 	
 				//////////////////////
 	
 				$('#myUL').empty();
@@ -556,12 +562,6 @@ function selectAllTask(task_no) {
 			}
 			//////////////////////
 			
-			$('.task_no').val(task_no);
-			$('#updateDate').text(data.update_date);
-			
-			if(data.d_day != '-') {
-				$('#datepicker1').val(data.d_day);
-			} 
 		}
 	})
 }

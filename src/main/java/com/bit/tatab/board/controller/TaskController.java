@@ -126,7 +126,8 @@ public class TaskController {
 		String task_content = request.getParameter("task_content");
 		String dday = request.getParameter("dday");
 		String task_no = request.getParameter("task_no");
-		  
+		System.out.println("task_no : " + task_no);
+		
 		DateVO date = new DateVO();
 		String updateDate = date.nowDate();
 		System.out.println("현재 날짜 : " + updateDate);
