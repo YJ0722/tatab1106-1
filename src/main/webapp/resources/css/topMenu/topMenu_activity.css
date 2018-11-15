@@ -28,7 +28,12 @@
     color: cadetblue;
     padding-left: 20px;
     float: left;
+}
 
+.activityIcon img {
+	width: 55px;
+	height: 55px;
+	border-radius: 50%;	
 }
 
 .activityTime {
