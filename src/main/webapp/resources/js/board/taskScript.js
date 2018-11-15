@@ -62,7 +62,7 @@ function newElement() {
 	console.log('taskNo : ' + taskNo);
 	
 	
-	var nname = $('#nicknameText').text();
+	var nname = $('.nicknameText').attr('id');
   var li = document.createElement("li");
   var nicknamebox = document.createElement("p");
   var contentbox = document.createElement("p");

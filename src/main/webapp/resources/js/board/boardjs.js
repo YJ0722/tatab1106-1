@@ -490,7 +490,11 @@ function selectAllTask(task_no) {
 		success : function(data) {
 			if(data != null) {
 					
-	//			console.log("data : " + data.nickname);
+				console.log("5555555555 data : " + data.loginName);
+
+				$('.nicknameText').attr('id', data.loginName);
+				
+				
 				$('.modal-content').attr('id', task_no);
 				$('.modal-content').val(task_no);
 				$('.task_name').val(data.taskVO.task_name);

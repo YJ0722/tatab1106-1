@@ -178,7 +178,7 @@
 
 							<div id="boxs">
 								<div id="myDIV" class="header">
-									<div id="nicknameText" style="display:none;"></div>
+									<div class="nicknameText" id="" style="display:none;"></div>
 									<span> <input type="text" id="myInput"
 										placeholder="Comment..."> <span onclick="newElement()"
 										class="addBtn">Add</span>
