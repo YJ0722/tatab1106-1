@@ -387,13 +387,21 @@
 					console.log(data);
 					$('.activityContent').empty();
 					  for(i=0; i<data.length; i++) { // 프로필사진, 시간, 이름, 메시지, 프로젝트이름
-	    				var tag1 = '<div class="activityIcon">';
+	    				var tag1 = '<div class="activityIcon" id="MyPageModalBtn"><img src="${pageContext.request.contextPath}/img/'+data[i].save_name+'"/>';
 	    				var tag2 = '</div><div class="activityTime">';
 	    				var tag3 = '</div><div class="activityDo">';
 	    				var tag4 = '</div><div class="activityTaskName">';
 	    				var tag5 = '</div>';
-	    					
-	    				var tag = tag1 + data[i].save_name + tag2 + data[i].alert_time + tag3 + data[i].login_name + data[i].alert_message + tag4 + data[i].project_name + tag5;
+	    				
+	    				var diffInfo = 0;
+	    				
+	    				if(data[i].diffMin/60/24 > 1)
+	    					diffInfo = parseInt(data[i].diffMin/60/24)+" days ago";
+	    				else if(data[i].diffMin/60 > 1)
+	    					diffInfo = parseInt(data[i].diffMin/60)+" hours ago";
+	    				else
+	    					diffInfo = (data[i].diffMin)+" mins ago";
+	    				var tag = tag1 + tag2 + diffInfo + tag3 + data[i].login_name + data[i].alert_message + tag4 + data[i].project_name + tag5;
 	    				$(tag).hide().appendTo('.activityContent').show(); 
 					}
 					// 여기에 "그 후 실행" 코드들이 들어가야 한다!	

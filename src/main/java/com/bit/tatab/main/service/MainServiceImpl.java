@@ -1,5 +1,8 @@
 package com.bit.tatab.main.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -68,16 +71,29 @@ public class MainServiceImpl implements MainService{
 	@Override
 	public List<ActivityVO> selectActivityList(String login_email) {
 		List<ActivityVO> activityList = mainDao.selectActivityList(login_email);
+		for(ActivityVO a: activityList) {
+//			String begin = a.getAlert_time()+" "+a.getAlert_time().getHours()+":"+a.getAlert_time().getMinutes();
+			a.setDiffMin(diffOfMin(a.getAlert_time(),new Date()));
+		}
 		return activityList;
 	}
 	
-	
-	
-	
- 
-	
-
- 
+	public static long diffOfMin(Date begin, Date end) {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+		long result=0;
+		try {
+			System.out.println("begin:"+begin);
+			System.out.println("end:"+end);
+			Date dateBegin = formatter.parse(formatter.format(begin));
+			Date dateEnd = formatter.parse(formatter.format(end));
+			
+			result = dateEnd.getTime() - dateBegin.getTime();
+			result = result/(1000*60);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return result;		
+	}
 	
 	
 }

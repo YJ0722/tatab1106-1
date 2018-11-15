@@ -1,6 +1,6 @@
 package com.bit.tatab.main.vo;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class ActivityVO {
 	
@@ -11,6 +11,7 @@ public class ActivityVO {
 	private String alert_message;
 	private Date alert_time;
 	private String project_name;
+	private long diffMin;
 	public ActivityVO() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -24,6 +25,13 @@ public class ActivityVO {
 		this.alert_message = alert_message;
 		this.alert_time = alert_time;
 		this.project_name = project_name;
+	}
+	
+	public long getDiffMin() {
+		return diffMin;
+	}
+	public void setDiffMin(long diffMin) {
+		this.diffMin = diffMin;
 	}
 	public String getLogin_email() {
 		return login_email;
@@ -65,9 +73,7 @@ public class ActivityVO {
 	public String toString() {
 		return "ActivityVO [login_email=" + login_email + ", login_name=" + login_name + ", save_name=" + save_name
 				+ ", alert_message=" + alert_message + ", alert_time=" + alert_time + ", project_name=" + project_name
-				+ "]";
-	}
-	
-	
+				+ ", diffMin=" + diffMin + "]";
+	}	
 	
 }
