@@ -73,6 +73,7 @@ public class BoardController {
 						
 		}
 		
+		
 		mav.addObject("projectName", projectName);
 		mav.addObject("colData", boardColList);
 		mav.addObject("taskData", boardTaskList);
