@@ -17,31 +17,31 @@
             <div>
                 <div class="activityContent">
                     <div class="activityIcon">
-                        <i class="fas fa-plus"></i>
+                        <!-- <i class="fas fa-plus"></i> -->
                     </div>
                     <div class="activityTime">
-                        4 hours ago
+                        <!-- 4 hours ago -->
                     </div>
                     <div class="activityDo">
-                        문성수 created
+                        <!-- 문성수 created -->
                     </div>
                     <div class="activityTaskName">
-                        To do
+                        <!-- To do -->
                     </div>
                 </div>
                 
                 <div class="activityContent">
                     <div class="activityIcon">
-                        <i class="far fa-calendar"></i>
+                        <!-- <i class="far fa-calendar"></i> -->
                     </div>
                     <div class="activityTime">
-                        2 days ago
+                        <!-- 2 days ago -->
                     </div>
                     <div class="activityDo">
-                        서연주 added
+                        <!-- 서연주 added -->
                     </div>
                     <div class="activityTaskName">
-                        0928 Task
+                        <!-- 0928 Task -->
                     </div>
                 </div>
             </div>

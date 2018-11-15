@@ -162,10 +162,10 @@ a:hover
 
 .commentBack {
     position: absolute;
-    bottom:3vmin;
-    width:76vmax;
-    left:1vmax;
-    height: 250px;
+    bottom:30px;
+    width:900px;
+    left:65px;
+    height: 170px;
     background-color: black;
     opacity: 0.4;
     filter: blur(5px); 
@@ -173,23 +173,23 @@ a:hover
 
 .commentBelow {
     position: absolute;
-    bottom: 10vmin;
-    left: 3vmax;
-    width: 60vmax;
+    bottom: 50px;
+    left: 95px;
+    width: 800px;
     font-family: 'Gothic A1', sans-serif;
     text-shadow: -1px 0 #F2F1F6, 0 1px #F2F1F6, 1px 0 #F2F1F6, 0 -1px #F2F1F6;
 }
 
 .commentBelow h1 {
-    font-size: 2.5vmax;
+    font-size: 30px;
 }
 
 .commentBelow h2 {
-    font-size: 1.5vmax;
+    font-size: 20px;
 }
 
 .commentBelow p {
-    font-size: 0.8vmax;
+    font-size: 15px;
     font-weight: bold;
 }
 
@@ -216,8 +216,7 @@ a:hover
 #MyPageModalBtn img {
 	width: 55px;
 	height: 55px;
-	border-radius: 50%;
-	
+	border-radius: 50%;	
 }
 
 /* MyPageModal - background */

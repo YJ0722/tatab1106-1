@@ -2,6 +2,7 @@ package com.bit.tatab.main.dao;
 
 import java.util.List;
 
+import com.bit.tatab.main.vo.ActivityVO;
 import com.bit.tatab.main.vo.CommentVO;
 import com.bit.tatab.main.vo.MainBackgroundVO;
 import com.bit.tatab.main.vo.ProjectVO;
@@ -31,6 +32,9 @@ public interface MainDAO {
 
 	// 배경 이미지 삭제
 	public void deleteBackgroundImage(String login_email);
+
+	// 액티비티 리스트 불러오기(유저메인)
+	public List<ActivityVO> selectActivityList(String login_email);
 
 	
 }
