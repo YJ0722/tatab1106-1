@@ -114,4 +114,11 @@
 		where col_no = #{colId}
  	</update>
  	
+ 	<!-- update task -->
+ 	<update id="updateTask" parameterType="BoardTaskVO">
+ 		update prj_task_t 
+ 		set  task_name = #{task_name}, task_content = #{task_content}, d_day = #{d_day}, update_date = #{update_date}
+ 		where task_no = #{task_no}
+ 	</update>
+ 	
  </mapper>  

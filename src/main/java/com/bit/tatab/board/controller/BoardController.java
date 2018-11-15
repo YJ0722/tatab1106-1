@@ -31,7 +31,6 @@ public class BoardController {
 	@ResponseBody
 	@RequestMapping(value = "/board.do")
 	public ModelAndView board(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
 		ModelAndView mav = new ModelAndView("board");
 
 		String projectName = request.getParameter("projectName");
@@ -39,9 +38,11 @@ public class BoardController {
 
 		HttpSession session = request.getSession();
 		
-		if (project_no==null) {
-			String no = session.getAttribute("project_no").toString();
+		if (project_no==null && projectName == null) {
+				String no = session.getAttribute("project_no").toString();
 			project_no = no;
+			String name = session.getAttribute("projectName").toString();
+			projectName = name;
 		}
 		
 		session.setAttribute("projectName", projectName);
@@ -63,14 +64,20 @@ public class BoardController {
 		// 해당 프로젝트의 작업 불러오기 
 		List<BoardTaskVO> boardTaskList = boardService.selectBoardTaskAll(prj_no);
 
-		for(int i=0; i<boardTaskList.size(); i++) {
-			System.out.println("[" + i + "] : " + boardTaskList.get(i).toString());
+		// 해당 프로젝트의 작업이 있으면
+		if(boardTaskList.size() != 0) {
+			
+			for(int i=0; i<boardTaskList.size(); i++) {
+				System.out.println("[" + i + "] : " + boardTaskList.get(i).toString());
+			}
+			
+			mav.addObject("projectName", projectName);
+			mav.addObject("colData", boardColList);
+			mav.addObject("taskData", boardTaskList);
+			mav.addObject("mainBackgroundVO", mainBackgroundVO);
+			
+			
 		}
-		
-		mav.addObject("projectName", projectName);
-		mav.addObject("colData", boardColList);
-		mav.addObject("taskData", boardTaskList);
-		mav.addObject("mainBackgroundVO", mainBackgroundVO);
 		
 		return mav;
 	}

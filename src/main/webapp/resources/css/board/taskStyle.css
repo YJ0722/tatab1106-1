@@ -18,6 +18,13 @@
 	margin-left: 15%;
 	display : inline;
 }
+.task_name {
+	font-size: 20px;
+	height: 80px;
+}
+.task_content {
+	font-size: 16px;
+}
 /* 오른쪽 부분 css start */
 .left-box {
 	width: 65%;
@@ -31,15 +38,34 @@
 }
 .task-assigned-member-box-name {
 	margin-top: 30px;
+	font-size: 18px;
 }
 .task-assigned-member {
-	width : 33%;
+	width : 100%;
 }
 .right-box-item {
 	margin : 15px 0;
+	font-size: 18px;
+	clear: both;
 }
 .right-box-item-title {
 	text-weight: bold;
+    display: inline;
+    float: left;
+}
+#datapicker1 {
+	display: inline;
+    float: left;
+    font-size: 18px;
+}
+
+.task-dday-name {
+	flaot: left;
+	display : inline;
+}
+
+.task-start-day-box {
+	margin-top: 10px;
 }
 /* 오른쪽 부분 css end */
 
@@ -169,6 +195,7 @@ input {
     font-weight: 500;
 }
 .shadow-textarea textarea.form-control {
+	margin-top : -10px;
     padding-left: 0.8rem;
     resize: none;
     border-width: 2px;
@@ -183,11 +210,26 @@ input {
     height: 200px;
     border-color: dimgrey;
 }
+
+#imgName {
+	width: 500px;
+}
     
 #myUL {
     width: 490px;
 }
-    
+#myUL li div {
+	float: left;
+	font-size: 1.3rem;
+}
+.nicknamebox {
+	width : 30%;
+	display : inline;
+}
+.contentbox {
+	width : 70%;
+	display : inline;
+}
 .right{
     float: right;
 }
@@ -227,5 +269,16 @@ input {
 }
 
 #img-upload{
-    width: 45%;
+    width: 25%;
+}
+
+#myForm {
+	background-color : white;
+	width: 200px;
+	height: 45px;
+	display : none;
+	position: fixed;
+	bottom : -230px;
+	right: 230px;
+	border : 2px solid black;
 }
