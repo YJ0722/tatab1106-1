@@ -12,8 +12,8 @@
  	<!-- 댓글 추가 -->
  	<insert id="insertComment" parameterType="TaskCommentVO">
 		insert into
-		TASK_COMMENT_T(comment_no, task_no, login_email, nickname, task_comment, reg_date)
-		values(seq_task_comment_no.nextVal, #{task_no}, #{login_email}, #{nickname}, #{task_comment}, #{reg_date})
+		TASK_COMMENT_T(comment_no, task_no, login_email, login_name, task_comment, reg_date)
+		values(seq_task_comment_no.nextVal, #{task_no}, #{login_email}, #{login_name}, #{task_comment}, #{reg_date})
 		<selectKey order="AFTER" keyProperty="comment_no" resultType="int">select seq_task_comment_no.currval from dual</selectKey>
  	</insert>
  	

@@ -46,8 +46,8 @@ public class TaskController {
 		HttpSession session = request.getSession();
 		String login_email = session.getAttribute("login_email").toString();
 		
-		String nickname = myPageService.getNickname(login_email);
-		System.out.println("nickname check!!! : " + nickname);
+		String loginName = myPageService.getLoginName(login_email);
+		System.out.println("nickname check!!! : " + loginName);
 		
 		List<TaskCommentVO> commentVOList = taskService.selectAllComment(task_no);
 		for(int i=0; i<commentVOList.size(); i++) {
@@ -55,9 +55,10 @@ public class TaskController {
 		}
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("nickname", nickname);
+		map.put("loginName", loginName);
 		map.put("taskVO", taskVO);
 		map.put("commentList", commentVOList);
+		map.put("myEmail", login_email);
 		
 		return map;
 	}
@@ -66,11 +67,11 @@ public class TaskController {
 	@ResponseBody
 	@RequestMapping(value="insertComment.do", method=RequestMethod.POST)
 	public TaskCommentVO insertComment(HttpServletRequest request, @RequestParam(value="taskNo") String taskNo,
-			@RequestParam(value="nickname")String nickname, @RequestParam(value="comment")String comment) throws Exception {
+			@RequestParam(value="loginName")String loginName, @RequestParam(value="comment")String comment) throws Exception {
 		
 		System.out.println("insertComment.do 실행");
 		System.out.println("taskNo : " + taskNo);
-		System.out.println("nickname : " + nickname);
+		System.out.println("loginName : " + loginName);
 		System.out.println("comment : " + comment);
 
 		
@@ -82,7 +83,7 @@ public class TaskController {
 		DateVO date = new DateVO();
 		String nowDate = date.nowDate();
 		
-		TaskCommentVO commentVO = new TaskCommentVO(task_no, login_email, nickname, comment, nowDate);
+		TaskCommentVO commentVO = new TaskCommentVO(task_no, login_email, loginName, comment, nowDate);
 		System.out.println(commentVO.toString());
 		
 		
@@ -111,8 +112,6 @@ public class TaskController {
 		
 		// 댓글 삭제
 		taskService.deleteTaskComment(commentNo);
-		
-		
 		
 	}
 	
