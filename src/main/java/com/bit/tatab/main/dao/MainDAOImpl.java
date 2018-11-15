@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.bit.tatab.main.vo.ActivityVO;
 import com.bit.tatab.main.vo.CommentVO;
 import com.bit.tatab.main.vo.MainBackgroundVO;
 import com.bit.tatab.main.vo.ProjectVO;
@@ -76,6 +77,13 @@ public class MainDAOImpl implements MainDAO {
 	@Override
 	public void deleteBackgroundImage(String login_email) {
 		sqlSession.delete("deleteBackgroundImage", login_email);
+	}
+
+	// 액티비티 리스트 불러오기(유저메인)
+	@Override
+	public List<ActivityVO> selectActivityList(String login_email) {
+		List<ActivityVO> activityList = sqlSession.selectList("selectActivityList", login_email);
+		return activityList;
 	}
 	
 	

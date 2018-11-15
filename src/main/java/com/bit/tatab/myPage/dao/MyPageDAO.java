@@ -9,7 +9,7 @@ public interface MyPageDAO {
 	public void modifyMyPage(MyPageVO myPageVO);
 
 	// 닉네임 정보 가져오기
-	public String getNickname(String login_email);
+	public String getLoginName(String login_email);
 	
 	// 프로필 이미지 info db에서 수정
 	public void modifyProfileImg(ProfileImgVO profileImgVO);

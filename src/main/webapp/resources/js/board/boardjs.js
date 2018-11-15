@@ -15,6 +15,7 @@ $(document).ready(function () {
 	    		alert('yyj');
 	    	})
 	    })
+	    
 	   });
    
    // 토글 실행
@@ -495,24 +496,39 @@ function selectAllTask(task_no) {
 				$('.task_name').val(data.taskVO.task_name);
 				$('.task_content').val(data.taskVO.task_content);
 				$('#startDate').text(data.taskVO.reg_date);
-				$('#nicknameText').text(data.nickname);
+
+//				$('#nicknameText').text(data.loginName);
+
+
+				// form 타입의 input data 설정
+				$('.task_no').val(task_no);
+				$('#updateDate').text(data.update_date);
 				
-				//////////////////////
+				if(data.d_day != '-') {
+					$('#datepicker1').val(data.d_day);
+				} 
 	
 				$('#myUL').empty();
-				
+
 				var comments = data.commentList;
-				console.log('sdfsdfsdfds : ' + comments[0].nickname);
+				
 				for(var i=0; i<comments.length; i++) {
 					console.log("comments 확인 : " + comments[i]);
 					
-					var nname = comments[i].nickname;
+					var nname = comments[i].login_name;
+					console.log('namename : ' + nname);
+					
 					var li = document.createElement("li");
 					var nicknamebox = document.createElement("p");
 					var contentbox = document.createElement("p");
 					var commentValue = comments[i].task_comment;
 					var inputCommentVal = document.createTextNode(commentValue);
 					var nicknameVal = document.createTextNode(nname);
+					/////--------------------------------------------------------------------------
+					var login_email = comments[i].login_email;
+					var my_email = data.myEmail;
+					
+					console.log('login_email : ' + login_email + "\nmy_email : " + my_email);
 				  
 					// 댓글 텍스트 contentbox에 추가
 					contentbox.appendChild(inputCommentVal);
@@ -526,42 +542,58 @@ function selectAllTask(task_no) {
 	
 	  		      	document.getElementById("myUL").appendChild(li);
 	  		      	$('li').eq(i).attr('id', comments[i].comment_no);
-	
-	  		      	var span = document.createElement("SPAN");
-	  		      	var txt = document.createTextNode("\u00D7");
-	  		      	span.className = "commentDelete";
-	  		      	span.appendChild(txt);
-	  		      	li.appendChild(span);
 	  		      	
-	  		      	$('.commentDelete').click=function(){
-	  		      		alert('쫌!!!');
-	  		      		console.log('yyj');
+	  		      	// 닉네임box에  로그인 id 설정
+	  		      	$('li').eq(i).children().eq(0).attr('id', login_email);
+	
+	  		      	
+	  		      	// 로그인 id 와 동일한 id 정보를 가지는 댓글만 x 표시
+	  		      	if(my_email == login_email) {
+	  		      		
+		  		      	var span = document.createElement("SPAN");
+		  		      	var txt = document.createTextNode("\u00D7");
+		  		      	span.className = "commentDelete";
+		  		      	span.appendChild(txt);
+		  		      	li.appendChild(span);
+		  		      	
+		  		      	$('.commentDelete').click=function(){
+		  		      		alert('쫌!!!');
+		  		      		console.log('yyj');
+		  		      	}
+	  		      		
 	  		      	}
+	  		      	////////////////////////////////////////////
 				}
 
+				// 댓글 삭제 버튼 클릭
   		      	$('.commentDelete').on("click", function() {
+  		      		
   		      		// 삭제 선택한 댓글의 id
   		      		var selectCommentId = $(this).parents(li).attr('id');
   		      		
+  		      		// 삭제할 댓글 li
+  		      		var delLi = $(this).parents('li');
   		      		
-  		      		/// TODO : 여기서부터!!!!!!
-  		      		// 화면에서 요소 삭제
-  		      		$(this).parents(li).empty();
-  		      		
-  		      		// 삭제 ajax
-  		      		
+  		      		// 댓글 삭제 ajax
+	  		      	$.ajax({
+	  					url : "deleteComment.do",
+	  					type : "get",
+	  					data : {
+	  						'commentNo' : selectCommentId
+	  					},
+	  				    cache : false,
+	  					success : function(commentVO) {
+
+	  	  		      		// 화면에서 삭제 버튼 클릭 요소 삭제
+	  	  		      		delLi.remove();
+	  					}
+	  				});
   		      		
   		      	});
-				// close 코멘트 추가 완료
+  		      	
 			}
 			//////////////////////
 			
-			$('.task_no').val(task_no);
-			$('#updateDate').text(data.update_date);
-			
-			if(data.d_day != '-') {
-				$('#datepicker1').val(data.d_day);
-			} 
 		}
 	})
 }

@@ -174,10 +174,10 @@ $(document).ready( function() {
 
 
 // insert comment ajax
-function insertComment(taskNo, nickname, comment, commentLiIndex) {
+function insertComment(taskNo, loginName, comment, commentLiIndex) {
 
 	console.log('taskNo : ' + taskNo);
-	console.log('nickname : ' + nickname);
+	console.log('loginName : ' + loginName);
 	console.log('comment : ' + comment);
 	
 	  $.ajax({
@@ -185,7 +185,7 @@ function insertComment(taskNo, nickname, comment, commentLiIndex) {
 			type : "post",
 			data : {
 				'taskNo' : taskNo,
-				'nickname' : nickname,
+				'loginName' : loginName,
 				'comment' : comment
 			},
 		    cache : false,

@@ -23,8 +23,8 @@ public class MyPageDAOImpl implements MyPageDAO {
 
 	@Override
 	// 닉네임 정보 가져오기
-	public String getNickname(String login_email) {
-		return sqlSession.selectOne("getNickname", login_email);
+	public String getLoginName(String login_email) {
+		return sqlSession.selectOne("getLoginName", login_email);
 	}
 	@Override
 	public void modifyProfileImg(ProfileImgVO profileImgVO) {

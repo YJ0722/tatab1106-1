@@ -17,8 +17,8 @@
 	</update>
 
 	<!-- 닉네임 정보 가져오기 -->
-	<select id="getNickname" parameterType="String" resultType="String">
-		select nickname from MY_PAGE_T where login_email = #{login_email}
+	<select id="getLoginName" parameterType="String" resultType="String">
+		select login_name from MY_PAGE_T where login_email = #{login_email}
 	</select>
 	
 	<!-- 프로필 이미지 업로드 insert -->

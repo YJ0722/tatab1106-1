@@ -5,7 +5,7 @@ public class TaskCommentVO {
 	private int comment_no;		// 시퀀스
 	private int task_no;
 	private String login_email;
-	private String nickname;
+	private String login_name;
 	private String task_comment;
 	private String reg_date;
 
@@ -13,21 +13,21 @@ public class TaskCommentVO {
 		super();
 	}
 
-	public TaskCommentVO(int task_no, String login_email, String nickname, String task_comment, String reg_date) {
+	public TaskCommentVO(int task_no, String login_email, String login_name, String task_comment, String reg_date) {
 		super();
 		this.task_no = task_no;
 		this.login_email = login_email;
-		this.nickname = nickname;
+		this.login_name = login_name;
 		this.task_comment = task_comment;
 		this.reg_date = reg_date;
 	}
 
-	public TaskCommentVO(int comment_no, int task_no, String login_email, String nickname, String task_comment, String reg_date) {
+	public TaskCommentVO(int comment_no, int task_no, String login_email, String login_name, String task_comment, String reg_date) {
 		super();
 		this.comment_no = comment_no;
 		this.task_no = task_no;
 		this.login_email = login_email;
-		this.nickname = nickname;
+		this.login_name = login_name;
 		this.task_comment = task_comment;
 		this.reg_date = reg_date;
 	}
@@ -56,12 +56,13 @@ public class TaskCommentVO {
 		this.login_email = login_email;
 	}
 
-	public String getNickname() {
-		return nickname;
+
+	public String getLogin_name() {
+		return login_name;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setLogin_name(String login_name) {
+		this.login_name = login_name;
 	}
 
 	public String getTask_comment() {
@@ -83,7 +84,7 @@ public class TaskCommentVO {
 	@Override
 	public String toString() {
 		return "CommentVO [comment_no=" + comment_no + ", task_no=" + task_no + ", login_email=" + login_email
-				+ ", nickname=" + nickname + ", task_comment=" + task_comment + ", reg_date=" + reg_date + "]";
+				+ ", login_name=" + login_name + ", task_comment=" + task_comment + ", reg_date=" + reg_date + "]";
 	}
 
 	
