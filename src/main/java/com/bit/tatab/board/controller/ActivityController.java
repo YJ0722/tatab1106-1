@@ -40,9 +40,10 @@ public class ActivityController {
 		System.out.println("사용자 이름 : " + login_name + ", 테스크 번호 : " + task_no + ", 댓글 내용 : " + alert_message);
 		String user_img = null;
 
-		// 세션으로 이메일, 프로필사진 가져오기
+		// 세션으로 이메일, 프로젝트 번호, 프로필사진 가져오기
 		HttpSession session = request.getSession();
 		String login_email = session.getAttribute("login_email").toString();
+		String project_no = session.getAttribute("project_no").toString();
 		ProfileImgVO profileImgVO = loginService.profileImgFind(login_email);
 		System.out.println("프로필사진 잘 가져왔니?" + profileImgVO);
 		if(profileImgVO == null) {
@@ -56,7 +57,7 @@ public class ActivityController {
 		String task_name = activityService.selectTaskName(task_no);
 		System.out.println("테스크 이름 잘 가져왔니? " + task_name);
 
-		activityService.insertComment(login_email, login_name, task_name, alert_message, user_img);
+		activityService.insertComment(login_email, login_name, task_name, alert_message, user_img, project_no);
 		System.out.println("테스크 코멘트 db에 삽입 완료!!! 확인해보자!");
 	}
 	
@@ -71,9 +72,10 @@ public class ActivityController {
 		String user_img = null;
 		String login_name = null;
 
-		// 세션으로 사용자 이름, 프로필사진 가져오기
+		// 세션으로 사용자 이름, 프로젝트 번호, 프로필사진 가져오기
 		HttpSession session = request.getSession();
 		String login_email = session.getAttribute("login_email").toString();
+		String project_no = session.getAttribute("project_no").toString();
 		LoginVO loginVO = new LoginVO();
 		loginVO.setLoginEmail(login_email);
 		List<LoginVO> loginVOList = loginService.memberInfoFind(loginVO);
@@ -91,7 +93,7 @@ public class ActivityController {
 		}
 		System.out.println("가져온 유저 프로필 save_name : " + user_img);
 		
-		activityService.insertDeadline(login_email, login_name, task_name, alert_message, user_img);
+		activityService.insertDeadline(login_email, login_name, task_name, alert_message, user_img, project_no);
 		System.out.println("테스크 마감기한 db에 삽입 완료!!! 확인해보자!");
 	}
 	
@@ -110,6 +112,7 @@ public class ActivityController {
 		// 세션으로 사용자 이름, 프로필사진 가져오기
 		HttpSession session = request.getSession();
 		String login_email = session.getAttribute("login_email").toString();
+		String project_no = session.getAttribute("project_no").toString();
 		LoginVO loginVO = new LoginVO();
 		loginVO.setLoginEmail(login_email0);
 		List<LoginVO> loginVOList = loginService.memberInfoFind(loginVO);
@@ -126,7 +129,7 @@ public class ActivityController {
 		}
 		System.out.println("가져온 초대유저 프로필 save_name : " + user_img);
 		
-		activityService.insertNewUser(login_email, login_name, task_name, alert_message, user_img);
+		activityService.insertNewUser(login_email, login_name, task_name, alert_message, user_img, project_no);
 		
 	}
 	
@@ -144,6 +147,7 @@ public class ActivityController {
 		// 세션으로 이메일, 프로필사진 가져오기
 		HttpSession session = request.getSession();
 		String login_email = session.getAttribute("login_email").toString();
+		String project_no = session.getAttribute("project_no").toString();
 		LoginVO loginVO = new LoginVO();
 		loginVO.setLoginEmail(login_email);
 		List<LoginVO> loginVOList = loginService.memberInfoFind(loginVO);
@@ -160,7 +164,7 @@ public class ActivityController {
 		}
 		System.out.println("가져온 유저 프로필 save_name : " + user_img);
 		
-		activityService.createNewTask(login_email, login_name, task_name, alert_message, user_img);
+		activityService.createNewTask(login_email, login_name, task_name, alert_message, user_img, project_no);
 		
 	}
 	

@@ -121,4 +121,10 @@
  		where task_no = #{task_no}
  	</update>
  	
+ 	<!-- 액티비티 리스트 불러오기 -->
+ 	<select id="selectActivityList2" parameterType="String" resultType="ActivityVO">
+		select * from user_activity_t
+		where project_no = #{project_no}
+	</select>
+ 	
  </mapper>  

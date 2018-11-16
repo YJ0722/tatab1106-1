@@ -11,12 +11,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.tatab.board.service.BoardService;
 import com.bit.tatab.board.vo.MemberVO;
 import com.bit.tatab.main.service.MainService;
+import com.bit.tatab.main.vo.ActivityVO;
 import com.bit.tatab.main.vo.ProjectVO;
 
 
@@ -114,6 +116,23 @@ public class TopMenuController {
 		
 		return bool+"";
 				
+	}
+	
+	// 액티비티 내용 가져오기(탑메뉴)
+    @RequestMapping(value="topMenuActivity.do", method = RequestMethod.GET)
+	@ResponseBody
+	public List<ActivityVO> activityList(HttpServletRequest request) throws Exception {
+		
+    	// 세션에서 프로젝트 번호 가져오기
+    	HttpSession session = request.getSession();
+    	String project_no = session.getAttribute("project_no").toString();
+    	
+    	System.out.println("불러올 프로젝트 번호 : " + project_no);
+		
+		List<ActivityVO> activityList = boardService.selectActivityList(project_no);
+		
+		System.out.println("activityList : " + activityList);
+		return activityList;
 	}
 
 }

@@ -299,8 +299,8 @@ $(document).ready(function() {
 	$("#activityBtn").click(function() {
 		// 내용 ajax
 		$.ajax({
-			url : "userMainActivity.do",
-			type : "post",
+			url : "topMenuActivity.do",
+			type : "get",
 			success : function(data) {
 				
 				console.log(data);
@@ -320,7 +320,7 @@ $(document).ready(function() {
     					diffInfo = parseInt(data[i].diffMin/60)+" hours ago";
     				else
     					diffInfo = (data[i].diffMin)+" mins ago";
-    				var tag = tag1 + tag2 + diffInfo + tag3 + data[i].login_name + data[i].alert_message + tag4 + data[i].project_name + tag5;
+    				var tag = tag1 + tag2 + diffInfo + tag3 + data[i].login_name + data[i].alert_message + tag4 + tag5;
     				$(tag).hide().appendTo('.activityContent').show(); 
 				}
 				// 여기에 "그 후 실행" 코드들이 들어가야 한다!	

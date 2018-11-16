@@ -6,8 +6,8 @@
  
  	<!-- 보드 액티비티에 알림 삽입 -->
  	<insert id="insertIntoActivity" parameterType="String">
- 		insert into user_activity_t(login_email, login_name, save_name, alert_message, alert_time, project_name)
- 			values(#{login_email}, #{login_name}, #{user_img}, #{alert_message}, sysdate, #{task_name})
+ 		insert into user_activity_t(login_email, login_name, save_name, alert_message, alert_time, project_no, task_name)
+ 			values(#{login_email}, #{login_name}, #{user_img}, #{alert_message}, sysdate, #{project_no}, #{task_name})
  	</insert>
  	
  	<!-- 테스크 이름 검색 -->

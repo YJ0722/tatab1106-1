@@ -15,7 +15,7 @@ public class ActivityDAOImpl implements ActivityDAO{
 	private SqlSession sqlSession;
 
 	@Override
-	public void insertComment(String login_email, String login_name, String task_name, String alert_message, String user_img) {
+	public void insertComment(String login_email, String login_name, String task_name, String alert_message, String user_img, String project_no) {
 		
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("login_email", login_email);
@@ -23,22 +23,16 @@ public class ActivityDAOImpl implements ActivityDAO{
 		param.put("task_name", task_name);
 		param.put("alert_message", alert_message);
 		param.put("user_img", user_img);
+		param.put("project_no", project_no);
 		
 		sqlSession.insert("insertIntoActivity", param);
 		
 	}
 	
-	// 테스크 이름 검색
-	@Override
-	public String selectTaskName(String task_no) {
-		String task_name = sqlSession.selectOne("selectTaskName", task_no);
-		return task_name;
-	}
-
 	// 테스크 마감기한 설정
 	@Override
 	public void insertDeadline(String login_email, String login_name, String task_name, String alert_message,
-			String user_img) {
+			String user_img, String project_no) {
 		
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("login_email", login_email);
@@ -46,6 +40,7 @@ public class ActivityDAOImpl implements ActivityDAO{
 		param.put("task_name", task_name);
 		param.put("alert_message", alert_message);
 		param.put("user_img", user_img);
+		param.put("project_no", project_no);
 		
 		sqlSession.insert("insertIntoActivity", param);
 		
@@ -54,7 +49,7 @@ public class ActivityDAOImpl implements ActivityDAO{
 	// 멤버 초대 알림
 	@Override
 	public void insertNewUser(String login_email, String login_name, String task_name, String alert_message,
-			String user_img) {
+			String user_img, String project_no) {
 
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("login_email", login_email);
@@ -62,6 +57,7 @@ public class ActivityDAOImpl implements ActivityDAO{
 		param.put("task_name", task_name);
 		param.put("alert_message", alert_message);
 		param.put("user_img", user_img);
+		param.put("project_no", project_no);
 		
 		sqlSession.insert("insertIntoActivity", param);
 	}
@@ -69,7 +65,7 @@ public class ActivityDAOImpl implements ActivityDAO{
 	// 테스크 생성 알림
 	@Override
 	public void createNewTask(String login_email, String login_name, String task_name, String alert_message,
-			String user_img) {
+			String user_img, String project_no) {
 
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("login_email", login_email);
@@ -77,28 +73,19 @@ public class ActivityDAOImpl implements ActivityDAO{
 		param.put("task_name", task_name);
 		param.put("alert_message", alert_message);
 		param.put("user_img", user_img);
+		param.put("project_no", project_no);
 		
 		sqlSession.insert("insertIntoActivity", param);
 	}
 	
-	
-	
-	
+	// 테스크 이름 검색
+		@Override
+		public String selectTaskName(String task_no) {
+			String task_name = sqlSession.selectOne("selectTaskName", task_no);
+			return task_name;
+		}
 	
 
-	
-	
-	/*// 컬럼 이름 변경
-	@Override
-	public void updateColName(String colId, String updateTitle) {
-		
-		Map<String, Object> param = new HashMap<String, Object>();
-		
-		param.put("colId", colId);
-		param.put("updateTitle", updateTitle);
-		
-		sqlSession.update("updateColName", param);
-	}*/
 	
 	
 }
