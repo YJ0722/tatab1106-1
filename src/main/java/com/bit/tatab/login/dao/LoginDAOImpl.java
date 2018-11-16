@@ -72,6 +72,13 @@ public class LoginDAOImpl implements LoginDAO {
 		ProfileImgVO profileImgVO = sqlSession.selectOne("profileImgFindString", login_email);
 		return profileImgVO;
 	}
+
+// 마이페이지 사진 info db에 존재하는지 확인 - String 버전 + login_name
+	@Override
+	public ProfileImgVO profileImgFind2(String login_name) {
+		ProfileImgVO profileImgVO = sqlSession.selectOne("profileImgFindString2", login_name);
+		return profileImgVO;
+	}
 	
 	
 	

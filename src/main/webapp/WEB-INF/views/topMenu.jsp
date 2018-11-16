@@ -58,6 +58,18 @@
 		$('.dday1').val(dday);
 		
 		$('#updateTask').submit();
+		
+		// ajax로 값 넘기기
+		$.ajax({
+			url : "deadlineInsert.do",
+			data : {'task_name': task_name,
+					'alert_message' : dday
+					},
+			type : "get",
+			success : function() {
+					alert('마감기한 설정 완료!');
+				}
+		});
 	}
 	
 	// 멤버 할당

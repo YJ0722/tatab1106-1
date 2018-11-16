@@ -32,4 +32,8 @@ public interface LoginService {
 	
 	// 마이페이지 사진 indo db에 존재하는지 확인검색) - String버전
 	public ProfileImgVO profileImgFind(String login_email);
+
+	// 마이페이지 사진 indo db에 존재하는지 확인검색) - String버전 + login_name
+	public ProfileImgVO profileImgFind2(String login_name);
+
 }

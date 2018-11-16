@@ -299,6 +299,17 @@ $(document).ready(function () {
                     // db에 태스크 추가 ajax 실행
                     insertBoardTask($('.kanban-col').eq(tagIndex).find('.task:last'), task_col_no, taskTitle);
                     
+	                // ajax로 값 넘기기 - 액티비티 추가
+        			$.ajax({
+        				url : "createNewTask.do",
+        				data : {'task_name': taskTitle
+        						},
+        				type : "get",
+        				success : function() {
+        						alert('테스크 추가 알림 완료!');
+        					}
+        			});
+                    
                 }
 
                 // 작업 insert 후 마우스 다시 mouseover 상태로 변경
