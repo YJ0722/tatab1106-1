@@ -53,7 +53,7 @@ public class ActivityController {
 		}
 		System.out.println("가져온 유저 프로필 save_name : " + user_img);
 		
-		// task_no로 task_name 가져오기
+		// task_no로 task_name 가져오기 
 		String task_name = activityService.selectTaskName(task_no);
 		System.out.println("테스크 이름 잘 가져왔니? " + task_name);
 		
