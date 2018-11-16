@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.bit.tatab.board.dao.ActivityDAO">
+ 
+ 	<!-- 테스크 코멘트 삽입 -->
+ 	<insert id="insertActivityComment" parameterType="String">
+ 		insert into user_activity_t(login_email, login_name, save_name, alert_message, alert_time, project_name)
+ 			values(#{login_email}, #{login_name}, #{user_img}, #{alert_message}, sysdate, #{task_name})
+ 	</insert>
+ 	
+ 	<!-- 테스크 이름 검색 -->
+ 	<select id="selectTaskName" parameterType="String" resultType="String">
+ 		select task_name from prj_task_t where task_no = #{task_no}
+ 	</select>
+ 	<!-- board colName update -->
+ 	<!-- <update id="updateColName" parameterType="String">
+ 		update prj_col_t
+		set col_name = #{updateTitle}
+		where col_no = #{colId}
+ 	</update> -->
+ 	
+ </mapper>  
