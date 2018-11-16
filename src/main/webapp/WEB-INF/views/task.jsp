@@ -52,6 +52,7 @@
 				<div class="left-box">
 					<div class="modal-body">
 						<div id="container"> 
+						
 							<div id="boxs">
 								<span>D-?</span> <img
 									src="resources/img/board/bookmarkButton.png" width="30"
@@ -146,8 +147,7 @@
 							<div class="right-box-item-title task-update-day-name">수정일</div>
 							<p>2018.11.12</p>
 						</div>
-						<!-- updateday start-->
-
+						<!-- updateday end-->
 					</div>
 
 				</div>
@@ -155,6 +155,7 @@
 			</div>
 	</div>
 
+	
 	<script src="resources/js/board/taskScript.js"></script>
 </body>
 </html>

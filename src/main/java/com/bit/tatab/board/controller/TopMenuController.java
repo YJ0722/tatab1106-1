@@ -92,6 +92,8 @@ public class TopMenuController {
 		
 		List<MemberVO> memberList = boardService.selectMemberList(project_no);
 		
+		// 보드 액티비티 위해 세션에 추가
+		session.setAttribute("memberList", memberList);
 		System.out.println("memberList : " + memberList);
 		return memberList;
 	}
