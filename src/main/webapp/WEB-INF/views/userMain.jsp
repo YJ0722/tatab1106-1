@@ -382,7 +382,7 @@ $(document).ready(function() {
 		$.ajax({
 			url : "userMainActivity.do",
 			type : "post",
-			success : function(data) {
+			success : function(data) { // data가 컨트롤러에서 넘어오는 리턴값!
 				
 				console.log(data);
 				$('.activityContent').empty();

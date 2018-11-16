@@ -9,12 +9,6 @@ $(document).ready(function () {
 	      
 	      selectAllTask(task_no);
 	      
-	    $(function(){
-//			alert('when??');
-	    	$('.close').on('click',function(){
-	    		alert('yyj');
-	    	})
-	    })
 	    
 	   });
    
@@ -300,6 +294,8 @@ $(document).ready(function () {
                     console.log('작업 제목 : ' + taskTitle);
                     console.log('해당 컬럼 인덱스 : ' + task_col_no);
                     
+                    // 서버로 값 넘기는 ajax 실행
+                    
                     // db에 태스크 추가 ajax 실행
                     insertBoardTask($('.kanban-col').eq(tagIndex).find('.task:last'), task_col_no, taskTitle);
                     
@@ -479,7 +475,7 @@ function updateColName(colId, updateTitle) {
 	});
 }
 
-// 컬럼 데이터 가져오기
+// 작업 데이터 가져오기
 function selectAllTask(task_no) {
 	$.ajax({
 		url : "selectAllTask.do",
@@ -489,6 +485,8 @@ function selectAllTask(task_no) {
 		},
 		success : function(data) {
 			if(data != null) {
+				
+				
 					
 				console.log("5555555555 data : " + data.loginName);
 
