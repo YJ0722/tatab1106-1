@@ -68,6 +68,14 @@ public class LoginServiceImpl implements LoginService {
 		ProfileImgVO profileImgVO = loginDAO.profileImgFind(login_email);
 		return profileImgVO;
 	}
+
+	// 마이페이지 사진 indo db에 존재하는지 확인검색) - String버전 + login_name
+	@Override
+	public ProfileImgVO profileImgFind2(String login_name) {
+		ProfileImgVO profileImgVO = loginDAO.profileImgFind2(login_name);
+		return profileImgVO;
+	}
+	
 	
 	
 

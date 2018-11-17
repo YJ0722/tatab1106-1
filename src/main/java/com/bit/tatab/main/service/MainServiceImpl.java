@@ -72,12 +72,12 @@ public class MainServiceImpl implements MainService{
 	public List<ActivityVO> selectActivityList(String login_email) {
 		List<ActivityVO> activityList = mainDao.selectActivityList(login_email);
 		for(ActivityVO a: activityList) {
-//			String begin = a.getAlert_time()+" "+a.getAlert_time().getHours()+":"+a.getAlert_time().getMinutes();
 			a.setDiffMin(diffOfMin(a.getAlert_time(),new Date()));
 		}
 		return activityList;
 	}
 	
+	// 시간 차이 구하는 메소드
 	public static long diffOfMin(Date begin, Date end) {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 		long result=0;

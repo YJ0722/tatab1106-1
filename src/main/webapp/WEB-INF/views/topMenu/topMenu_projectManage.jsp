@@ -84,6 +84,7 @@
     			false;
     		} else {
 			//	$('.addUser').submit();
+    			// ajax로 값 넘기기 - 유저 추가
     			$.ajax({
     				url:'addUser.do',
     				type:'post',
@@ -97,6 +98,17 @@
     					}
     				}
     			})
+    			
+    			// ajax로 값 넘기기 - 액티비티 추가
+    			$.ajax({
+    				url : "addUserActivity.do",
+    				data : {'login_email0': $('.addMemberInput').val()
+    						},
+    				type : "get",
+    				success : function() {
+    						alert('멤버초대 알림 완료!');
+    					}
+    			});
     		}
     		return false;
     	}

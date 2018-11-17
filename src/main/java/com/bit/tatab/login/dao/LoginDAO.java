@@ -32,7 +32,10 @@ public interface LoginDAO {
 	// 마이페이지 사진 info db에 존재하는지 확인(검색) - vo버전
 	public ProfileImgVO profileImgFind(LoginVO loginVO);
 	
-	// // 마이페이지 사진 info db에 존재하는지 확인(검색) - String버전
+	// 마이페이지 사진 info db에 존재하는지 확인(검색) - String버전
 	public ProfileImgVO profileImgFind(String login_email);
+
+	// 마이페이지 사진 info db에 존재하는지 확인(검색) - String버전 + login_name
+	public ProfileImgVO profileImgFind2(String login_name);
 	
 }

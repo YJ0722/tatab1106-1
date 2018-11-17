@@ -10,6 +10,7 @@ import com.bit.tatab.board.dao.BoardDAO;
 import com.bit.tatab.board.vo.BoardColVO;
 import com.bit.tatab.board.vo.BoardTaskVO;
 import com.bit.tatab.board.vo.MemberVO;
+import com.bit.tatab.main.vo.ActivityVO;
 import com.bit.tatab.main.vo.ProjectVO;
 
 @Service
@@ -94,5 +95,12 @@ public class BoardServiceImpl implements BoardService{
 	public void updateColName(String colId, String updateTitle) {
 		boardDao.updateColName(colId, updateTitle);
 	}
+
+	// 액티비티 리스트 불러오기
+	@Override
+	public List<ActivityVO> selectActivityList(String project_no) {
+		return boardDao.selectActivityList(project_no);
+	}
+	
 	
 }

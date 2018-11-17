@@ -58,6 +58,18 @@
 		$('.dday1').val(dday);
 		
 		$('#updateTask').submit();
+		
+		// ajax로 값 넘기기
+		$.ajax({
+			url : "deadlineInsert.do",
+			data : {'task_name': task_name,
+					'alert_message' : dday
+					},
+			type : "get",
+			success : function() {
+					alert('마감기한 설정 완료!');
+				}
+		});
 	}
 	
 	// 멤버 할당
@@ -74,7 +86,7 @@
 	<table border="1px" style="width: 100%; height: 50px;">
 		<tr>
 			<td style="width: 10%">
-				<img class="board-logo" src="resources/img/index/tatab-logo1.png" />
+				<a href="<c:url value="/userMain.do" />"><img class="board-logo" src="resources/img/index/tatab-logo1.png" /></a>
 			</td>
 			<td style="width: 5%" id="infoBtn"><i class="fas fa-info"></i></td>
 			
@@ -95,10 +107,10 @@
 				</table>
 			</td>
 			<td style="width: 5%"><i class="far fa-clock"></i></td>
-			<td style="width: 5%" class="activityBtn"><i class="fas fa-at"></i>
-				<div onclick="history.back();" class="page_cover"></div>
+			<td style="width: 5%" id="activityBtn"><i class="fas fa-at"></i>
+				<div class="page_cover"></div>
 				<div id="menu">
-					<div onclick="history.back();" class="activityClose"></div>
+					<div class="activityClose" id="activityClose"></div>
 					<!-- activity.jsp-->
 					<jsp:include page="/WEB-INF/views/topMenu/topMenu_activity.jsp" />
 				</div></td>
@@ -196,6 +208,9 @@
 							data-dismiss="modal">Close</button>
 						<button type="button" class="btn btn-primary" onclick="submit()">Save
 							changes</button>
+						<!-- 액티비티용 컴플리트 버튼 : 스크립트는 아래에! -->
+						<button id="taskCompleteBtn" onclick="completeTask()">작업완료</button>
+						<!-- 액티비티용 컴플리트 버튼 끝 -->
 					</div>
 				</div>
 				<div class="center-line"></div>
@@ -214,7 +229,10 @@
 						<!-- 멤버리스트 보여주기-->
 						<div>
 							성수 연주 원석
-							<div id="myForm"></div>
+							<div id="myForm">
+								<input type="text" id="assignee">
+								<button onclick="setAssignee()">할당</button>
+							</div>
 						</div>
 						<!-- 멤버리스트 보여주기-->
 						
@@ -281,6 +299,85 @@
 	  });
 	});
 </script>
+<script>
+//activity 관련 업데이트
+$(document).ready(function() {
+	$("#activityBtn").click(function() {
+		// 내용 ajax
+		$.ajax({
+			url : "topMenuActivity.do",
+			type : "get",
+			success : function(data) {
+				
+				console.log(data);
+				$('.activityContent').empty();
+				  for(i=0; i<data.length; i++) { // 프로필사진, 시간, 이름, 메시지, 프로젝트이름
+    				var tag1 = '<div class="activityIcon" id="MyPageModalBtn"><img src="${pageContext.request.contextPath}/img/'+data[i].save_name+'"/>';
+    				var tag2 = '</div><div class="activityTime">';
+    				var tag3 = '</div><div class="activityDo">';
+    				var tag4 = '</div><div class="activityTaskName">';
+    				var tag5 = '</div>';
+    				
+    				var diffInfo = 0;
+    				
+    				if(data[i].diffMin/60/24 > 1)
+    					diffInfo = parseInt(data[i].diffMin/60/24)+" days ago";
+    				else if(data[i].diffMin/60 > 1)
+    					diffInfo = parseInt(data[i].diffMin/60)+" hours ago";
+    				else
+    					diffInfo = (data[i].diffMin)+" mins ago";
+    				var tag = tag1 + tag2 + diffInfo + tag3 + data[i].alert_message + tag4 + tag5;
+    				$(tag).hide().appendTo('.activityContent').show(); 
+				}
+				// 여기에 "그 후 실행" 코드들이 들어가야 한다!	
+				$('#menu').css('right', '0px');
+				console.log('open done');
+			}
+			
+		});
+		$('#activityClose').click(function() {
+			event.stopPropagation();
+			$('#menu').css('right', '-302px');
+			console.log('close done');
+		});
+	});
+});
+</script>
+<script>
+	// complete task
+	function completeTask() {
+		var taskNo = $('.modal-content').attr('id');
+		
+		// ajax로 값 넘기기
+		$.ajax({
+			url : "completeTask.do",
+			data : {'task_no': taskNo,
+					},
+			type : "get",
+			success : function() {
+					alert('작업완료 알림 완료!');
+				}
+		});
+	}
+	</script>
+	<script>
+	// set assignee
+	function setAssignee() {
+		var taskNo = $('.modal-content').attr('id');
+		var assignee = $('#assignee').val();
+		// ajax로 값 넘기기
+		$.ajax({
+			url : "setAssignee.do",
+			data : {'task_no': taskNo,
+					'login_name': assignee
+					},
+			type : "get",
+			success : function() {
+					alert('작업완료 알림 완료!');
+				}
+		});
+	}
+	</script>
 
 <!-- task 관련 스크립트  - 부트스트랩 -->
 <script

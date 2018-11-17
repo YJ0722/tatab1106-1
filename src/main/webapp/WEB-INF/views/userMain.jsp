@@ -179,12 +179,12 @@
                         </a></li>
                     </ul>
                 </div>
-                		<div onclick="history.back();" class="page_cover"></div>
-						<div id="menu">
-							<div onclick="history.back();" class="activityClose"></div>
-							<!-- activity.jsp-->
-							<jsp:include page="/WEB-INF/views/topMenu/topMenu_activity.jsp" />
-						</div>
+                		<div class="page_cover"></div>
+				<div id="menu">
+					<div class="activityClose" id="activityClose"></div>
+					<!-- activity.jsp-->
+					<jsp:include page="/WEB-INF/views/topMenu/topMenu_activity.jsp" />
+				</div>
                
                 <!-- 위쪽 아이콘들 끝 -->
                 <!-- 아래 코멘트 배경 -->
@@ -375,93 +375,50 @@
 </body>
 
 <script>
-	// activity
-	$(document).ready(function() {
-		$("#activityBtn").click(function() {
-			// 내용 ajax
-			$.ajax({
-				url : "userMainActivity.do",
-				type : "post",
-				success : function(data) {
-					
-					console.log(data);
-					$('.activityContent').empty();
-					  for(i=0; i<data.length; i++) { // 프로필사진, 시간, 이름, 메시지, 프로젝트이름
-	    				var tag1 = '<div class="activityIcon" id="MyPageModalBtn"><img src="${pageContext.request.contextPath}/img/'+data[i].save_name+'"/>';
-	    				var tag2 = '</div><div class="activityTime">';
-	    				var tag3 = '</div><div class="activityDo">';
-	    				var tag4 = '</div><div class="activityTaskName">';
-	    				var tag5 = '</div>';
-	    				
-	    				var diffInfo = 0;
-	    				
-	    				if(data[i].diffMin/60/24 > 1)
-	    					diffInfo = parseInt(data[i].diffMin/60/24)+" days ago";
-	    				else if(data[i].diffMin/60 > 1)
-	    					diffInfo = parseInt(data[i].diffMin/60)+" hours ago";
-	    				else
-	    					diffInfo = (data[i].diffMin)+" mins ago";
-	    				var tag = tag1 + tag2 + diffInfo + tag3 + data[i].login_name + data[i].alert_message + tag4 + data[i].project_name + tag5;
-	    				$(tag).hide().appendTo('.activityContent').show(); 
-					}
-					// 여기에 "그 후 실행" 코드들이 들어가야 한다!	
-					$("#menu, .page_cover, html").addClass("open");
-					window.location.hash = "#open";
-				}
+//activity 관련 업데이트
+$(document).ready(function() {
+	$("#activityBtn").click(function() {
+		// 내용 ajax
+		$.ajax({
+			url : "userMainActivity.do",
+			type : "post",
+			success : function(data) { // data가 컨트롤러에서 넘어오는 리턴값!
 				
-			});
-	
-			
-			// 그 후 실행
-			$("#menu, .page_cover, html").addClass("open");
-			window.location.hash = "#open";
-		});
-		
-		window.onhashchange = function() {
-			if (location.hash != "#open") {
-				$("#menu, .page_cover, html").removeClass("open");
+				console.log(data);
+				$('.activityContent').empty();
+				  for(i=0; i<data.length; i++) { // 프로필사진, 시간, 이름, 메시지, 프로젝트이름
+    				var tag1 = '<div class="activityIcon" id="activityIcon"><img src="${pageContext.request.contextPath}/img/'+data[i].save_name+'"/>';
+    				var tag2 = '</div><div class="activityTime">';
+    				var tag3 = '</div><div class="activityDo">';
+    				var tag4 = '</div><div class="activityTaskName">';
+    				var tag5 = '</div>';
+    				
+    				var diffInfo = 0;
+    				
+    				if(data[i].diffMin/60/24 > 1)
+    					diffInfo = parseInt(data[i].diffMin/60/24)+" days ago";
+    				else if(data[i].diffMin/60 > 1)
+    					diffInfo = parseInt(data[i].diffMin/60)+" hours ago";
+    				else
+    					diffInfo = (data[i].diffMin)+" mins ago";
+    				var tag = tag1 + tag2 + diffInfo + tag3 + data[i].alert_message + tag4 + data[i].project_name + tag5;
+    				$(tag).hide().appendTo('.activityContent').show(); 
+				}
+				// 여기에 "그 후 실행" 코드들이 들어가야 한다!	
+				$('#menu').css('right', '0px');
+				console.log('open done');
 			}
-		};
+			
+		});
+		$('#activityClose').click(function() {
+			event.stopPropagation();
+			$('#menu').css('right', '-302px');
+			console.log('close done');
+		});
 	});
+});
 </script>
-<!-- <script>
-	function getActivityList() {
-			$.ajax({
-				url : "userMainActivity.do",
-				type : "post",
-				
-				success : function(data) {
-					coonsole.log(data);
-					$('.activityContent').empty();
-					  for(i=0; i<data.length; i++) { // 프로필사진, 시간, 이름, 메시지, 프로젝트이름
-					   /* <div class="activityIcon">
-						   프로필사진
-					  </div><div class="activityTime">
-						  시간
-                       </div><div class="activityDo">
-                     	  이름, 메시지
-                       </div><div class="activityTaskName">
-                  		     프로젝트이름
-                        </div> */ 
-	    				var tag1 = '<div class="activityIcon">';
-	    				var tag2 = '</div><div class="activityTime">';
-	    				var tag3 = '</div><div class="activityDo">';
-	    				var tag4 = '</div><div class="activityTaskName">';
-	    				var tag5 = '</div>';
-	    					
-	    				var tag = tag1 + data[i].save_name + tag2 + data[i].alert_time + tag3 + data[i].login_name + data[i].alert_message + tag4 + project_name + tag5;
-	    				
-	    				$(tag).hide().appendTo('.activityContent').show(); 
-					}
-					// 여기에 "그 후 실행" 코드들이 들어가야 한다!	
-					$("#menu, .page_cover, html").addClass("open");
-					window.location.hash = "#open";
-				}
-				
-			});
-			return false; 
-		}
-</script> -->
+
 <script>
 	// 구글 로그아웃
 	function signOut() {

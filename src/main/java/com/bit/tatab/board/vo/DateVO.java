@@ -24,13 +24,22 @@ public class DateVO {
 		this.month = cal.get(cal.MONTH) + 1;
 		this.date = cal.get(cal.DATE);
 		
-//		this.hour = cal.get(cal.HOUR_OF_DAY);
-//		this.min = cal.get(cal.MINUTE);
-//		this.sec = cal.get(cal.SECOND);
 		
 		String day = String.valueOf(getYear() + "." + getMonth() + "." + getDate());
 		
 		return day;
+	}
+	
+	public String nowTime() {
+
+		this.hour = cal.get(cal.HOUR_OF_DAY);
+		this.min = cal.get(cal.MINUTE);
+		this.sec = cal.get(cal.SECOND);
+		
+		String time = String.valueOf(getHour() + ":" + getMin());// + ":" + getSec());
+		
+		return time;	
+		
 	}
 	
 	public int calDDay(String day) {

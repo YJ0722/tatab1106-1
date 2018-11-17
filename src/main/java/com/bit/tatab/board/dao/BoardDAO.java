@@ -5,6 +5,7 @@ import java.util.List;
 import com.bit.tatab.board.vo.BoardColVO;
 import com.bit.tatab.board.vo.BoardTaskVO;
 import com.bit.tatab.board.vo.MemberVO;
+import com.bit.tatab.main.vo.ActivityVO;
 import com.bit.tatab.main.vo.ProjectVO;
 
 public interface BoardDAO {
@@ -47,4 +48,7 @@ public interface BoardDAO {
 	
 	// 컬럼 이름 변경
 	public void updateColName(String colId, String updateTitle);
+
+	// 액티비티 리스트 불러오기
+	public List<ActivityVO> selectActivityList(String project_no);
 }

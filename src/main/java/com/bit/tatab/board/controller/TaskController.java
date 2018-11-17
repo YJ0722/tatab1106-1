@@ -82,8 +82,10 @@ public class TaskController {
 
 		DateVO date = new DateVO();
 		String nowDate = date.nowDate();
+		String nowTime = date.nowTime();
+		String now = nowDate + " " + nowTime; 
 		
-		TaskCommentVO commentVO = new TaskCommentVO(task_no, login_email, loginName, comment, nowDate);
+		TaskCommentVO commentVO = new TaskCommentVO(task_no, login_email, loginName, comment, now);
 		System.out.println(commentVO.toString());
 		
 		
