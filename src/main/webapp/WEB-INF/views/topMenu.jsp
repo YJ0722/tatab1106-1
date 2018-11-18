@@ -331,15 +331,18 @@ $(document).ready(function() {
     				$(tag).hide().appendTo('.activityContent').show(); 
 				}
 				// 여기에 "그 후 실행" 코드들이 들어가야 한다!	
-				$('#menu').css('right', '0px');
-				console.log('open done');
+					event.stopPropagation();
+				if($('#menu').css('right') == '-302px') {
+					$('#menu').css('right', '0px');
+				} else {
+					$('#menu').css('right', '-302px');
+				}
 			}
 			
 		});
 		$('#activityClose').click(function() {
 			event.stopPropagation();
 			$('#menu').css('right', '-302px');
-			console.log('close done');
 		});
 	});
 });

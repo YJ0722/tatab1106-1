@@ -100,6 +100,7 @@ a:hover
 .titlePhrase a img {
 	position: relative;
 	width: 250px;
+	height: auto;
     margin-left: 10px;
     top: -20px;
 }
@@ -123,6 +124,8 @@ a:hover
 
 .listWrapper {
 	margin-top: 60px;
+	max-height: 650px;
+	overflow: auto;
 }
 
 .list {
@@ -180,6 +183,7 @@ a:hover
 
 #topMenu img {
 	height: 35px;
+	width: 35px;
 	background-color: white;
 	border-radius: 50%;
 }
@@ -247,10 +251,17 @@ a:hover
     position: absolute;
     bottom: 0vmin;
     left: 59vmax;
+    color: gray;
 }
 
 #MyPageModalBtn img {
 	border-radius: 50%;	
+}
+
+.logout {
+	text-align: right;
+	position: relative;
+	right: 10px;
 }
 
 /* MyPageModal - background */
@@ -264,7 +275,7 @@ a:hover
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgba(0,0,0,0); /* Black w/ opacity */
 }
 
 /* MyPageModal - content */
@@ -273,7 +284,8 @@ a:hover
     margin-left: 1590px;
     margin-top: 220px;
     padding: 0px;
-    border: 1px solid #888;
+    border: 1px solid #e3fafd;
+    border-radius: 10px;
     width: 280px;
     height: 280px; /* Could be more or less, depending on screen size */
 }

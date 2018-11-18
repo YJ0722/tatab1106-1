@@ -10,7 +10,7 @@
 	<meta name="theme-color" content="#ffffff">
     <link href="<c:url value="/resources/css/main/UserMain.css?ver=7" />" rel="stylesheet">
     <!-- MyPage 관련 -->	
-    <link href="<c:url value="/resources/css/main/MyPageModal.css?ver=2" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/main/MyPageModal.css?ver=3" />" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- MyPage 관련 끝 -->
     <!-- StickyNote 관련 -->
@@ -28,7 +28,6 @@
     <!-- 관련  끝 -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive|Gothic+A1" rel="stylesheet">
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
     <script src="<c:url value="/resources/js/main/StickyNote.js" />"></script>
@@ -165,7 +164,7 @@
                 <div id="topMenu">
                     <ul>
                         <li id="StickyNoteModalBtn"><a><img src="<c:url value="/resources/img/main/pencil-circle.png" />"></a></li>
-                        <li id="activityBtn"><img src="<c:url value="/resources/img/main/world.svg" />"></li>
+		              			<li id="activityBtn"><a><img src="<c:url value="/resources/img/main/world.svg" />"></a></li>
                         <li id="MyPageModalBtn"><a>
                         	<c:choose>
                                     	<c:when test="${empty profileImgVO.save_name }">
@@ -240,15 +239,14 @@
                                 </div>
                                 <div class="info">
                                     <div class="title">
-                                        <a target="_blank" href="https://scripteden.com/"><c:out value="${ myPageVO.nickname }" /></a>
+                                        <a><c:out value="${ myPageVO.login_name }" /></a>
                                     </div>
-                                    <div class="desc"><c:out value="${ myPageVO.login_name }" /></div>
                                     <div class="desc"><c:out value="${ myPageVO.dob }" /></div>
                                     <div class="desc"><c:out value="${ myPageVO.login_email }" /></div>
                                     <h4><c:out value="${ myPageVO.motto }" /></h4>
                                 </div>
                                 <div class="bottom">
-                                    <a href="<c:url value="/myPage.do" />"><img src="<c:url value="/resources/img/main/kakaotalk.png" />"/></a>                              
+                                    <a href="<c:url value="/myPage.do" />"><img src="<c:url value="/resources/img/main/gear.png" />"/></a>                              
                                 </div>
                                 <div class="logout">
                                 	<a href="googleLogout.do" onClick="signOut();">
@@ -404,15 +402,18 @@ $(document).ready(function() {
     				$(tag).hide().appendTo('.activityContent').show(); 
 				}
 				// 여기에 "그 후 실행" 코드들이 들어가야 한다!	
-				$('#menu').css('right', '0px');
-				console.log('open done');
+					event.stopPropagation();
+				if($('#menu').css('right') == '-302px') {
+					$('#menu').css('right', '0px');
+				} else {
+					$('#menu').css('right', '-302px');
+				}
 			}
 			
 		});
-		$('#activityClose').click(function() {
+		 $('#activityClose').click(function() {
 			event.stopPropagation();
 			$('#menu').css('right', '-302px');
-			console.log('close done');
 		});
 	});
 });
