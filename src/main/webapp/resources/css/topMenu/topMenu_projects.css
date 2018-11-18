@@ -1,5 +1,5 @@
 #projectsTitle {
-	font-size: 35px;
+	font-size: 25px;
 }
 
 #searchProject {
@@ -19,14 +19,14 @@
 
 #list {
     width: 280px;
-    height: 60px;
+    height: 45px;
     background-color:darkgrey;
     display: table;
-    padding: 10px;
+    padding: 5px;
     color: aliceblue;
     float: left;
     border : 0.5px solid;
-    
+    border-radius: 5px;
 }
 
 p {
@@ -38,7 +38,14 @@ p {
     background-color: #fefefe;
     padding: 10px;
     border: 1px solid #888;
-    width: 300px;
+    width: 310px;
     opacity: 0.9;
     height: 423px; 
+    border-radius: 10px;
+}
+
+.fas fa-bolt {
+	padding-left: 15px;
+    font-size: 15px;
+    vertical-align: inherit;
 }

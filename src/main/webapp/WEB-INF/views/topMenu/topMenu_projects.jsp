@@ -26,8 +26,8 @@
 						$('#wrapper').empty();
 						for(i=0; i<data.length; i++) {
 							console.log(data)
-							var tag1= '<div id="list" class="list['+i+']"><p style="width:50px;"><i class="fas fa-bolt"></i>'+
-		                    '<div class="projectName" style="font-size:25px;">' +'<input class="project_no" type="hidden" name="project_no" value="'+ data[i].project_no+'">' ;
+							var tag1= '<div id="list" class="list['+i+']"><p style="width:50px;"><img src="resources/img/topMenu/aircraft.png" class="fas fa-bolt" style="margin-left: 15px; width:20px; height:20px; vertical-align: inherit;">'+
+		                    '<div class="projectName" style="font-size:20px; height:35px;">' +'<input class="project_no" type="hidden" name="project_no" value="'+ data[i].project_no+'">' ;
 		                    var tag2 = '</div></p></div>'
 						
 		                    var tag = tag1+ data[i].project_name + tag2;

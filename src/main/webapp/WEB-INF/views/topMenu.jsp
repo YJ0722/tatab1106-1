@@ -83,39 +83,40 @@
 
 <body>
 <div class="table-box">
-	<table border="1px" style="width: 100%; height: 50px;">
+	<table id="topMenu-table">
 		<tr>
 			<td style="width: 10%">
 				<a href="<c:url value="/userMain.do" />"><img class="board-logo" src="resources/img/index/tatab-logo1.png" /></a>
 			</td>
-			<td style="width: 5%" id="infoBtn"><i class="fas fa-info"></i></td>
-			
-			<td style="width: 25%" id="projectsBtn" style="font-size: 2rem;">
-				<i class="fas fa-bolt"></i>
+			<td style="width: 3%" id="infoBtn"><img src="resources/img/topMenu/gear.png"></td>
+			<td style="width: 20%"></td>
+			<td style="width: 8%" id="projectsBtn" style="font-size: 2rem;">
+				<img src="resources/img/topMenu/aircraft.png">
 				&nbsp; ${projectName } &nbsp; 
-				<i class="fas fa-angle-down"></i>
+				<i class="fas fa-angle-down "></i>
 			</td>
-			<td style="width: 5%">
-				<table class="activeBtn">
-					<tr>
-						<td align="center">9</td>
-						<td rowspan="2"><i class="fas fa-angle-down"></i></td>
-					</tr>
-					<tr>
-						<td>Active</td>
-					</tr>
-				</table>
-			</td>
-			<td style="width: 5%"><i class="far fa-clock"></i></td>
-			<td style="width: 5%" id="activityBtn"><i class="fas fa-at"></i>
+			<td style="width: 23%"></td>
+<!-- 			<td style="width: 5%"> -->
+<!-- 				<table class="activeBtn"> -->
+<!-- 					<tr> -->
+<!-- 						<td align="center">9</td> -->
+<!-- 						<td rowspan="2"><i class="fas fa-angle-down"></i></td> -->
+<!-- 					</tr> -->
+<!-- 					<tr> -->
+<!-- 						<td>Active</td> -->
+<!-- 					</tr> -->
+<!-- 				</table> -->
+<!-- 			</td> -->
+			<td style="width: 2%"><img src="resources/img/topMenu/alarm_bell.png"></td>
+			<td style="width: 2%" id="activityBtn"><img src="resources/img/topMenu/world_asia.png">
 				<div class="page_cover"></div>
 				<div id="menu">
 					<div class="activityClose" id="activityClose"></div>
 					<!-- activity.jsp-->
 					<jsp:include page="/WEB-INF/views/topMenu/topMenu_activity.jsp" />
 				</div></td>
-			<td style="width: 5%"><i class="fas fa-cog"></i></td>
-			<td style="width: 5%"><i class="fas fa-user-circle"></i></td>
+<!-- 			<td style="width: 5%"><i class="fas fa-cog"></i></td> -->
+			<td style="width: 3%"><i class="fas fa-user-circle"></i></td>
 		</tr>
 	</table>
 </div>
