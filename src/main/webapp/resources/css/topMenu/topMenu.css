@@ -124,7 +124,7 @@ html.open {
     height: 50px; 
     position: absolute; 
     right: 0px; 
-    top: 0px; 
+    top: 7px; 
     background-image: url("https://s1.daumcdn.net/cfs.tistory/custom/blog/204/2048858/skin/images/close.png"); 
     background-size: 70%; 
     background-repeat: no-repeat; 
@@ -136,7 +136,7 @@ html.open {
     width: 300px; 
     height: 100%; 
     position: fixed; 
-    top: 75px; 
+    top: 61px; 
     right: -302px; 
     z-index: 10; 
     border: 1px solid #c9c9c9; 
