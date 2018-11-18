@@ -26,7 +26,7 @@
 }
 
 .activityContent {
-	margin: 20px 20px 0px 0px;
+	margin: 20px 20px 70px 0px;
 }
 
 .activityIcon {
@@ -60,9 +60,8 @@
 
 .activityTaskName {
 	position: relative;
-    left: 20px;
-    font-size: 13px;
-    text-align: left;
+    font-size: 12px;
+    text-align: right;
     color: orange;
     margin-bottom: 25px;
 }

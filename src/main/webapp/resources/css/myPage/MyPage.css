@@ -1,9 +1,16 @@
 @charset "UTF-8";
 .container {
+	
+}
+.bgImage {
+	height: 882px;
+	width: 1000px;
 	background-image: url('http://dareinc.mcise.org/wp-content/uploads/2017/03/TATAB.png');
     background-size: 100% 100%;
+    opacity: 0.5;
+    position: absolute;
+    margin: 70px 0px 0px 90px;
 }
-
 .user-row {
     margin-bottom: 14px;
 }
