@@ -74,7 +74,7 @@ a:focus {
  Author's custom styles
  ========================================================================== */
 #board {
-  padding: 100px 30px 30px;
+  padding: 150px 30px 30px 250px;
   margin-top: 40px;
   overflow-y: visible;
 }
@@ -179,7 +179,7 @@ a:focus {
 #add_new {
   position: fixed;
   top: 120px;
-  right: 200px;
+  right: 100px;
   z-index: 100;
 }
 .author {
