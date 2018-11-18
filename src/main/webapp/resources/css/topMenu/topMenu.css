@@ -1,16 +1,25 @@
 /* i  { font-size: 25px;} */
 
+
 td {
     padding: 2px;
     max-height: 50px;
     text-align: center;
-    font-size : 15px;
+    font-size : 20px;
     /* border-right: 0.5px solid ghostwhite; */
 }
 .table-box {
-    width: 100%;
+    width: 101%;
     background: rgba(0, 0, 0, 0.16);
+    margin-top: -10px;
+    margin-left: -10px;
 }
+
+#topMenu-table {
+	width:100%;
+	height:50px;
+}
+
 table {	
     width: 100%;
     max-height: 50px;
@@ -29,9 +38,9 @@ table {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    left: 185px;
-    top: 70px;
-    width: 300px; 
+    left: 840px;
+    top: 60px;
+    width: 310px; 
     height: 425px; 
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
@@ -43,9 +52,9 @@ table {
     background-color: #fefefe;
     padding: 10px;
     border: 1px solid #888;
-    width: 300px;
+    width: 310px;
     opacity : 0.9;
-    height: 423px; /* Could be more or less, depending on screen size */                          
+    height: 423px; /* Could be more or less, depending on screen size */  
 }
 
 
@@ -71,7 +80,8 @@ table {
 /*    padding: 20px;*/
     border: 1px solid #888;
     width: 450px;
-    height: 600px; /* Could be more or less, depending on screen size */                          
+    height: 600px; /* Could be more or less, depending on screen size */   
+    border-radius: 10px;                       
 }
 /* The Close Button */
 .close1 {
@@ -114,7 +124,7 @@ html.open {
     height: 50px; 
     position: absolute; 
     right: 0px; 
-    top: 0px; 
+    top: 7px; 
     background-image: url("https://s1.daumcdn.net/cfs.tistory/custom/blog/204/2048858/skin/images/close.png"); 
     background-size: 70%; 
     background-repeat: no-repeat; 
@@ -126,7 +136,7 @@ html.open {
     width: 300px; 
     height: 100%; 
     position: fixed; 
-    top: 75px; 
+    top: 61px; 
     right: -302px; 
     z-index: 10; 
     border: 1px solid #c9c9c9; 
@@ -167,3 +177,20 @@ html.open {
 	height: 55px;
 	border-radius: 50%;	
 }
+
+img {
+	height: 30px;
+    width: 30px;
+    vertical-align: inherit;
+}
+
+.fa-angle-down {
+	vertical-align: inherit;
+}
+
+::-webkit-scrollbar{width: 10px;}
+::-webkit-scrollbar-track {background-color:#f1f1f1;}
+::-webkit-scrollbar-thumb {background-color:#a6a6a6;border-radius: 10px;}
+::-webkit-scrollbar-thumb:hover {background: #555;}
+::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
+	width:16px;height:16px;} 

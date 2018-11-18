@@ -4,10 +4,14 @@ $(document).ready(function () {
 	   $(document).on("click", '.task', function(e) {
 	      
 	      var task_no = $(this).attr("id");
-	      console.log('i : ' + task_no);
-	      $('#exampleModalLong').modal();
 	      
-	      selectAllTask(task_no);
+	      if(task_no != null) {
+		      console.log('i : ' + task_no);
+		      $('#exampleModalLong').modal();
+		      
+		      selectAllTask(task_no);
+	    	  
+	      }
 	      	    
 	   });
    
@@ -293,8 +297,21 @@ $(document).ready(function () {
                     console.log('작업 제목 : ' + taskTitle);
                     console.log('해당 컬럼 인덱스 : ' + task_col_no);
                     
+                    // 서버로 값 넘기는 ajax 실행
+                    
                     // db에 태스크 추가 ajax 실행
                     insertBoardTask($('.kanban-col').eq(tagIndex).find('.task:last'), task_col_no, taskTitle);
+                    
+	                // ajax로 값 넘기기 - 액티비티 추가
+        			$.ajax({
+        				url : "createNewTask.do",
+        				data : {'task_name': taskTitle
+        						},
+        				type : "get",
+        				success : function() {
+        						alert('테스크 추가 알림 완료!');
+        					}
+        			});
                     
                 }
 
@@ -472,7 +489,7 @@ function updateColName(colId, updateTitle) {
 	});
 }
 
-// 컬럼 데이터 가져오기
+// 작업 데이터 가져오기
 function selectAllTask(task_no) {
 	$.ajax({
 		url : "selectAllTask.do",
@@ -484,6 +501,7 @@ function selectAllTask(task_no) {
 			if(data != null) {
 					
 				console.log("5555555555 data : " + data.loginName);
+				console.log('@@@@@@ : ' + data.taskVO.d_day);
 
 				$('.nicknameText').attr('id', data.loginName);
 				
@@ -493,6 +511,7 @@ function selectAllTask(task_no) {
 				$('.task_name').val(data.taskVO.task_name);
 				$('.task_content').val(data.taskVO.task_content);
 				$('#startDate').text(data.taskVO.reg_date);
+				$('#datepicker1').attr('placeholder', data.taskVO.d_day);
 
 //				$('#nicknameText').text(data.loginName);
 

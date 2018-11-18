@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.bit.tatab.board.dao.ActivityDAO">
+ 
+ 	<!-- 보드 액티비티에 알림 삽입 -->
+ 	<insert id="insertIntoActivity" parameterType="String">
+ 		insert into user_activity_t(login_email, login_name, save_name, alert_message, alert_time, project_no, task_name, project_name)
+ 			values(#{login_email}, #{login_name}, #{user_img}, #{alert_message}, sysdate, #{project_no}, #{task_name}, #{project_name})
+ 	</insert>
+ 	
+ 	<!-- 테스크 이름 검색 -->
+ 	<select id="selectTaskName" parameterType="String" resultType="String">
+ 		select task_name from prj_task_t where task_no = #{task_no}
+ 	</select>
+ 	
+ 	<!-- 프로젝트 이름 가져오기 -->
+ 	<select id="selectProjectName" parameterType="String" resultType="String">
+ 		select project_name from prj_t where project_no = #{project_no}
+ 	</select>
+ 	
+ </mapper>  

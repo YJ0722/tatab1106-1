@@ -160,6 +160,7 @@ body {
 .task {
     font-family: 'Nanum Gothic', sans-serif;
     width: 260px;
+    min-height: 75px;
     margin: 10px;
     padding: 5px 10px 10px 10px;
     background-color: ghostwhite;
@@ -192,9 +193,15 @@ body {
     padding: 0 2%;
 }
 .task-label p {
+    display: -webkit-box;
     padding: 15px 0 10px 0;
     font-weight: 600;
     font-size: 1.8rem;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
     margin-bottom: 0;
 }
 .task-title-input {

@@ -5,6 +5,9 @@
     border-bottom-right-radius: unset;
     border-bottom-left-radius: unset;
 }
+#taskCompleteBtn {
+	margin-right: 30px;
+}
 .center-line {
     width: 1px;
     height: 91%;
@@ -53,9 +56,6 @@
 	font-weight: bold;
     font-size: 18px;
 }
-.task-assigned-member {
-	width : 100%;
-}
 .right-box-item {
 	margin :30px 0;
 	font-size: 18px;
@@ -99,7 +99,8 @@
     margin-bottom: 50px;
 }
 .addTaskMemberBtn {
-	margin-left: 10px;;
+	margin-left: 10px;
+    margin-top: 30px;
 }
 
 .addTaskMemberBtn:hover {
@@ -269,7 +270,8 @@ input {
 }
 
 #imgName {
-	width: 500px;
+    width: 90%;
+    margin-top: 5px;
 }
 #myDIV {
 	width: 100%;
@@ -313,6 +315,7 @@ input {
 /* 파일 업로드 */
 .input-group {
 	width: 10px;	
+    margin-left: 110px;
 }
 .uploadList {
 	clear: both;
@@ -354,7 +357,7 @@ input {
 	border : 2px solid black;
 }
 #datepicker1 {
-	width: 80%;
+	width: 50%;
 }
 .modal-footer {
 	both: clear;

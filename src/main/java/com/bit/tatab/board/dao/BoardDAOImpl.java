@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.bit.tatab.board.vo.BoardColVO;
 import com.bit.tatab.board.vo.BoardTaskVO;
 import com.bit.tatab.board.vo.MemberVO;
+import com.bit.tatab.main.vo.ActivityVO;
 import com.bit.tatab.main.vo.ProjectVO;
 
 @Repository
@@ -192,6 +193,16 @@ public class BoardDAOImpl implements BoardDAO{
 		
 		sqlSession.update("updateColName", param);
 	}
+
+	// 액티비티 리스트 불러오기
+	@Override
+	public List<ActivityVO> selectActivityList(String project_no) {
+		
+		List<ActivityVO> activityList = sqlSession.selectList("selectActivityList2", project_no); 
+		return activityList;
+	}
+	
+	
 	
 	
 }

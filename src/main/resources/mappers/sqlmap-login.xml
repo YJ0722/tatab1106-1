@@ -66,4 +66,11 @@
     	where login_email = #{login_email}
     </select>
     
+    <!-- 마이페이지 사진 정보 db 탐색 : String버전 + login_name -->
+    <select id="profileImgFindString2" parameterType="String" resultType="ProfileImgVO">
+    	select *
+    	from USER_IMG_CUSTOM_T
+    	where login_name = #{login_name}
+    </select>
+    
  </mapper>

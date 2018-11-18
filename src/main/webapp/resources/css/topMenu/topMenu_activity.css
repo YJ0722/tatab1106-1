@@ -2,25 +2,31 @@
     width: 300px;
     height: 100%;
     background-color: dimgrey;
+    overflow: auto; /* 액티비티창 스크롤 - 필요 시 변경 가능! */
 }
 
 .activity {
     width: inherit;
     height: 7%;
     display: table;
+    background-color: black;
+    font-weight: bold; 
     
 }
 
 .name {
+	position: relative;
     display: table-cell;
-    vertical-align: middle;
     font-size: 20px;
-    color: aliceblue;
-    padding-left: 20px;
+    color: white;
+    float: left;
+    left: 10px;
+    top: 20px;
+    font-style: bold;
 }
 
 .activityContent {
-    margin-bottom: 20px;
+	margin: 20px 20px 0px 0px;
 }
 
 .activityIcon {
@@ -31,26 +37,32 @@
 }
 
 .activityIcon img {
-	width: 55px;
-	height: 55px;
+	width: 35px;
+	height: 35px;
 	border-radius: 50%;	
 }
 
 .activityTime {
-    padding-left: 70px;
-    font-size: 14px;
+	position: relative;
+	left: 20px;
+	text-align: left;
+	font-size: 12px;
     color: darkgray
 }
 
 .activityDo {
-    padding-left: 70px;
-    font-size: 17px;
-    color : aliceblue
+	position: relative;
+	left: 8px;
+    font-size: 15px;
+    color : aliceblue;
+    margin-bottom: 5px;
 }
 
 .activityTaskName {
-    clear: both;
-    padding-left: 70px;
-    padding-top: 5px;
-    font-size: 17px;
+	position: relative;
+    left: 20px;
+    font-size: 13px;
+    text-align: left;
+    color: orange;
+    margin-bottom: 25px;
 }

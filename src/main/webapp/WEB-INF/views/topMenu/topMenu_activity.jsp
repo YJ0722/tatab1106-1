@@ -11,7 +11,7 @@
         <div class="wrapper">
             <div class="activity">
                 <div class="name">
-                    Activity
+                    &nbsp;&nbsp;Activity
                 </div>
             </div>
             <div>

@@ -8,7 +8,7 @@
     <link rel="icon" type="image/x-icon" href="<c:url value='/resources/img/main/favicon.ico' />"/>
     <meta name="msapplication-TileColor" content="#da532c">
 	<meta name="theme-color" content="#ffffff">
-    <link href="<c:url value="/resources/css/main/UserMain.css?ver=6" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/main/UserMain.css?ver=7" />" rel="stylesheet">
     <!-- MyPage 관련 -->	
     <link href="<c:url value="/resources/css/main/MyPageModal.css?ver=2" />" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -25,7 +25,6 @@
     <link href="<c:url value="/resources/css/main/BackgroundImageModal.css?var=1" />" rel="stylesheet">
     <!-- topMenu 관련 -->
     <link rel="stylesheet" href="<c:url value="/resources/css/topMenu/topMenu.css?ver=2" />">
-    <link rel="stylesheet" href="<c:url value="/resources/css/topMenu/topMenu_activity.css?ver=1" />">
     <!-- 관련  끝 -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive|Gothic+A1" rel="stylesheet">
@@ -120,12 +119,12 @@
                     <div class="logoAndPhrase">
                         <!-- 제목 -->
                         <div class="titlePhrase">
-                            <a href="<c:url value="/userMain.do" />"><img src="<c:url value="/resources/img/main/logo1.png" />"></a>
+                            <a href="<c:url value="/userMain.do" />"><img src="<c:url value="/resources/img/main/tatab-color.png" />"></a>
                         </div>
                         <!-- 제목 끝 -->
                         <!-- 플젝 표시 -->
                         <div class="projectSign">
-                            <h4>&nbsp;&nbsp;프로젝트 목록</h4>
+                            <h4><img src="<c:url value="/resources/img/main/flash-21.svg" />">&nbsp;Projects</h4>
                         </div>
                         <!-- 플젝 표시 끝 -->
                         <hr> <!-- 수평선 -->
@@ -137,7 +136,7 @@
 	                    <div class="list"> 
 	                        <!-- 플젝명 -->
 	                        <div class="listName">
-	                            <a id="projectNames" onclick="goBoard('${projectName.project_name}', '${projectName.project_no}')"><i class="fab fa-product-hunt"></i>&nbsp;${projectName.project_name}</a>
+	                            <a id="projectNames" onclick="goBoard('${projectName.project_name}', '${projectName.project_no}')"><img src="<c:url value="/resources/img/main/spaceship.svg" />">&nbsp;&nbsp;${projectName.project_name}</a>
 	                        </div>
 	                        <!-- 플잭명 끝  -->
 	                    </div>
@@ -154,7 +153,7 @@
                     
                     <!-- 새 플젝 추가 -->
                     <div class="addProject">
-                            <a id="RegistrationModalBtn"><i class="fas fa-plus-circle"> 새 프로젝트 추가</i></a>
+                            <a id="RegistrationModalBtn"><img src="<c:url value="/resources/img/main/plus_circle.png" />"> New Project</a>
                     </div>
                 </div>
                 <!-- 사이드 내용물 끝 -->
@@ -165,12 +164,12 @@
                 <!-- 위쪽 아이콘들 -->
                 <div id="topMenu">
                     <ul>
-                        <li id="StickyNoteModalBtn"><a><i class="fas fa-sticky-note"></i></a></li>
-                        <li id="activityBtn"><a><i class="fas fa-exclamation-circle"></i></a></li>
+                        <li id="StickyNoteModalBtn"><a><img src="<c:url value="/resources/img/main/pencil-circle.png" />"></a></li>
+                        <li id="activityBtn"><img src="<c:url value="/resources/img/main/world.svg" />"></li>
                         <li id="MyPageModalBtn"><a>
                         	<c:choose>
                                     	<c:when test="${empty profileImgVO.save_name }">
-		                                    <img src="https://i.stack.imgur.com/34AD2.jpg">
+		                                    <img src="<c:url value="/resources/img/main/single-01.svg" />">
                                     	</c:when>
                                     	<c:otherwise>
                                     		<img src="${pageContext.request.contextPath}/img/${profileImgVO.save_name}">
@@ -188,23 +187,23 @@
                
                 <!-- 위쪽 아이콘들 끝 -->
                 <!-- 아래 코멘트 배경 -->
-                <div class="commentBack"></div>
+                <!-- <div class="commentBack"></div> -->
                 <!-- 아래 코멘트 배경 끝 -->
                 <!-- 아래 코멘트 -->
                 <div class="commentBelow">
-	                    <h1><c:out value="${ commentVO.main_title }" /></h1><br>
+	                    <h1><c:out value="${ commentVO.main_title }" /></h1><br><br>
 	                    <h2><c:out value="${ commentVO.sub_title }" /></h2><br>
 	                    <p><c:out value="${ commentVO.sub_comment }" /></p><br>
                 </div>
                 <!-- 아래 코멘트 끝 -->
                 <!-- 코멘트 수정 아이콘 -->
                 <div class="commentAdjust">
-                    <a id="MainCommentModalBtn"><i class="fas fa-baseball-ball"></i></a>
+                    <a id="MainCommentModalBtn"><img src="<c:url value="/resources/img/main/gear.png" />"></a>
                 </div>
                 <!-- 코멘트 수정 아이콘 끝 -->
                 <!-- 배경 이미지 변경 아이콘 -->
                 <div class="BackgroundImage">
-                    <a id="BackgroundImageModalBtn"><i class="fas fa-baseball-ball"></i></a>
+                    <a id="BackgroundImageModalBtn"><img src="<c:url value="/resources/img/main/wrench.png" />"></a>
                 </div>
                 <!-- 배경 이미지 변경 아이콘 끝 -->
                 <!-- 아래 공백 부분 -->
@@ -382,7 +381,7 @@ $(document).ready(function() {
 		$.ajax({
 			url : "userMainActivity.do",
 			type : "post",
-			success : function(data) {
+			success : function(data) { // data가 컨트롤러에서 넘어오는 리턴값!
 				
 				console.log(data);
 				$('.activityContent').empty();
@@ -401,7 +400,7 @@ $(document).ready(function() {
     					diffInfo = parseInt(data[i].diffMin/60)+" hours ago";
     				else
     					diffInfo = (data[i].diffMin)+" mins ago";
-    				var tag = tag1 + tag2 + diffInfo + tag3 + data[i].login_name + data[i].alert_message + tag4 + data[i].project_name + tag5;
+    				var tag = tag1 + tag2 + diffInfo + tag3 + data[i].alert_message + tag4 + data[i].project_name + tag5;
     				$(tag).hide().appendTo('.activityContent').show(); 
 				}
 				// 여기에 "그 후 실행" 코드들이 들어가야 한다!	

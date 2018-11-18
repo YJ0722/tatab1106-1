@@ -119,6 +119,25 @@ function newElement() {
 	console.log('$$$$$: ' + commentLiIndex);
 	insertComment(taskNo, nname, inputValue, commentLiIndex);
 
+	var comment_content = $('.contentbox').eq(0).text();
+	
+	console.log('테스크 이름: ' + taskNo + ', 댓글 내용: ' + comment_content);
+	
+	// ajax로 값 넘기기
+	$.ajax({
+		url : "commentInsert.do",
+		data : {'login_name':nname,
+				'task_no': taskNo,
+				'alert_message' : comment_content
+				},
+		type : "get",
+		success : function() {
+				alert('코멘트 입력 완료!');
+			}
+			// 여기에 "그 후 실행" 코드들이 들어가야 한다!	
+			
+		
+	});
 }
 
 $(document).ready(

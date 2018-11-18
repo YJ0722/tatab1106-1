@@ -58,6 +58,18 @@
 		$('.dday1').val(dday);
 		
 		$('#updateTask').submit();
+		
+		// ajax로 값 넘기기
+		$.ajax({
+			url : "deadlineInsert.do",
+			data : {'task_name': task_name,
+					'alert_message' : dday
+					},
+			type : "get",
+			success : function() {
+					alert('마감기한 설정 완료!');
+				}
+		});
 	}
 	
 	// 멤버 할당
@@ -71,39 +83,41 @@
 
 <body>
 <div class="table-box">
-	<table border="1px" style="width: 100%; height: 50px;">
+<!-- 원래 태그	<table border="1px" style="width: 100%; height: 50px;"> -->
+<table id="topMenu-table">
 		<tr>
 			<td style="width: 10%">
-				<img class="board-logo" src="resources/img/index/tatab-logo1.png" />
+				<a href="<c:url value="/userMain.do" />"><img class="board-logo" src="resources/img/index/tatab-logo1.png" /></a>
 			</td>
-			<td style="width: 5%" id="infoBtn"><i class="fas fa-info"></i></td>
-			
-			<td style="width: 25%" id="projectsBtn" style="font-size: 2rem;">
-				<i class="fas fa-bolt"></i>
+			<td style="width: 3%" id="infoBtn"><img src="resources/img/topMenu/gear.png"></td>
+			<td style="width: 20%"></td>
+			<td style="width: 8%" id="projectsBtn" style="font-size: 2rem;">
+				<img src="resources/img/topMenu/aircraft.png">
 				&nbsp; ${projectName } &nbsp; 
-				<i class="fas fa-angle-down"></i>
+				<i class="fas fa-angle-down "></i>
 			</td>
-			<td style="width: 5%">
-				<table class="activeBtn">
-					<tr>
-						<td align="center">9</td>
-						<td rowspan="2"><i class="fas fa-angle-down"></i></td>
-					</tr>
-					<tr>
-						<td>Active</td>
-					</tr>
-				</table>
-			</td>
-			<td style="width: 5%"><i class="far fa-clock"></i></td>
-			<td style="width: 5%" id="activityBtn"><i class="fas fa-at"></i>
+			<td style="width: 23%"></td>
+<!-- 			<td style="width: 5%"> -->
+<!-- 				<table class="activeBtn"> -->
+<!-- 					<tr> -->
+<!-- 						<td align="center">9</td> -->
+<!-- 						<td rowspan="2"><i class="fas fa-angle-down"></i></td> -->
+<!-- 					</tr> -->
+<!-- 					<tr> -->
+<!-- 						<td>Active</td> -->
+<!-- 					</tr> -->
+<!-- 				</table> -->
+<!-- 			</td> -->
+			<td style="width: 2%"><img src="resources/img/topMenu/alarm_bell.png"></td>
+			<td style="width: 2%" id="activityBtn"><img src="resources/img/topMenu/world_asia.png">
 				<div class="page_cover"></div>
 				<div id="menu">
 					<div class="activityClose" id="activityClose"></div>
 					<!-- activity.jsp-->
 					<jsp:include page="/WEB-INF/views/topMenu/topMenu_activity.jsp" />
 				</div></td>
-			<td style="width: 5%"><i class="fas fa-cog"></i></td>
-			<td style="width: 5%"><i class="fas fa-user-circle"></i></td>
+<!-- 			<td style="width: 5%"><i class="fas fa-cog"></i></td> -->
+			<td style="width: 3%"><i class="fas fa-user-circle"></i></td>
 		</tr>
 	</table>
 </div>
@@ -149,9 +163,15 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 					<div class="modal-header">
+						<!-- 액티비티용 컴플리트 버튼 : 스크립트는 아래에! -->
+						<img src="resources/img/task/task-complete-check-mark-white.png" id="taskCompleteBtn" onclick="completeTask()" />
+						<img src="resources/img/task/task-complete-check-mark-green.png" id="taskCompleteBtn" style="display: none;"/>
+						<!-- 액티비티용 컴플리트 버튼 끝 -->
+						
 						<h5 class="modal-title" id="exampleModalLongTitle">
 							<!-- Modal title -->
 						</h5>
+						
 						<button type="button" class="close" style="margin : 0; height: 54px;" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -193,14 +213,13 @@
 							</div>
 						</div>
 					</div>
+
 				</div>
 				<div class="right-box">
 						<!-- 할당 멤버 start-->
 						<div class="right-box-item task-assigned-member-box">
 							<div class="right-box-item-title task-assigned-member-box-name">할당멤버</div>
 							<div class="task-assigned-member">
-								<img res="resources/img/board/sort-up.png"
-									class="task-assigned-member-img" />
 								<p><i class="fas fa-plus-circle addTaskMemberBtn" onclick="assignMember()"></i></p>
 							</div>
 						</div>
@@ -209,7 +228,10 @@
 						<!-- 멤버리스트 보여주기-->
 						<div style="margin-bottom: 50px;">
 							성수 연주 원석
-							<div id="myForm"></div>
+							<div id="myForm">
+								<input type="text" id="assignee">
+								<button onclick="setAssignee()">할당</button>
+							</div>
 						</div>
 						<!-- 멤버리스트 보여주기-->
 						
@@ -243,9 +265,10 @@
 												<span class="btn btn-default btn-file"> Browse… 
 													<input class="uploadList" type="file" id="imgInp">
 												</span>
-											</span> <input type="text" class="form-control" id="imgName" readonly>
+											</span>
 										</div>
-										<img id='img-upload' />
+										 <input type="text" class="form-control" id="imgName" readonly>
+										<!-- <img id='img-upload' /> -->
 									</div>
 
 								</div>
@@ -289,8 +312,8 @@ $(document).ready(function() {
 	$("#activityBtn").click(function() {
 		// 내용 ajax
 		$.ajax({
-			url : "userMainActivity.do",
-			type : "post",
+			url : "topMenuActivity.do",
+			type : "get",
 			success : function(data) {
 				
 				console.log(data);
@@ -310,7 +333,7 @@ $(document).ready(function() {
     					diffInfo = parseInt(data[i].diffMin/60)+" hours ago";
     				else
     					diffInfo = (data[i].diffMin)+" mins ago";
-    				var tag = tag1 + tag2 + diffInfo + tag3 + data[i].login_name + data[i].alert_message + tag4 + data[i].project_name + tag5;
+    				var tag = tag1 + tag2 + diffInfo + tag3 + data[i].alert_message + tag4 + tag5;
     				$(tag).hide().appendTo('.activityContent').show(); 
 				}
 				// 여기에 "그 후 실행" 코드들이 들어가야 한다!	
@@ -327,6 +350,41 @@ $(document).ready(function() {
 	});
 });
 </script>
+<script>
+	// complete task
+	function completeTask() {
+		var taskNo = $('.modal-content').attr('id');
+		
+		// ajax로 값 넘기기
+		$.ajax({
+			url : "completeTask.do",
+			data : {'task_no': taskNo,
+					},
+			type : "get",
+			success : function() {
+					alert('작업완료 알림 완료!');
+				}
+		});
+	}
+	</script>
+	<script>
+	// set assignee
+	function setAssignee() {
+		var taskNo = $('.modal-content').attr('id');
+		var assignee = $('#assignee').val();
+		// ajax로 값 넘기기
+		$.ajax({
+			url : "setAssignee.do",
+			data : {'task_no': taskNo,
+					'login_name': assignee
+					},
+			type : "get",
+			success : function() {
+					alert('작업완료 알림 완료!');
+				}
+		});
+	}
+	</script>
 
 <!-- task 관련 스크립트  - 부트스트랩 -->
 <script
