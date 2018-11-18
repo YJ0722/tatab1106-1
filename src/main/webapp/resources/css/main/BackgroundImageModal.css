@@ -71,7 +71,7 @@ fieldset {
 #contact input[type="text"],
 #contact input[type="email"],
 #contact input[type="tel"],
-#contact input[type="url"],
+#contact input[type="url"],	
 #contact textarea {
   width: 100%;
   border: 1px solid #ccc;
