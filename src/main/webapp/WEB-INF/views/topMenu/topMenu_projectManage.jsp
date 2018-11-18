@@ -130,7 +130,7 @@
 
                    <div class="menu">
                        <div class="overviewBtn"><a class="manage-a">Overview</a></div>
-                       <div class="checklistBtn"><a class="manage-a">Checklist</a></div>
+<!--                        <div class="checklistBtn"><a class="manage-a">Checklist</a></div> -->
                        <div class="membersBtn"><a class="manage-a">Members</a></div>
                    </div>
                     
@@ -141,7 +141,7 @@
 	                               Project name
 	                           </div>
 	                           <div class="pjInput">
-                                   <input class="projectNames" id="projectName" name="projectName" type="text" style="width:300px; height:50px;" >
+                                   <input class="projectNames" id="projectName" name="projectName" type="text" style="width:410px; height:50px;" >
 	                           </div>
 	                       </div>
 	                       <div class="dpt">
@@ -149,7 +149,7 @@
 	                               Project Description
 	                           </div>
 	                           <div class="dptdpt">
-	                              <textarea class="projectDescription" id="projectDescription" name="projectDescription" style="width:300px; height:200px; resize:none;">
+	                              <textarea class="projectDescription" id="projectDescription" name="projectDescription" style="width:410px; height:200px; resize:none;">
 								  </textarea>
 								</div>
 	                       </div>
@@ -158,27 +158,27 @@
           </div>
                    
 <!--                    Checklist 메뉴 -->
-                   <div class="content checklist">
-                       <div class="pj"> 
-                           <div class="pjName">
-                               checklist
-                           </div>
-                           <div class="pjInput">
-                               <form>
-                                   <input type="text" style="width:300px; height:50px;" placeholder="ABC">
-                               </form>	
-                           </div>
-                       </div>
+<!--                    <div class="content checklist"> -->
+<!--                        <div class="pj">  -->
+<!--                            <div class="pjName"> -->
+<!--                                checklist -->
+<!--                            </div> -->
+<!--                            <div class="pjInput"> -->
+<!--                                <form> -->
+<!--                                    <input type="text" style="width:300px; height:50px;" placeholder="ABC"> -->
+<!--                                </form>	 -->
+<!--                            </div> -->
+<!--                        </div> -->
 
-                       <div class="dpt">
-                           <div class="dptName">
-                               Project Discription
-                           </div>
-                           <div class="dptdpt">
-                              <input type="text" style="width:300px; height:200px;" placeholder="DB에서 가져올 내용">
-                           </div>
-                       </div>
-                   </div>
+<!--                        <div class="dpt"> -->
+<!--                            <div class="dptName"> -->
+<!--                                Project Discription -->
+<!--                            </div> -->
+<!--                            <div class="dptdpt"> -->
+<!--                               <input type="text" style="width:300px; height:200px;" placeholder="DB에서 가져올 내용"> -->
+<!--                            </div> -->
+<!--                        </div> -->
+<!--                    </div> -->
 <!--                    Checklist 메뉴 -->
                    
 <!--                    Members 메뉴 -->
@@ -195,7 +195,7 @@
 				 		    <div class="addUser">
 					   			<input type="text" id="addMemberInput" class="addMemberInput" name ="user" placeholder="추가할 아이디를 입력해주세요">
 							    <div class="addUserBtn" onclick="addUser()">
-									Invite
+									<a id="invite">Invite</a>
 							    </div>
 						    </div>
 				    	</form> 
