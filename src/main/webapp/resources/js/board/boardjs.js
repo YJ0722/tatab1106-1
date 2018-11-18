@@ -508,6 +508,12 @@ function selectAllTask(task_no) {
 				
 				$('.modal-content').attr('id', task_no);
 				$('.modal-content').val(task_no);
+				
+				console.log('@#$^&*()_(*&%@#$)( : ' + data.dday);
+				
+				
+				
+				$('#ddayCount').text(data.dday);
 				$('.task_name').val(data.taskVO.task_name);
 				$('.task_content').val(data.taskVO.task_content);
 				$('#startDate').text(data.taskVO.reg_date);
