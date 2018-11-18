@@ -7,6 +7,10 @@ body {
     /* height: 500px; */
 }
 
+#projectTitle {
+	text-align: unset;
+}
+
 .title {
     width: inherit;
     height: 70px;
@@ -43,7 +47,7 @@ body {
 .name {
     float: left;
     width: 300px;
-    margin-left: -80px;
+    margin-left: 10px;
 }
 
 .close1, .trash {
