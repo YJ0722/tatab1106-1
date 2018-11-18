@@ -81,10 +81,11 @@ a:hover
     float: left;
     height: 100vmin;
     position: absolute;
+    color : white;
 }
 
 .logoAndPhrase {
-    height: 90px;
+    height: 60px;
     padding: 5px;
     margin: 5px;
 }
@@ -96,40 +97,54 @@ a:hover
     font-size: 35px;
 }
 
-.titlePhrase img {
+.titlePhrase a img {
+	position: relative;
 	width: 250px;
-	height: 80px;
-    margin-left: 15px;
+    margin-left: 10px;
+    top: -20px;
 }
 
 .projectSign {
+	position: absolute;
     padding: 5px;
     margin: 5px;
     font-size: 1.8vmin;
     text-align: left;
+    top:70px;
     font-family: 'Gothic A1', sans-serif;
+}
+
+.projectSign img {
+	position: relative;
+	width: 20px;
+	height: 20px;
+	top: 3px;
 }
 
 .listWrapper {
-	margin-top: 50px;
+	margin-top: 60px;
 }
 
 .list {
-    
 }
 
-.oneProject {
-    margin: 5px;
-    float: left;
-    font-size: 3vmin;
+#projectNames {
+	color: white;
 }
 
 .listName {
-    padding: 5px;
     margin: 5px;
-    margin-left: 30px;
+    margin-left: 20px;
+    margin-bottom: 20px;
     font-family: 'Gothic A1', sans-serif;
-    font-size: 2.5vmin;
+    font-size: 15px;
+}
+
+.listName img {
+	position: relative;
+	height: 30px;
+	width: 30px;
+	top: 10px;
 }
 
 .addProject {
@@ -137,6 +152,15 @@ a:hover
     float: right;
     font-family: 'Gothic A1', sans-serif;
     font-size: 1.5vmin;
+}
+
+.addProject img {
+	position: relative;
+	top: 5px;
+}
+
+#RegistrationModalBtn {
+	color: white;
 }
 
 .main {
@@ -151,20 +175,27 @@ a:hover
 
 #topMenu {
     text-align: right;
-    margin-right: 1vmax;
+    margin-top: 5px;
+}
+
+#topMenu img {
+	height: 35px;
+	background-color: white;
+	border-radius: 50%;
 }
 
 #topMenu ul li {
     display: inline;
-    margin: 0.5vmax;
-    font-size: 3vmax;
+    top: 20px;
+    margin: 20px;
 }
+
 
 .commentBack {
     position: absolute;
-    bottom:30px;
+    bottom:50px;
     width:900px;
-    left:65px;
+    left:-50px;
     height: 170px;
     background-color: black;
     opacity: 0.4;
@@ -174,37 +205,42 @@ a:hover
 .commentBelow {
     position: absolute;
     bottom: 50px;
-    left: 95px;
+    left: -20px;
     width: 800px;
     font-family: 'Gothic A1', sans-serif;
-    text-shadow: -1px 0 #F2F1F6, 0 1px #F2F1F6, 1px 0 #F2F1F6, 0 -1px #F2F1F6;
 }
 
 .commentBelow h1 {
-    font-size: 30px;
+    font-size: 45px;
+    color: white;
 }
 
 .commentBelow h2 {
     font-size: 20px;
+    color: white;
+    margin-bottom: 15px;
 }
 
 .commentBelow p {
-    font-size: 15px;
-    font-weight: bold;
+    font-size: 13px;
+    color: white;
+    font-style: italic;
 }
 
 .commentAdjust {
     position: absolute;
-    bottom:5vmin;
-    left: 72vmax;
-    font-size: 30px;
+    bottom: 10px;
+    left: -190px;
+}
+
+#MainCommentModalBtn img, #BackgroundImageModalBtn img {
+	height: 30px;
 }
 
 .BackgroundImage {
    position: absolute;
-    bottom:5vmin;
-    left: 74vmax;
-    font-size: 30px;
+    bottom: 10px;
+    left: -150px;
 }
 
 .emptyFooter {
@@ -214,8 +250,6 @@ a:hover
 }
 
 #MyPageModalBtn img {
-	width: 55px;
-	height: 55px;
 	border-radius: 50%;	
 }
 
