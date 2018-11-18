@@ -4,7 +4,7 @@ $(document).ready(function() {
     $('.checklist').hide();
     $('.members').hide();
     
-    $('.overviewBtn').css('color', 'aliceblue').css('text-decoration', 'underline');
+    $('.overviewBtn').css('color', 'black').css('border-bottom', '3px solid darkorange');
 
     $('.overviewBtn').click(function() {
         $('.overview').show();
@@ -12,9 +12,9 @@ $(document).ready(function() {
         $('.members').hide();
         $('.photo').show();
         $('.footer').show();
-        $('.overviewBtn').css('color', 'aliceblue').css('text-decoration', 'underline');
-        $('.checklistBtn').css('color', 'black').css('text-decoration', 'none');
-        $('.membersBtn').css('color', 'black').css('text-decoration', 'none');
+        $('.overviewBtn').css('color', 'black').css('border-bottom', '3px solid darkorange');
+        $('.checklistBtn').css('color', 'black').css('border-bottom', '');
+        $('.membersBtn').css('color', 'black').css('border-bottom', '');
         return false;
     });
     
@@ -24,9 +24,9 @@ $(document).ready(function() {
         $('.members').hide();
         $('.photo').hide();
         $('.footer').hide();
-        $('.overviewBtn').css('color', 'black').css('text-decoration', 'none');
-        $('.checklistBtn').css('color', 'aliceblue').css('text-decoration', 'underline');
-        $('.membersBtn').css('color', 'black').css('text-decoration', 'none');
+        $('.overviewBtn').css('color', 'black').css('border-bottom', '');
+        $('.checklistBtn').css('color', 'black').css('border-bottom', '3px solid darkorange');
+        $('.membersBtn').css('color', 'black').css('border-bottom', '');
         return false;
     });
         
@@ -36,9 +36,9 @@ $(document).ready(function() {
         $('.members').show();
         $('.photo').hide();
         $('.footer').hide();
-        $('.overviewBtn').css('color', 'black').css('text-decoration', 'none');
-        $('.checklistBtn').css('color', 'black').css('text-decoration', 'none');
-        $('.membersBtn').css('color', 'aliceblue').css('text-decoration', 'underline');
+        $('.overviewBtn').css('color', 'black').css('border-bottom', '');
+        $('.checklistBtn').css('color', 'black').css('border-bottom', '');
+        $('.membersBtn').css('color', 'black').css('border-bottom', '3px solid darkorange');
         return false;
     });
     
