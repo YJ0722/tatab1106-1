@@ -80,7 +80,7 @@ table {
 /*    padding: 20px;*/
     border: 1px solid #888;
     width: 450px;
-    height: 600px; /* Could be more or less, depending on screen size */   
+    height: 590px; /* Could be more or less, depending on screen size */   
     border-radius: 10px;                       
 }
 /* The Close Button */
@@ -188,7 +188,8 @@ img {
 	vertical-align: inherit;
 }
 
-::-webkit-scrollbar{width: 10px;}
+/* 스크롤바 css */
+::-webkit-scrollbar{width: 5px;}
 ::-webkit-scrollbar-track {background-color:#f1f1f1;}
 ::-webkit-scrollbar-thumb {background-color:#a6a6a6;border-radius: 10px;}
 ::-webkit-scrollbar-thumb:hover {background: #555;}

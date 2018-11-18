@@ -116,6 +116,28 @@ public class TaskController {
 		taskService.deleteTaskComment(commentNo);
 		
 	}
+
+	@ResponseBody
+	@RequestMapping(value="taskStatusComplete.do", method=RequestMethod.GET)
+	public String taskStatusComplete(HttpServletRequest request, @RequestParam(value="task_no") String taskNo) throws Exception {
+		
+		System.out.println("taskStatusComplete.do 실행");
+		System.out.println("taskNo : " + taskNo);
+
+		
+		HttpSession session = request.getSession();
+		BoardTaskVO taskVO = new BoardTaskVO();
+
+		String task_no = taskNo;
+		taskVO.setTask_no(Integer.parseInt(task_no));
+
+		// 작업 상태 o -> c
+		taskService.taskStatusComplete(task_no);
+		
+		String status = taskVO.getStatus();
+		
+		return status;
+	}
 	
 	
 	@RequestMapping(value="updateTask.do", method=RequestMethod.POST)

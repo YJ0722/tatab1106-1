@@ -4,12 +4,15 @@ $(document).ready(function () {
 	   $(document).on("click", '.task', function(e) {
 	      
 	      var task_no = $(this).attr("id");
-	      console.log('i : ' + task_no);
-	      $('#exampleModalLong').modal();
 	      
-	      selectAllTask(task_no);
-	      
-	    
+	      if(task_no != null) {
+		      console.log('i : ' + task_no);
+		      $('#exampleModalLong').modal();
+		      
+		      selectAllTask(task_no);
+	    	  
+	      }
+	      	    
 	   });
    
    // 토글 실행
@@ -496,10 +499,9 @@ function selectAllTask(task_no) {
 		},
 		success : function(data) {
 			if(data != null) {
-				
-				
 					
 				console.log("5555555555 data : " + data.loginName);
+				console.log('@@@@@@ : ' + data.taskVO.d_day);
 
 				$('.nicknameText').attr('id', data.loginName);
 				
@@ -509,6 +511,16 @@ function selectAllTask(task_no) {
 				$('.task_name').val(data.taskVO.task_name);
 				$('.task_content').val(data.taskVO.task_content);
 				$('#startDate').text(data.taskVO.reg_date);
+				$('#datepicker1').attr('placeholder', data.taskVO.d_day);
+				
+				// 작업 완료 상태 img 표시
+				if(data.taskVO.status == 'C') {
+					$('#taskCompleteBtn').hide();
+					$('#taskCompleteOKBtn').show();
+				} else {
+					$('#taskCompleteBtn').show();
+					$('#taskCompleteOKBtn').hide();
+				}
 
 //				$('#nicknameText').text(data.loginName);
 

@@ -140,9 +140,9 @@ function newElement() {
 	});
 }
 
-// 파일 업로드
-
 $(document).ready(
+
+		// 파일 업로드
 		function() {
 			$(document).on(
 					'change',
