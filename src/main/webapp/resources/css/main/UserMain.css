@@ -14,7 +14,7 @@ a {
 
 a:hover 
 {
-     color:#00A0C6; 
+/*      color:#00A0C6;  */
      text-decoration:none; 
      cursor:pointer;  
 }
@@ -344,12 +344,12 @@ a:hover
 .MainCommentModalContent {
     background-color: #fefefe;
     margin-left: 750px;
-    margin-top: 200px;
+    margin-top: 14%;
     padding: 0px;
     border: 1px solid #888;
     width: 400px;
-    height: 400px; /* Could be more or less, depending on screen size */
-    
+    height: 304px; /* Could be more or less, depending on screen size */
+    border-radius: 10px;
 }
 
 /* BackgroundImage - background */
@@ -370,9 +370,10 @@ a:hover
 .BackgroundImageModalContent {
     background-color: #fefefe;
     margin-left: 750px;
-    margin-top: 300px;
+    margin-top: 14%;
     padding: 0px;
     border: 1px solid #888;
     width: 400px;
-    height: 172px; /* Could be more or less, depending on screen size */
+    height: 130px; /* Could be more or less, depending on screen size */
+    border-radius: 10px;
 }

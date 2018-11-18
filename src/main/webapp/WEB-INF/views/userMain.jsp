@@ -308,21 +308,12 @@
                 <div class="container">
                     <form id="contact" action="modifyComment.do" method="post"
                         commandName="CommentVO">
-                        <fieldset class="form-group">
-                            <h3>배경이미지</h3>
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                          </fieldset>
-                        <fieldset>
-                            <input placeholder="메인 타이틀" name="mainTitle" type="text" tabindex="1" required
+                            <h3>코멘트 변경</h3>
+                            <input class="commentInput" placeholder="메인 타이틀" name="mainTitle" type="text" tabindex="1" required
                                 autofocus>
-                        </fieldset>
-                        <fieldset>
-                            <input placeholder="서브 타이틀" name="subTitle" type="text" tabindex="1" required
+                            <input class="commentInput" placeholder="서브 타이틀" name="subTitle" type="text" tabindex="1" required
                                 autofocus>
-                        </fieldset>
-                        <fieldset>
-                            <textarea rows="30" cols="50" placeholder="코멘트" name="subComment" tabindex="2" required></textarea>
-                        </fieldset>
+                            <textarea class="commentInput" rows="30" cols="50" placeholder="코멘트" name="subComment" tabindex="2" required></textarea>
                         <fieldset id="buttons">
                             <input type="submit" class="btn btn-primary" value="수정">
                             <a class="btn btn-light" href="<c:url value="/userMain.do" />" role="button">취소</a>
