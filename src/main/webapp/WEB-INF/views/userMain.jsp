@@ -299,7 +299,7 @@
                 </div>
             </div>
             <!-- Registration 해당 컨텐츠 끝 -->
-        </div>
+        </div> 
         <!-- 세번째 모달 끝 -->
         <!-- 네번째 모달 : MainComment -->
         <div id="MainCommentModal" class="MainCommentModal">
