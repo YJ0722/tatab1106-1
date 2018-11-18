@@ -54,11 +54,27 @@ public class TaskController {
 			System.out.println("comment [" + i + "] : " + commentVOList.get(i).toString());
 		}
 		
+		
+		
+		
+		////////////////
+		DateVO dateVO = new DateVO();
+		System.out.println("dday 날짜 : " + String.valueOf(taskVO.getD_day()));
+		int dday = dateVO.calDDay(taskVO.getD_day());
+		String ddayStr = String.valueOf(dday);
+		if(dday > 0) {
+			ddayStr = "+" + ddayStr;
+		}
+		System.out.println("dday 계산 : " + ddayStr);
+		////////////////
+		
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("loginName", loginName);
 		map.put("taskVO", taskVO);
 		map.put("commentList", commentVOList);
 		map.put("myEmail", login_email);
+		map.put("dday", ddayStr);
 		
 		return map;
 	}
@@ -158,6 +174,7 @@ public class TaskController {
 		BoardTaskVO taskVO = new BoardTaskVO(Integer.parseInt(task_no), task_name, task_content, dday, updateDate);
 		System.out.println("업데이트할 taskVO : " + taskVO);
 		taskService.updateTask(taskVO); 
+				
 		
 		return "redirect:board.do";
 	}

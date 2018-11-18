@@ -43,8 +43,8 @@ public class DateVO {
 	}
 	
 	public int calDDay(String day) {
-		String[] yearMonthDate = day.split(".");
-		
+		String[] yearMonthDate = day.split("\\.");
+
 		System.out.println("year : " + yearMonthDate[0]);
 		System.out.println("month : " + yearMonthDate[1]);
 		System.out.println("date : " + yearMonthDate[2]);
