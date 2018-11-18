@@ -21,6 +21,11 @@
  	<select id="selectAllComment" parameterType="String" resultType="TaskCommentVO">
  		select * from task_comment_t where task_no = #{ task_no } order by comment_no desc
  	</select>
+ 	
+ 	<!-- 작업 상태 업데이트 ( o -> c ) -->
+ 	<update id="taskStatusComplete" parameterType="String">
+ 		update prj_task_t set status='C' where task_no = #{ task_no }
+ 	</update>
  	 
  	 <!-- 댓글 삭제 -->
  	 <delete id="deleteTaskComment" parameterType="String">

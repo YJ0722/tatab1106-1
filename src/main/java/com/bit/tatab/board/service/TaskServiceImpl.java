@@ -43,6 +43,12 @@ public class TaskServiceImpl implements TaskService{
 		return taskDao.selectAllComment(task_no);
 	}
 
+
+	// 작업 상태 업데이트 ( o -> c )
+	public void taskStatusComplete(String taskNo) {
+		taskDao.taskStatusComplete(taskNo);
+	}
+	
 	// task 댓글 삭제
 	@Override
 	public void deleteTaskComment(String commentNo) {

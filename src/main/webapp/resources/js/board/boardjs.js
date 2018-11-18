@@ -512,6 +512,15 @@ function selectAllTask(task_no) {
 				$('.task_content').val(data.taskVO.task_content);
 				$('#startDate').text(data.taskVO.reg_date);
 				$('#datepicker1').attr('placeholder', data.taskVO.d_day);
+				
+				// 작업 완료 상태 img 표시
+				if(data.taskVO.status == 'C') {
+					$('#taskCompleteBtn').hide();
+					$('#taskCompleteOKBtn').show();
+				} else {
+					$('#taskCompleteBtn').show();
+					$('#taskCompleteOKBtn').hide();
+				}
 
 //				$('#nicknameText').text(data.loginName);
 

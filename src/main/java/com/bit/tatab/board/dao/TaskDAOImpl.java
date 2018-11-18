@@ -41,6 +41,12 @@ public class TaskDAOImpl implements TaskDAO {
 	public void deleteTaskComment(String commentNo) {
 		sqlSession.delete("deleteTaskComment", commentNo);
 	}
+	
+	// 작업 상태 업데이트 ( o -> c )
+	public void taskStatusComplete(String taskNo) {
+		sqlSession.update("taskStatusComplete", taskNo);
+	}
+	
 	// task data update
 	@Override
 	public void updateTask(BoardTaskVO taskVO) {

@@ -19,6 +19,9 @@ public interface TaskDAO {
 	// task 댓글 삭제
 	public void deleteTaskComment(String commentNo);
 
+	// 작업 상태 업데이트 ( o -> c )
+	public void taskStatusComplete(String taskNo);
+	
 	// task data update
 	public void updateTask(BoardTaskVO taskVO);
 }

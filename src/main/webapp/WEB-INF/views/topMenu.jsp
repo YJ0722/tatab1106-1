@@ -165,7 +165,7 @@
 					<div class="modal-header">
 						<!-- 액티비티용 컴플리트 버튼 : 스크립트는 아래에! -->
 						<img src="resources/img/task/task-complete-check-mark-white.png" id="taskCompleteBtn" onclick="completeTask()" />
-						<img src="resources/img/task/task-complete-check-mark-green.png" id="taskCompleteBtn" style="display: none;"/>
+						<img src="resources/img/task/task-complete-check-mark-yellow.png" id="taskCompleteOKBtn" style="display: none;"/>
 						<!-- 액티비티용 컴플리트 버튼 끝 -->
 						
 						<h5 class="modal-title" id="exampleModalLongTitle">
@@ -354,6 +354,17 @@ $(document).ready(function() {
 	// complete task
 	function completeTask() {
 		var taskNo = $('.modal-content').attr('id');
+		
+		$.ajax({
+			url : "taskStatusComplete.do",
+			data : {'task_no': taskNo,
+					},
+			type : "get",
+			success : function(data) {
+					$('#taskCompleteBtn').hide();
+					$('#taskCompleteOKBtn').show();
+				}
+		})
 		
 		// ajax로 값 넘기기
 		$.ajax({
