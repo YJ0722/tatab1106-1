@@ -8,14 +8,7 @@ $(document).ready(function () {
 	      $('#exampleModalLong').modal();
 	      
 	      selectAllTask(task_no);
-	      
-	    $(function(){
-//			alert('when??');
-	    	$('.close').on('click',function(){
-	    		alert('yyj');
-	    	})
-	    })
-	    
+	      	    
 	   });
    
    // 토글 실행

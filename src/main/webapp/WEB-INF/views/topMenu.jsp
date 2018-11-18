@@ -149,19 +149,21 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLongTitle">Modal
-							title</h5>
-						<button type="button" class="close" style="margin : 0;" data-dismiss="modal" aria-label="Close">
+						<h5 class="modal-title" id="exampleModalLongTitle">
+							<!-- Modal title -->
+						</h5>
+						<button type="button" class="close" style="margin : 0; height: 54px;" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
+				<div class='center-box'>
 				<!--  -->
 				<div class="left-box">
 					<div class="modal-body">
 						<div id="container"> 
 							<div id="box1">
 								<div class="form-group shadow-textarea">
-									<label for="exampleFormControlTextarea6"></label>
+									<label class="taskSubTitle" for="exampleFormControlTextarea6">Title</label>
 									<textarea class="form-control z-depth-1 task_name"
 										id="exampleFormControlTextarea6 task_name" rows="3" placeholder="업무명..."></textarea>
 								</div>
@@ -169,9 +171,9 @@
 
 							<div id="boxs">
 								<div class="form-group shadow-textarea2">
-									<label for="exampleFormControlTextarea6"></label>
+									<label class="taskSubTitle" for="exampleFormControlTextarea6">Content</label>
 									<textarea class="form-control z-depth-1 task_content"
-										id="exampleFormControlTextarea6 task_content" rows="3"
+										id="exampleFormControlTextarea6 task_content" rows="3" onkeyup="this.style.height='26px'; this.style.height = this.scrollHeight + 'px';"
 										placeholder="업무 내용..."></textarea>
 								</div>
 							</div>
@@ -191,14 +193,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary" onclick="submit()">Save
-							changes</button>
-					</div>
 				</div>
-				<div class="center-line"></div>
 				<div class="right-box">
 						<!-- 할당 멤버 start-->
 						<div class="right-box-item task-assigned-member-box">
@@ -206,13 +201,13 @@
 							<div class="task-assigned-member">
 								<img res="resources/img/board/sort-up.png"
 									class="task-assigned-member-img" />
-								<p><i class="fas fa-plus-circle" onclick="assignMember()"></i></p>
+								<p><i class="fas fa-plus-circle addTaskMemberBtn" onclick="assignMember()"></i></p>
 							</div>
 						</div>
 						<!-- 할당 멤버 end -->
 						
 						<!-- 멤버리스트 보여주기-->
-						<div>
+						<div style="margin-bottom: 50px;">
 							성수 연주 원석
 							<div id="myForm"></div>
 						</div>
@@ -239,17 +234,15 @@
 						</div>
 						<!-- updateday start-->
 
-					</div>
-					
-					<div id="boxs">
+					<div id="boxs" class="filebox" style="margin:0px">
 								<div>
 									<div class="form-group">
-										<label>Upload Image</label>
+										<label class="uploadLabel">Upload Image</label>
 										<div class="input-group">
-											<span class="input-group-btn"> <span
-												class="btn btn-default btn-file"> Browse… <input
-													type="file" id="imgInp">
-											</span>
+											<span class="input-group-btn"> 
+												<span class="btn btn-default btn-file"> Browse… 
+													<input class="uploadList" type="file" id="imgInp">
+												</span>
 											</span> <input type="text" class="form-control" id="imgName" readonly>
 										</div>
 										<img id='img-upload' />
@@ -257,6 +250,15 @@
 
 								</div>
 							</div>
+					</div>
+					</div>
+					<!-- 버튼! -->
+					<div class="modal-footer">
+						<button type="button" class=" closeBtn" data-dismiss="modal">Close</button>
+						<button type="button" class=" saveBtn" onclick="submit()">Save
+							changes</button>
+					</div>
+							
 
 				</div>
 				<!-- #$##### -->
@@ -341,7 +343,7 @@ $(document).ready(function() {
 	src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js'></script>
 <script src="resources/js/jquery-ui.js"></script>
 <script src="resources/js/jquery-ui.min.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> -->
 
 <script src="resources/js/board/boardjs.js?ver=5"></script>
 <script src="resources/js/board/taskScript.js?ver=4"></script>

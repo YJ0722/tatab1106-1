@@ -1,5 +1,9 @@
 .modal-header {
-	height : 50px;
+	height : 55px;
+	background-color: darkorange;
+    border-radius: 10px;
+    border-bottom-right-radius: unset;
+    border-bottom-left-radius: unset;
 }
 .center-line {
     width: 1px;
@@ -14,39 +18,52 @@
 	max-width: 65%;
 }
 .modal-content {
-	width: 70%;
-	margin-left: 15%;
-	display : inline;
+	border-radius: 10px;
+    padding-bottom: 50px;
+    width: 90%;
+    margin: 0 5%;
+    float: left;
+    margin-top: 5%;
+    display: inline;
 }
 .task_name {
-	font-size: 20px;
-	height: 80px;
+	font-size: 25px;
+	height: 45px;
 }
 .task_content {
-	font-size: 16px;
+	resize: none;
+	overflow-y: hidden;
+	font-size: 18px;
+	height: auto;
 }
 /* 오른쪽 부분 css start */
 .left-box {
-	width: 65%;
+	width: 70%;
 	float: left;
 	
 }
 .right-box {
-    width: 28%;
+    width: 30%;
 	float: left;
     padding: 10px;
 }
 .task-assigned-member-box-name {
+	float: none;
 	margin-top: 30px;
-	font-size: 18px;
+	font-weight: bold;
+    font-size: 18px;
 }
 .task-assigned-member {
 	width : 100%;
 }
 .right-box-item {
-	margin : 15px 0;
+	margin :30px 0;
 	font-size: 18px;
+    height: 20px;
 	clear: both;
+}
+.task-assigned-member-box {
+	height: 50px;
 }
 .right-box-item-title {
 	text-weight: bold;
@@ -60,24 +77,42 @@
 }
 
 .task-dday-name {
+	width: 20%;
 	flaot: left;
+	font-weight: bold;
 	display : inline;
 }
 
 .task-start-day-box {
 	margin-top: 10px;
 }
+.task-start-day-name, .task-update-day-name {
+	width: 20%x;
+	font-weight: bold;
+}
+#startDate, #updateDate {
+	width: 80%;
+    font-size: 16px;
+    padding: 0 17px;
+}
+.filebox {	
+    margin-bottom: 50px;
+}
+.addTaskMemberBtn {
+	margin-left: 10px;;
+}
+
+.addTaskMemberBtn:hover {
+	color: darkorange;
+	cursor: pointer;
+}
 /* 오른쪽 부분 css end */
 
-.modal-content {
-	height : 800px;
-	top : 50px;
-	float : left;
-}
 
 .modal-body {
 	overflow-x : hidden;
 	overflow-y : auto;
+    margin: 30px 10%;
 }
 
 body {
@@ -142,8 +177,10 @@ ul li:hover {
   padding: 10px 16px 12px 16px;
   font-size: 25px;
 }
-.commentDelete {
-    margin-left: 5px;
+.commentDelete {    
+	margin-left: 5px;
+    margin-bottom: -5px;
+    margin-top: -5px;
 	float: right;
 	right: 5px;
 	cursor: pointer;
@@ -155,13 +192,13 @@ ul li:hover {
 	color: red;
 }
 .close:hover {
-  background-color: #f44336;
+  /* background-color: #f44336; */
   color: white;
 }
 
 /* Style the header */
 .header {
-  background-color: grey;
+  /* background-color: grey; */
   color: white;
   text-align: center;
   width: 100%;
@@ -175,63 +212,75 @@ ul li:hover {
 }
 
 /* Style the input */
-input {
+input {    
   margin: 0;
+  width: 90%;
   border: none;
   border-radius: 0;
-  width: 70%;
-  padding: 10px;
+  padding: 5px 10px;
   float: left;
   font-size: 16px;
   color : black;
 }
-
+.taskSubTitle {
+	margin-bottom: 5px;
+}
+#myInput {
+	
+}
 /* Style the "Add" button */
 .addBtn {
-  padding: 10px;
-  width: 30%;
-  background: #d9d9d9;
-  color: #555;
+	color: white;
+	margin: 0;
+   padding: 5px;
+   width: 10%;
+  background: darkorange;
   float: left;
   text-align: center;
   font-size: 16px;
   cursor: pointer;
   transition: 0.3s;
-  border-radius: 0;
+  border-radius: 5px;
 }
-
 .addBtn:hover {
-  background-color: #bbb;
+	color: white;
+  background-color: #f38500;
 }
     /*Textarea*/
 .shadow-textarea textarea.form-control::placeholder {
     font-weight: 500;
 }
 .shadow-textarea textarea.form-control {
-	margin-top : -10px;
+	height: 0px;
+    min-height: 50px;
     padding-left: 0.8rem;
     resize: none;
     border-width: 2px;
     width: 100%;
-    border-color: dimgrey;
 }
 .shadow-textarea2 textarea.form-control {
     padding-left: 0.8rem;
+    height: 0;
+    min-height: 200px;
     resize: none;
     border-width: 2px;
     width: 100%;
-    height: 200px;
-    border-color: dimgrey;
+    /* height: 200px; */
 }
 
 #imgName {
 	width: 500px;
 }
-    
+#myDIV {
+	width: 100%;
+    margin-top: 30px;
+    margin-bottom: 5px;
+}    
 #myUL {
-    width: 490px;
+	width: 100%;
 }
 #myUL li {
+    padding: 10px 20px;
 	float: left;
 	font-size: 1.2rem;
 }
@@ -252,20 +301,25 @@ input {
     float: right;
 }
 #container{
-    width: 500px;
+    width: 100%;
     margin: auto;
 }
 #boxs{
     margin: 5px;
 }
 #box1{
-    margin: 20px 5px 5px 5px;
+    margin: 20px 5px 20px 5px;
 }
 /* 파일 업로드 */
 .input-group {
 	width: 10px;	
 }
-
+.uploadList {
+	clear: both;
+}
+.uploadLabel {
+	float: left
+}
 .btn-file {
     position: relative;
     overflow: hidden;
@@ -274,7 +328,6 @@ input {
     position: absolute;
     top: 0;
     right: 0;
-    min-width: 500px;
     min-height: 100%;
     font-size: 100px;
     text-align: right;
@@ -299,4 +352,53 @@ input {
 	bottom : -230px;
 	right: 230px;
 	border : 2px solid black;
+}
+#datepicker1 {
+	width: 80%;
+}
+.modal-footer {
+	both: clear;
+	width: 90%;
+    margin: 0 5%;
+    padding-top: 3rem;
+    margin-top: 1rem;
+}
+.saveBtn {
+    font-size: 1.3rem;
+	background-color: darkorange;
+	border-color: darkorange;
+}
+.closeBtn {
+    font-size: 1.3rem;
+    color: white;
+    margin: 0;
+    padding: 5px;
+    width: 7%;
+    background: #6c757d;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+.closeBtn:hover {
+	background: #444;
+}
+.saveBtn {
+    font-size: 1.3rem;
+    color: white;
+    margin: 0;
+    padding: 5px;
+    width: 10%;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 5px;
+	border-color: darkorange;
+	 background: darkorange;
+}
+.saveBtn:hover {
+	background-color: #f38500;
+	border-color: #f38500;
 }
