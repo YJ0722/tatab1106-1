@@ -239,7 +239,26 @@
     padding: 0 20px;
 }
 
-.btn{ border-radius: 50%; width:32px; height:32px; line-height:18px;  }
+.btn{ 
+    border-radius: 5px;
+    width: 50px;
+    height: 30px;
+    line-height: 18px; 
+}
+
+.btn-primary {
+	background-color: darkorange;
+    border: 0.1px;
+}
+
+.btn-light {
+    background-color: #6C757D;
+    display: block;
+    float: right;
+    text-align: center;
+    padding: 5px;
+    margin-left: 3px;
+}
 
 .bottom img {
     border-radius: 50px;
