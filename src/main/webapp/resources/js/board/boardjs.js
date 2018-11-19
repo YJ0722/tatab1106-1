@@ -512,8 +512,18 @@ function selectAllTask(task_no) {
 				console.log('@#$^&*()_(*&%@#$)( : ' + data.dday);
 				
 				
+				if(data.dday != null) {
+
+					$('#ddayCount').text(data.dday);
+
+					$('#ddayCountView').show();
+					$('#ddayCount').show();
+					
+				} else {
+					$('#ddayCountView').hide();
+					$('#ddayCount').hide();
+				} 
 				
-				$('#ddayCount').text(data.dday);
 				$('.task_name').val(data.taskVO.task_name);
 				$('.task_content').val(data.taskVO.task_content);
 				$('#startDate').text(data.taskVO.reg_date);

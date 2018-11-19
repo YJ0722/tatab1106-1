@@ -54,19 +54,24 @@ public class TaskController {
 			System.out.println("comment [" + i + "] : " + commentVOList.get(i).toString());
 		}
 		
-		
-		
-		
-		////////////////
+		///////////////
 		DateVO dateVO = new DateVO();
 		System.out.println("dday 날짜 : " + String.valueOf(taskVO.getD_day()));
-		int dday = dateVO.calDDay(taskVO.getD_day());
-		String ddayStr = String.valueOf(dday);
-		if(dday > 0) {
-			ddayStr = "+" + ddayStr;
+		String ddayStr;// = null;
+		
+		if(String.valueOf(taskVO.getD_day()).equals("-")) {
+			ddayStr = null;
+		} else {
+
+			int dday = dateVO.calDDay(taskVO.getD_day());
+			ddayStr = String.valueOf(dday);
+			if(dday > 0) {
+				ddayStr = "+" + ddayStr;
+			}
+			System.out.println("dday 계산 : " + ddayStr);
+			
 		}
-		System.out.println("dday 계산 : " + ddayStr);
-		////////////////
+		//////////////////
 		
 		
 		Map<String, Object> map = new HashMap<String, Object>();

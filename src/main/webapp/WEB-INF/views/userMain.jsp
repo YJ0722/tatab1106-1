@@ -96,7 +96,7 @@
         	<div class="bluredBackground">
         		<c:choose>
         		<c:when test="${empty mainBackgroundVO.save_name}">
-        			<img src="http://cfile226.uf.daum.net/image/226ED33553157E4F2F828A">
+        			<img src="resources/img/main/background-sample.jpg">
         		</c:when>
         		<c:otherwise>
         			<img src="${pageContext.request.contextPath}/img/${mainBackgroundVO.save_name}">
