@@ -76,7 +76,6 @@
 <!--     <meta http-equiv="Cache-Control" content="no-cache"/> -->
 <!-- <meta http-equiv="Expires" content="0"/> -->
 <!-- <meta http-equiv="Pragma" content="no-cache"/> -->
-
 </head>
 <body>
     <!-- 제일 상위 등급 div -->
@@ -96,7 +95,7 @@
         	<div class="bluredBackground">
         		<c:choose>
         		<c:when test="${empty mainBackgroundVO.save_name}">
-        			<img src="resources/img/main/background-sample.jpg">
+        			<img src="resources/img/main/background-sample.jpg"> 
         		</c:when>
         		<c:otherwise>
         			<img src="${pageContext.request.contextPath}/img/${mainBackgroundVO.save_name}">
