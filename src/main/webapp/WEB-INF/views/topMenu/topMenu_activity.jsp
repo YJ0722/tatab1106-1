@@ -8,12 +8,12 @@
     <link rel="stylesheet" type="text/css" href="resources/css/topMenu/topMenu_activity.css">
     
     <body>
-        <div class="wrapper">
             <div class="activity">
                 <div class="name">
                     &nbsp;&nbsp;Activity
                 </div>
             </div>
+        <div class="wrapper">
             <div>
                 <div class="activityContent">
                     <div class="activityIcon">

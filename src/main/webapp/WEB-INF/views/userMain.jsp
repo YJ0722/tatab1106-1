@@ -84,7 +84,7 @@
         <div class="background">
         	<c:choose>
         		<c:when test="${empty mainBackgroundVO.save_name}">
-        			<img src="http://cfile226.uf.daum.net/image/226ED33553157E4F2F828A">
+        			<img src="<c:url value="/resources/img/main/background-sample.jpg" />"> 
         		</c:when>
         		<c:otherwise>
         			<img src="${pageContext.request.contextPath}/img/${mainBackgroundVO.save_name}">
@@ -95,7 +95,7 @@
         	<div class="bluredBackground">
         		<c:choose>
         		<c:when test="${empty mainBackgroundVO.save_name}">
-        			<img src="resources/img/main/background-sample.jpg"> 
+        			<img src="<c:url value="/resources/img/main/background-sample.jpg" />"> 
         		</c:when>
         		<c:otherwise>
         			<img src="${pageContext.request.contextPath}/img/${mainBackgroundVO.save_name}">
@@ -117,7 +117,7 @@
                     <div class="logoAndPhrase">
                         <!-- 제목 -->
                         <div class="titlePhrase">
-                            <a href="<c:url value="/userMain.do" />"><img src="<c:url value="/resources/img/main/tatab-color.png" />"></a>
+                            <a href="<c:url value="/userMain.do" />"><img src="<c:url value="/resources/img/main/tatabBold3.png" />"></a>
                         </div>
                         <!-- 제목 끝 -->
                         <!-- 플젝 표시 -->
@@ -222,9 +222,6 @@
                         <div class="col-lg-3 col-sm-6">
                             <div class="card hovercard">
                                 <div class="cardheader">
-                                	<%-- <img src="<c:url value="/resources/img/main/tatab.png" />"
- 											style="background-size: cover; height: 135px; 
-  											background-repeat: no-repeat;"/> --%>
                                 </div>
                                 <div class="avatar">
                                 	<c:choose>
