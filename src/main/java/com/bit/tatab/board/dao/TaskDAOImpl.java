@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.bit.tatab.board.vo.BoardTaskVO;
 import com.bit.tatab.board.vo.TaskCommentVO;
+import com.bit.tatab.board.vo.TaskFileVO;
 
 @Repository
 public class TaskDAOImpl implements TaskDAO {
@@ -51,6 +52,19 @@ public class TaskDAOImpl implements TaskDAO {
 	@Override
 	public void updateTask(BoardTaskVO taskVO) {
 		sqlSession.update("updateTask", taskVO);
+	}
+
+	// 테스크 파일 업로드
+	@Override
+	public void insertTaskFile(TaskFileVO taskFileVO) {
+		sqlSession.insert("insertTaskFile", taskFileVO);
+	}
+
+	// 테스크 파일 불러오기
+	@Override
+	public TaskFileVO selectTaskFile(String task_no) {
+		TaskFileVO taskFileVO = sqlSession.selectOne("selectTaskFile", task_no);
+		return taskFileVO;
 	}
 
 	

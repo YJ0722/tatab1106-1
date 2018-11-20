@@ -50,19 +50,23 @@
 	// update task
 	function submit() {
 		var task_name = $('.task_name').val();
-		var task_content = $('.task_content').val();
-		var dday = $('#datepicker1').val();
-		var task_no = $('.task_no').val();
+		var task_content = $('#task_content-input').val();
+		var dday = $('.dday').val();
+		var task_no = $('.modal-content').attr('id');
+		var file = $('.file');
 		
-		console.log(task_name);
-		console.log(task_content);
-		console.log(dday);
-		console.log(task_no);
+		console.log('ok.task_name ' + task_name);
+		console.log('ok.task_content ' + task_content);
+		console.log('ok.task_dday ' + dday);
+		console.log('ok.task_no ' + task_no);
+		alert('file 이름 : ' + file);
 		
-		$('.task_name1').val(task_name);
-		$('.task_content1').val(task_content);
+		$('.task_name').val(task_name);
+		$('.task_content').val(task_content);
 		$('.dday1').val(dday);
+		$('.task_no').val(task_no);
 		
+		$('#updateTask').append(file);
 		$('#updateTask').submit();
 		
 		// ajax로 값 넘기기
@@ -83,6 +87,7 @@
 		console.log('멤버할당');
 		document.getElementById("myForm").style.display = "block";
 	}
+
 </script>
 
 </head>
@@ -212,8 +217,8 @@
 							<div id="boxs">
 								<div class="form-group shadow-textarea2">
 									<label class="taskSubTitle" for="exampleFormControlTextarea6">Content</label>
-									<textarea class="form-control z-depth-1 task_content"
-										id="exampleFormControlTextarea6 task_content" rows="3" onkeyup="this.style.height='26px'; this.style.height = this.scrollHeight + 'px';"
+									<textarea class="form-control z-depth-1"
+										id="task_content-input" rows="3" onkeyup="this.style.height='26px'; this.style.height = this.scrollHeight + 'px';"
 										placeholder="업무 내용..."></textarea>
 								</div>
 							</div>
@@ -283,11 +288,11 @@
 										<div class="input-group">
 											<span class="input-group-btn"> 
 												<span class="btn btn-default btn-file"> Browse… 
-													<input class="uploadList" type="file" id="imgInp">
+													<input class="file" type="file" id="file" name="file">
 												</span>
 											</span>
 										</div>
-										 <input type="text" class="form-control" id="imgName" readonly>
+										 <input type="text" class="form-control" id="task_ori_name" readonly>
 										<!-- <img id='img-upload' /> -->
 									</div>
 
@@ -310,11 +315,12 @@
 			<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
 		</div>
 		
-		<form id="updateTask" action="updateTask.do" method="post">
-			<input type="hidden" class="task_name1" name="task_name">
-			<input type="hidden" class="task_content1" name="task_content">
-			<input type="hidden" class="dday1" name="dday">
-			<input type="hidden" class="task_no" name="task_no">
+		<form id="updateTask" action="updateTask.do" method="post" enctype="multipart/form-data">
+			<input type="text" class="task_name" name="task_name">
+			<input type="text" class="task_content" name="task_content">
+			<input type="text" class="dday" id="datepicker1" name="dday">
+			<input type="text" class="task_no" name="task_no">
+			<input type="text" class="file" id="file" name="file">
 		</form>
 	<!-- 모달 : MyPage -->
         <div id="MyPageModal" class="MyPageModal">

@@ -506,7 +506,7 @@ function selectAllTask(task_no) {
 				$('.nicknameText').attr('id', data.loginName);
 				
 				
-				$('.modal-content').attr('id', task_no);
+				$('.modal-content').attr('id', data.taskVO.task_no);
 				$('.modal-content').val(task_no);
 				
 				console.log('@#$^&*()_(*&%@#$)( : ' + data.dday);
@@ -524,10 +524,14 @@ function selectAllTask(task_no) {
 					$('#ddayCount').hide();
 				} 
 				
+				// 데이터 벨류값 설정(파일 요기)
 				$('.task_name').val(data.taskVO.task_name);
-				$('.task_content').val(data.taskVO.task_content);
+				$('.task_content').html(data.taskVO.task_content);
 				$('#startDate').text(data.taskVO.reg_date);
 				$('#datepicker1').attr('placeholder', data.taskVO.d_day);
+				$('#task_ori_name').val("");
+				$('#task_ori_name').val(data.taskFileVO.task_ori_name);
+				$('.task_no').val(data.taskVO.task_no);
 				
 				// 작업 완료 상태 img 표시
 				if(data.taskVO.status == 'C') {
@@ -542,11 +546,12 @@ function selectAllTask(task_no) {
 
 
 				// form 타입의 input data 설정
-				$('.task_no').val(task_no);
+//				$('.task_no').val(task_no);
 				$('#updateDate').text(data.update_date);
 				
 				if(data.d_day != '-') {
 					$('#datepicker1').val(data.d_day);
+//					$('.dday').val(data.d_day);
 				} 
 	
 				$('#myUL').empty();
