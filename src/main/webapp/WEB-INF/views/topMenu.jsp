@@ -173,7 +173,7 @@
 			<jsp:include page="/WEB-INF/views/topMenu/topMenu_projectManage.jsp"></jsp:include>
 		</div>
 	</div>
-	<!-- projectManage Modal -->
+	<!-- projectManage Modal  -->
 
 	<!-- 모달 화면 -->
 	<!-- 		<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true"> -->
