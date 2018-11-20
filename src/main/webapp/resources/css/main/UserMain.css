@@ -99,9 +99,9 @@ a:hover
 
 .titlePhrase a img {
 	position: relative;
-	width: 250px;
+	width: 280px;
 	height: auto;
-    margin-left: 20px;
+    margin-left: 5px;
     top: -15px;
 }
 
@@ -159,19 +159,22 @@ a:hover
 
 .addProject img {
 	position: relative;
-	top: 5px;
+	top: 4px;
+	height: 18px;
+	width: 18px;
 }
 
 #RegistrationModalBtn {
 	color: white;
+	margin-right: 10px;
 }
 
 .main {
     margin: 10px;
     position: absolute;
-    left: 20vmax;
-    width: 78.9vmax;    /* 여기 나중에 가로 삐져나오면 수정!! */
-    height: 97.9vmin;   /* 최대한 화면이 차게 잡은 수치 */
+    left: 395px;
+    width: 1510px;
+    height: 97.9%;
     float: right;
     z-index: 1;
 }
@@ -226,7 +229,7 @@ a:hover
 }
 
 .commentBelow p {
-    font-size: 13px;
+    font-size: 17px;
     color: white;
     font-style: italic;
 }
@@ -256,6 +259,7 @@ a:hover
 
 #MyPageModalBtn img {
 	border-radius: 50%;	
+	border: 1px solid lightgray;
 }
 
 .logout {
@@ -280,14 +284,14 @@ a:hover
 
 /* MyPageModal - content */
 .MyPageModalContent {
-    background-color: #e3fafd;
+    background-color: ghostwhite;
     margin-left: 84%;
     margin-top: 11%;
     padding: 0px;
-    border: 1px solid #e3fafd;
+    border: 0.1px solid ghostwhite;
     border-radius: 0px 0px 10px 10px;
     width: 280px;
-    height: 280px; /* Could be more or less, depending on screen size */
+    height: 255px; /* Could be more or less, depending on screen size */
 }
 
 /* StickyNoteModal - background */

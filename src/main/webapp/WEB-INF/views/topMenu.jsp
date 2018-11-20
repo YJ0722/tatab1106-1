@@ -32,10 +32,16 @@
 <!-- topMenu.css -->
 <link rel="stylesheet" type="text/css"
 	href="resources/css/topMenu/topMenu.css?ver=4">
+<!-- topMenu_activity.css -->
+<link rel="stylesheet" type="text/css"
+	href="resources/css/topMenu/topMenu_activity.css">
 <!-- taskStyle.css -->
 <link rel="stylesheet" type="text/css"
 	href="resources/css/board/taskStyle.css?ver=3">
 <!-- <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet"> -->
+<!-- myPageModal -->
+	<link href="<c:url value="/resources/css/board/MyPageModal.css?ver=3" />" rel="stylesheet">
+	<link href="<c:url value="/resources/css/main/BackgroundImageModal.css" />" rel="stylesheet">
 
 <!-- topMenu.js -->
 <script src="resources/js/topMenu/topMenu.js?ver=2"></script>
@@ -87,7 +93,7 @@
 <table id="topMenu-table">
 		<tr>
 			<td style="width: 10%">
-				<a href="<c:url value="/userMain.do" />"><img class="board-logo" src="resources/img/index/tatab-logo1.png" /></a>
+				<a href="<c:url value="/userMain.do" />"><img class="board-logo" src="resources/img/main/tatabBold5.png" /></a>
 			</td>
 			<td style="width: 3%" id="infoBtn"><img src="resources/img/topMenu/gear.png"></td>
 			<td style="width: 20%"></td>
@@ -108,16 +114,25 @@
 <!-- 					</tr> -->
 <!-- 				</table> -->
 <!-- 			</td> -->
-			<td style="width: 2%"><img src="resources/img/topMenu/alarm_bell.png"></td>
-			<td style="width: 2%" id="activityBtn"><img src="resources/img/topMenu/world_asia.png">
-				<div class="page_cover"></div>
+			<td style="width: 2%"><a><img src="resources/img/topMenu/alarm_bell.png"></a></td>
+			<td style="width: 2%" id="activityBtn"><a><img src="resources/img/topMenu/world_asia.png"></a>
+			<td style="width: 5%;" id="MyPageModalBtn2"><a>
+               	<c:choose>
+                  	<c:when test="${empty profileImgVO.save_name }">
+                         <img src="<c:url value="/resources/img/main/single-01.svg" />">
+                        	</c:when>
+                        	<c:otherwise>
+                        		<img src="${pageContext.request.contextPath}/img/${profileImgVO.save_name}">
+                        	</c:otherwise>
+                        </c:choose>
+                   </a></td>
+            	<div class="page_cover"></div>
 				<div id="menu">
-					<div class="activityClose" id="activityClose"></div>
+					<div class="activityClose" id="activityClose"><a></a></div>
 					<!-- activity.jsp-->
 					<jsp:include page="/WEB-INF/views/topMenu/topMenu_activity.jsp" />
 				</div></td>
 <!-- 			<td style="width: 5%"><i class="fas fa-cog"></i></td> -->
-			<td style="width: 3%"><i class="fas fa-user-circle"></i></td>
 		</tr>
 	</table>
 </div>
@@ -264,7 +279,7 @@
 					<div id="boxs" class="filebox" style="margin:0px">
 								<div>
 									<div class="form-group">
-										<label class="uploadLabel">Upload Image</label>
+										<label class="uploadLabel">Upload File</label>
 										<div class="input-group">
 											<span class="input-group-btn"> 
 												<span class="btn btn-default btn-file"> Browse… 
@@ -301,7 +316,52 @@
 			<input type="hidden" class="dday1" name="dday">
 			<input type="hidden" class="task_no" name="task_no">
 		</form>
-	
+	<!-- 모달 : MyPage -->
+        <div id="MyPageModal" class="MyPageModal">
+            <!-- MyPage 해당 컨텐츠 -->
+            <div class="MyPageModalContent2">
+                <div class="container">
+                    <div class="row2">
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card hovercard">
+                                <div class="cardheader">
+                                </div>
+                                <div class="contentSection"></div>
+                                <div class="avatar">
+                                	<c:choose>
+                                    	<c:when test="${empty profileImgVO.save_name }">
+		                                    <img src="https://i.stack.imgur.com/34AD2.jpg">
+                                    	</c:when>
+                                    	<c:otherwise>
+                                    		<img src="${pageContext.request.contextPath}/img/${profileImgVO.save_name}">
+                                    	</c:otherwise>
+                                    </c:choose>
+                                </div>
+                                <div class="info">
+                                    <div class="title">
+                                        <a><c:out value="${ myPageVO.login_name }" /></a>
+                                    </div>
+                                    <div class="desc"><c:out value="${ myPageVO.dob }" /></div>
+                                    <div class="desc"><c:out value="${ myPageVO.login_email }" /></div>
+                                    <h4><c:out value="${ myPageVO.motto }" /></h4>
+                                </div>
+                                <div class="bottom">
+                                    <a href="<c:url value="/myPage.do" />"><img src="<c:url value="/resources/img/main/gear.png" />"/></a>                              
+                                </div>
+                                <div class="logout">
+                                	<a href="googleLogout.do" onClick="signOut();">
+                                    	LOGOUT 
+                                    	<i class="fas fa-sign-out-alt"></i>
+                                    </a>      
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- MyPage 해당 컨텐츠 끝 -->
+        </div>
+        <!-- 모달 끝 -->
 </body>
 
 <script>
@@ -324,7 +384,7 @@ $(document).ready(function() {
 				console.log(data);
 				$('.activityContent').empty();
 				  for(i=0; i<data.length; i++) { // 프로필사진, 시간, 이름, 메시지, 프로젝트이름
-    				var tag1 = '<div class="activityIcon" id="MyPageModalBtn"><img src="${pageContext.request.contextPath}/img/'+data[i].save_name+'"/>';
+    				var tag1 = '<div class="activityIcon" id="activityIcon"><img src="${pageContext.request.contextPath}/img/'+data[i].save_name+'"/>';
     				var tag2 = '</div><div class="activityTime">';
     				var tag3 = '</div><div class="activityDo">';
     				var tag4 = '</div><div class="activityTaskName">';

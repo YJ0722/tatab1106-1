@@ -54,6 +54,16 @@ body {
     position: relative;
     
 }
+
+#infoBtn img {
+	position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 10px;
+    left: 180px;
+    vertical-align: inherit;
+}
+
 .kanban-col-box {
     display: inline-block;
     white-space: nowrap;

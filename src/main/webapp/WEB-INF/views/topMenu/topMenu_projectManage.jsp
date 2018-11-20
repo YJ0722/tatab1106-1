@@ -116,8 +116,8 @@
        
     <body>
         <div class="manageWrapper">
-                   <div class="title">
-                       <div class="name">
+                   <div class="title2">
+                       <div class="name2">
                            <a id="projectTitle" class="projectTitle manage-a"></a>
                        </div>
                        <div class="close1">
