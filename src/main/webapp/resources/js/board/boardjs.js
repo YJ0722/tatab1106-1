@@ -129,10 +129,10 @@ $(document).ready(function () {
     // update 전 col의 기존 제목
     var originalName;
     // col의 제목 클릭 이벤트(col 제목 업데이트 이벤트)
-    $(document).on("click", '.col-title-show-1', function(e) {
+    $(document).on("click", '.col-title-show', function(e) {
     	
     	// col 제목의 p 태그 숨기기
-    	$('.col-title-show-1').show();
+    	$('.col-title-show').show();
         $(this).hide();
         
         // col 제목의 input 태그 보여주기
@@ -221,7 +221,7 @@ $(document).ready(function () {
         var addTaskTag = '<div class="task round-border ui-state-default">' +
                          '<div class="task-inner">' +
                          '<div class="task-label">' +
-                         '<input type="text" autofocus  class="task-title-input" style="display:block" placeholder="제목을 입력하세요">' +
+                         '<input type="text" autofocus  class="task-title-input task-input-check" style="display:block" placeholder="제목을 입력하세요">' +
                          '<p class="task-title-show" style="display:none"></p>' +
 //                         '<p>20181001 TodoList</p>' +
                          '</div>' +
@@ -276,8 +276,9 @@ $(document).ready(function () {
             // TODO : 왜 자동 포커스 안되는지 모름... 나중에 수정
             $('.task-title-input:last').focus();
             
+            console.log('input-check-확인 : ' + $('.task-title-input').hasClass('task-input-check'));
             // 클릭한 공간이 mouseout 상태인 경우 실행
-            if(taskMouseAction == false) {
+            if(taskMouseAction == false && $('.task-title-input').hasClass('task-input-check')) {
                 console.log('추가된 작업 외부영역 클릭(작업 추가 완료)');
 
                 var taskTitle = getTaskTitle.val();
@@ -297,7 +298,7 @@ $(document).ready(function () {
                     console.log('작업 제목 : ' + taskTitle);
                     console.log('해당 컬럼 인덱스 : ' + task_col_no);
                     
-                    // 서버로 값 넘기는 ajax 실행
+                    $('.task-title-input').removeClass('task-input-check');
                     
                     // db에 태스크 추가 ajax 실행
                     insertBoardTask($('.kanban-col').eq(tagIndex).find('.task:last'), task_col_no, taskTitle);
@@ -342,7 +343,7 @@ $(document).ready(function () {
         var addColTag = '<div class="kanban-col-box">' +
         '<div class="kanban-col add-col round-border">' +
         '<div class="kanban-head">' +
-        '<input type="text" class="col-title-input" autofocus style="display:block">' +
+        '<input type="text" class="col-title-input col-input-first" autofocus style="display:block">' +
         '<p class="col-title-show" style="display:none"></p>' +
         '<img class="toggle body-up-img" src="resources/img/board/sort-up.png">' +
         '<img class="toggle body-down-img" src="resources/img/board/sort-down.png">' +
@@ -370,6 +371,7 @@ $(document).ready(function () {
         var lastCol = $('.add-col:last');
         
         // 외부 영역 클릭 시 입력 내용 고정
+        
         $(lastCol).off().on({
             'mouseover' : function(e) {
                 mouseAction = true;
@@ -378,17 +380,19 @@ $(document).ready(function () {
                 mouseAction = false;
             }
         });
-        
         // 컬럼 insert 관련 클릭 이벤트 시작
         $(document).on("click", lastCol, function(e) {
-            
+        	
+        	// 클릭한 위치가 input 내부인지 외부인지 기록
+        	
         	// 동적 생성한 컬럼 input 태그
             var getTitle = $('.col-title-input:last');
         	// 동적 생성한 컬럼 p 태그
             var setTitle = $('.col-title-show:last');
             
             // 생성한 col의 외부영역 클릭했을 경우
-            if(mouseAction == false) {
+            console.log($('.col-title-input').hasClass('col-input-first'));
+            if(mouseAction == false && $('.col-title-input').hasClass('col-input-first')) {
                 console.log('추가된 작업 외부영역 클릭(컬럼 추가 완료)');
                 
                 // input 태그의 입력값 받아서 변수에 저장
@@ -417,6 +421,7 @@ $(document).ready(function () {
                 
                 // 작업 추가 후 mouseover 상태로 다시 변경
                 mouseAction = true;
+                $('.col-title-input').removeClass('col-input-first');
                 
                 // 컬럼 추가 버튼 보여주기
                 $('.col-add-btn').show();

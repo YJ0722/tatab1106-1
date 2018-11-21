@@ -316,11 +316,11 @@
 		</div>
 		
 		<form id="updateTask" action="updateTask.do" method="post" enctype="multipart/form-data">
-			<input type="text" class="task_name" name="task_name">
-			<input type="text" class="task_content" name="task_content">
-			<input type="text" class="dday" id="datepicker1" name="dday">
-			<input type="text" class="task_no" name="task_no">
-			<input type="text" class="file" id="file" name="file">
+			<input type="hidden" class="task_name" name="task_name">
+			<input type="hidden" class="task_content" name="task_content">
+			<input type="hidden" class="dday" id="datepicker1" name="dday">
+			<input type="hidden" class="task_no" name="task_no">
+			<input type="hidden" class="file" id="file" name="file">
 		</form>
 	<!-- 모달 : MyPage -->
         <div id="MyPageModal" class="MyPageModal">
