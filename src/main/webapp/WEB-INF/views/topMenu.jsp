@@ -132,8 +132,8 @@
 <!-- 					</tr> -->
 <!-- 				</table> -->
 <!-- 			</td> -->
-			<td style="width: 2%"><a><img src="resources/img/topMenu/alarm_bell.png"></a></td>
-			<td style="width: 2%" id="activityBtn"><a><img src="resources/img/topMenu/world_asia.png"></a>
+			<td style="width: 2%" class="rightIcon"><a><img src="resources/img/topMenu/alarm_bell.png"></a></td>
+			<td style="width: 2%" class="rightIcon" id="activityBtn"><a><img src="resources/img/topMenu/world_asia.png"></a>
 			<td style="width: 5%;" id="MyPageModalBtn2"><a>
                	<c:choose>
                   	<c:when test="${empty profileImgVO.save_name }">
@@ -173,7 +173,7 @@
 	</div>
 	<!-- kanban board -->
 
-	<!-- projects Modal -->
+	<!-- projects Modal --> 
 	<div id="projectsModal" class="projectsmodal">
 		<jsp:include page="/WEB-INF/views/topMenu/topMenu_projects.jsp"></jsp:include>
 	</div>
