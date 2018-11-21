@@ -43,4 +43,9 @@
  	 <select id="selectTaskFile" parameterType="String" resultType="TaskFileVO">
  	 	select * from TASK_ATTACHMENT_T where task_no = #{task_no}
  	 </select>
+ 	 
+ 	 <!-- task 삭제 -->
+ 	 <delete id="deleteTask" parameterType="String">
+ 	 	delete from PRJ_TASK_T where task_no = #{task_no}
+ 	 </delete>
  </mapper>  

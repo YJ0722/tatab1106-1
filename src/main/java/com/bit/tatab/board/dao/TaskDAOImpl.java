@@ -67,5 +67,13 @@ public class TaskDAOImpl implements TaskDAO {
 		return taskFileVO;
 	}
 
+	// task 삭제
+	@Override
+	public void deleteTask(String task_no) {
+		sqlSession.delete("deleteTask", task_no);
+	}
+	
+	
+
 	
 }

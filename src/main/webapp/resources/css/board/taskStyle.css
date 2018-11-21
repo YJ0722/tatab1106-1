@@ -235,11 +235,10 @@ ul li:hover {
 }
 /* Style the input */
 input {    
-  margin: 0;
-  width: 90%;
+  width: 100%;
+  height: 100%;
   border: none;
   border-radius: 0;
-  padding: 5px 10px;
   float: left;
   font-size: 16px;
   color : black;
@@ -248,7 +247,14 @@ input {
 	margin-bottom: 5px;
 }
 #myInput {
-	
+	margin: 0;
+    width: 90%;
+    border: none;
+    border-radius: 0;
+    padding: 5px 10px;
+    float: left;
+    font-size: 16px;
+    color : black;
 }
 /* Style the "Add" button */
 .addBtn {
@@ -368,15 +374,35 @@ input {
 }
 
 #myForm {
-	background-color : white;
-	width: 200px;
-	height: 45px;
-	display : none;
-	position: fixed;
-	bottom : -230px;
-	right: 230px;
-	border : 2px solid black;
+	background-color: white;
+    width: 200px;
+    height: 45px;
+    display: none;
+    position: absolute;
+    bottom: 480px;
+    right: 130px;
+    border: 2px solid black;
 }
+
+#assigneeBtn {
+    position: absolute;
+    width: 50px;
+    height: 35px;
+    top: 3px;
+    left: 210px;
+    color: white;
+    margin: 0;
+    padding: 5px;
+    /* width: 10%; */
+    background: darkorange;
+    /* float: left; */
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
 #datepicker1 {
 	width: 50%;
 }

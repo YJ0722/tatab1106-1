@@ -68,6 +68,13 @@ public class TaskServiceImpl implements TaskService{
 		TaskFileVO taskFileVO = taskDao.selectTaskFile(task_no);
 		return taskFileVO;
 	}
+
+	// task 삭제
+	@Override
+	public void deleteTask(String task_no) {
+		taskDao.deleteTask(task_no);
+	}
+	
 	
 	
 }

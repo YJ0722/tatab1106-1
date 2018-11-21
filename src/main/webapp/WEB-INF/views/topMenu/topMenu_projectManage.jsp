@@ -112,6 +112,13 @@
     		}
     		return false;
     	}
+    	
+    	function deleteProject() {
+    		if(confirm("프로젝트를 삭제하시겠습니까?") == true) {
+	    		location.href="deleteProject.do";
+    		}
+			return false;    		
+    	}
     </script>
        
     <body>
@@ -123,7 +130,7 @@
                        <div class="close1">
                            <a class="manage-a"><i class="fas fa-times "></i></a>
                        </div> 
-                       <div class="trash">
+                       <div class="trash" onclick="deleteProject()">
                            <a class="manage-a"><i class="fas fa-trash-alt"></i></a>
                        </div>
                    </div>

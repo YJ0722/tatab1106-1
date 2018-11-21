@@ -529,13 +529,15 @@ function selectAllTask(task_no) {
 					$('#ddayCount').hide();
 				} 
 				
-				// 데이터 벨류값 설정(파일 요기)
+				// 데이터 벨류값 설정
 				$('.task_name').val(data.taskVO.task_name);
 				$('.task_content').html(data.taskVO.task_content);
 				$('#startDate').text(data.taskVO.reg_date);
 				$('#datepicker1').attr('placeholder', data.taskVO.d_day);
 				$('#task_ori_name').val("");
-				$('#task_ori_name').val(data.taskFileVO.task_ori_name);
+				if(data.taskFileVO != null){
+					$('#task_ori_name').val(data.taskFileVO.task_ori_name);
+				}
 				$('.task_no').val(data.taskVO.task_no);
 				
 				// 작업 완료 상태 img 표시
@@ -558,7 +560,25 @@ function selectAllTask(task_no) {
 					$('#datepicker1').val(data.d_day);
 //					$('.dday').val(data.d_day);
 				} 
-	
+				var array = new Array();// = data.memberList.toArray();
+				
+				for(i=0; i<array.length; i++) {
+					console.log('5655'+array[i]);
+				}
+				// 멤버리스트 관련 for문
+				$('.assigneeList').empty();
+				console.log('memberList:'+data.memberList);
+				for(i=0; i<data.memberList.length; i++) {
+					console.log('잘 나오니? : ' + data.memberList[i]);
+					var tag1 = '<div class="nameList">';
+					var tag2 = '</div>';
+    				var tag = tag1 + data.memberList[i].login_name + tag2;
+    				$(tag).hide().appendTo('.assigneeList').show();
+				}
+					
+				
+				
+				// 코멘트들 관련 for문
 				$('#myUL').empty();
 
 				var comments = data.commentList;

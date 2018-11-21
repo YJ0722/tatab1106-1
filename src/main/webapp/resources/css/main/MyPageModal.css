@@ -218,6 +218,7 @@
 
 .card.hovercard .info {
     padding: 4px 8px 10px;
+    font-family: 'Do Hyeon', sans-serif;
 }
 
 .card.hovercard .info .title {
@@ -228,9 +229,13 @@
     vertical-align: middle;
 }
 
+.card.hovercard .info .title h4 {
+	font-size: 18px;
+}
+
 .card.hovercard .info .desc {
     overflow: hidden;
-    font-size: 12px;
+    font-size: 15px;
     line-height: 20px;
     color: #737373;
     text-overflow: ellipsis;
@@ -248,12 +253,14 @@
 }
 
 .btn-primary {
+	color: white;
 	background-color: darkorange;
     border: 0.1px;
 }
 
 .btn-light {
     background-color: #6C757D;
+    color: white;
     display: block;
     float: right;
     text-align: center;

@@ -63,5 +63,11 @@ $(document).ready(function() {
 			$('.activeBtn').css('color', 'black');
 		}
 	});
+	
+	$('.trash').hover(function(e) {
+		$('.fa-trash-alt').css('color', 'black');
+	}, function() {
+		$('.fa-trash-alt').css('color', 'white');
+	});
 
 });

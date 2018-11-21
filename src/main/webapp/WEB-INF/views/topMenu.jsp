@@ -27,8 +27,8 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
-<link rel="stylesheet" type="text/css"
-	href="resources/css/board/boardcss.css">
+<!-- <link rel="stylesheet" type="text/css" -->
+<!-- 	href="resources/css/board/boardcss.css"> -->
 <!-- topMenu.css -->
 <link rel="stylesheet" type="text/css"
 	href="resources/css/topMenu/topMenu.css?ver=4">
@@ -84,8 +84,21 @@
 	
 	// 멤버 할당
 	function assignMember() {
-		console.log('멤버할당');
-		document.getElementById("myForm").style.display = "block";
+		obj = document.getElementById("myForm");
+		if(obj.style.display == "none" || obj.style.display == "") // 최초값이 ""이라서 조건문에 반영!
+			obj.style.display = "block";
+		else
+			obj.style.display = "none";
+			
+	}
+	
+	// task 삭제
+	function deleteTask() {
+		console.log('task 삭제');
+		if(confirm("Task를 삭제하시겠습니까?") == true) {
+    		location.href="deleteTask.do";
+		}
+		return false;   
 	}
 
 </script>
@@ -97,16 +110,16 @@
 <!-- 원래 태그	<table border="1px" style="width: 100%; height: 50px;"> -->
 <table id="topMenu-table">
 		<tr>
-			<td style="width: 10%">
+			<td style="width: 7%">
 				<a href="<c:url value="/userMain.do" />"><img class="board-logo" src="resources/img/main/tatabBold5.png" /></a>
 			</td>
-			<td style="width: 3%" id="infoBtn"><img src="resources/img/topMenu/gear.png"></td>
-			<td style="width: 20%"></td>
-			<td style="width: 8%" id="projectsBtn" style="font-size: 2rem;">
+			<td style="width: 7%" id="projectsBtn" style="font-size: 2rem;">
 				<img src="resources/img/topMenu/aircraft.png">
 				&nbsp; ${projectName } &nbsp; 
 				<i class="fas fa-angle-down "></i>
 			</td>
+			<td style="width: 1%" id="infoBtn"><img src="resources/img/topMenu/gear.png"></td>
+			<td style="width: 34%"></td>
 			<td style="width: 23%"></td>
 <!-- 			<td style="width: 5%"> -->
 <!-- 				<table class="activeBtn"> -->
@@ -119,8 +132,8 @@
 <!-- 					</tr> -->
 <!-- 				</table> -->
 <!-- 			</td> -->
-			<td style="width: 2%"><a><img src="resources/img/topMenu/alarm_bell.png"></a></td>
-			<td style="width: 2%" id="activityBtn"><a><img src="resources/img/topMenu/world_asia.png"></a>
+			<td style="width: 2%" class="rightIcon"><a><img src="resources/img/topMenu/alarm_bell.png"></a></td>
+			<td style="width: 2%" class="rightIcon" id="activityBtn"><a><img src="resources/img/topMenu/world_asia.png"></a>
 			<td style="width: 5%;" id="MyPageModalBtn2"><a>
                	<c:choose>
                   	<c:when test="${empty profileImgVO.save_name }">
@@ -160,7 +173,7 @@
 	</div>
 	<!-- kanban board -->
 
-	<!-- projects Modal -->
+	<!-- projects Modal --> 
 	<div id="projectsModal" class="projectsmodal">
 		<jsp:include page="/WEB-INF/views/topMenu/topMenu_projects.jsp"></jsp:include>
 	</div>
@@ -196,8 +209,10 @@
 						<h5 class="modal-title" id="exampleModalLongTitle">
 							<!-- Modal title -->
 						</h5>
-						
-						<button type="button" class="close" style="margin : 0; height: 54px;" data-dismiss="modal" aria-label="Close">
+						<div class="close1">
+                           <a class="manage-a"><i id="deleteTask" class="close fas fa-trash-alt" onclick="deleteTask()" ></i></a>
+                        </div> 
+						<button type="button" class="close" style="margin : 0; height: 54px; margin-right:5px;" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
@@ -245,20 +260,20 @@
 						<div class="right-box-item task-assigned-member-box">
 							<div class="right-box-item-title task-assigned-member-box-name">할당멤버</div>
 							<div class="task-assigned-member">
-								<p><i class="fas fa-plus-circle addTaskMemberBtn" onclick="assignMember()"></i></p>
+								<p><i class="fas fa-plus-circle addTaskMemberBtn" id="assignBtn" onclick="assignMember()"></i></p>
 							</div>
 						</div>
 						<!-- 할당 멤버 end -->
 						
 						<!-- 멤버리스트 보여주기-->
-						<div style="margin-bottom: 50px;">
-							성수 연주 원석
-							<div id="myForm">
-								<input type="text" id="assignee">
-								<button onclick="setAssignee()">할당</button>
-							</div>
+						<div class="assigneeList" style="margin-bottom: 50px;">
+							assignee list
 						</div>
-						<!-- 멤버리스트 보여주기-->
+							<div id="myForm">
+								<input type="text" id="assignee" name ="assignee">
+								<button id="assigneeBtn" onclick="setAssignee()">할당</button>
+							</div>
+						<!-- 멤버리스트 보여주기 끝-->
 						
 						<!-- d-day start-->
 						<div class="right-box-item task-dday-box">
@@ -457,18 +472,49 @@ $(document).ready(function() {
 	function setAssignee() {
 		var taskNo = $('.modal-content').attr('id');
 		var assignee = $('#assignee').val();
-		// ajax로 값 넘기기
-		$.ajax({
-			url : "setAssignee.do",
-			data : {'task_no': taskNo,
-					'login_name': assignee
-					},
-			type : "get",
-			success : function() {
-					alert('작업완료 알림 완료!');
+		
+		if($('#assignee').val().length == 0) {
+			alert('아이디를 입력해주세요');
+			false;
+		} else {
+			// ajax로 값 넘기기 - 유저 추가
+			$.ajax({
+				url:'addAssignee.do',
+				type:'get',
+				data:{'assignee':assignee},
+				success:function(result){
+					if(result == 'true'){
+						alert('task member 추가완료');
+						
+						// 멤버리스트 관련 for문
+						$('.assigneeList').empty();
+						//console.log('memberList:'+data.memberList);
+						for(i=0; i<data.memberList.length; i++) {
+							console.log('잘 나오니? : ' + data.memberList[i]);
+							var tag1 = '<div class="nameList">';
+							var tag2 = '</div>';
+		    				var tag = tag1 + data.memberList[i].login_name + tag2;
+		    				$(tag).hide().appendTo('.assigneeList').show();
+						}
+					}else {
+						alert('없는 아이디');
+					}
 				}
-		});
-	}
+			});
+		
+			// ajax로 액티비티 값 넘기기
+			$.ajax({
+				url : "setAssignee.do",
+				data : {'task_no': taskNo,
+						'login_name': assignee
+						},
+				type : "get",
+				success : function() {
+						alert('작업완료 알림 완료!');
+					}
+			});
+		}
+	};
 	</script>
 
 <!-- task 관련 스크립트  - 부트스트랩 -->
@@ -488,7 +534,7 @@ $(document).ready(function() {
 <script src="resources/js/jquery-ui.min.js"></script>
 <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> -->
 
-<script src="resources/js/board/boardjs.js?ver=5"></script>
+<script src="resources/js/board/boardjs.js?ver=6"></script>
 <script src="resources/js/board/taskScript.js?ver=4"></script>
 
 </html>

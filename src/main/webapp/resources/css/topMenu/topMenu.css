@@ -1,5 +1,10 @@
 /* i  { font-size: 25px;} */
 
+.nameList {
+	width : inherit;
+	height : 30px;
+    margin: 5px;
+}
 
 td {
     padding: 2px;
@@ -39,8 +44,8 @@ table {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    left: 840px;
-    top: 60px;
+    left: 100px;
+    top: 50px;
     width: 310px; 
     height: 425px; 
     overflow: auto; /* Enable scroll if needed */
@@ -81,7 +86,7 @@ table {
 /*    padding: 20px;*/
     border: 1px solid #888;
     width: 450px;
-    height: 600px; /* Could be more or less, depending on screen size */   
+    height: 590px; /* Could be more or less, depending on screen size */   
     border-radius: 10px;                       
 }
 /* The Close Button */
@@ -119,9 +124,9 @@ html.open {
 }
 */
 
-.btn:not(:disabled):not(.disabled) {
+.btn:not(:disabled):not(.disabled) {  /* 포지션 유저메인 버튼때문에 absolute 주석처리 */
     cursor: pointer;
-    position: absolute;
+/*     position: absolute; */
     left: -20px;
     top: -4px;
 }
@@ -139,21 +144,41 @@ html.open {
     cursor: pointer; 
 }
 
+#projectsBtn:hover {
+	cursor: pointer;
+}
+
 #MyPageModalBtn2 img {
 	border-radius: 50%;	
 	border: 1px solid lightgray;
 	position: absolute;
-    top: 7px;
+    top: 11px;
     right: 50px;
     height: 28px;
     width: 28px;
+}
+
+#MyPageModalBtn2 img:hover {
+	cursor: pointer;
+}
+
+.rightIcon img {
+	margin-top: 8px;
+}
+
+.rightIcon img:hover {
+	cursor: pointer;
+}
+
+#infoBtn:hover {
+	cursor: pointer;
 }
 
 #menu { 
     width: 300px; 
     height: 100%; 
     position: fixed; 
-    top: 61px; 
+    top: 50px; 
     right: -302px; 
     z-index: 10; 
     border: 1px solid #c9c9c9; 
@@ -238,6 +263,12 @@ img {
     border-radius: 0px 0px 10px 10px;
     width: 300px;
     height: 255px; /* Could be more or less, depending on screen size */
+}
+
+#deleteTask {
+	font-size: 16px; 
+    top: 19px;
+    right: 50px;
 }
 
 /* 스크롤바 css */

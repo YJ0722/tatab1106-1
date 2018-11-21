@@ -7,6 +7,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -138,6 +139,18 @@ public class TopMenuController {
 		return activityList;
 	}
 
+    // project 삭제
+    @RequestMapping(value="deleteProject.do", method=RequestMethod.GET) 
+    public String deleteProject(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
+    	
+    	
+    	String project_no = session.getAttribute("project_no").toString();
+    	System.out.println("삭제할 프로젝트 no : " + project_no);
+    	
+    	boardService.deleteProject(project_no);
+    	
+    	return "redirect:userMain.do";
+    }
 }
 
 
