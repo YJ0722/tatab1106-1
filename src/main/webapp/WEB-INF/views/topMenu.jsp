@@ -453,9 +453,12 @@ $(document).ready(function() {
 					$('#taskCompleteBtn').hide();
 					$('#taskCompleteOKBtn').show();
 					$('.modal-header').css('background-color', 'forestgreen');
-					$('.saveBtn').css('border-color', 'darkgreen');
-					$('.saveBtn').css('background', 'darkgreen');
-					$('.saveBtn').disabled = true;
+					$('.saveBtn, .addBtn').css('border-color', 'darkgreen');
+					$('.saveBtn, .addBtn').css('background', 'darkgreen');
+					$('.saveBtn').prop("disabled", true);
+					$('.addBtn').on('click' function(e){
+						return false;
+					}
 				}
 		})
 		
