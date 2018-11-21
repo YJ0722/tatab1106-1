@@ -7,9 +7,8 @@ $(document).ready(function () {
 	      
 	      if(task_no != null) {
 		      console.log('i : ' + task_no);
-		      $('#exampleModalLong').modal();
+		      $('#exampleModalLong').modal().fadeIn(300);
 		      
-		      $('.task_content-input').html('');
 		      selectAllTask(task_no);
 	    	  
 	      }
@@ -505,14 +504,24 @@ function selectAllTask(task_no) {
 		},
 		success : function(data) {
 			if(data != null) {
-
-				if(data.taskVO.task_content != null) {
-					console.log('textarea에 입력될 content : ' + data.taskVO.task_content);
-					$('.task_content-input').text(data.taskVO.task_content);
+					
+				if(data.taskVO.status == 'C') {
+					console.log('완료 상태');
+					$('.modal-header').css('background-color', 'forestgreen');
+					$('.saveBtn, .addBtn').css('border-color', 'forestgreen');
+					$('.saveBtn, .addBtn').css('background', 'forestgreen');
+					$('.saveBtn').prop("disabled", true);
+					$('.task_name').css('text-decoration', 'line-through');
+					$('.task_content').css('text-decoration', 'line-through');
 				} else {
-					console.log('content 넘어온 값이 null이다!');
-				}			    
-			    
+					$('.modal-header').css('background-color', 'darkorange');
+					$('.saveBtn, .addBtn').css('border-color', 'darkorange');
+					$('.saveBtn, .addBtn').css('background', 'darkorange');
+					$('.saveBtn').prop("disabled", true);
+					$('.task_name').css('text-decoration', 'none');
+					$('.task_content').css('text-decoration', 'none');
+				}
+				
 				console.log("5555555555 data : " + data.loginName);
 				console.log('@@@@@@ : ' + data.taskVO.d_day);
 
@@ -549,13 +558,6 @@ function selectAllTask(task_no) {
 				$('.task_no').val(data.taskVO.task_no);
 				
 				// comlete 확인
-				if(data.taskVO.status == 'C') {
-					console.log('완료 상태');
-					$('.modal-header').css('background-color', 'forestgreen');
-					$('.saveBtn, .addBtn').css('border-color', 'darkgreen');
-					$('.saveBtn, .addBtn').css('background', 'darkgreen');
-					$('.saveBtn').prop("disabled", true);
-				}
 				
 				// 작업 완료 상태 img 표시
 //				if(data.taskVO.status == 'C') {
