@@ -7,6 +7,7 @@ $(document).ready(function () {
 	      
 	      if(task_no != null) {
 		      console.log('i : ' + task_no);
+		      // 모달 천천히 띄우기
 		      $('#exampleModalLong').modal().fadeIn(300);
 		      
 		      selectAllTask(task_no);
@@ -512,11 +513,13 @@ function selectAllTask(task_no) {
 					$('.saveBtn').prop("disabled", true);
 					$('.task_name').css('text-decoration', 'line-through');
 					$('.task_content').css('text-decoration', 'line-through');
+//					$('.task_name. .task_content').prop('readonly', true);
 				} else {
 					$('.modal-header').css('background-color', 'darkorange');
 					$('.saveBtn, .addBtn').css('border-color', 'darkorange');
 					$('.saveBtn, .addBtn').css('background', 'darkorange');
 					$('.saveBtn').prop("disabled", true);
+//					$('.task_name. .task_content').prop('readonly', false);
 					$('.task_name').css('text-decoration', 'none');
 					$('.task_content').css('text-decoration', 'none');
 				}
@@ -557,6 +560,12 @@ function selectAllTask(task_no) {
 				}
 				$('.task_no').val(data.taskVO.task_no);
 				
+				
+				if(data.taskVO.status == 'C') {
+					$('.task_name, .task_content').prop('readonly', true);
+				} else {
+					$('.task_name, .task_content').prop('readonly', false);
+				}
 				// comlete 확인
 				
 				

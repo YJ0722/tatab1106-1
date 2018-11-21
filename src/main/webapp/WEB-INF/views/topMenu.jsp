@@ -455,6 +455,7 @@ $(document).ready(function() {
 					$('.modal-header').css('background-color', 'forestgreen');
 					$('.saveBtn, .addBtn').css('border-color', 'forestgreen');
 					$('.saveBtn, .addBtn').css('background', 'forestgreen');
+					$('.task_name, .task_content').prop('readonly', true);
 					$('.saveBtn').prop("disabled", true);
 					$('.task_name').css('text-decoration', 'line-through');
 					$('.task_content').css('text-decoration', 'line-through');
