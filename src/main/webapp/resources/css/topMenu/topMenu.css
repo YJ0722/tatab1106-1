@@ -86,7 +86,7 @@ table {
 /*    padding: 20px;*/
     border: 1px solid #888;
     width: 450px;
-    height: 600px; /* Could be more or less, depending on screen size */   
+    height: 590px; /* Could be more or less, depending on screen size */   
     border-radius: 10px;                       
 }
 /* The Close Button */
@@ -243,6 +243,12 @@ img {
     border-radius: 0px 0px 10px 10px;
     width: 300px;
     height: 255px; /* Could be more or less, depending on screen size */
+}
+
+#deleteTask {
+	font-size: 16px; 
+    top: 19px;
+    right: 50px;
 }
 
 /* 스크롤바 css */

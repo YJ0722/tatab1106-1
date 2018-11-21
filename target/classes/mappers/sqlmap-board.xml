@@ -155,4 +155,9 @@
 		where project_no = #{project_no}
 	</select>
  	
+ 	<!-- 프로젝트 삭제 -->
+ 	<delete id="deleteProject" parameterType="String">
+ 		delete from PRJ_T where project_no = #{project_no}
+ 	</delete>
+ 	
  </mapper>  

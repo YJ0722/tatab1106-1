@@ -261,6 +261,18 @@ public class TaskController {
 				
 	}
 	
+
+    // task 삭제
+    @RequestMapping(value="deleteTask.do", method=RequestMethod.GET)
+    public String deleteTask(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
+    	
+    	String task_no = session.getAttribute("task_no").toString();
+    	System.out.println("삭제할 task_no : " + task_no);
+    	
+    	taskService.deleteTask(task_no);
+    	
+    	return "redirect:board.do";
+    }
 	
 	
 

@@ -60,5 +60,8 @@ public interface BoardService {
 
 	// 액티비티 리스트 불러오기
 	public List<ActivityVO> selectActivityList(String project_no);
+	
+	// 프로젝트 삭제
+	public void deleteProject(String project_no);
 
 }

@@ -243,8 +243,15 @@ public class BoardDAOImpl implements BoardDAO{
 		List<ActivityVO> activityList = sqlSession.selectList("selectActivityList2", project_no); 
 		return activityList;
 	}
+
+	// 프로젝트 삭제
+	@Override
+	public void deleteProject(String project_no) {
+		System.out.println("dao 진입");
+		sqlSession.delete("deleteProject", project_no);
+	}
 	
 	
-	
+	                                                                                                                                                                                 
 	
 }

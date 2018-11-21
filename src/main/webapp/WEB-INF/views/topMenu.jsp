@@ -91,6 +91,15 @@
 			obj.style.display = "none";
 			
 	}
+	
+	// task 삭제
+	function deleteTask() {
+		console.log('task 삭제');
+		if(confirm("Task를 삭제하시겠습니까?") == true) {
+    		location.href="deleteTask.do";
+		}
+		return false;   
+	}
 
 </script>
 
@@ -200,8 +209,10 @@
 						<h5 class="modal-title" id="exampleModalLongTitle">
 							<!-- Modal title -->
 						</h5>
-						
-						<button type="button" class="close" style="margin : 0; height: 54px;" data-dismiss="modal" aria-label="Close">
+						<div class="close1">
+                           <a class="manage-a"><i id="deleteTask" class="close fas fa-trash-alt" onclick="deleteTask()"></i></a>
+                        </div> 
+						<button type="button" class="close" style="margin : 0; height: 54px; margin-right:5px;" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>

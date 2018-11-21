@@ -122,6 +122,15 @@ public class BoardServiceImpl implements BoardService{
 	public List<ActivityVO> selectActivityList(String project_no) {
 		return boardDao.selectActivityList(project_no);
 	}
+
+	// 프로젝트 삭제
+	@Override
+	public void deleteProject(String project_no) {
+		System.out.println("service 진입");
+		boardDao.deleteProject(project_no);
+	}
+	
+	
 	
 	
 }

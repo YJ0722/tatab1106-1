@@ -31,4 +31,7 @@ public interface TaskService {
 
 	// 파일 가져오기
 	public TaskFileVO selectTaskFile(String task_no);
+	
+	// task 삭제
+	public void deleteTask(String task_no);
 }

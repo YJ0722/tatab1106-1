@@ -60,4 +60,7 @@ public interface BoardDAO {
 
 	// 테스크 할당멤버 추가
 	public boolean addAssignee(String task_no, String assignee, String project_no);
+	
+	// 프로젝트 삭제
+	public void deleteProject(String project_no);
 }
