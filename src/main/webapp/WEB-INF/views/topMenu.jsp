@@ -198,7 +198,7 @@
 					<div class="modal-header" style="display: block;">
 						<!-- 액티비티용 컴플리트 버튼 : 스크립트는 아래에! -->
 						<img src="resources/img/task/task-complete-check-mark-white.png" id="taskCompleteBtn" onclick="completeTask()" />
-						<img src="resources/img/task/task-complete-check-mark-yellow.png" id="taskCompleteOKBtn" style="display: none;"/>
+<!-- 						<img src="resources/img/task/task-complete-check-mark-yellow.png" id="taskCompleteOKBtn" style="display: none;"/> -->
 						<!-- 액티비티용 컴플리트 버튼 끝 -->
 						
 						<!-- D-DAY(D-0) -->
@@ -450,15 +450,13 @@ $(document).ready(function() {
 					},
 			type : "get",
 			success : function(data) {
-					$('#taskCompleteBtn').hide();
-					$('#taskCompleteOKBtn').show();
+// 					$('#taskCompleteBtn').hide();
+// 					$('#taskCompleteOKBtn').show();
 					$('.modal-header').css('background-color', 'forestgreen');
 					$('.saveBtn, .addBtn').css('border-color', 'darkgreen');
 					$('.saveBtn, .addBtn').css('background', 'darkgreen');
 					$('.saveBtn').prop("disabled", true);
-					$('.addBtn').on('click' function(e){
-						return false;
-					}
+					
 				}
 		})
 		

@@ -540,14 +540,24 @@ function selectAllTask(task_no) {
 				}
 				$('.task_no').val(data.taskVO.task_no);
 				
-				// 작업 완료 상태 img 표시
+				// comlete 확인
 				if(data.taskVO.status == 'C') {
-					$('#taskCompleteBtn').hide();
-					$('#taskCompleteOKBtn').show();
-				} else {
-					$('#taskCompleteBtn').show();
-					$('#taskCompleteOKBtn').hide();
+					console.log('완료 상태');
+					$('.modal-header').css('background-color', 'forestgreen');
+					$('.saveBtn, .addBtn').css('border-color', 'darkgreen');
+					$('.saveBtn, .addBtn').css('background', 'darkgreen');
+					$('.saveBtn').prop("disabled", true);
 				}
+				
+				// 작업 완료 상태 img 표시
+//				if(data.taskVO.status == 'C') {
+//					$('#taskCompleteBtn').hide();
+//					$('#taskCompleteOKBtn').show();
+//				} 
+//				else {
+//					$('#taskCompleteBtn').show();
+//					$('#taskCompleteOKBtn').hide();
+//				}
 
 //				$('#nicknameText').text(data.loginName);
 
