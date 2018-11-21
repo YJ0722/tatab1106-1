@@ -29,9 +29,18 @@ public class BoardServiceImpl implements BoardService{
 	public void updateProjectVO(ProjectVO projectVO, String project_no, String projectName) {
 		boardDao.updateProjectVO(projectVO, project_no, projectName);
 	}
+	
+	// 프로젝트 멤버리스트 조회
 	@Override
 	public List<MemberVO> selectMemberList(String project_no) {
 		List<MemberVO> memberList = boardDao.selectMemberList(project_no);
+		return memberList;
+	}
+
+	// 테스크 멤버리스트 조회
+	@Override
+	public List<MemberVO> selectTaskMemberList(String task_no) {
+		List<MemberVO> memberList = boardDao.selectTaskMemberList(task_no);
 		return memberList;
 	}
 
@@ -40,6 +49,12 @@ public class BoardServiceImpl implements BoardService{
 		return boardDao.addUser(project_no, user);
 	}
 	
+	// 테스크 할당멤버 추가	
+	@Override
+	public boolean addAssignee(String task_no, String assignee, String project_no) {
+		return boardDao.addAssignee(task_no, assignee, project_no);
+	}
+
 	// 프로젝트 생성 시 자동으로 생성되는 컬럼 1개 생성
 	@Override
 	public void makeFirstCol(ProjectVO project) {

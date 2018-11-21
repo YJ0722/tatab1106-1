@@ -54,4 +54,10 @@ public interface BoardDAO {
 
 	// 액티비티 리스트 불러오기
 	public List<ActivityVO> selectActivityList(String project_no);
+
+	// 테스크 멤버리스트 조회
+	public List<MemberVO> selectTaskMemberList(String task_no);
+
+	// 테스크 할당멤버 추가
+	public boolean addAssignee(String task_no, String assignee, String project_no);
 }

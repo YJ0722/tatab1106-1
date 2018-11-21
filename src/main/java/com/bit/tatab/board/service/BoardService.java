@@ -18,9 +18,16 @@ public interface BoardService {
 	
 	// projectManage memberlist 조회
 	public List<MemberVO> selectMemberList(String project_no);
+
+	// task memberlist 조회
+	public List<MemberVO> selectTaskMemberList(String task_no);
 	
 	// projectManage adduser
 	public boolean addUser(String project_no, String user);
+	
+	// 테스크 할당멤버 추가
+	public boolean addAssignee(String task_no, String assignee, String project_no);
+	
 	// 프로젝트 생성 시 자동으로 생성되는 컬럼 1개 생성
 	public void makeFirstCol(ProjectVO project);
 	
@@ -53,4 +60,5 @@ public interface BoardService {
 
 	// 액티비티 리스트 불러오기
 	public List<ActivityVO> selectActivityList(String project_no);
+
 }

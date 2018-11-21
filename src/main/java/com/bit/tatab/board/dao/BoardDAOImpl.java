@@ -43,7 +43,7 @@ public class BoardDAOImpl implements BoardDAO{
 		sqlSession.update("updatePRJ_T", param);
 //		sqlSession.update("updateProject_List", param);
 	}
-
+//	프로젝트 멤버 조회
 	@Override
 	public List<MemberVO> selectMemberList(String project_no) {
 		
@@ -57,7 +57,8 @@ public class BoardDAOImpl implements BoardDAO{
 		}
 		return memberList;
 	}
-
+	
+	// 프로젝트 멤버 추가
 	@Override
 	public boolean addUser(String project_no, String user) {
 		
@@ -75,7 +76,42 @@ public class BoardDAOImpl implements BoardDAO{
 		}
 	}
 	
+	// 테스크 할당멤버 추가
+	@Override
+	public boolean addAssignee(String task_no, String assignee, String project_no) {
+
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("task_no", task_no);
+		param.put("assignee", assignee);
+		param.put("project_no", project_no);
+		
+		String checkUser = sqlSession.selectOne("checkAssignee", param);
+
+		if (checkUser != null) {
+			sqlSession.insert("addAssignee", param);
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
+	
+	// 테스크 멤버 조회
+	@Override
+	public List<MemberVO> selectTaskMemberList(String task_no) {
+
+		int input = Integer.parseInt(task_no);		
+
+		List<MemberVO> list = sqlSession.selectList("selectTaskMemberList", input);
+		List<MemberVO> memberList = new ArrayList<MemberVO>();
+		
+		for(int i=0; i<list.size(); i++) {
+			memberList.add(list.get(i));
+		}
+		return memberList;
+	}
+
+
 	// 프로젝트 생성 시 자동으로 생성되는 컬럼 1개 생성
 	@Override
 	public void makeFirstCol(ProjectVO project) {
