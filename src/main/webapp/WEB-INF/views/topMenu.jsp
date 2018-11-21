@@ -452,6 +452,10 @@ $(document).ready(function() {
 			success : function(data) {
 					$('#taskCompleteBtn').hide();
 					$('#taskCompleteOKBtn').show();
+					$('.modal-header').css('background-color', 'forestgreen');
+					$('.saveBtn').css('border-color', 'darkgreen');
+					$('.saveBtn').css('background', 'darkgreen');
+					$('.saveBtn').disabled = true;
 				}
 		})
 		
