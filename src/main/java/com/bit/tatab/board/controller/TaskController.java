@@ -23,12 +23,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bit.tatab.board.service.BoardService;
 import com.bit.tatab.board.service.TaskService;
 import com.bit.tatab.board.vo.BoardTaskVO;
 import com.bit.tatab.board.vo.TaskCommentVO;
 import com.bit.tatab.board.vo.TaskFileVO;
 import com.bit.tatab.main.vo.MainBackgroundVO;
 import com.bit.tatab.board.vo.DateVO;
+import com.bit.tatab.board.vo.MemberVO;
 import com.bit.tatab.myPage.service.MyPageService;
 
 @Controller
@@ -39,6 +41,9 @@ public class TaskController {
 
 	@Inject
 	MyPageService myPageService;
+	
+	@Inject
+	BoardService boardService;
 	
 	@Resource(name = "uploadPath")
 	   String uploadPath;
@@ -55,6 +60,8 @@ public class TaskController {
 		
 		HttpSession session = request.getSession();
 		String login_email = session.getAttribute("login_email").toString();
+		// 테스크 할당멤버 위해 task_no 세션에 추가
+		session.setAttribute("task_no", task_no);
 		
 		String loginName = myPageService.getLoginName(login_email);
 		System.out.println("nickname check!!! : " + loginName);
@@ -89,6 +96,14 @@ public class TaskController {
 		TaskFileVO taskFileVO = taskService.selectTaskFile(task_no);
 		System.out.println("가져온 파일 vo : " + taskFileVO);
 		
+		////////////////// 멤버리스트 가져오기
+		String project_no = session.getAttribute("project_no").toString();
+		System.out.println("불러올 프로젝트 고유번호 : " + project_no);
+//		List<MemberVO> memberList = boardService.selectMemberList(project_no);
+		List<MemberVO> memberList = boardService.selectTaskMemberList(task_no);
+		session.setAttribute("memberList", memberList);
+		System.out.println("memberList : " + memberList);
+		
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("loginName", loginName);
@@ -97,6 +112,8 @@ public class TaskController {
 		map.put("myEmail", login_email);
 //		map.put("dday", ddayStr);
 		map.put("taskFileVO", taskFileVO);
+		map.put("memberList", memberList); // 배열임을 참고할 것!
+		System.out.println("멤버리스트 : " + memberList);
 		
 		return map;
 	}
@@ -218,6 +235,30 @@ public class TaskController {
 		System.out.println("테스크 파일 DB 입력 완료 - 확인할 것!");
 		
 		return "redirect:board.do";
+	}
+	
+	// 테스크 멤버 추가
+	@RequestMapping(value="addAssignee.do", method = RequestMethod.GET) 
+	@ResponseBody
+	public String addAssignee(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		HttpSession session = request.getSession();
+		String task_no = session.getAttribute("task_no").toString();
+		String project_no = session.getAttribute("project_no").toString();
+		
+		String assignee = request.getParameter("assignee");
+		System.out.println("추가할 할당멤버 : " + assignee);
+		
+		boolean bool = boardService.addAssignee(task_no, assignee, project_no); 
+		
+		if(bool == true ) {
+			System.out.println("사용자 추가 완료");
+		} else {
+			System.out.println("없는 사용자입니다");
+		}
+		
+		return bool+"";
+				
 	}
 	
 	

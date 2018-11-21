@@ -49,16 +49,37 @@
 		)
  	</select>
  	
+ 	<!-- taskMemberList 조회 -->
+ 	<select id="selectTaskMemberList" parameterType="int" resultType="MemberVO">
+ 		select *
+		from member_t
+		where login_email in ( 
+		    select login_email
+		    from task_member_t
+		    where task_no = #{input} 
+		)
+ 	</select>
+ 	
  	<!-- invite user가 DB에 있는지 체크 -->
  	<select id="checkUser" parameterType="String" resultType="String">
  		select login_email from member_t
 		where login_email = #{user}
  	</select>
  	
+ 	<!-- 할당멤버가 db에 있는지 체크 -->
+ 	<select id="checkAssignee" parameterType="String" resultType="String">
+ 		select member_id from prj_member_t
+		where member_id = #{assignee} and project_no = #{project_no}
+ 	</select>
  	
  	<!-- addUser insert -->
  	<select id="addUser" parameterType="String">
  		insert into prj_member_t values(#{project_no}, #{user})
+ 	</select>
+ 	
+ 	<!-- 할당멤버 insert : login_email에 login_name 넣었으니, 활용할 때 꼭 수정 반영할 것! -->
+ 	<select id="addAssignee" parameterType="String">
+ 		insert into task_member_t values(#{task_no}, #{assignee})
  	</select>
  	
  	<!-- board 작업 추가 전 task_index 확인 -->

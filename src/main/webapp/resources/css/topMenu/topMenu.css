@@ -1,5 +1,10 @@
 /* i  { font-size: 25px;} */
 
+.nameList {
+	width : inherit;
+	height : 30px;
+    margin: 5px;
+}
 
 td {
     padding: 2px;
