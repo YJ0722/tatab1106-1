@@ -232,7 +232,7 @@
 							<div id="boxs">
 								<div class="form-group shadow-textarea2">
 									<label class="taskSubTitle" for="exampleFormControlTextarea6">Content</label>
-									<textarea class="form-control z-depth-1"
+									<textarea class="form-control z-depth-1 task_content"
 										id="task_content-input" rows="3" onkeyup="this.style.height='26px'; this.style.height = this.scrollHeight + 'px';"
 										placeholder="업무 내용..."></textarea>
 								</div>
@@ -242,7 +242,7 @@
 								<div id="myDIV" class="header">
 									<div class="nicknameText" id="" style="display:none;"></div>
 									<span> <input type="text" id="myInput"
-										placeholder="Comment..."> <span onclick="newElement()"
+										placeholder="Comment..."> <span onclick="	newElement()"
 										class="addBtn">Add</span>
 									</span>
 								</div>
@@ -453,10 +453,11 @@ $(document).ready(function() {
 // 					$('#taskCompleteBtn').hide();
 // 					$('#taskCompleteOKBtn').show();
 					$('.modal-header').css('background-color', 'forestgreen');
-					$('.saveBtn, .addBtn').css('border-color', 'darkgreen');
-					$('.saveBtn, .addBtn').css('background', 'darkgreen');
+					$('.saveBtn, .addBtn').css('border-color', 'forestgreen');
+					$('.saveBtn, .addBtn').css('background', 'forestgreen');
 					$('.saveBtn').prop("disabled", true);
-					
+					$('.task_name').css('text-decoration', 'line-through');
+					$('.task_content').css('text-decoration', 'line-through');
 				}
 		})
 		
