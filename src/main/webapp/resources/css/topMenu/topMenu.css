@@ -44,8 +44,8 @@ table {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    left: 840px;
-    top: 60px;
+    left: 100px;
+    top: 50px;
     width: 310px; 
     height: 425px; 
     overflow: auto; /* Enable scroll if needed */
