@@ -551,7 +551,6 @@ function selectAllTask(task_no) {
 
 //				$('#nicknameText').text(data.loginName);
 
-
 				// form 타입의 input data 설정
 //				$('.task_no').val(task_no);
 				$('#updateDate').text(data.update_date);

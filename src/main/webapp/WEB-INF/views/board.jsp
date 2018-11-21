@@ -48,11 +48,6 @@
        padding: 10px;
        height: 100vh;
    }
-   .add:hover {
-       font-size: 3rem;
-       margin: 10px;
-       color: darkgreen;
-   }
     </style>
     
     </head>
