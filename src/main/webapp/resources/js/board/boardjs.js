@@ -505,6 +505,7 @@ function selectAllTask(task_no) {
 		},
 		success : function(data) {
 			if(data != null) {
+					
 				if(data.taskVO.status == 'C') {
 					console.log('완료 상태');
 					$('.modal-header').css('background-color', 'forestgreen');
@@ -524,7 +525,6 @@ function selectAllTask(task_no) {
 					$('.task_content').css('text-decoration', 'none');
 				}
 				
-					
 				console.log("5555555555 data : " + data.loginName);
 				console.log('@@@@@@ : ' + data.taskVO.d_day);
 
@@ -567,7 +567,6 @@ function selectAllTask(task_no) {
 					$('.task_name, .task_content').prop('readonly', false);
 				}
 				// comlete 확인
-				
 				
 				// 작업 완료 상태 img 표시
 //				if(data.taskVO.status == 'C') {

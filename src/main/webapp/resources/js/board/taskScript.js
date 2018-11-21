@@ -78,66 +78,72 @@ function newElement() {
 	var nicknameVal = document.createTextNode(nname);
 	var dateVal = document.createTextNode(now);
 
-	// 입력 텍스트 contentbox에 추가
-	contentbox.appendChild(inputCommentVal);
-	// 닉네임 nicknamebox에 추가
-	nicknamebox.appendChild(nicknameVal);
-	// 작성 날짜 datebox에 추가
-	datebox.appendChild(dateVal);
-
-	// li에 닉네임, 댓글 추가
-	li.appendChild(nicknamebox);
-	li.appendChild(contentbox);
-	li.appendChild(datebox);			
-
-	if (inputValue === '') {
-		alert("You must write something!");
-	} else {
-		document.getElementById("myUL").prepend(li);
-	}
-	document.getElementById("myInput").value = "";
-
-	var span = document.createElement("p");
-	var txt = document.createTextNode("\u00D7");
-	span.className = "commentDelete";
-	span.appendChild(txt);
-	li.appendChild(span);
-
-	$('.commentDelete').prev().prev().prev().attr('class', 'nicknamebox');
-	$('.commentDelete').prev().prev().attr('class', 'contentbox');
-	$('.commentDelete').prev().attr('class', 'datebox');
-
-	for (i = 0; i < close.length; i++) {
-		close[i].onclick = function() {
-			var div = this.parentElement;
-			div.style.display = "none";
-
-		}
-	}
-
-	var commentLiIndex = $('li:last').index();
-	console.log('$$$$$: ' + commentLiIndex);
-	insertComment(taskNo, nname, inputValue, commentLiIndex);
-
-	var comment_content = $('.contentbox').eq(0).text();
+	console.log('\n\n\ninputValue 확인 : ' + inputValue + "\n\n\n");
 	
-	console.log('테스크 이름: ' + taskNo + ', 댓글 내용: ' + comment_content);
-	
-	// ajax로 값 넘기기
-	$.ajax({
-		url : "commentInsert.do",
-		data : {'login_name':nname,
-				'task_no': taskNo,
-				'alert_message' : comment_content
-				},
-		type : "get",
-		success : function() {
-				alert('코멘트 입력 완료!');
+		// 입력 텍스트 contentbox에 추가
+		contentbox.appendChild(inputCommentVal);
+		// 닉네임 nicknamebox에 추가
+		nicknamebox.appendChild(nicknameVal);
+		// 작성 날짜 datebox에 추가
+		datebox.appendChild(dateVal);
+
+		// li에 닉네임, 댓글 추가
+		li.appendChild(nicknamebox);
+		li.appendChild(contentbox);
+		li.appendChild(datebox);			
+
+		// 코멘트 내용 없을 경우
+		if (inputValue === '') {
+			alert("You must write something!");
+		} 
+		// 코멘트 내용 입력 있을 경우
+		else {
+			document.getElementById("myUL").prepend(li);
+
+			document.getElementById("myInput").value = "";
+
+			var span = document.createElement("p");
+			var txt = document.createTextNode("\u00D7");
+			span.className = "commentDelete";
+			span.appendChild(txt);
+			li.appendChild(span);
+
+			$('.commentDelete').prev().prev().prev().attr('class', 'nicknamebox');
+			$('.commentDelete').prev().prev().attr('class', 'contentbox');
+			$('.commentDelete').prev().attr('class', 'datebox');
+
+			for (i = 0; i < close.length; i++) {
+				close[i].onclick = function() {
+					var div = this.parentElement;
+					div.style.display = "none";
+
+				}
 			}
-			// 여기에 "그 후 실행" 코드들이 들어가야 한다!	
+
+			var commentLiIndex = $('li:last').index();
+			console.log('$$$$$: ' + commentLiIndex);
+			insertComment(taskNo, nname, inputValue, commentLiIndex);
+
+			var comment_content = $('.contentbox').eq(0).text();
 			
-		
-	});
+			console.log('테스크 이름: ' + taskNo + ', 댓글 내용: ' + comment_content);
+			
+			// ajax로 값 넘기기
+			$.ajax({
+				url : "commentInsert.do",
+				data : {'login_name':nname,
+						'task_no': taskNo,
+						'alert_message' : comment_content
+						},
+				type : "get",
+				success : function() {
+						alert('코멘트 입력 완료!');
+					}
+					// 여기에 "그 후 실행" 코드들이 들어가야 한다!	
+								
+			});
+		}
+	
 }
 
 $(document).ready(
