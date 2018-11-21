@@ -36,6 +36,9 @@ public interface BoardDAO {
 	
 	// 해당 프로젝트의 작업 조회
 	public List<BoardTaskVO> selectBoardTaskAll(int project_no);
+
+	// 해당 프로젝트의 작업 조회(mobile)
+	public List<BoardTaskVO> mSelectBoardTaskAll(BoardTaskVO paramTaskVO);
 	
 	// board에 col insert
 	public int insertCol(BoardColVO boardColVO);

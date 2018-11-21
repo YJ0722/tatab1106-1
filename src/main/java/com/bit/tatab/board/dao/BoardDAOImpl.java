@@ -139,6 +139,12 @@ public class BoardDAOImpl implements BoardDAO{
 		
 		return sqlSession.selectList("selectBoardTaskAll", project_no);
 	}
+
+	// 해당 프로젝트의 작업 조회(mobile)
+	@Override
+	public List<BoardTaskVO> mSelectBoardTaskAll(BoardTaskVO paramTaskVO) {
+		return sqlSession.selectList("mSelectBoardTaskAll", paramTaskVO);
+	}
 	
 	// board에 col insert
 	@Override

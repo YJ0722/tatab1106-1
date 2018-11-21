@@ -78,6 +78,13 @@
  		select * from prj_task_t where project_no = #{project_no} order by col_no, task_index
  	</select>
  	
+ 	<!-- board 작업 조회(mobile) -->
+ 	<select id="mSelectBoardTaskAll" parameterType="BoardColVO" resultType="BoardTaskVO">
+ 		select * from prj_task_t where project_no = #{project_no} and col_no = #{col_no} order by col_no, task_index
+ 	</select>
+ 	
+ 	
+ 	
  	<!-- col index 조회 -->
  	<select id="selectColIndex" parameterType="int" resultType="Integer">
  		select MAX(col_index) from prj_col_t where project_no = #{project_no}

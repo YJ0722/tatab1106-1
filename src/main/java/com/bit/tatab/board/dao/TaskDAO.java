@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.bit.tatab.board.vo.BoardTaskVO;
 import com.bit.tatab.board.vo.TaskCommentVO;
+import com.bit.tatab.board.vo.TaskFileVO;
 
 public interface TaskDAO {
 
@@ -24,4 +25,10 @@ public interface TaskDAO {
 	
 	// task data update
 	public void updateTask(BoardTaskVO taskVO);
+
+	// 테스크 파일 업로드
+	public void insertTaskFile(TaskFileVO taskFileVO);
+
+	// 테스크 파일 불러오기
+	public TaskFileVO selectTaskFile(String task_no);
 }

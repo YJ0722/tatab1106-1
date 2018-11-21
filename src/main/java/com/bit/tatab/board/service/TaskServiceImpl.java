@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.bit.tatab.board.dao.TaskDAO;
 import com.bit.tatab.board.vo.BoardTaskVO;
 import com.bit.tatab.board.vo.TaskCommentVO;
+import com.bit.tatab.board.vo.TaskFileVO;
 
 @Service
 public class TaskServiceImpl implements TaskService{
@@ -54,4 +55,19 @@ public class TaskServiceImpl implements TaskService{
 	public void deleteTaskComment(String commentNo) {
 		taskDao.deleteTaskComment(commentNo);
 	}
+
+	// 테스크 파일 업로드
+	@Override
+	public void insertTaskFile(TaskFileVO taskFileVO) {
+		taskDao.insertTaskFile(taskFileVO);
+	}
+
+	// 테스크 파일 가져오기
+	@Override
+	public TaskFileVO selectTaskFile(String task_no) {
+		TaskFileVO taskFileVO = taskDao.selectTaskFile(task_no);
+		return taskFileVO;
+	}
+	
+	
 }

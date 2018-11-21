@@ -4,10 +4,12 @@ $(document).ready(function() {
 	// Get the modal
 	var projectsModal = document.getElementById('projectsModal');
 	var manageModal = document.getElementById('manageModal');
+	var MyPageModal = document.getElementById('MyPageModal');
 
 	// Get the button that opens the modal
 	var projectsBtn = document.getElementById('projectsBtn');
 	var manageBtn = document.getElementById('infoBtn');
+	var MyPageModalBtn2 = document.getElementById('MyPageModalBtn2');
 
 	// Get the <span> element that closes the modal
 	var manageSpan = document.getElementsByClassName("close1")[0];
@@ -34,6 +36,9 @@ $(document).ready(function() {
 	manageSpan.onclick = function() {
 		manageModal.style.display = "none";
 	}
+	MyPageModalBtn2.onclick = function() {
+        MyPageModal.style.display = "block";
+    }
 
 	// When the user clicks anywhere outside of the modal, close it
 	window.onclick = function(event) {
@@ -43,6 +48,9 @@ $(document).ready(function() {
 		if (event.target == projectsModal) {
 			projectsModal.style.display = "none";
 		}
+		if(event.target == MyPageModal) {
+            MyPageModal.style.display = "none";
+        }
 	}
 
 	// active

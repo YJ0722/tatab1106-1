@@ -7,7 +7,7 @@
 	<!-- 코멘트 관련 내용 db에 modify -->
 	<update id="modifyMyPage" parameterType="MyPageVO">
 		update MY_PAGE_T
-		set	nickname = #{nickname},
+		set	login_name = #{login_name},
 		dob = #{dob},
 		motto = #{motto},
 		department = #{department},

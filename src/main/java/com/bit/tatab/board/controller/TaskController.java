@@ -1,9 +1,12 @@
 package com.bit.tatab.board.controller;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,15 +15,19 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.tatab.board.service.TaskService;
 import com.bit.tatab.board.vo.BoardTaskVO;
 import com.bit.tatab.board.vo.TaskCommentVO;
+import com.bit.tatab.board.vo.TaskFileVO;
+import com.bit.tatab.main.vo.MainBackgroundVO;
 import com.bit.tatab.board.vo.DateVO;
 import com.bit.tatab.myPage.service.MyPageService;
 
@@ -32,6 +39,9 @@ public class TaskController {
 
 	@Inject
 	MyPageService myPageService;
+	
+	@Resource(name = "uploadPath")
+	   String uploadPath;
 	
 	@ResponseBody
 	@RequestMapping(value="selectAllTask.do", method=RequestMethod.POST)
@@ -54,19 +64,30 @@ public class TaskController {
 			System.out.println("comment [" + i + "] : " + commentVOList.get(i).toString());
 		}
 		
-		
-		
-		
-		////////////////
+		///////////////
 		DateVO dateVO = new DateVO();
 		System.out.println("dday 날짜 : " + String.valueOf(taskVO.getD_day()));
-		int dday = dateVO.calDDay(taskVO.getD_day());
-		String ddayStr = String.valueOf(dday);
-		if(dday > 0) {
-			ddayStr = "+" + ddayStr;
+		String ddayStr;// = null;
+		
+		
+		
+		if( String.valueOf(taskVO.getD_day()).equals("null") || String.valueOf(taskVO.getD_day()).equals("-")) {
+			ddayStr = null;
+		} else {
+
+			int dday = dateVO.calDDay(taskVO.getD_day());
+			ddayStr = String.valueOf(dday);
+			if(dday > 0) {
+				ddayStr = "+" + ddayStr;
+			}
+			System.out.println("dday 계산 : " + ddayStr);
+			
 		}
-		System.out.println("dday 계산 : " + ddayStr);
-		////////////////
+		
+		
+		////////////////// 파일 불러오기
+		TaskFileVO taskFileVO = taskService.selectTaskFile(task_no);
+		System.out.println("가져온 파일 vo : " + taskFileVO);
 		
 		
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -74,7 +95,8 @@ public class TaskController {
 		map.put("taskVO", taskVO);
 		map.put("commentList", commentVOList);
 		map.put("myEmail", login_email);
-		map.put("dday", ddayStr);
+//		map.put("dday", ddayStr);
+		map.put("taskFileVO", taskFileVO);
 		
 		return map;
 	}
@@ -157,7 +179,7 @@ public class TaskController {
 	
 	
 	@RequestMapping(value="updateTask.do", method=RequestMethod.POST)
-	public String updateTask(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String updateTask(HttpServletRequest request, MultipartFile file, HttpSession session) throws Exception {
 		
 		ModelAndView mav = new ModelAndView("/board.do");
 		
@@ -172,10 +194,132 @@ public class TaskController {
 		System.out.println("현재 날짜 : " + updateDate);
 		
 		BoardTaskVO taskVO = new BoardTaskVO(Integer.parseInt(task_no), task_name, task_content, dday, updateDate);
-		System.out.println("업데이트할 taskVO : " + taskVO);
+		System.out.println("업데이트할 taskVO : " + taskVO.toString());
 		taskService.updateTask(taskVO); 
-				
+		
+		// 파일 업로드 진행 : task_attachment_t
+		TaskFileVO taskFileVO = new TaskFileVO();
+		
+		// 원본이름 저장
+		String task_save_name = file.getOriginalFilename();
+		System.out.println("task_save_name : " + task_save_name);
+		
+		// 파일명 랜덤생성 메소드 호출
+		task_save_name = uploadFile(task_save_name, file.getBytes());
+		taskFileVO.setTask_no(Integer.parseInt(task_no));
+		taskFileVO.setTask_ori_name(file.getOriginalFilename());
+		taskFileVO.setTask_save_name(task_save_name);
+		
+		// 업로드 파일 세션에 추가(필요 없으면 추후에 삭제)
+		session.setAttribute("taskFileVO", taskFileVO);
+		
+		// 파일 db에 업로드
+		taskService.insertTaskFile(taskFileVO);
+		System.out.println("테스크 파일 DB 입력 완료 - 확인할 것!");
 		
 		return "redirect:board.do";
 	}
+	
+	
+	
+
+	
+	
+	
+	
+	/*// 수정된 배경이미지 db에 업데이트
+			@RequestMapping(value="/modifyBackgroundImage.do", method=RequestMethod.POST)
+			public ModelAndView modifyBackgroundImage(MultipartFile file, HttpSession session) throws Exception {
+				
+				//System.out.println("배경이미지 POST로 넘기기 - controller 시작");
+				
+				MainBackgroundVO mainBackgroundVO = new MainBackgroundVO();
+				
+				// 세션객체 얻어오기
+		        String login_email = session.getAttribute("login_email").toString();
+		        
+		        // 원본이름 저장
+				String save_name = file.getOriginalFilename();
+				System.out.println("save name : " + save_name);
+				
+				// 랜덤생성 + 파일이름 저장
+				// 파일병 랜덤생성 메소드 호출
+				save_name = uploadFile(save_name, file.getBytes());
+				mainBackgroundVO.setLogin_email(login_email);
+				mainBackgroundVO.setOri_name(file.getOriginalFilename());
+				mainBackgroundVO.setSave_name(save_name);
+				
+				// 코멘트 세션에 추가 - 필요 시 추가
+				session.setAttribute("mainBackgroundVO", mainBackgroundVO);
+				System.out.println("세션에 올린 배경이미지 : " + mainBackgroundVO);
+				
+				// 배경이미지 내용 db에 추가
+				mainService.modifyBackgroundImage(mainBackgroundVO);
+				
+				ModelAndView mav = new ModelAndView("uploadCome");
+				
+				return mav;
+				
+			}
+			
+			 // 파일명 랜덤생성 메서드 - 이미지 업로드 전용
+		    private String uploadFile(String originalName, byte[] fileData) throws Exception{
+		        // uuid 생성(Universal Unique IDentifier, 범용 고유 식별자)
+		        UUID uuid = UUID.randomUUID();
+		        // 랜덤생성+파일이름 저장
+		        String savedName = uuid.toString()+"_"+originalName;
+		        File target = new File(uploadPath, savedName);
+		        // 임시디렉토리에 저장된 업로드된 파일을 지정된 디렉토리로 복사
+		        // FileCopyUtils.copy(바이트배열, 파일객체)
+		        FileCopyUtils.copy(fileData, target);
+		        
+		        return savedName;
+		    }
+			
+		 // 회원 마이프로필 삭제
+		    @RequestMapping(value="/backgroundDelete.do")
+		    public String fileDelete(MainBackgroundVO mainBackroundVO, HttpSession session) {
+		       
+		    	// 세션객체 얻어오기
+		       String login_email = session.getAttribute("login_email").toString();
+		       MainBackgroundVO mainBackgroundVO = mainService.findBackgroundImage(login_email);
+		       
+		       String path = "";
+		       String profile = "/" + mainBackgroundVO.getSave_name();
+		       path = uploadPath + profile;
+		       System.out.println("삭제할 파일 경로 : " + path);
+		       File file = new File(path);
+		          if(file.exists() == true){
+		             file.delete();
+		          }
+		          
+		       // 배경이미지 삭제
+		       mainService.deleteBackgroundImage(login_email);
+		       mainBackgroundVO = mainService.findBackgroundImage(login_email);
+		       session.setAttribute("mainBackgroundVO", mainBackgroundVO);
+		       System.out.println("배경이미지 삭제 확인 : " + mainBackgroundVO);
+
+		       return "backgroundDelete";
+
+		      }*/
+	
+	
+	
+	 // 파일명 랜덤생성 메서드 - 업로드 전용
+    private String uploadFile(String originalName, byte[] fileData) throws Exception{
+        // uuid 생성(Universal Unique IDentifier, 범용 고유 식별자)
+        UUID uuid = UUID.randomUUID();
+        // 랜덤생성+파일이름 저장
+        String savedName = uuid.toString()+"_"+originalName;
+        File target = new File(uploadPath, savedName);
+        // 임시디렉토리에 저장된 업로드된 파일을 지정된 디렉토리로 복사
+        // FileCopyUtils.copy(바이트배열, 파일객체)
+        FileCopyUtils.copy(fileData, target);
+        
+        return savedName;
+    }
+	
 }
+	
+	
+	

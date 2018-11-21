@@ -141,9 +141,15 @@ function newElement() {
 }
 
 $(document).ready(
-
+		
 		// 파일 업로드
 		function() {
+			$('input[type="file"]').change(function(e){
+	            var fileName = e.target.files[0].name;
+	            $('#task_ori_name').val('');
+	            $('#task_ori_name').val(fileName);
+	        });
+			
 			$(document).on(
 					'change',
 					'.btn-file :file',
@@ -166,8 +172,8 @@ $(document).ready(
 							if (log)
 								alert(log);
 						}
-
 					});
+			
 			function readURL(input) {
 				if (input.files && input.files[0]) {
 					var reader = new FileReader();
@@ -180,7 +186,7 @@ $(document).ready(
 				}
 			}
 
-			$("#imgInp").change(function() {
+			$("#file").change(function() {
 				readURL(this);
 			});
 		});
