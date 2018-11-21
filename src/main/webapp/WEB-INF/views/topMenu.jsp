@@ -164,7 +164,7 @@
 	</div>
 	<!-- kanban board -->
 
-	<!-- projects Modal -->
+	<!-- projects Modal --> 
 	<div id="projectsModal" class="projectsmodal">
 		<jsp:include page="/WEB-INF/views/topMenu/topMenu_projects.jsp"></jsp:include>
 	</div>
