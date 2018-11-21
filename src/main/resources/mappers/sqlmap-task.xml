@@ -31,4 +31,16 @@
  	 <delete id="deleteTaskComment" parameterType="String">
  	 	delete from task_comment_t where comment_no = #{ comment_no }
  	 </delete>
+ 	 
+ 	 <!-- 테스크 파일 업로드 -->
+ 	 <insert id="insertTaskFile" parameterType="TaskFileVO">
+ 	 	insert into
+		TASK_ATTACHMENT_T(task_no, task_ori_name, task_save_name)
+		values(#{task_no}, #{task_ori_name}, #{task_save_name})
+ 	 </insert>
+ 	 
+ 	 <!-- 테스크 파일 불러오기 -->
+ 	 <select id="selectTaskFile" parameterType="String" resultType="TaskFileVO">
+ 	 	select * from TASK_ATTACHMENT_T where task_no = #{task_no}
+ 	 </select>
  </mapper>  

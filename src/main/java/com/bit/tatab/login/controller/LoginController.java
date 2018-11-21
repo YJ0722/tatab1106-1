@@ -84,9 +84,9 @@ public class LoginController {
             loginService.memberInfoInsert(loginVO);
             // 코멘트 관련 기본 내용 삽입
             CommentVO commentVO3 = new CommentVO(session.getAttribute("login_email").toString(),
-            		"TATAB에 오신 것을 환영합니다!", 
-            		"회원님의 코멘트는 이 곳에 생성됩니다.", 
-            		"코멘트 설정을 위해 야구공 버튼을 눌러주세요 →→→→→→→→→→→→→→→→→→→→→→→→→→→");
+            		"Hello " + session.getAttribute("login_name").toString() + "!", 
+            		"코멘트 설정은 좌측 하단의 설정 버튼을 이용해주시기 바랍니다.", 
+            		"\"Catch me if you can.\" -404");
            
             // 코멘트 관련 정보 db에 추가
             loginService.mainCommentInsert(commentVO3);

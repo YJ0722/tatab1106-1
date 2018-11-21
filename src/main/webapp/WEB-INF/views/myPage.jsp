@@ -100,15 +100,15 @@
 	                        <tbody>
 	                            <tr>
 	                            <td>Email </td>
-	                            <td><a>
-	                                <input class = "inputPlace" type="email" name="login_email" style="border : hidden;" value="<c:out value="${ myPageVO.login_email }" />" readonly>
-	                            </a></td>
+	                            <td>
+	                                <input class = "inputPlace" type="email" name="login_email" style="border : hidden; color: darkorange;" value="<c:out value="${ myPageVO.login_email }" />" readonly>
+	                            </td>
 	                            </tr>
 	                            <tr>
 	                            <td>Name</td>
-	                            <td><a>
+	                            <td>
 	                                <input class = "inputPlace" type="text" name="login_name" value="<c:out value="${ myPageVO.login_name }" />">
-	                            </a></td>
+	                            </td>
 	                          </tr>
 	                          <tr>
 	                            <td>Date of Birth</td>
@@ -145,7 +145,7 @@
 	                    	 <div class="panel-footer" style="height: 50px;">
 	                            <div class="pull-right">
 	                                <input type="submit" value="수정" data-original-title="Edit this user" data-toggle="tooltip"  class="btn btn-sm btn-warning">
-	                                <input type="button" value="취소" data-original-title="Remove this user" data-toggle="tooltip" class="btn btn-sm btn-danger">
+	                                <input type="button" value="취소" onclick="goBack()" data-original-title="Remove this user" data-toggle="tooltip" class="btn btn-sm btn-danger">
 	                            </div>
 	                        </div>
 	                    </div>
@@ -157,6 +157,20 @@
           </div>
         </div>
     </body>
+    <script>
+    function goBack() {
+		location.href="<c:url value="/userMain.do" />";
+    }
+	  
+    
+    $(document).ready(function(){
+    	$('#deleteBackgroundImage').click(function(){
+    		if(confirm('삭제하시겠습니까?')){
+    			location.href="${pageContext.request.contextPath}/backgroundDelete.do";
+    		}
+    	});
+    });
+</script>
     <script type="text/javascript">
 	 	// 프로필사진 삭제
 	    $(document).ready(function(){

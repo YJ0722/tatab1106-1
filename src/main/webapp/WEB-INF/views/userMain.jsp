@@ -9,6 +9,8 @@
     <meta name="msapplication-TileColor" content="#da532c">
 	<meta name="theme-color" content="#ffffff">
     <link href="<c:url value="/resources/css/main/UserMain.css?ver=7" />" rel="stylesheet">
+    <!-- topMenu_activity.css -->
+    <link rel="stylesheet" type="text/css" href="resources/css/main/main_activity.css">
     <!-- MyPage 관련 -->	
     <link href="<c:url value="/resources/css/main/MyPageModal.css?ver=3" />" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -84,7 +86,7 @@
         <div class="background">
         	<c:choose>
         		<c:when test="${empty mainBackgroundVO.save_name}">
-        			<img src="http://cfile226.uf.daum.net/image/226ED33553157E4F2F828A">
+        			<img src="<c:url value="/resources/img/main/background-sample.jpg" />"> 
         		</c:when>
         		<c:otherwise>
         			<img src="${pageContext.request.contextPath}/img/${mainBackgroundVO.save_name}">
@@ -95,7 +97,7 @@
         	<div class="bluredBackground">
         		<c:choose>
         		<c:when test="${empty mainBackgroundVO.save_name}">
-        			<img src="resources/img/main/background-sample.jpg"> 
+        			<img src="<c:url value="/resources/img/main/background-sample.jpg" />"> 
         		</c:when>
         		<c:otherwise>
         			<img src="${pageContext.request.contextPath}/img/${mainBackgroundVO.save_name}">
@@ -117,7 +119,7 @@
                     <div class="logoAndPhrase">
                         <!-- 제목 -->
                         <div class="titlePhrase">
-                            <a href="<c:url value="/userMain.do" />"><img src="<c:url value="/resources/img/main/tatab-color.png" />"></a>
+                            <a href="<c:url value="/userMain.do" />"><img src="<c:url value="/resources/img/main/tatabBold5.png" />"></a>
                         </div>
                         <!-- 제목 끝 -->
                         <!-- 플젝 표시 -->
@@ -206,7 +208,6 @@
                 <!-- 배경 이미지 변경 아이콘 끝 -->
                 <!-- 아래 공백 부분 -->
                 <div class="emptyFooter">
-                    Copyright ⓒ 2018. BeatTheBit. All rights reserved.
                 </div>
                 <!-- 아래 공백 부분 끝 -->
             </div>
@@ -222,9 +223,6 @@
                         <div class="col-lg-3 col-sm-6">
                             <div class="card hovercard">
                                 <div class="cardheader">
-                                	<%-- <img src="<c:url value="/resources/img/main/tatab.png" />"
- 											style="background-size: cover; height: 135px; 
-  											background-repeat: no-repeat;"/> --%>
                                 </div>
                                 <div class="avatar">
                                 	<c:choose>

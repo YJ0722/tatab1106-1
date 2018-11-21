@@ -13,7 +13,7 @@ body {
     color: white;
 }
 
-.title {
+.title2 {
     width: inherit;
     height: 70px;
     background-color: aliceblue;
@@ -29,7 +29,7 @@ body {
     border-bottom: 1px solid #e9ecef;
 }
  
-.title div {
+.title2 div {
 /*     width: 100px; */
     height: inherit;
     display: table;
@@ -48,7 +48,7 @@ body {
     font-size: 20px;
 }
 
-.name {
+.name2 {
     float: left;
     width: 300px;
     margin-left: 10px;

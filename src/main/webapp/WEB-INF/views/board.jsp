@@ -19,6 +19,10 @@
     <link rel="stylesheet" type="text/css" href="resources/css/board/boardcss.css?ver=2">
     <link rel="stylesheet" type="text/css" href="resources/css/jquery-ui.min.css">
     
+    <!-- myPageModal -->
+	<link href="<c:url value="/resources/css/board/MyPageModal.css?ver=3" />" rel="stylesheet">
+	<link href="<c:url value="/resources/css/main/BackgroundImageModal.css" />" rel="stylesheet">
+    
     <!-- Bootstrap -->
     <!-- 합쳐지고 최소화된 최신 CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -37,7 +41,7 @@
     
     <style>
    .board-background {
-       background-image: url('resources/img/board/backgroundImg.jpg');
+       background-image: url('resources/img/main/background-sample.jpg');
        background-attachment: fixed;
        background-repeat: no-repeat;
        background-size: 100% 100%;

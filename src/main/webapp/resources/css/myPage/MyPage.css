@@ -2,6 +2,34 @@
 .container {
 	
 }
+
+.panel {
+	border: 0px;
+}
+
+.panel-info>.panel-heading {
+	color: white;
+	background-color: darkorange;
+	border: 0.1px solid darkorange;	
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #6C757D;
+    border-color: #6C757D;
+}
+
+.btn-danger:hover {
+	background-color: gray;
+	border-color: gray;
+}
+
+.btn-warning {
+    color: #fff;
+    background-color: darkorange;
+    border-color: darkorange;
+}
+
 .bgImage {
 	height: 882px;
 	width: 1000px;
