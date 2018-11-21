@@ -519,7 +519,7 @@ function selectAllTask(task_no) {
 					$('.modal-header').css('background-color', 'darkorange');
 					$('.saveBtn, .addBtn').css('border-color', 'darkorange');
 					$('.saveBtn, .addBtn').css('background', 'darkorange');
-					$('.saveBtn').prop("disabled", true);
+					$('.saveBtn').prop("disabled", false);
 //					$('.task_name. .task_content').prop('readonly', false);
 					$('.task_name').css('text-decoration', 'none');
 					$('.task_content').css('text-decoration', 'none');
