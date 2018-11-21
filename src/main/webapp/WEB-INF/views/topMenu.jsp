@@ -504,7 +504,7 @@ $(document).ready(function() {
 						//console.log('memberList:'+data.memberList);
 									for(i=0; i<data.memberList.length; i++) {
 										console.log('잘 나오니? : ' + data.memberList[i]);
-										var tag1 = '<div class="nameList"><img src="k">';
+										var tag1 = '<div class="nameList">';
 										var tag2 = '</div>';
 		    							var tag = tag1 + data.memberList[i].login_name + tag2;
 		    							$(tag).hide().appendTo('.assigneeList').show();
