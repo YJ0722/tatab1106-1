@@ -20,13 +20,18 @@ import com.bit.tatab.board.service.BoardService;
 import com.bit.tatab.board.vo.BoardColVO;
 import com.bit.tatab.board.vo.BoardTaskVO;
 import com.bit.tatab.board.vo.DateVO;
+import com.bit.tatab.login.vo.LoginVO;
+import com.bit.tatab.main.service.MainService;
 import com.bit.tatab.main.vo.MainBackgroundVO;
+import com.bit.tatab.main.vo.ProjectVO;
 
 @Controller
 public class BoardController {
 	
 	@Inject
 	BoardService boardService;
+	@Inject
+	MainService mainService;
 
 	@ResponseBody
 	@RequestMapping(value = "/board.do")
@@ -203,7 +208,7 @@ public class BoardController {
 		boardService.updateColName(colId, updateTitle);
 	}
 	
-	
+
 }
 
 

@@ -35,12 +35,13 @@ public class TopMenuController {
 	@ResponseBody
 	@RequestMapping(value="boardProjectList.do", method=RequestMethod.POST)
 	public List<ProjectVO> ajaxView(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
+				
 		HttpSession session = request.getSession();
         String login_email = session.getAttribute("login_email").toString();
 		
         List<ProjectVO> projectList = mainService.selectAllProject(login_email);
-//		System.out.println("ajax : "  + projectList);
+		System.out.println("ajax : "  + projectList);
+		
 		return  projectList;
 		
 	}

@@ -36,6 +36,9 @@ public interface BoardService {
 	// 해당 프로젝트의 작업 조회
 	public List<BoardTaskVO> selectBoardTaskAll(int project_no);
 	
+	// 해당 프로젝트의 작업 조회(mobile)
+	public List<BoardTaskVO> mSelectBoardTaskAll(BoardTaskVO paramTaskVO);
+	
 	// board에 컬럼 추가
 	public int insertCol(BoardColVO boardColVO);
 	

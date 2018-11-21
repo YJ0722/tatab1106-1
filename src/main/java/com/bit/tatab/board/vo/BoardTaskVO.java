@@ -16,7 +16,14 @@ public class BoardTaskVO {
 	public BoardTaskVO() {
 		super();
 	}
-	
+
+	public BoardTaskVO(int project_no, int col_no) {
+
+		super();
+		this.project_no = project_no;
+		this.col_no = col_no;
+	}
+
 	public BoardTaskVO(int project_no, int col_no, int task_no, int task_index) {
 
 		super();

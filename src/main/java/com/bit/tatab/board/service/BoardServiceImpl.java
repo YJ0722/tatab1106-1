@@ -70,7 +70,13 @@ public class BoardServiceImpl implements BoardService{
 	public List<BoardTaskVO> selectBoardTaskAll(int project_no) {
 		return boardDao.selectBoardTaskAll(project_no);
 	}
-	
+
+	// 해당 프로젝트의 작업 조회(mobile)
+	@Override
+	public List<BoardTaskVO> mSelectBoardTaskAll(BoardTaskVO paramTaskVO) {
+		return boardDao.mSelectBoardTaskAll(paramTaskVO);
+	}
+		
 	// board에 col insert
 	@Override
 	public int insertCol(BoardColVO boardColVO) {
