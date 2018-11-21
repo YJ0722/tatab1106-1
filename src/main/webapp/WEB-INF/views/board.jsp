@@ -16,7 +16,7 @@
     <script src="resources/js/jquery-ui.min.js?ver=2"></script>
     
     <!-- css 참조 -->
-    <link rel="stylesheet" type="text/css" href="resources/css/board/boardcss.css?ver=2">
+    <link rel="stylesheet" type="text/css" href="resources/css/board/boardcss.css?ver=3">
     <link rel="stylesheet" type="text/css" href="resources/css/jquery-ui.min.css">
     
     <!-- myPageModal -->
@@ -47,11 +47,6 @@
        background-size: 100% 100%;
        padding: 10px;
        height: 100vh;
-   }
-   .add:hover {
-       font-size: 3rem;
-       margin: 10px;
-       color: darkgreen;
    }
     </style>
     

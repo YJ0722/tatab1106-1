@@ -27,8 +27,8 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
-<link rel="stylesheet" type="text/css"
-	href="resources/css/board/boardcss.css">
+<!-- <link rel="stylesheet" type="text/css" -->
+<!-- 	href="resources/css/board/boardcss.css"> -->
 <!-- topMenu.css -->
 <link rel="stylesheet" type="text/css"
 	href="resources/css/topMenu/topMenu.css?ver=4">
@@ -110,16 +110,16 @@
 <!-- 원래 태그	<table border="1px" style="width: 100%; height: 50px;"> -->
 <table id="topMenu-table">
 		<tr>
-			<td style="width: 10%">
+			<td style="width: 7%">
 				<a href="<c:url value="/userMain.do" />"><img class="board-logo" src="resources/img/main/tatabBold5.png" /></a>
 			</td>
-			<td style="width: 3%" id="infoBtn"><img src="resources/img/topMenu/gear.png"></td>
-			<td style="width: 20%"></td>
-			<td style="width: 8%" id="projectsBtn" style="font-size: 2rem;">
+			<td style="width: 7%" id="projectsBtn" style="font-size: 2rem;">
 				<img src="resources/img/topMenu/aircraft.png">
 				&nbsp; ${projectName } &nbsp; 
 				<i class="fas fa-angle-down "></i>
 			</td>
+			<td style="width: 1%" id="infoBtn"><img src="resources/img/topMenu/gear.png"></td>
+			<td style="width: 34%"></td>
 			<td style="width: 23%"></td>
 <!-- 			<td style="width: 5%"> -->
 <!-- 				<table class="activeBtn"> -->
@@ -210,7 +210,7 @@
 							<!-- Modal title -->
 						</h5>
 						<div class="close1">
-                           <a class="manage-a"><i id="deleteTask" class="close fas fa-trash-alt" onclick="deleteTask()"></i></a>
+                           <a class="manage-a"><i id="deleteTask" class="close fas fa-trash-alt" onclick="deleteTask()" ></i></a>
                         </div> 
 						<button type="button" class="close" style="margin : 0; height: 54px; margin-right:5px;" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
@@ -331,11 +331,11 @@
 		</div>
 		
 		<form id="updateTask" action="updateTask.do" method="post" enctype="multipart/form-data">
-			<input type="text" class="task_name" name="task_name">
-			<input type="text" class="task_content" name="task_content">
-			<input type="text" class="dday" id="datepicker1" name="dday">
-			<input type="text" class="task_no" name="task_no">
-			<input type="text" class="file" id="file" name="file">
+			<input type="hidden" class="task_name" name="task_name">
+			<input type="hidden" class="task_content" name="task_content">
+			<input type="hidden" class="dday" id="datepicker1" name="dday">
+			<input type="hidden" class="task_no" name="task_no">
+			<input type="hidden" class="file" id="file" name="file">
 		</form>
 	<!-- 모달 : MyPage -->
         <div id="MyPageModal" class="MyPageModal">
@@ -452,6 +452,10 @@ $(document).ready(function() {
 			success : function(data) {
 					$('#taskCompleteBtn').hide();
 					$('#taskCompleteOKBtn').show();
+					$('.modal-header').css('background-color', 'forestgreen');
+					$('.saveBtn').css('border-color', 'darkgreen');
+					$('.saveBtn').css('background', 'darkgreen');
+					$('.saveBtn').disabled = true;
 				}
 		})
 		
