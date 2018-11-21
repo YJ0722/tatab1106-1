@@ -232,7 +232,7 @@
 							<div id="boxs">
 								<div class="form-group shadow-textarea2">
 									<label class="taskSubTitle" for="exampleFormControlTextarea6">Content</label>
-									<textarea class="form-control z-depth-1"
+									<textarea class="form-control z-depth-1 task_content"
 										id="task_content-input" rows="3" onkeyup="this.style.height='26px'; this.style.height = this.scrollHeight + 'px';"
 										placeholder="업무 내용..."></textarea>
 								</div>

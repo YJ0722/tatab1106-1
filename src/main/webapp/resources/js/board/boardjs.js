@@ -9,6 +9,7 @@ $(document).ready(function () {
 		      console.log('i : ' + task_no);
 		      $('#exampleModalLong').modal();
 		      
+		      $('.task_content-input').html('');
 		      selectAllTask(task_no);
 	    	  
 	      }
@@ -504,7 +505,14 @@ function selectAllTask(task_no) {
 		},
 		success : function(data) {
 			if(data != null) {
-					
+
+				if(data.taskVO.task_content != null) {
+					console.log('textarea에 입력될 content : ' + data.taskVO.task_content);
+					$('.task_content-input').text(data.taskVO.task_content);
+				} else {
+					console.log('content 넘어온 값이 null이다!');
+				}			    
+			    
 				console.log("5555555555 data : " + data.loginName);
 				console.log('@@@@@@ : ' + data.taskVO.d_day);
 
