@@ -487,15 +487,31 @@ $(document).ready(function() {
 						alert('task member 추가완료');
 						
 						// 멤버리스트 관련 for문
-						$('.assigneeList').empty();
+// 						$('.assigneeList').empty();
+						
+						// 추가멤버 입력 창 안보이게 하기
+						obj = document.getElementById("myForm");
+						obj.style.display = "none";
+						
+						$.ajax({
+							url : "selectAllTask.do",
+							type : "post",
+							data : {
+								'task_no' : taskNo
+							},
+							success : function(data) {
+								if(data != null) {
 						//console.log('memberList:'+data.memberList);
-						for(i=0; i<data.memberList.length; i++) {
-							console.log('잘 나오니? : ' + data.memberList[i]);
-							var tag1 = '<div class="nameList">';
-							var tag2 = '</div>';
-		    				var tag = tag1 + data.memberList[i].login_name + tag2;
-		    				$(tag).hide().appendTo('.assigneeList').show();
-						}
+									for(i=0; i<data.memberList.length; i++) {
+										console.log('잘 나오니? : ' + data.memberList[i]);
+										var tag1 = '<div class="nameList"><img src="k">';
+										var tag2 = '</div>';
+		    							var tag = tag1 + data.memberList[i].login_name + tag2;
+		    							$(tag).hide().appendTo('.assigneeList').show();
+									}
+								}
+							}
+						});
 					}else {
 						alert('없는 아이디');
 					}
