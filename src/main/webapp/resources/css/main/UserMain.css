@@ -135,12 +135,16 @@ a:hover
 	color: white;
 }
 
+.projectSign h4 {
+	font-size: 15px;
+}
+
 .listName {
     margin: 5px;
     margin-left: 20px;
     margin-bottom: 20px;
-    font-family: 'Gothic A1', sans-serif;
-    font-size: 15px;
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 22px;
 }
 
 .listName img {
@@ -338,8 +342,9 @@ a:hover
     margin-top: 200px;
     padding: 0px;
     border: 1px solid #888;
+    border-radius: 10px;
     width: 400px;
-    height: 350px; /* Could be more or less, depending on screen size */
+    height: 320px; /* Could be more or less, depending on screen size */
 }
 
 /* MainComment - background */
