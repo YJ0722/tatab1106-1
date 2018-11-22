@@ -112,7 +112,7 @@ public class TaskController {
 		map.put("taskVO", taskVO);
 		map.put("commentList", commentVOList);
 		map.put("myEmail", login_email);
-//		map.put("dday", ddayStr);
+		map.put("dday", ddayStr);
 		map.put("taskFileVO", taskFileVO);
 		map.put("memberList", memberList); // 배열임을 참고할 것!
 		map.put("checklistList", checklistList);
@@ -241,7 +241,7 @@ public class TaskController {
 		session.setAttribute("taskFileVO", taskFileVO);
 		
 		// 파일 db에 업로드
-		taskService.insertTaskFile(taskFileVO);
+		taskService.insertTaskFile(taskFileVO, task_no);
 		System.out.println("테스크 파일 DB 입력 완료 - 확인할 것!");
 		
 		return "redirect:board.do";

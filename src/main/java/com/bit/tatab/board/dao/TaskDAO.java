@@ -27,7 +27,7 @@ public interface TaskDAO {
 	public void updateTask(BoardTaskVO taskVO);
 
 	// 테스크 파일 업로드
-	public void insertTaskFile(TaskFileVO taskFileVO);
+	public void insertTaskFile(TaskFileVO taskFileVO, String task_no);
 
 	// 테스크 파일 불러오기
 	public TaskFileVO selectTaskFile(String task_no);
