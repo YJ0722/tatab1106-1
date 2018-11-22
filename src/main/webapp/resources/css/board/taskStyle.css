@@ -373,10 +373,28 @@ input {
     width: 25%;
 }
 
+.taskChecklist {
+	position: relative;
+	top: 10px;
+	color: darkorange;
+	font-style: italic;
+}
+
+.taskChecklist:hover {
+	cursor: pointer;
+}
+
+.taskChecklist img {
+	height: 20px;
+	width: 20px;
+	vertical-align: text-bottom;
+}
+
 #myForm {
 	background-color: white;
     width: 200px;
     height: 45px;
+    top: 150px;
     display: none;
     position: absolute;
     bottom: 480px;
@@ -452,3 +470,120 @@ input {
 	background-color: #f38500;
 	border-color: #f38500;
 }
+
+/* 체크리스트 관련 css */
+/* html,
+body {
+  height: 100%;
+}
+body {
+  display: grid;
+} */
+.check {
+  cursor: pointer;
+  position: relative;
+  margin: auto;
+  width: 18px;
+  height: 18px;
+  -webkit-tap-highlight-color: transparent;
+  transform: translate3d(0, 0, 0);
+}
+.check:before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(34,50,84,0.03);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.check svg {
+  position: relative;
+  z-index: 1;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: #c8ccd4;
+  stroke-width: 1.5;
+  transform: translate3d(0, 0, 0);
+  transition: all 0.2s ease;
+}
+.check svg path {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 0;
+}
+.check svg polyline {
+  stroke-dasharray: 22;
+  stroke-dashoffset: 66;
+}
+.check:hover:before {
+  opacity: 1;
+}
+.check:hover svg {
+  stroke: darkorange;
+}
+.yyj:checked + .check svg {
+  stroke: darkorange;
+}
+.yyj:checked + .check svg path {
+  stroke-dashoffset: 60;
+  transition: all 0.3s linear;
+}
+.yyj:checked + .check svg polyline {
+  stroke-dashoffset: 42;
+  transition: all 0.2s linear;
+  transition-delay: 0.15s;
+}
+
+#checkName {
+	position: relative;
+	width: 230px;
+	height: 20px;
+	margin-left: 25px;
+	top: -10px;
+	background-color: lightgoldenrodyellow;
+}
+.checkInnerWrapper {
+	position: relative;
+	top: 15px;
+}
+.checkWrapper img {
+	height: 20px;
+	width: 20px;
+	position: relative;
+	top: -10px;
+}
+.checkWrapper img:hover {
+	cursor: pointer;
+}
+#fixedChecklist {
+	position: relative;
+    top: -20px;
+    color: white;
+    margin: 0;
+    padding: 5px;
+    width: 50px;
+    height: 40px;
+    background: darkorange;
+    float: right;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -312,6 +312,10 @@ $(document).ready(function () {
         				type : "get",
         				success : function() {
         						alert('테스크 추가 알림 완료!');
+        						// 새로 추가된 task에 대해서도 클릭 이벤트(채크리스트 받아오기) 처리기 등록하기
+        						$('.task').on('click', function(){
+        							getTaskCheckList($(this).attr('id'));	
+        						})	
         					}
         			});
                     
@@ -603,6 +607,19 @@ function selectAllTask(task_no) {
     				var tag = tag1 + data.memberList[i].login_name + tag2;
     				$(tag).hide().appendTo('.assigneeList').show();
 				}
+//				// 체크리스트 관련 for문
+//				for(i=0; i<data.checklistList.length; i++) {
+//					console.log('체크리스트 잘 나오니?' + data.checklistList[i]);
+//					var tag1 = '<div class="checkInnerWrapper"><input type="checkbox" class="yyj" id="cbx" style="display: none;">';
+//					var tag2 = '<label for="cbx" class="check">';
+//					var tag3 = '<svg width="18px" height="18px" viewBox="0 0 18 18">';
+//					var tag4 = '<path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>';
+//					var tag5 = '<polyline points="1 9 7 14 15 4"></polyline></svg></label></div>'; 
+//					var tag6 = '<input type="text" id="checkName" value="';
+//					var tag7 = '" readonly>&nbsp;<br>';
+//					var tag = tag1 + tag2 + tag3 + tag4 + tag5 + tag6 + data.checklistList[i].task_checklist + tag7;
+//					$(tag).hide().appendTo('.checkWrapper').show(); 
+//					}
 					
 				
 				

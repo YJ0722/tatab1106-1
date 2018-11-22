@@ -44,6 +44,18 @@
  	 	select * from TASK_ATTACHMENT_T where task_no = #{task_no}
  	 </select>
  	 
+ 	 <!-- 체크리스트 추가 -->
+ 	<select id="addChecklist" parameterType="String">
+ 		insert into task_checklist_t values(#{task_no}, #{fixedChecklist}, 'O')
+ 	</select>
+ 	
+ 	<!-- 테스크 체크리스트 조회 -->
+ 	<select id="selectChecklistList" parameterType="int" resultType="ChecklistVO">
+ 		select *
+		from task_checklist_t
+		where task_no = #{input} 
+ 	</select>
+ 	 
  	 <!-- task 삭제 -->
  	 <delete id="deleteTask" parameterType="String">
  	 	delete from PRJ_TASK_T where task_no = #{task_no}
