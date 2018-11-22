@@ -56,8 +56,13 @@ public class TaskDAOImpl implements TaskDAO {
 
 	// 테스크 파일 업로드
 	@Override
-	public void insertTaskFile(TaskFileVO taskFileVO) {
-		sqlSession.insert("insertTaskFile", taskFileVO);
+	public void insertTaskFile(TaskFileVO taskFileVO, String task_no) {
+		TaskFileVO taskFile = sqlSession.selectOne("selectTaskFile", task_no);
+		if(taskFile == null) {
+			System.out.println("task파일이 없다 그러므로 추가");
+			sqlSession.insert("insertTaskFile", taskFileVO);
+		}
+		System.out.println("task파일이 있다");
 	}
 
 	// 테스크 파일 불러오기
