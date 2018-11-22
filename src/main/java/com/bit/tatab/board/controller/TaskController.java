@@ -71,7 +71,7 @@ public class TaskController {
 		
 		///////////////
 		DateVO dateVO = new DateVO();
-		System.out.println("dday 날짜 : " + String.valueOf(taskVO.getD_day()));
+//		System.out.println("dday 날짜 : " + String.valueOf(taskVO.getD_day()));
 		String ddayStr;// = null;
 		
 		
