@@ -556,56 +556,26 @@ function selectAllTask(task_no) {
 					$('#ddayCountView').hide();
 					$('#ddayCount').hide();
 				} 
-				
-				// 각 빈칸 데이터 설정 TODO
-				if(data.taskVO.task_name == null) {
-					$('.task_name').text("");					
-				} else {
-					$('.task_name').text("");					
-					$('.task_name').text(data.taskVO.task_name);
-				}
-				
-				if(data.taskVO.task_content == null) {
-					$(".task_content").text("");							
-				} else {
-					$('.task_content').text("");
-					$('.task_content').text(data.taskVO.task_content);
-				}
 
-				console.log('\n\n작성 날짜 : ' + data.taskVO.reg_date + "\n\n");
-				if(data.taskVO.reg_date == null) {
-					$('#startDate').text("");
-				} else {
-					$('#startDate').text(data.taskVO.reg_date);
-				}
-				
-				if(data.taskVO.update_date == null) {
-					$('#updateDate').text("");
-				} else {
-					$('#updateDate').text(data.taskVO.update_date);
-				}
-				
-				if(data.taskVO.d_day == null) {
-					$('#datepicker1').attr('placeholder', "");
-				} else {
-					$('#datepicker1').attr('placeholder', data.taskVO.d_day);
-				}
-				
-				// form 타입 데이터 벨류값 설정
-				/*
-				$('.task_name').text(data.taskVO.task_name);
-				$('.task_content').text(data.taskVO.task_content);
-				$('#task_ori_name').val("");
-				$('.task_no').val(data.taskVO.task_no);
-				*/
-
-				if(data.taskFileVO == null){
-					$('#task_ori_name').val("null");
-				} else {
-					// TODO : task_ori_name 없다고 뜬다
-					$('#task_ori_name').val(data.taskFileVO.task_ori_name);
-				}
-				
+	            // 데이터 벨류값 설정
+	            $('.task_name').val(data.taskVO.task_name);
+	            $('.task_content').html(data.taskVO.task_content);
+	            $('#startDate').text(data.taskVO.reg_date);
+	            $('#datepicker1').attr('placeholder', data.taskVO.d_day);
+	            $('#task_ori_name').val("");
+	            if(data.taskFileVO != null){
+	               $('#task_ori_name').val(data.taskFileVO.task_ori_name);
+	            }
+	            $('.task_no').val(data.taskVO.task_no);
+	            
+	            
+	            if(data.taskVO.status == 'C') {
+	               $('.task_name, .task_content').prop('readonly', true);
+	            } else {
+	               $('.task_name, .task_content').prop('readonly', false);
+	            }
+	            // comlete 확인
+	            
 				
 				/*
 				if(data.taskFileVO != null){
@@ -614,11 +584,6 @@ function selectAllTask(task_no) {
 				$('.task_no').val(data.taskVO.task_no);
 				*/
 				
-				if(data.taskVO.status == 'C') {
-					$('.task_name, .task_content').prop('readonly', true);
-				} else {
-					$('.task_name, .task_content').prop('readonly', false);
-				}
 				// comlete 확인
 				
 				// 작업 완료 상태 img 표시
@@ -635,15 +600,15 @@ function selectAllTask(task_no) {
 
 				// form 타입의 input data 설정
 //				$('.task_no').val(task_no);
-				/*
+				
 				$('#updateDate').text(data.update_date);
 				
 				if(data.d_day != '-') {
 					$('#datepicker1').val(data.d_day);
 //					$('.dday').val(data.d_day);
 				} 
-				*/
 				
+			
 				var array = new Array();// = data.memberList.toArray();
 				
 				for(i=0; i<array.length; i++) {
