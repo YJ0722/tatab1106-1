@@ -5,16 +5,7 @@ public class ChecklistVO {
 	private int task_no;
 	private String task_checklist;
 	private String status;
-	public ChecklistVO() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public ChecklistVO(int task_no, String task_checklist, String status) {
-		super();
-		this.task_no = task_no;
-		this.task_checklist = task_checklist;
-		this.status = status;
-	}
+	private int checklist_no;
 	public int getTask_no() {
 		return task_no;
 	}
@@ -33,11 +24,27 @@ public class ChecklistVO {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	public int getChecklist_no() {
+		return checklist_no;
+	}
+	public void setChecklist_no(int checklist_no) {
+		this.checklist_no = checklist_no;
+	}
+	public ChecklistVO(int task_no, String task_checklist, String status, int checklist_no) {
+		super();
+		this.task_no = task_no;
+		this.task_checklist = task_checklist;
+		this.status = status;
+		this.checklist_no = checklist_no;
+	}
+	public ChecklistVO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public String toString() {
-		return "ChecklistVO [task_no=" + task_no + ", task_checklist=" + task_checklist + ", status=" + status + "]";
+		return "ChecklistVO [task_no=" + task_no + ", task_checklist=" + task_checklist + ", status=" + status
+				+ ", checklist_no=" + checklist_no + "]";
 	}
-	
-	
 	
 }
