@@ -623,7 +623,7 @@ function getTaskCheckList(task_no){
 				var tag7 = '" readonly>&nbsp;<br>';
 				var tag = tag1 + tag2 + tag3 + tag4 + tag5 + tag6 + data['task_checklist'] + tag7;
 				$('.checkWrapper').prepend(tag);	
-			
+			 
 			})
 			
 			$('#cbx').on('click', function(){
