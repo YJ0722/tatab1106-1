@@ -58,8 +58,8 @@ public class TaskServiceImpl implements TaskService{
 
 	// 테스크 파일 업로드
 	@Override
-	public void insertTaskFile(TaskFileVO taskFileVO) {
-		taskDao.insertTaskFile(taskFileVO);
+	public void insertTaskFile(TaskFileVO taskFileVO, String task_no) {
+		taskDao.insertTaskFile(taskFileVO, task_no);
 	}
 
 	// 테스크 파일 가져오기

@@ -40,20 +40,38 @@
 		                            		<c:choose>
 								    			<c:when test="${ taskList.col_no eq colno }">
 											        <!-- task start -->
-											        <div class="task round-border ui-state-default" id="${ taskList.task_no }">
+											        <c:if test="${taskList.status == 'C' }">
+											        <div class="task round-border ui-state-default" id="${ taskList.task_no }" style="background-color:rgba(34,139,34,0.5);">
 											            <div class="task-inner">
 											                <!-- task name start -->
 											                <div class="task-label">
-											                    <p>${ taskList.task_name }</p>
+											                	<p class='task-content-p' style="text-decoration: line-through;">${ taskList.task_name }</p>
 											                </div>
 											                <!-- task name end -->
 											                <!-- task content start -->
 											                <div class="task-content">
-											                    <p class='task-content-p'>${ taskList.task_content }</p>
+											                	<p class='task-content-p' style="text-decoration: line-through;">${ taskList.task_content }</p>
 											                </div>
 											                <!-- task content end -->
 											            </div>
 											        </div>
+											        </c:if>
+											        <c:if test="${taskList.status == 'O' }">
+											        <div class="task round-border ui-state-default" id="${ taskList.task_no }">
+											            <div class="task-inner">
+											                <!-- task name start -->
+											                <div class="task-label">
+											                	<p class='task-content-p'>${ taskList.task_name }</p>
+											                </div>
+											                <!-- task name end -->
+											                <!-- task content start -->
+											                <div class="task-content">
+											                	<p class='task-content-p'>${ taskList.task_content }</p>
+											                </div>
+											                <!-- task content end -->
+											            </div>
+											        </div>
+											        </c:if>
 											        <!-- task end -->
 										        </c:when>
 										        </c:choose>

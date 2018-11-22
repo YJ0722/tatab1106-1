@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.bit.tatab.board.dao.BoardDAO;
 import com.bit.tatab.board.vo.BoardColVO;
 import com.bit.tatab.board.vo.BoardTaskVO;
+import com.bit.tatab.board.vo.ChecklistVO;
 import com.bit.tatab.board.vo.MemberVO;
 import com.bit.tatab.main.vo.ActivityVO;
 import com.bit.tatab.main.vo.ProjectVO;
@@ -129,6 +130,20 @@ public class BoardServiceImpl implements BoardService{
 		System.out.println("service 진입");
 		boardDao.deleteProject(project_no);
 	}
+
+	// 체크리스트 추가
+	@Override
+	public void addChecklist(String task_no, String fixedChecklist) {
+		boardDao.addChecklist(task_no, fixedChecklist);
+	}
+
+	// 테스크 체크리스트 조회
+	@Override
+	public List<ChecklistVO> selectChecklistList(String task_no) {
+		return boardDao.selectChecklistList(task_no);
+	}
+	
+	
 	
 	
 	

@@ -27,7 +27,7 @@ public interface TaskService {
 	public void updateTask(BoardTaskVO taskVO);
 
 	// 파일 db에 업로드
-	public void insertTaskFile(TaskFileVO taskFileVO);
+	public void insertTaskFile(TaskFileVO taskFileVO, String task_no);
 
 	// 파일 가져오기
 	public TaskFileVO selectTaskFile(String task_no);

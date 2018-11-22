@@ -8,19 +8,6 @@ $(document).ready(function () {
 	      
 	      if(task_no != null) {
 		      console.log('i : ' + task_no);
-		      
-		      // task 모달 띄우기 전 내용 비우기
-		      /*
-		      $('.task_name').empty();
-		      $('.task_content').text();
-		      $('.hasDatepicker').val("");
-		      $('#startDate').empty();
-		      $('#updateDate').empty();
-		      $("#task_ori_name").val("");
-		      $("#myInput").val("");
-		      */
-		      
-		      
 		      // 모달 천천히 띄우기
 		      $('#exampleModalLong').modal().fadeIn(300);
 		      
@@ -326,6 +313,10 @@ $(document).ready(function () {
         				type : "get",
         				success : function() {
         						// alert('테스크 추가 알림 완료!');
+        						// 새로 추가된 task에 대해서도 클릭 이벤트(채크리스트 받아오기) 처리기 등록하기
+        						$('.task').on('click', function(){
+        							getTaskCheckList($(this).attr('id'));	
+        						})	
         					}
         			});
                     
@@ -526,8 +517,8 @@ function selectAllTask(task_no) {
 					$('.saveBtn, .addBtn').css('border-color', 'forestgreen');
 					$('.saveBtn, .addBtn').css('background', 'forestgreen');
 					$('.saveBtn').prop("disabled", true);
-					$('#task_name_input').css('text-decoration', 'line-through');
-					$('#task-content-input').css('text-decoration', 'line-through');
+					$('.task_name').css('text-decoration', 'line-through');
+					$('.task_content').css('text-decoration', 'line-through');
 //					$('.task_name. .task_content').prop('readonly', true);
 				} else {
 					$('.modal-header').css('background-color', 'darkorange');
@@ -535,9 +526,10 @@ function selectAllTask(task_no) {
 					$('.saveBtn, .addBtn').css('background', 'darkorange');
 					// 비활성화 되면 안됨!!!
 					//$('.saveBtn').prop("disabled", true);
+					$('.saveBtn').prop("disabled", false);
 //					$('.task_name. .task_content').prop('readonly', false);
-					$('#task_name_input').css('text-decoration', 'none');
-					$('#task-content-input').css('text-decoration', 'none');
+					$('.task_name').css('text-decoration', 'none');
+					$('.task_content').css('text-decoration', 'none');
 				}
 				
 				console.log("loginName data : " + data.loginName);
@@ -567,17 +559,17 @@ function selectAllTask(task_no) {
 				
 				// 각 빈칸 데이터 설정 TODO
 				if(data.taskVO.task_name == null) {
-					$('.task_name_input').text("");					
+					$('.task_name').text("");					
 				} else {
-					$('.task_name_input').text("");					
-					$('.task_name_input').text(data.taskVO.task_name);
+					$('.task_name').text("");					
+					$('.task_name').text(data.taskVO.task_name);
 				}
 				
 				if(data.taskVO.task_content == null) {
-					$("#task-content-input").text("");							
+					$(".task_content").text("");							
 				} else {
-					$('#task-content-input').text("");
-					$('#task-content-input').text(data.taskVO.task_content);
+					$('.task_content').text("");
+					$('.task_content').text(data.taskVO.task_content);
 				}
 
 				console.log('\n\n작성 날짜 : ' + data.taskVO.reg_date + "\n\n");
@@ -623,9 +615,9 @@ function selectAllTask(task_no) {
 				*/
 				
 				if(data.taskVO.status == 'C') {
-					$('#task_name_input, .task_content_input').prop('readonly', true);
+					$('.task_name, .task_content').prop('readonly', true);
 				} else {
-					$('#task_name_input, .task_content_input').prop('readonly', false);
+					$('.task_name, .task_content').prop('readonly', false);
 				}
 				// comlete 확인
 				
@@ -667,6 +659,19 @@ function selectAllTask(task_no) {
     				var tag = tag1 + data.memberList[i].login_name + tag2;
     				$(tag).hide().appendTo('.assigneeList').show();
 				}
+//				// 체크리스트 관련 for문
+//				for(i=0; i<data.checklistList.length; i++) {
+//					console.log('체크리스트 잘 나오니?' + data.checklistList[i]);
+//					var tag1 = '<div class="checkInnerWrapper"><input type="checkbox" class="yyj" id="cbx" style="display: none;">';
+//					var tag2 = '<label for="cbx" class="check">';
+//					var tag3 = '<svg width="18px" height="18px" viewBox="0 0 18 18">';
+//					var tag4 = '<path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>';
+//					var tag5 = '<polyline points="1 9 7 14 15 4"></polyline></svg></label></div>'; 
+//					var tag6 = '<input type="text" id="checkName" value="';
+//					var tag7 = '" readonly>&nbsp;<br>';
+//					var tag = tag1 + tag2 + tag3 + tag4 + tag5 + tag6 + data.checklistList[i].task_checklist + tag7;
+//					$(tag).hide().appendTo('.checkWrapper').show(); 
+//					}
 					
 				
 				

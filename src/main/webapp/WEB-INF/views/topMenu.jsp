@@ -25,7 +25,7 @@
 <script src="resources/js/jquery-3.3.1.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
 <!-- <link rel="stylesheet" type="text/css" -->
 <!-- 	href="resources/css/board/boardcss.css"> -->
@@ -42,6 +42,8 @@
 <!-- myPageModal -->
 	<link href="<c:url value="/resources/css/board/MyPageModal.css?ver=3" />" rel="stylesheet">
 	<link href="<c:url value="/resources/css/main/BackgroundImageModal.css" />" rel="stylesheet">
+<!-- font-awesome -->
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
 <!-- topMenu.js -->
 <script src="resources/js/topMenu/topMenu.js?ver=2"></script>
@@ -256,6 +258,11 @@
 
 								</div>
 							</div>
+						<!-- 체크리스트 -->
+							<div class="taskChecklist" id="taskChecklist">
+								<img src="<c:url value="/resources/img/main/plus.png" />">&nbsp;&nbsp;Add Checklist Item
+							</div>
+							<div class="checkWrapper"></div>
 					</div>
 					</div>
 					<!-- 버튼! -->
@@ -482,6 +489,40 @@ $(document).ready(function() {
 		}
 	};
 	</script>
+	<script>
+		
+		
+		// 텍스트 입력 후 바깥 클릭 시 text 확정 및 데이터 ajax
+       /*  $(document).ready(function(){
+			$('#fixedChecklist').click(function() { */
+			function setChecklist() {
+				var taskNo = $('.modal-content').attr('id');
+				var fixedChecklist = $('#checkName').val();
+				
+				if($('#checkName').val().length == 0) {
+					// 입력값 없을 때 - 원래대로 돌리기
+					$('.checkMiddleWrapper').first().remove();
+					$('.taskChecklist').css('display', 'block');
+				} else {
+					// ajax로 값 넘기기
+					alert('fixedChecklist 값 : ' + fixedChecklist);
+					$.ajax({
+						url:'addChecklist.do',
+						type:'get',
+						data:{'fixedChecklist':fixedChecklist},
+						success: function() {
+							alert('체크리스트 추가 완료!');
+							
+							// 체크리스트 관련 for문
+							$('.taskChecklist').css('display', 'block');
+							getTaskCheckList(taskNo);
+						}
+					});
+				}
+				return false;
+			};
+		
+	</script>
 
 <script>
 	// update task/* 
@@ -585,5 +626,64 @@ $(document).ready(function() {
 
 <script src="resources/js/board/boardjs.js?ver=6"></script>
 <script src="resources/js/board/taskScript.js?ver=4"></script>
+<script type="text/javascript">
+function getTaskCheckList(task_no){
+	console.log('보낸 태스크번호:'+task_no);
+	$.ajax({
+		url:'taskCheckList.do',
+		method:'get',
+		data:{'task_no':task_no},
+		success:function(result){
+			console.log('check result:'+result);
+			$('.checkWrapper').empty();
+			// 체크리스트 관련 for문
+			$(result).each(function(index, data){
+				console.log('체크리스트 잘 나오니?' + data);
+				console.log('시퀀스 나와라 : ' + data.checklist_no);
+				var tag1 = '<div class="checkInnerWrapper"><input type="checkbox" class="yyj" id="cbx' + data.checklist_no + '" style="display: none;">';
+				var tag2 = '<label for="cbx' + data.checklist_no + '" class="check">';
+				var tag3 = '<svg width="18px" height="18px" viewBox="0 0 18 18">';
+				var tag4 = '<path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>';
+				var tag5 = '<polyline points="1 9 7 14 15 4"></polyline></svg></label></div>'; 
+				var tag6 = '<input type="text" id="checkName" value="';
+				var tag7 = '" readonly>&nbsp;<br>';
+				var tag = tag1 + tag2 + tag3 + tag4 + tag5 + tag6 + data['task_checklist'] + tag7;
+				$('.checkWrapper').prepend(tag);	
+			 
+			})
+			
+			$('#cbx').on('click', function(){
+				console.log($(this).is(':checked'));	
+			})
+			
+			$('#taskChecklist').show();
+		}
+	})
+}
+
+$(function(){
+	
+		$('.task').on('click', function(){
+			getTaskCheckList($(this).attr('id'));	
+			
+		})	
+		
+		// 체크리스트 없을 때 - 클릭 시 체크박스 하나씩 생성 - 체크리스트 추가버튼 클릭했을 때
+		$('.taskChecklist').click(function() {
+			$('.taskChecklist').css('display', 'none');
+			var tag1 = '<div class="checkMiddleWrapper"><div class="checkInnerWrapper"><input type="checkbox" class="yyj" id="cbx" style="display: none;">';
+			var tag2 = '<label for="cbx" class="check">';
+			var tag3 = '<svg width="18px" height="18px" viewBox="0 0 18 18">';
+			var tag4 = '<path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>';
+			var tag5 = '<polyline points="1 9 7 14 15 4"></polyline></svg></label></div>'; 
+			var tag = tag1 + tag2 + tag3 + tag4 + tag5 + '<input type="text" id="checkName">&nbsp;<button id="fixedChecklist" onclick="setChecklist()">완료</button><br></div>';	
+			
+			$('.checkWrapper').prepend(tag);
+			return false;
+		});
+		
+})
+
+</script>
 
 </html>
