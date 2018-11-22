@@ -13,8 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,11 +24,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.bit.tatab.board.service.BoardService;
 import com.bit.tatab.board.service.TaskService;
 import com.bit.tatab.board.vo.BoardTaskVO;
-import com.bit.tatab.board.vo.TaskCommentVO;
-import com.bit.tatab.board.vo.TaskFileVO;
-import com.bit.tatab.main.vo.MainBackgroundVO;
+import com.bit.tatab.board.vo.ChecklistVO;
 import com.bit.tatab.board.vo.DateVO;
 import com.bit.tatab.board.vo.MemberVO;
+import com.bit.tatab.board.vo.TaskCommentVO;
+import com.bit.tatab.board.vo.TaskFileVO;
 import com.bit.tatab.myPage.service.MyPageService;
 
 @Controller
@@ -104,6 +102,10 @@ public class TaskController {
 		session.setAttribute("memberList", memberList);
 		System.out.println("memberList : " + memberList);
 		
+		///////////////////// 체크리스트 가져오기
+		List<ChecklistVO> checklistList = boardService.selectChecklistList(task_no);
+		System.out.println("체크리스트 : " + checklistList);
+		
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("loginName", loginName);
@@ -113,9 +115,17 @@ public class TaskController {
 		map.put("dday", ddayStr);
 		map.put("taskFileVO", taskFileVO);
 		map.put("memberList", memberList); // 배열임을 참고할 것!
-		System.out.println("멤버리스트 : " + memberList);
+		map.put("checklistList", checklistList);
 		
 		return map;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="taskCheckList.do", method=RequestMethod.GET)
+	public List<ChecklistVO> getTaskCheckList(@RequestParam("task_no")String taskNo){
+		List<ChecklistVO> checklistList = boardService.selectChecklistList(taskNo);
+		System.out.println("yyj checklist:"+checklistList);
+		return checklistList;
 	}
 	
 
@@ -259,6 +269,21 @@ public class TaskController {
 		
 		return bool+"";
 				
+	}
+	
+	// 체크리스트 추가
+	@RequestMapping(value="addChecklist.do", method = RequestMethod.GET)
+	@ResponseBody
+	public void addChecklist(HttpServletRequest request) throws Exception {
+		
+		HttpSession session = request.getSession();
+		String task_no = session.getAttribute("task_no").toString();
+		
+		String fixedChecklist = request.getParameter("fixedChecklist");
+		System.out.println("추가할 체크리스트 내용 : " + fixedChecklist);
+		
+		boardService.addChecklist(task_no, fixedChecklist); 
+		
 	}
 	
 

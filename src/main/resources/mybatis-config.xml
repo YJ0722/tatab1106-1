@@ -18,6 +18,7 @@
       <typeAlias type="com.bit.tatab.myPage.vo.ProfileImgVO" alias="ProfileImgVO"/>
       <typeAlias type="com.bit.tatab.board.vo.TaskCommentVO" alias="TaskCommentVO"/>
       <typeAlias type="com.bit.tatab.board.vo.TaskFileVO" alias="TaskFileVO"/>
+      <typeAlias type="com.bit.tatab.board.vo.ChecklistVO" alias="ChecklistVO"/>
       
    </typeAliases>
 </configuration>
