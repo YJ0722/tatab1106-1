@@ -3,10 +3,24 @@ $(document).ready(function () {
 	 // task 클릭 이벤트
 	   $(document).on("click", '.task', function(e) {
 	      
-	      var task_no = $(this).attr("id");
+	      var task_no = "";
+	      task_no = $(this).attr("id");
 	      
 	      if(task_no != null) {
 		      console.log('i : ' + task_no);
+		      
+		      // task 모달 띄우기 전 내용 비우기
+		      /*
+		      $('.task_name').empty();
+		      $('.task_content').text();
+		      $('.hasDatepicker').val("");
+		      $('#startDate').empty();
+		      $('#updateDate').empty();
+		      $("#task_ori_name").val("");
+		      $("#myInput").val("");
+		      */
+		      
+		      
 		      // 모달 천천히 띄우기
 		      $('#exampleModalLong').modal().fadeIn(300);
 		      
@@ -311,7 +325,7 @@ $(document).ready(function () {
         						},
         				type : "get",
         				success : function() {
-        						alert('테스크 추가 알림 완료!');
+        						// alert('테스크 추가 알림 완료!');
         					}
         			});
                     
@@ -466,7 +480,7 @@ function insertCol(lastColBox) {
 
 // 작업 추가 ajax 실행
 function insertBoardTask(taskColBox, task_col_no, t_name) {
-	alert(t_name);
+	// alert(t_name);
 	$.ajax({
 		url : "insertBoardTask.do",
 		type : "post",
@@ -497,6 +511,7 @@ function updateColName(colId, updateTitle) {
 
 // 작업 데이터 가져오기
 function selectAllTask(task_no) {
+	
 	$.ajax({
 		url : "selectAllTask.do",
 		type : "post",
@@ -504,29 +519,29 @@ function selectAllTask(task_no) {
 			'task_no' : task_no
 		},
 		success : function(data) {
-			if(data != null) {
-					
+			if(data != null) {					
 				if(data.taskVO.status == 'C') {
 					console.log('완료 상태');
 					$('.modal-header').css('background-color', 'forestgreen');
 					$('.saveBtn, .addBtn').css('border-color', 'forestgreen');
 					$('.saveBtn, .addBtn').css('background', 'forestgreen');
 					$('.saveBtn').prop("disabled", true);
-					$('.task_name').css('text-decoration', 'line-through');
-					$('.task_content').css('text-decoration', 'line-through');
+					$('#task_name_input').css('text-decoration', 'line-through');
+					$('#task-content-input').css('text-decoration', 'line-through');
 //					$('.task_name. .task_content').prop('readonly', true);
 				} else {
 					$('.modal-header').css('background-color', 'darkorange');
 					$('.saveBtn, .addBtn').css('border-color', 'darkorange');
 					$('.saveBtn, .addBtn').css('background', 'darkorange');
-					$('.saveBtn').prop("disabled", true);
+					// 비활성화 되면 안됨!!!
+					//$('.saveBtn').prop("disabled", true);
 //					$('.task_name. .task_content').prop('readonly', false);
-					$('.task_name').css('text-decoration', 'none');
-					$('.task_content').css('text-decoration', 'none');
+					$('#task_name_input').css('text-decoration', 'none');
+					$('#task-content-input').css('text-decoration', 'none');
 				}
 				
-				console.log("5555555555 data : " + data.loginName);
-				console.log('@@@@@@ : ' + data.taskVO.d_day);
+				console.log("loginName data : " + data.loginName);
+				console.log('d_day : ' + data.taskVO.d_day);
 
 				$('.nicknameText').attr('id', data.loginName);
 				
@@ -534,7 +549,7 @@ function selectAllTask(task_no) {
 				$('.modal-content').attr('id', data.taskVO.task_no);
 				$('.modal-content').val(task_no);
 				
-				console.log('@#$^&*()_(*&%@#$)( : ' + data.dday);
+				console.log('dday 계산 : ' + data.dday);
 				
 				
 				if(data.dday != null) {
@@ -545,26 +560,72 @@ function selectAllTask(task_no) {
 					$('#ddayCount').show();
 					
 				} else {
+					console.log('dday 널값!!!!');
 					$('#ddayCountView').hide();
 					$('#ddayCount').hide();
 				} 
 				
-				// 데이터 벨류값 설정
-				$('.task_name').val(data.taskVO.task_name);
-				$('.task_content').html(data.taskVO.task_content);
-				$('#startDate').text(data.taskVO.reg_date);
-				$('#datepicker1').attr('placeholder', data.taskVO.d_day);
+				// 각 빈칸 데이터 설정 TODO
+				if(data.taskVO.task_name == null) {
+					$('.task_name_input').text("");					
+				} else {
+					$('.task_name_input').text("");					
+					$('.task_name_input').text(data.taskVO.task_name);
+				}
+				
+				if(data.taskVO.task_content == null) {
+					$("#task-content-input").text("");							
+				} else {
+					$('#task-content-input').text("");
+					$('#task-content-input').text(data.taskVO.task_content);
+				}
+
+				console.log('\n\n작성 날짜 : ' + data.taskVO.reg_date + "\n\n");
+				if(data.taskVO.reg_date == null) {
+					$('#startDate').text("");
+				} else {
+					$('#startDate').text(data.taskVO.reg_date);
+				}
+				
+				if(data.taskVO.update_date == null) {
+					$('#updateDate').text("");
+				} else {
+					$('#updateDate').text(data.taskVO.update_date);
+				}
+				
+				if(data.taskVO.d_day == null) {
+					$('#datepicker1').attr('placeholder', "");
+				} else {
+					$('#datepicker1').attr('placeholder', data.taskVO.d_day);
+				}
+				
+				// form 타입 데이터 벨류값 설정
+				/*
+				$('.task_name').text(data.taskVO.task_name);
+				$('.task_content').text(data.taskVO.task_content);
 				$('#task_ori_name').val("");
+				$('.task_no').val(data.taskVO.task_no);
+				*/
+
+				if(data.taskFileVO == null){
+					$('#task_ori_name').val("null");
+				} else {
+					// TODO : task_ori_name 없다고 뜬다
+					$('#task_ori_name').val(data.taskFileVO.task_ori_name);
+				}
+				
+				
+				/*
 				if(data.taskFileVO != null){
 					$('#task_ori_name').val(data.taskFileVO.task_ori_name);
 				}
 				$('.task_no').val(data.taskVO.task_no);
-				
+				*/
 				
 				if(data.taskVO.status == 'C') {
-					$('.task_name, .task_content').prop('readonly', true);
+					$('#task_name_input, .task_content_input').prop('readonly', true);
 				} else {
-					$('.task_name, .task_content').prop('readonly', false);
+					$('#task_name_input, .task_content_input').prop('readonly', false);
 				}
 				// comlete 확인
 				
@@ -582,12 +643,15 @@ function selectAllTask(task_no) {
 
 				// form 타입의 input data 설정
 //				$('.task_no').val(task_no);
+				/*
 				$('#updateDate').text(data.update_date);
 				
 				if(data.d_day != '-') {
 					$('#datepicker1').val(data.d_day);
 //					$('.dday').val(data.d_day);
 				} 
+				*/
+				
 				var array = new Array();// = data.memberList.toArray();
 				
 				for(i=0; i<array.length; i++) {
@@ -663,11 +727,6 @@ function selectAllTask(task_no) {
 		  		      	span.appendChild(txt);
 		  		      	li.appendChild(span);
 		  		      	
-		  		      	$('.commentDelete').click=function(){
-		  		      		alert('쫌!!!');
-		  		      		console.log('yyj');
-		  		      	}
-	  		      		
 	  		      	}
 	  		      	////////////////////////////////////////////
 				}

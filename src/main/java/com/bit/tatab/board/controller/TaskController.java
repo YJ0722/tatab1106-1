@@ -110,7 +110,7 @@ public class TaskController {
 		map.put("taskVO", taskVO);
 		map.put("commentList", commentVOList);
 		map.put("myEmail", login_email);
-//		map.put("dday", ddayStr);
+		map.put("dday", ddayStr);
 		map.put("taskFileVO", taskFileVO);
 		map.put("memberList", memberList); // 배열임을 참고할 것!
 		System.out.println("멤버리스트 : " + memberList);

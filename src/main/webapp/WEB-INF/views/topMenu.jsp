@@ -46,63 +46,6 @@
 <!-- topMenu.js -->
 <script src="resources/js/topMenu/topMenu.js?ver=2"></script>
 
-<script>
-	// update task
-	function submit() {
-		var task_name = $('.task_name').val();
-		var task_content = $('#task_content-input').val();
-		var dday = $('.dday').val();
-		var task_no = $('.modal-content').attr('id');
-		var file = $('.file');
-		
-		console.log('ok.task_name ' + task_name);
-		console.log('ok.task_content ' + task_content);
-		console.log('ok.task_dday ' + dday);
-		console.log('ok.task_no ' + task_no);
-		alert('file 이름 : ' + file);
-		
-		$('.task_name').val(task_name);
-		$('.task_content').val(task_content);
-		$('.dday1').val(dday);
-		$('.task_no').val(task_no);
-		
-		$('#updateTask').append(file);
-		$('#updateTask').submit();
-		
-		// ajax로 값 넘기기
-		$.ajax({
-			url : "deadlineInsert.do",
-			data : {'task_name': task_name,
-					'alert_message' : dday
-					},
-			type : "get",
-			success : function() {
-					alert('마감기한 설정 완료!');
-				}
-		});
-	}
-	
-	// 멤버 할당
-	function assignMember() {
-		obj = document.getElementById("myForm");
-		if(obj.style.display == "none" || obj.style.display == "") // 최초값이 ""이라서 조건문에 반영!
-			obj.style.display = "block";
-		else
-			obj.style.display = "none";
-			
-	}
-	
-	// task 삭제
-	function deleteTask() {
-		console.log('task 삭제');
-		if(confirm("Task를 삭제하시겠습니까?") == true) {
-    		location.href="deleteTask.do";
-		}
-		return false;   
-	}
-
-</script>
-
 </head>
 
 <body>
@@ -224,16 +167,16 @@
 							<div id="box1">
 								<div class="form-group shadow-textarea">
 									<label class="taskSubTitle" for="exampleFormControlTextarea6">Title</label>
-									<textarea class="form-control z-depth-1 task_name"
-										id="exampleFormControlTextarea6 task_name" rows="3" placeholder="업무명..."></textarea>
+									<textarea class="form-control z-depth-1 task_name_input"
+										id="exampleFormControlTextarea6 task_name_input" rows="3" placeholder="업무명..."></textarea>
 								</div>
 							</div>
 
 							<div id="boxs">
 								<div class="form-group shadow-textarea2">
 									<label class="taskSubTitle" for="exampleFormControlTextarea6">Content</label>
-									<textarea class="form-control z-depth-1 task_content"
-										id="task_content-input" rows="3" onkeyup="this.style.height='26px'; this.style.height = this.scrollHeight + 'px';"
+									<textarea class="form-control z-depth-1 task_content_input"
+										id="task-content-input" rows="3" onkeyup="this.style.height='26px'; this.style.height = this.scrollHeight + 'px';"
 										placeholder="업무 내용..."></textarea>
 								</div>
 							</div>
@@ -317,8 +260,8 @@
 					</div>
 					<!-- 버튼! -->
 					<div class="modal-footer">
-						<button type="button" class=" closeBtn" data-dismiss="modal">Close</button>
-						<button type="button" class=" saveBtn" onclick="submit()">Save
+						<button type="button" class="closeBtn" data-dismiss="modal">Close</button>
+						<button type="button" class="saveBtn" onclick="my_submit()">Save
 							changes</button>
 					</div>
 							
@@ -331,11 +274,11 @@
 		</div>
 		
 		<form id="updateTask" action="updateTask.do" method="post" enctype="multipart/form-data">
-			<input type="hidden" class="task_name" name="task_name">
-			<input type="hidden" class="task_content" name="task_content">
-			<input type="hidden" class="dday" id="datepicker1" name="dday">
-			<input type="hidden" class="task_no" name="task_no">
-			<input type="hidden" class="file" id="file" name="file">
+			<input type="hidden" class="update_task_name" name="task_name">
+			<input type="hidden" class="update_task_content" name="task_content">
+			<input type="hidden" class="update_d_day" id="datepicker1" name="dday">
+			<input type="hidden" class="update_task_no" name="task_no">
+			<input type="hidden" class="update_file" id="file" name="file">
 		</form>
 	<!-- 모달 : MyPage -->
         <div id="MyPageModal" class="MyPageModal">
@@ -539,6 +482,89 @@ $(document).ready(function() {
 		}
 	};
 	</script>
+
+<script>
+	// update task/* 
+	function my_submit() {
+			
+		var update_task_no = $('.modal-content').attr('id');
+		$(".update_task_no").val(update_task_no);
+		var update_task_name = $('#task_name_input').text();
+		$(".update_task_name").val(update_task_name);
+		var update_task_content = $('#task-content-input').text();
+		alert($('#task-content-input').text());
+		$(".update_task_content").html(update_task_content);
+		var update_d_day = $('#datepicker1').val();
+		$(".update_d_day").val(update_d_day);
+		//var file = $('.file');
+		var update_file = $('#task_ori_name').val();
+		$(".update_file").val(update_file);
+		
+		/*
+		var task_name = $('.task_name').text();
+		var task_content = $('#task_content-input').text();
+		//var dday = $('.dday').val();
+		var dday = $('#datepicker1').val();
+		var task_no = $('.modal-content').attr('id');
+		*/
+		
+		console.log('.......................');
+		console.log('ok.task_no ' + update_task_no);
+		console.log('ok.task_name ' + update_task_name);
+		console.log('ok.task_content ' + update_task_content);
+		console.log('ok.task_dday ' + update_d_day);
+		console.log('file 이름 : ' + update_file);
+		console.log('.......................');
+		
+		/* 필요 없을 듯
+		$('.task_name').val(task_name);
+		$('.task_content').val(task_content);
+		$('.dday1').val(dday);
+		$('.task_no').val(task_no);
+		*/
+		
+		$('#updateTask').append(file);
+		// 잠시 주석
+		// $('#updateTask').submit();
+		
+		
+		// ajax로 값 넘기기
+		/*
+		$.ajax({
+			url : "deadlineInsert.do",
+			data : {'task_name': task_name,
+					'alert_message' : dday
+					},
+			type : "get",
+			success : function() {
+					alert('마감기한 설정 완료!');
+				}
+		});
+		*/
+		
+		return false;
+	} 
+	
+	// 멤버 할당
+	function assignMember() {
+		obj = document.getElementById("myForm");
+		if(obj.style.display == "none" || obj.style.display == "") // 최초값이 ""이라서 조건문에 반영!
+			obj.style.display = "block";
+		else
+			obj.style.display = "none";
+			
+	}
+	
+	// task 삭제
+	function deleteTask() {
+		console.log('task 삭제');
+		if(confirm("Task를 삭제하시겠습니까?") == true) {
+    		location.href="deleteTask.do";
+		}
+		return false;   
+	}
+
+</script>
 
 <!-- task 관련 스크립트  - 부트스트랩 -->
 <script
