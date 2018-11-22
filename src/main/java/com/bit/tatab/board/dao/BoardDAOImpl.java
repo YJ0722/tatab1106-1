@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.bit.tatab.board.vo.BoardColVO;
 import com.bit.tatab.board.vo.BoardTaskVO;
+import com.bit.tatab.board.vo.ChecklistVO;
 import com.bit.tatab.board.vo.MemberVO;
 import com.bit.tatab.main.vo.ActivityVO;
 import com.bit.tatab.main.vo.ProjectVO;
@@ -95,7 +96,16 @@ public class BoardDAOImpl implements BoardDAO{
 		}
 	}
 	
-	
+	// 체크리스트 추가
+	@Override
+	public void addChecklist(String task_no, String fixedChecklist) {
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("task_no", task_no);
+		param.put("fixedChecklist", fixedChecklist);
+		
+		sqlSession.insert("addChecklist", param);
+	}
+
 	// 테스크 멤버 조회
 	@Override
 	public List<MemberVO> selectTaskMemberList(String task_no) {
@@ -111,6 +121,20 @@ public class BoardDAOImpl implements BoardDAO{
 		return memberList;
 	}
 
+	// 테스크 체크리스트 조회
+	@Override
+	public List<ChecklistVO> selectChecklistList(String task_no) {
+
+		int input = Integer.parseInt(task_no);		
+
+		List<ChecklistVO> list = sqlSession.selectList("selectChecklistList", input);
+		List<ChecklistVO> ChecklistList = new ArrayList<ChecklistVO>();
+		
+		for(int i=0; i<list.size(); i++) {
+			ChecklistList.add(list.get(i));
+		}
+		return ChecklistList;
+	}
 
 	// 프로젝트 생성 시 자동으로 생성되는 컬럼 1개 생성
 	@Override

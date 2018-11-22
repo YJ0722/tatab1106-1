@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.bit.tatab.board.vo.BoardColVO;
 import com.bit.tatab.board.vo.BoardTaskVO;
+import com.bit.tatab.board.vo.ChecklistVO;
 import com.bit.tatab.board.vo.MemberVO;
 import com.bit.tatab.main.vo.ActivityVO;
 import com.bit.tatab.main.vo.ProjectVO;
@@ -63,4 +64,10 @@ public interface BoardDAO {
 	
 	// 프로젝트 삭제
 	public void deleteProject(String project_no);
+
+	// 체크리스트 추가
+	public void addChecklist(String task_no, String fixedChecklist);
+
+	// 테스크 체크리스트 조회
+	public List<ChecklistVO> selectChecklistList(String task_no);
 }
