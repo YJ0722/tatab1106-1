@@ -311,7 +311,6 @@ $(document).ready(function () {
         						},
         				type : "get",
         				success : function() {
-        						alert('테스크 추가 알림 완료!');
         						// 새로 추가된 task에 대해서도 클릭 이벤트(채크리스트 받아오기) 처리기 등록하기
         						$('.task').on('click', function(){
         							getTaskCheckList($(this).attr('id'));	
@@ -470,7 +469,6 @@ function insertCol(lastColBox) {
 
 // 작업 추가 ajax 실행
 function insertBoardTask(taskColBox, task_col_no, t_name) {
-	alert(t_name);
 	$.ajax({
 		url : "insertBoardTask.do",
 		type : "post",
@@ -681,7 +679,6 @@ function selectAllTask(task_no) {
 		  		      	li.appendChild(span);
 		  		      	
 		  		      	$('.commentDelete').click=function(){
-		  		      		alert('쫌!!!');
 		  		      		console.log('yyj');
 		  		      	}
 	  		      		

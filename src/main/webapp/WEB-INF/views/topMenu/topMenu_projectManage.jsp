@@ -67,13 +67,12 @@
 				type:'post',
 				data:{'projectDescription':$('#projectDescription').val(),'projectName':$('#projectName').val()},
 				success:function(result){
-	        				
+	        				alert('수정되었습니다.');
 	        				$('.projectTitle').html(result.project_name);
 	        				$('.projectNames').attr("value", result.project_name);
 	        				$('.projectDescription').val(result.project_comment);
 				}
 			})
-			alert('수정완료');
 			return false;
 		}
     	
@@ -91,10 +90,10 @@
     				data:{'user':$('#addMemberInput').val()},
     				success:function(result){
     					if(result == 'true'){
-    						alert('member 추가완료');
     						getMemberList();
+    						alert('사용자가 추가되었습니다.');
     					}else {
-    						alert('없는 아이디');
+    						alert('없는 아이디입니다.');
     					}
     				}
     			})
@@ -106,7 +105,6 @@
     						},
     				type : "get",
     				success : function() {
-    						alert('멤버초대 알림 완료!');
     					}
     			});
     		}
