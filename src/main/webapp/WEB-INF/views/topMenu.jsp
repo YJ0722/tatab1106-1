@@ -63,6 +63,10 @@
 	      console.log('ok.task_no ' + task_no);
 	      //alert('file 이름 : ' + file);
 	      
+	      /////////////////////////////
+	      task_content = task_content.replace(/(?:\r\n|\r|\n)/g, '<br />');
+		  /////////////////////////////
+
 	      $('.task_name').val(task_name);
 	      $('.task_content').val(task_content);
 	      // dday 입력 안했을 경우 이전 데이터 그대로 다시 입력

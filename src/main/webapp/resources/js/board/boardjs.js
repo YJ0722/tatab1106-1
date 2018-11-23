@@ -556,7 +556,14 @@ $.ajax({
          
          // 데이터 벨류값 설정
          $('.task_name').val(data.taskVO.task_name);
-         $('.task_content').html(data.taskVO.task_content);
+         
+         var contentstr = data.taskVO.task_content;
+         contentstr = contentstr.replace(/<br\s*[\/]?>/gi, "\r\n");
+         $('.task_content').html(contentstr);
+         
+         // $('.task_content').html(data.taskVO.task_content);
+         
+         
          $('#startDate').text(data.taskVO.reg_date);
          if(data.taskVO.d_day != null || data.taskVO.d_day != "-") {
              $('#datepicker1').attr('placeholder', data.taskVO.d_day);
