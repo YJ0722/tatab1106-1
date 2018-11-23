@@ -66,7 +66,7 @@
 											                <!-- task name end -->
 											                <!-- task content start -->
 											                <div class="task-content">
-											                	<p class='task-content-p'>${ taskList.task_content }</p>
+											                	<p class='task-content-p'>${ taskList.task_content.replace(/<br\s*[\/]?>/gi, "\r\n") }</p>
 											                </div>
 											                <!-- task content end -->
 											            </div>
