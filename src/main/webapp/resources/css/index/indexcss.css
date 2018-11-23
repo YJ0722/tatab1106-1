@@ -23,6 +23,11 @@ body {
     font-size: 4rem;
     font-weight: bold;
 }
+
+.abcRioButtonBlue {
+    top: 310px;
+}
+
 .scroll-about-btn {
     font-size: 6rem;
     margin: 14vh 48.4% 8vh 48.4%;
@@ -111,6 +116,8 @@ body {
 }
 */
 .title {
+	position: absolute;
+    top: 250px;
     font-size: 10em;
     font-weight: bold;
     color: #EEEEEE;
@@ -118,6 +125,14 @@ body {
 /*    font-family: 'Audiowide', cursive;*/
 /*    font-family: 'Lalezar', cursive;*/
 }
+
+.title img {
+	position: absolute;
+    height: 350px;
+    left: -180px;
+    top: -60px;
+}
+
 .login-btn > div {
     margin: 10px 0;
 }
