@@ -52,7 +52,6 @@
 			$(document).on('click', '#list', function(){
 				var projectName = $(this).find('.projectName').text();
 				var projectNo = $(this).find('.project_no').val();
-	    		alert(projectNo);
 	    		
 	    		$('.project_no').val(projectNo);
 	    		$('.projectName').val(projectName);

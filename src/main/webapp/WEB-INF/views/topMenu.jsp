@@ -61,7 +61,6 @@
 		console.log('ok.task_content ' + task_content);
 		console.log('ok.task_dday ' + dday);
 		console.log('ok.task_no ' + task_no);
-		alert('file 이름 : ' + file);
 		
 		$('.task_name').val(task_name);
 		$('.task_content').val(task_content);
@@ -79,7 +78,6 @@
 					},
 			type : "get",
 			success : function() {
-					alert('마감기한 설정 완료!');
 				}
 		});
 	}
@@ -476,7 +474,6 @@ $(document).ready(function() {
 					},
 			type : "get",
 			success : function() {
-					alert('작업완료 알림 완료!');
 				}
 		});
 	}
@@ -498,7 +495,6 @@ $(document).ready(function() {
 				data:{'assignee':assignee},
 				success:function(result){
 					if(result == 'true'){
-						alert('task member 추가완료');
 						
 						// 멤버리스트 관련 for문
 // 						$('.assigneeList').empty();
@@ -527,7 +523,7 @@ $(document).ready(function() {
 							}
 						});
 					}else {
-						alert('없는 아이디');
+						alert('없는 아이디입니다.');
 					}
 				}
 			});
@@ -540,7 +536,6 @@ $(document).ready(function() {
 						},
 				type : "get",
 				success : function() {
-						alert('작업완료 알림 완료!');
 					}
 			});
 		}
@@ -562,13 +557,11 @@ $(document).ready(function() {
 					$('.taskChecklist').css('display', 'block');
 				} else {
 					// ajax로 값 넘기기
-					alert('fixedChecklist 값 : ' + fixedChecklist);
 					$.ajax({
 						url:'addChecklist.do',
 						type:'get',
 						data:{'fixedChecklist':fixedChecklist},
 						success: function() {
-							alert('체크리스트 추가 완료!');
 							
 							// 체크리스트 관련 for문
 							$('.taskChecklist').css('display', 'block');

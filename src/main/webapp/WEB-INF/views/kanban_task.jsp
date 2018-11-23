@@ -11,7 +11,6 @@
      
 	                            <c:choose>
 							    	<c:when test="${empty taskData}">
-							    	<script>alert('null');</script>
 							    	</c:when>
 							    	<c:otherwise>
 							    		<c:forEach items="${taskData}" var="taskList">
