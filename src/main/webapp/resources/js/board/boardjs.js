@@ -130,7 +130,7 @@ $(document).ready(function () {
     // update 전 col의 기존 제목
     var originalName;
     // col의 제목 클릭 이벤트(col 제목 업데이트 이벤트)
-    $(document).on("click", '.col-title-show', function(e) {
+    $(document).on("click", '.col-title-show-1', function(e) {
     	
     	// col 제목의 p 태그 숨기기
     	$('.col-title-show').show();

@@ -44,6 +44,7 @@
  	 	select * from TASK_ATTACHMENT_T where task_no = #{task_no}
  	 </select>
  	 
+
  	 <!-- 체크리스트 추가 -->
  	<insert id="addChecklist" parameterType="String">
  		insert into task_checklist_t values(#{task_no}, #{fixedChecklist}, 'O', checklist_no_seq.nextVal)
