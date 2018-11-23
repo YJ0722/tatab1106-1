@@ -137,7 +137,7 @@ function newElement() {
 						},
 				type : "get",
 				success : function() {
-						alert('코멘트 입력 완료!');
+						console.log('코멘트 입력 완료!');
 					}
 					// 여기에 "그 후 실행" 코드들이 들어가야 한다!	
 								

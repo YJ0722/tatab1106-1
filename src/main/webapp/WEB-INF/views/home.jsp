@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page session="false" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -70,7 +71,8 @@
           <!-- 로그인 part start -->
            <div class="login-div">
                <div class="login-box">
-              <div class="title">TATAB</div>
+<!--               <div class="title">TATAB</div> -->
+              <div class="title"><img src="<c:url value="/resources/img/index/tatabBold6.png" />"></div>
                    <br>
 <!--                    <a href="#" class="login-btn"> -->
 <!--                      <img src="resources/img/index/kakao_login.png"> -->

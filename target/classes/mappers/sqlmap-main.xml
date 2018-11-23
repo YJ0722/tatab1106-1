@@ -61,6 +61,7 @@
 	<select id="selectActivityList" parameterType="String" resultType="ActivityVO">
 		select * from user_activity_t
 		where login_email = #{login_email}
+		order by 
 	</select>
 	
 </mapper>
