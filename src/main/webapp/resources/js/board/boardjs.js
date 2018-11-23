@@ -680,12 +680,12 @@ $.ajax({
                     span.className = "commentDelete";
                     span.appendChild(txt);
                     li.appendChild(span);
-                    
+                    /*
                     $('.commentDelete').click=function(){
                        alert('쫌!!!');
                        console.log('yyj');
                     }
-                    
+                    */
                  }
                  ////////////////////////////////////////////
          }

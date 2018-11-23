@@ -61,7 +61,7 @@
 	      console.log('ok.task_content ' + task_content);
 	      console.log('ok.task_dday ' + dday);
 	      console.log('ok.task_no ' + task_no);
-	      alert('file 이름 : ' + file);
+	      //alert('file 이름 : ' + file);
 	      
 	      $('.task_name').val(task_name);
 	      $('.task_content').val(task_content);
@@ -71,6 +71,7 @@
 	      $('#updateTask').append(file);
 	      $('#updateTask').submit();
 	      
+	      alert("업데이트가 완료되었습니다.");
 	      // ajax로 값 넘기기
 	      $.ajax({
 	         url : "deadlineInsert.do",
@@ -79,7 +80,7 @@
 	               },
 	         type : "get",
 	         success : function() {
-	               alert('마감기한 설정 완료!');
+	               //alert('마감기한 설정 완료!');
 	            }
 	      });
 	   }
