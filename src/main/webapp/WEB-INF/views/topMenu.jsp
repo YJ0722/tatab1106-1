@@ -65,7 +65,15 @@
 	      
 	      $('.task_name').val(task_name);
 	      $('.task_content').val(task_content);
-	      $('.dday').val(dday);
+	      // dday 입력 안했을 경우 이전 데이터 그대로 다시 입력
+	      if(dday == '') {
+
+             dday = $('#datepicker1').attr('placeholder');
+             
+	      }
+
+		      $('.dday').val(dday);
+	      
 	      $('.task_no').val(task_no);
 	      
 	      $('#updateTask').append(file);

@@ -558,7 +558,12 @@ $.ajax({
          $('.task_name').val(data.taskVO.task_name);
          $('.task_content').html(data.taskVO.task_content);
          $('#startDate').text(data.taskVO.reg_date);
-         $('#datepicker1').attr('placeholder', data.taskVO.d_day);
+         if(data.taskVO.d_day != null || data.taskVO.d_day != "-") {
+             $('#datepicker1').attr('placeholder', data.taskVO.d_day);
+             $('#datepicker1').val(data.taskVO.d_day);
+   	         var dday = data.taskVO.d_day;
+   	         $('.dday').val(dday);
+         }
          $('#task_ori_name').val("");
          if(data.taskFileVO != null){
             $('#task_ori_name').val(data.taskFileVO.task_ori_name);
