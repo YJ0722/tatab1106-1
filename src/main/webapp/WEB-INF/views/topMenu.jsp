@@ -121,7 +121,7 @@
 				<i class="fas fa-angle-down "></i>
 			</td>
 			<td style="width: 1%" id="infoBtn"><img src="resources/img/topMenu/gear.png"></td>
-			<td style="width: 34%"></td>
+			<td style="width: 40%"></td>
 			<td style="width: 23%"></td>
 <!-- 			<td style="width: 5%"> -->
 <!-- 				<table class="activeBtn"> -->
@@ -134,9 +134,9 @@
 <!-- 					</tr> -->
 <!-- 				</table> -->
 <!-- 			</td> -->
-			<td style="width: 2%" class="rightIcon"><a><img src="resources/img/topMenu/alarm_bell.png"></a></td>
-			<td style="width: 2%" class="rightIcon" id="activityBtn"><a><img src="resources/img/topMenu/world_asia.png"></a>
-			<td style="width: 5%;" id="MyPageModalBtn2"><a>
+<!-- 			<td style="width: 2%" class="rightIcon"><a><img src="resources/img/topMenu/alarm_bell.png"></a></td> -->
+			<td style="width: 4%" class="rightIcon" id="activityBtn"><a><img src="resources/img/topMenu/world_asia.png"></a>
+			<td style="width: 3%;" id="MyPageModalBtn2"><a>
                	<c:choose>
                   	<c:when test="${empty profileImgVO.save_name }">
                          <img src="<c:url value="/resources/img/main/single-01.svg" />">
@@ -212,7 +212,7 @@
 							<!-- Modal title -->
 						</h5>
 						<div class="close1">
-                           <a class="manage-a"><i id="deleteTask" class="close fas fa-trash-alt" onclick="deleteTask()" ></i></a>
+                           <a class="manage-a"><i id="deleteTask" class="close fas fa-trash-alt" onclick="deleteTask()"></i></a>
                         </div> 
 						<button type="button" class="close" style="margin : 0; height: 54px; margin-right:5px;" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
