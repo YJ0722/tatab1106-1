@@ -49,63 +49,77 @@
 <script src="resources/js/topMenu/topMenu.js?ver=2"></script>
 
 <script>
-   // update task
-   function submit() {
-      var task_name = $('.task_name').val();
-      var task_content = $('#task_content-input').val();
-      var dday = $('#datepicker1').val();
-      
-      if(dday == "") {
-    	  dday="-";
-      }
-      var task_no = $('.modal-content').attr('id');
-      var file = $('.file');
-      
-      console.log('ok.task_name ' + task_name);
-      console.log('ok.task_content ' + task_content);
-      console.log('ok.task_dday ' + dday);
-      console.log('ok.task_no ' + task_no);
-      alert('file 이름 : ' + file);
-      
-      $('.task_name').val(task_name);
-      $('.task_content').val(task_content);
-      $('.dday').val(dday);
-      $('.task_no').val(task_no);
-      
-      $('#updateTask').append(file);
-      $('#updateTask').submit();
-      
-      // ajax로 값 넘기기
-      $.ajax({
-         url : "deadlineInsert.do",
-         data : {'task_name': task_name,
-               'alert_message' : dday
-               },
-         type : "get",
-         success : function() {
-               alert('마감기한 설정 완료!');
-            }
-      });
-   }
-   
-   // 멤버 할당
-   function assignMember() {
-      obj = document.getElementById("myForm");
-      if(obj.style.display == "none" || obj.style.display == "") // 최초값이 ""이라서 조건문에 반영!
-         obj.style.display = "block";
-      else
-         obj.style.display = "none";
-         
-   }
-   
-   // task 삭제
-   function deleteTask() {
-      console.log('task 삭제');
-      if(confirm("Task를 삭제하시겠습니까?") == true) {
-          location.href="deleteTask.do";
-      }
-      return false;   
-   }
+	   // update task
+	   function submit() {
+	      var task_name = $('.task_name').val();
+	      var task_content = $('#task_content-input').val();
+	      var dday = $('#datepicker1').val();
+	      var task_no = $('.modal-content').attr('id');
+	      var file = $('.file');
+	      
+	      console.log('ok.task_name ' + task_name);
+	      console.log('ok.task_content ' + task_content);
+	      console.log('ok.task_dday ' + dday);
+	      console.log('ok.task_no ' + task_no);
+	      alert('file 이름 : ' + file);
+	      
+	      $('.task_name').val(task_name);
+	      $('.task_content').val(task_content);
+	      $('.dday').val(dday);
+	      $('.task_no').val(task_no);
+	      
+	      $('#updateTask').append(file);
+	      $('#updateTask').submit();
+	      
+	      // ajax로 값 넘기기
+	      $.ajax({
+	         url : "deadlineInsert.do",
+	         data : {'task_name': task_name,
+	               'alert_message' : dday
+	               },
+	         type : "get",
+	         success : function() {
+	               alert('마감기한 설정 완료!');
+	            }
+	      });
+	   }
+	// 멤버 할당
+	function assignMember() {
+		obj = document.getElementById("myForm");
+		if(obj.style.display == "none" || obj.style.display == "") // 최초값이 ""이라서 조건문에 반영!
+			obj.style.display = "block";
+		else
+			obj.style.display = "none";
+			
+	}
+	
+	// task 삭제
+	function deleteTask() {
+		console.log('task 삭제');
+		if(confirm("Task를 삭제하시겠습니까?") == true) {
+    		location.href="deleteTask.do";
+		}
+		return false;   
+	}
+	
+	// 멤버 할당
+	function assignMember() {
+		obj = document.getElementById("myForm");
+		if(obj.style.display == "none" || obj.style.display == "") // 최초값이 ""이라서 조건문에 반영!
+			obj.style.display = "block";
+		else
+			obj.style.display = "none";
+			
+	}
+	
+	// task 삭제
+	function deleteTask() {
+		console.log('task 삭제');
+		if(confirm("Task를 삭제하시겠습니까?") == true) {
+    		location.href="deleteTask.do";
+		}
+		return false;   
+	}
 
 </script>
 
@@ -138,9 +152,9 @@
 <!-- 					</tr> -->
 <!-- 				</table> -->
 <!-- 			</td> -->
-			<td style="width: 2%" class="rightIcon"><a><img src="resources/img/topMenu/alarm_bell.png"></a></td>
-			<td style="width: 2%" class="rightIcon" id="activityBtn"><a><img src="resources/img/topMenu/world_asia.png"></a>
-			<td style="width: 5%;" id="MyPageModalBtn2"><a>
+<!-- 			<td style="width: 2%" class="rightIcon"><a><img src="resources/img/topMenu/alarm_bell.png"></a></td> -->
+			<td style="width: 4%" class="rightIcon" id="activityBtn"><a><img src="resources/img/topMenu/world_asia.png"></a>
+			<td style="width: 3%;" id="MyPageModalBtn2"><a>
                	<c:choose>
                   	<c:when test="${empty profileImgVO.save_name }">
                          <img src="<c:url value="/resources/img/main/single-01.svg" />">
@@ -216,7 +230,7 @@
 							<!-- Modal title -->
 						</h5>
 						<div class="close1">
-                           <a class="manage-a"><i id="deleteTask" class="close fas fa-trash-alt" onclick="deleteTask()" ></i></a>
+                           <a class="manage-a"><i id="deleteTask" class="close fas fa-trash-alt" onclick="deleteTask()"></i></a>
                         </div> 
 						<button type="button" class="close" style="margin : 0; height: 54px; margin-right:5px;" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
@@ -244,15 +258,15 @@
                         </div>
                      </div>
 
-							<div id="boxs">
-								<div id="myDIV" class="header">
-									<div class="nicknameText" id="" style="display:none;"></div>
-									<span> <input type="text" id="myInput"
-										placeholder="Comment..."> <span onclick="	newElement()"
-										class="addBtn">Add</span>
-									</span>
-								</div>
-								<div>
+                     <div id="boxs">
+                        <div id="myDIV" class="header">
+                           <div class="nicknameText" id="" style="display:none;"></div>
+                           <span> <input type="text" id="myInput"
+                              placeholder="Comment..."> <span onclick="   newElement()"
+                              class="addBtn">Add</span>
+                           </span>
+                        </div>
+                        <div>
 									<ul id="myUL">
 									</ul>
 								</div>
@@ -480,7 +494,6 @@ $(document).ready(function() {
 					},
 			type : "get",
 			success : function() {
-					alert('작업완료 알림 완료!');
 				}
 		});
 	}
@@ -502,7 +515,6 @@ $(document).ready(function() {
 				data:{'assignee':assignee},
 				success:function(result){
 					if(result == 'true'){
-						alert('task member 추가완료');
 						
 						// 멤버리스트 관련 for문
 // 						$('.assigneeList').empty();
@@ -531,7 +543,7 @@ $(document).ready(function() {
 							}
 						});
 					}else {
-						alert('없는 아이디');
+						alert('없는 아이디입니다.');
 					}
 				}
 			});
@@ -544,7 +556,6 @@ $(document).ready(function() {
 						},
 				type : "get",
 				success : function() {
-						alert('작업완료 알림 완료!');
 					}
 			});
 		}
@@ -566,13 +577,11 @@ $(document).ready(function() {
 					$('.taskChecklist').css('display', 'block');
 				} else {
 					// ajax로 값 넘기기
-					alert('fixedChecklist 값 : ' + fixedChecklist);
 					$.ajax({
 						url:'addChecklist.do',
 						type:'get',
 						data:{'fixedChecklist':fixedChecklist},
 						success: function() {
-							alert('체크리스트 추가 완료!');
 							
 							// 체크리스트 관련 for문
 							$('.taskChecklist').css('display', 'block');

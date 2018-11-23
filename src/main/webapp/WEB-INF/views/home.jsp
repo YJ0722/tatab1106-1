@@ -72,13 +72,12 @@
                <div class="login-box">
               <div class="title">TATAB</div>
                    <br>
-                   <a href="#" class="login-btn">
-                     <img src="resources/img/index/kakao_login.png">
-                  </a>
+<!--                    <a href="#" class="login-btn"> -->
+<!--                      <img src="resources/img/index/kakao_login.png"> -->
+<!--                   </a> -->
                   <br>
                   <div class="g-signin2" style="margin: 0 35%" data-onsuccess="onSignIn" data-theme="dark"></div>
                   <br>
-                  <a href="/tatab/googleLogout.do" onclick="signOut();">Sign out</a>
 <script>
   function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
@@ -160,23 +159,23 @@
                     </div>
                     <div class="service-item col-md-4 col-xs-6">
                        <div class="item">
-                          <div class="icon"><i class="fas fa-comments"></i></div>
+                          <div class="icon"><i class="fas fa-cog"></i></div>
                           <div class="comment1">
-                              <p>메시지</p>
+                              <p>커스텀마이징</p>
                           </div>
                           <div class="comment2">
-                              <p>실시간 채팅, 메시지,<br>댓글 확인</p>
+                              <p>사용자가 원하는 설정<br>커스텀마이징</p>
                           </div>
                        </div>
                     </div>
                     <div class="service-item col-md-4 col-xs-6">
                        <div class="item">
-                          <div class="icon"><i class="fas fa-chart-bar"></i></div>
+                          <div class="icon"><i class="fab fa-android"></i></div>
                           <div class="comment1">
-                              <p>시각화</p>
+                              <p>어플리케이션</p>
                           </div>
                           <div class="comment2">
-                              <p>프로젝트 진행 상황을<br> 도표를 통해<br>시각적으로 표현</p>
+                              <p>안드로이드 어플리케이션으로<br>task 확인</p>
                           </div>
                        </div>
                     </div>
@@ -200,9 +199,9 @@
                        </div>
 -->
                        <div class="about-main-txt">
-                       <p>ffffffffffffffffffffffffff</p>
-                       <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                       <p>eeeeeeeeeeeeeeeeeeeeeeeeeee</p>
+                       <p>-&nbsp 프로젝트 흐름을 한눈에 파악하여 작업을 진행할 수 있는 환경 제공</p>
+                       <p>-&nbsp 웹 서비스의 어플리케이션 연동을 통한 활용도 향상</p>
+                       <p>-&nbsp 커스터마이징 옵션을 통한 사용자의 서비스 활용 관련 자유도 향상</p>
                        </div>
                    </div>
                   <div class="about-line"></div>
@@ -215,7 +214,7 @@
         <!-- ------------ footer start ------------- -->
         <div class="footer">
             <p class="copyright">
-                Copyright &copy; by A. 
+                Copyright &copy; by Beat the bit. 
                 <script>document.write(new Date().getFullYear());</script>
                  All rights reserved.
             </p>
