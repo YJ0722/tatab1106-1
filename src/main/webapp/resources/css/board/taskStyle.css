@@ -428,8 +428,11 @@ input {
 }
 
 #datepicker1 {
-	width: 50%;
+    width: 80%;
+    font-size: 16px;
+    padding: 5px 8px;
 }
+
 .modal-footer {
 	both: clear;
 	width: 90%;

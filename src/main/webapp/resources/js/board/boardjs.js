@@ -394,7 +394,7 @@ $(document).ready(function () {
         	// 동적 생성한 컬럼 input 태그
             var getTitle = $('.col-title-input:last');
         	// 동적 생성한 컬럼 p 태그
-            var setTitle = $('.col-title-show:last');
+            var setTitle = $('.col-title-show-1:last');
             
             // 생성한 col의 외부영역 클릭했을 경우
             console.log($('.col-title-input').hasClass('col-input-first'));
@@ -554,11 +554,16 @@ $.ajax({
             $('#ddayCount').hide();
          } 
          
+         
+         
          // 데이터 벨류값 설정
          $('.task_name').val(data.taskVO.task_name);
          
          var contentstr = data.taskVO.task_content;
-         contentstr = contentstr.replace(/<br\s*[\/]?>/gi, "\r\n");
+//         contentstr = contentstr.replace(/<br\s*[\/]?>/gi, "\r\n");
+         if(contentstr != null) {
+        	 contentstr = contentstr.replace(/<br\s?\/?>/g, "\r\n");
+         }
          $('.task_content').html(contentstr);
          
          // $('.task_content').html(data.taskVO.task_content);
@@ -570,6 +575,7 @@ $.ajax({
              $('#datepicker1').val(data.taskVO.d_day);
    	         var dday = data.taskVO.d_day;
    	         $('.dday').val(dday);
+   	         console.log("dday 확인 : " + dday);
          }
          $('#task_ori_name').val("");
          if(data.taskFileVO != null){
@@ -599,12 +605,18 @@ $.ajax({
 
          // form 타입의 input data 설정
 //         $('.task_no').val(task_no);
-         $('#updateDate').text(data.update_date);
          
-         if(data.d_day != '-') {
-            $('#datepicker1').val(data.d_day);
-//            $('.dday').val(data.d_day);
-         } 
+         // 수정일 등록
+         if(data.taskVO.update_date == null) {
+            $('#updateDate').text('-');
+         } else {
+            $('#updateDate').text(data.taskVO.update_date);
+         }
+         
+//         if(data.d_day != '-') {
+//            $('#datepicker1').val(data.d_day);
+////            $('.dday').val(data.d_day);
+//         } 
          var array = new Array();// = data.memberList.toArray();
          
          for(i=0; i<array.length; i++) {
