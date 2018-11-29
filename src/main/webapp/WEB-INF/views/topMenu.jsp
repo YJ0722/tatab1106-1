@@ -56,19 +56,54 @@
 		var dday = $('.dday').val();
 		var task_no = $('.modal-content').attr('id');
 		var file = $('.file');
+		var a = new Array(); //[];
+		console.log('before');
+		/*
+		$('.yyj').each(function(){
+			checkVO['checklist_no'] = $(this).siblings('.checkNo').val();
+			checkVO['status'] = $(this).is(':checked')==true?'C':'O';
+			checkVO['task_no'] = task_no;
+			checkVO['task_checklist'] = $(this).parents().siblings('#checkName').val();
+			
+			console.log('check_no:'+$(this).siblings('.checkNo').val());
+			console.log('checked:'+$(this).is(':checked'));
+			a.push(checkVO);
+			
+			alert(checkVO['task_no'] + '\n' + checkVO['task_checklist'] );
+		});
+		*/
+		
+		//alert("eq : " + $(".yyj").length);
+		for(var i=0; i<$(".yyj").length; i++) {
+			var checkVO = {};
+			checkVO['checklist_no'] = $(".yyj").eq(i).siblings('.checkNo').val();
+			checkVO['status'] = $(".yyj").eq(i).is(':checked')==true?'C':'O';
+			checkVO['task_no'] = task_no;
+			checkVO['task_checklist'] = $(".yyj").parents().siblings('#checkName').eq(i).val();
+			
+			console.log('check_no:'+$(".yyj").siblings('.checkNo').val());
+			console.log('checked:'+$(".yyj").is(':checked'));
+			
+ 			alert('[' + i + '] : ' + checkVO['checklist_no'] + '\n'+ checkVO['status'] + '\n' + checkVO['task_no'] + '\n' + checkVO['task_checklist'] );
+			
+			// a.push(checkVO);
+			a[i] = checkVO;
+		}
+		
+		console.log('after');
+// 		return false;
 		
 		console.log('ok.task_name ' + task_name);
 		console.log('ok.task_content ' + task_content);
 		console.log('ok.task_dday ' + dday);
 		console.log('ok.task_no ' + task_no);
+// 		console.log('ok.checkS')
 		
 		$('.task_name').val(task_name);
 		$('.task_content').val(task_content);
 		$('.dday1').val(dday);
 		$('.task_no').val(task_no);
 		
-		$('#updateTask').append(file);
-		$('#updateTask').submit();
 		
 		// ajax로 값 넘기기
 		$.ajax({
@@ -78,8 +113,27 @@
 					},
 			type : "get",
 			success : function() {
+				console.log('deadlineInsert.do 완료!');
 				}
 		});
+		
+		console.log(JSON.stringify(a));
+		
+		$.ajax({
+			url: "updateCheckList.do",
+			data : {"checkList":JSON.stringify(a)},
+// 			contentType:'application/json',
+			type:'get',
+// 			dataType:'json',
+			success:function(){
+// 				console.log("check complete??");
+			},
+			error: function(){
+// 				alert("check update ajax error");
+			}
+		})
+		$('#updateTask').append(file); // file 넘기기
+		$('#updateTask').submit();
 	}
 	
 	// 멤버 할당
@@ -607,20 +661,28 @@ function getTaskCheckList(task_no){
 			$(result).each(function(index, data){
 				console.log('체크리스트 잘 나오니?' + data);
 				console.log('시퀀스 나와라 : ' + data.checklist_no);
-				var tag1 = '<div class="checkInnerWrapper"><input type="checkbox" class="yyj" id="cbx' + data.checklist_no + '" style="display: none;">';
+				var tag1 = '<div class="checkInnerWrapper"><input type="hidden" class="checkNo" value="'+data.checklist_no+'">';
+				var checkstatus = '';
+				if(data.status == 'C') {
+					checkstatus = '<input type="checkbox" checked="checked" class="yyj" id="cbx' + data.checklist_no + '" style="display: none;">';
+				} else {
+					checkstatus = '<input type="checkbox" class="yyj" id="cbx' + data.checklist_no + '" style="display: none;">';
+				}
 				var tag2 = '<label for="cbx' + data.checklist_no + '" class="check">';
 				var tag3 = '<svg width="18px" height="18px" viewBox="0 0 18 18">';
 				var tag4 = '<path d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>';
 				var tag5 = '<polyline points="1 9 7 14 15 4"></polyline></svg></label></div>'; 
 				var tag6 = '<input type="text" id="checkName" value="';
 				var tag7 = '" readonly>&nbsp;<br>';
-				var tag = tag1 + tag2 + tag3 + tag4 + tag5 + tag6 + data['task_checklist'] + tag7;
+				var tag = tag1 + checkstatus + tag2 + tag3 + tag4 + tag5 + tag6 + data['task_checklist'] + tag7;
 				$('.checkWrapper').prepend(tag);	
 			 
 			})
 			
+			
 			$('#cbx').on('click', function(){
 				console.log($(this).is(':checked'));	
+				
 			})
 			
 			$('#taskChecklist').show();

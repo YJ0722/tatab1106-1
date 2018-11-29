@@ -30,6 +30,13 @@
  		values(#{project.project_no}, seq_prj_col_t_no.nextVal, 0, 'Title')
  	</insert>
  	
+ 	<!-- 체크리스트 상태 업데이트 -->
+ 	<update id="updateChecklist" parameterType="ChecklistVO">
+ 		update task_checklist_t
+ 			set status = #{status}
+ 			where checklist_no = #{checklist_no}
+ 	</update>
+ 	
  	<!-- 프로젝트 해당하는 컬럼 정보 조회 -->
  	<select id="selectAllProjectCol" parameterType="int" resultType="BoardColVO">
 		select *

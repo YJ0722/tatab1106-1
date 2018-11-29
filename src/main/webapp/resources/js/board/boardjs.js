@@ -553,7 +553,7 @@ function selectAllTask(task_no) {
 				
 				// 데이터 벨류값 설정
 				$('.task_name').val(data.taskVO.task_name);
-				$('.task_content').html(data.taskVO.task_content);
+//				$('.task_content').html(data.taskVO.task_content);
 				$('#startDate').text(data.taskVO.reg_date);
 				$('#datepicker1').attr('placeholder', data.taskVO.d_day);
 				$('#task_ori_name').val("");
@@ -561,6 +561,10 @@ function selectAllTask(task_no) {
 					$('#task_ori_name').val(data.taskFileVO.task_ori_name);
 				}
 				$('.task_no').val(data.taskVO.task_no);
+				
+				var contentstr = data.taskVO.task_content;
+		         contentstr = contentstr.replace(/<br\s*[\/]?>/gi, "\r\n");
+		         $('.task_content').html(contentstr);
 				
 				
 				if(data.taskVO.status == 'C') {

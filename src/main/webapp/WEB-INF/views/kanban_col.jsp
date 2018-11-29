@@ -50,7 +50,7 @@
 											                <!-- task name end -->
 											                <!-- task content start -->
 											                <div class="task-content">
-											                	<p class='task-content-p' style="text-decoration: line-through;">${ taskList.task_content }</p>
+											                	<p class='task-content-p task-content-content' style="text-decoration: line-through;">${ taskList.task_content }</p>
 											                </div>
 											                <!-- task content end -->
 											            </div>
@@ -66,7 +66,7 @@
 											                <!-- task name end -->
 											                <!-- task content start -->
 											                <div class="task-content">
-											                	<p class='task-content-p'>${ taskList.task_content }</p>
+											                	<p class='task-content-p task-content-content'>${ taskList.task_content }</p>
 											                </div>
 											                <!-- task content end -->
 											            </div>
@@ -100,4 +100,13 @@
     <script src="resources/js/jquery-ui.js"></script>
     <!-- <script src="resources/js/jquery-ui.min.js"></script> -->
     <!-- <script src="resources/js/board/boardjs.js"></script> -->
+    <script>
+    $(function(){
+        $('.task-content-content').each(function(){
+           var content = $(this).html();
+           content = content.replace(/[\r\n]/g, "<br>");
+           $(this).html(content);
+        })
+     })
+    </script>
 </html>

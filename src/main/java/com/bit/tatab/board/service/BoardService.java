@@ -71,4 +71,7 @@ public interface BoardService {
 	// 테스크 체크리스트 조회
 	public List<ChecklistVO> selectChecklistList(String task_no);
 
+	// 체크리스트 상태 업데이트
+	public void updateChecklist(ChecklistVO[] checkList);
+
 }

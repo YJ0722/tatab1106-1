@@ -59,6 +59,16 @@ public class BoardDAOImpl implements BoardDAO{
 		return memberList;
 	}
 	
+	// 체크리스트 상태 업데이트
+	@Override
+	public void updateChecklist(ChecklistVO[] checkList) {
+		for(int i=0; i<checkList.length; i++) {
+			ChecklistVO checkVO = checkList[i]; 
+			sqlSession.update("updateChecklist", checkVO);
+		}
+		System.out.println("체크리스트 업데이트 완료!");
+	}
+
 	// 프로젝트 멤버 추가
 	@Override
 	public boolean addUser(String project_no, String user) {

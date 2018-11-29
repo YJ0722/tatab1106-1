@@ -142,6 +142,12 @@ public class BoardServiceImpl implements BoardService{
 	public List<ChecklistVO> selectChecklistList(String task_no) {
 		return boardDao.selectChecklistList(task_no);
 	}
+
+	// 체크리스트 상태 업데이트
+	@Override
+	public void updateChecklist(ChecklistVO[] checkList) {
+		boardDao.updateChecklist(checkList);
+	}
 	
 	
 	

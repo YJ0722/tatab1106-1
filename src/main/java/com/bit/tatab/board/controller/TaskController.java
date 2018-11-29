@@ -1,7 +1,10 @@
 package com.bit.tatab.board.controller;
 
 import java.io.File;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -14,6 +17,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,6 +34,8 @@ import com.bit.tatab.board.vo.MemberVO;
 import com.bit.tatab.board.vo.TaskCommentVO;
 import com.bit.tatab.board.vo.TaskFileVO;
 import com.bit.tatab.myPage.service.MyPageService;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 @Controller
 public class TaskController {
@@ -284,6 +290,19 @@ public class TaskController {
 		
 		boardService.addChecklist(task_no, fixedChecklist); 
 		
+	}
+	
+	@RequestMapping(value="updateCheckList.do", method=RequestMethod.GET)
+	@ResponseBody
+	public void updateChecklist(@RequestParam(value="checkList", required=false)String checkListStr) {
+		Gson gson = new Gson();
+		ChecklistVO[] checkList = gson.fromJson(checkListStr, ChecklistVO[].class);
+		System.out.println("------------------check update--------------------------");
+		for(ChecklistVO checkVO: checkList) {
+			System.out.println("checkVO 하나씩 봐보자 : " + checkVO);
+		}
+		System.out.println("------------------check update end--------------------------");
+		boardService.updateChecklist(checkList);
 	}
 	
 
